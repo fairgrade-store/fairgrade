@@ -244,7 +244,7 @@ function draw(){
     const o=orders[0],c=el("div","card");
     c.appendChild(head(o,model(o),"Order #"+o.code));
     c.appendChild(el("p","muted","Placed "+when(o)));
-    if(unpaid(o)){const b=el("button","pri","Make payment");b.type="button";b.onclick=()=>go("pay");c.appendChild(b)}
+    if(unpaid(o)){const b=el("button","pri",o.payInfo?"View payment details":"Make payment");b.type="button";b.onclick=()=>go("pay");c.appendChild(b)}
     r.appendChild(c);
   }
   const ol=$("olist");ol.innerHTML="";
@@ -255,7 +255,7 @@ function draw(){
     const ul=el("ul","muted");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     c.appendChild(el("p","muted","Delivery to: "+o.customer.address));
     c.appendChild(tracker(o));
-    if(unpaid(o)){const b=el("button","pri","Make payment");b.type="button";b.style.marginTop="12px";b.onclick=()=>go("pay");c.appendChild(b)}
+    if(unpaid(o)){const b=el("button","pri",o.payInfo?"View payment details":"Make payment");b.type="button";b.style.marginTop="12px";b.onclick=()=>go("pay");c.appendChild(b)}
     ol.appendChild(c);
   });
   const pl=$("plist");pl.innerHTML="";
@@ -301,7 +301,15 @@ function payBox(o){
     const l=el("label","","Coin you paid with");sel=el("select");
     (window.WALLETS||[]).forEach(k=>sel.appendChild(el("option","",k.coin)));
     l.appendChild(sel);box.appendChild(l);
-  }else box.appendChild(el("p","muted",o.method==="bank"?"We will send you our bank account details by phone or email. After you pay, enter your transfer reference below.":"We will send you a card payment link. After you pay, enter your payment reference below."));
+  }else if(o.payInfo){
+    const b=el("div","wl");
+    b.appendChild(el("b","",o.method==="bank"?"Bank transfer details":"Payment details"));
+    const c=el("code","",o.payInfo);c.style.whiteSpace="pre-wrap";b.appendChild(c);
+    const k=el("button","","Copy details");k.type="button";
+    k.onclick=()=>{navigator.clipboard.writeText(o.payInfo).then(()=>{k.textContent="Copied"}).catch(()=>{k.textContent="Press and hold to copy"})};
+    b.appendChild(k);box.appendChild(b);
+    box.appendChild(el("p","muted","After you pay, enter your transfer reference below."));
+  }else box.appendChild(el("p","muted","Your payment details will appear here shortly. This page updates by itself."));
   const l2=el("label","","Transaction ID or reference"),inp=el("input");
   inp.placeholder="Paste it here";l2.appendChild(inp);box.appendChild(l2);
   const btn=el("button","pri","I have made the payment");btn.type="button";

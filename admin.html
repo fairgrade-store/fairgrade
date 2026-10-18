@@ -139,7 +139,7 @@ ul{margin:8px 0 0;padding-left:18px}
       <h2 class="sh" style="margin-top:4px">Settings</h2>
       <div class="card">
         <label>My bank account details<textarea id="bank" rows="4" placeholder="Bank name, account name, account number"></textarea></label>
-        <p class="muted">Saved on this phone only. Added to the WhatsApp message for bank transfer orders.</p>
+        <p class="muted">Saved on this phone only. It fills in automatically when you send payment details to a customer's dashboard.</p>
       </div>
       <div class="card wl"><h3>Crypto wallets shown to customers</h3><div id="wl" style="margin-top:8px"></div><p class="muted">To change a wallet, edit config.js on GitHub.</p></div>
       <div class="card">
@@ -249,9 +249,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     if(kind==="status")m="Hello "+n+", update on your Fairgrade order "+c+": "+(SMSG[o.status]||"it has been updated.")+" Thank you for shopping with us.";
     else{
       m="Hello "+n+", thank you for your Fairgrade order "+c+" (total $"+o.total+"). ";
-      if(o.method==="bank")m+="Please pay by bank transfer to:\n"+(bank||"[add your bank details]")+"\nThen press I have made the payment in your account on our website, or reply here with your receipt.";
-      else if(o.method==="card")m+="Here is your card payment link: ";
-      else m+="Please follow the crypto payment steps in your account on our website.";
+      m+="Your payment details are ready in your Fairgrade dashboard (Payments). Please sign in to see them.";
     }
     return "https://wa.me/"+String(o.customer.phone).replace(/\D/g,"")+"?text="+encodeURIComponent(m);
   }
@@ -264,8 +262,23 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   }
   function waBtn(o){
     const d=DONE.includes(o.status);
-    const w=el("a","btn"+(d||todo(o)?" pri":""),d?"Notify on WhatsApp":"Message on WhatsApp");
+    const w=el("a","btn"+(d?" pri":""),"Notify on WhatsApp");
     w.href=wa(o,d?"status":"pay");w.target="_blank";w.rel="noopener";return w;
+  }
+  function sendBox(o){
+    const d=el("div");d.style.marginTop="12px";
+    d.appendChild(el("div","muted",o.status==="details_sent"?"Sent to the customer's dashboard. You can edit and send again.":"Payment details for the customer's dashboard"));
+    const ta=el("textarea");ta.rows=4;ta.style.marginTop="6px";
+    ta.placeholder=o.method==="bank"?"Bank name, account name, account number":"Paste the card payment link or instructions";
+    ta.value=o.payInfo||(o.method==="bank"?store("fg_bank"):"");
+    const b=el("button","pri","Send to customer dashboard");b.type="button";b.style.marginTop="8px";
+    b.onclick=()=>{
+      const v=ta.value.trim();
+      if(!v){alert(o.method==="bank"?"Add your bank details first, here or in Settings.":"Write or paste the payment details first.");return}
+      b.disabled=true;
+      updateDoc(doc(db,"orders",o.id),{payInfo:v,status:"details_sent",infoAt:serverTimestamp()}).then(()=>{b.textContent="Sent"}).catch(()=>{b.disabled=false;alert("Could not send. Please try again.")});
+    };
+    d.appendChild(ta);d.appendChild(b);return d;
   }
   function head(o){
     const h=el("div","top"),l=el("div");
@@ -280,6 +293,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     c.appendChild(el("div","muted",o.customer.address));
     const ul=el("ul");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     proof(o,c);
+    if(unpaid(o)&&o.method!=="crypto")c.appendChild(sendBox(o));
     const r=el("div","row");
     if(o.status==="payment_submitted"){const b=el("button","pri","Confirm payment");b.type="button";b.onclick=()=>setStatus(o,"confirmed");r.appendChild(b)}
     r.appendChild(waBtn(o));
@@ -294,6 +308,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     c.appendChild(head(o));
     c.appendChild(el("p","",o.customer.name+"  "+o.customer.phone));
     proof(o,c);
+    if(unpaid(o)&&o.method!=="crypto")c.appendChild(sendBox(o));
     const r=el("div","row");
     if(o.status==="payment_submitted"||unpaid(o)){const b=el("button","pri","Confirm payment");b.type="button";b.onclick=()=>{if(unpaid(o)&&!confirm("No payment proof yet. Mark as paid anyway?"))return;setStatus(o,"confirmed")};r.appendChild(b)}
     if(unpaid(o)){

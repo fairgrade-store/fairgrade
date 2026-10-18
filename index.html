@@ -249,7 +249,7 @@ dialog{overflow:auto}
 <details><summary>What does the warranty cover?</summary><p>Hardware faults for 12 months. If a phone develops one, we repair it, replace it, or refund you.</p></details>
 <details><summary>How do returns work?</summary><p>You have 30 days. Tell us you want to return it, and we email a prepaid label. You get a full refund, with no restocking fee.</p></details>
 <details><summary>When will my phone arrive?</summary><p>Shipping is free, and the delivery date appears on the page before you add a phone to your cart.</p></details>
-<details><summary>How do I pay?</summary><p>At checkout you choose ATM card, bank transfer, or cryptocurrency. After you place your order, we send you the payment details.</p></details>
+<details><summary>How do I pay?</summary><p>At checkout you choose ATM card, bank transfer, or cryptocurrency. After you place your order, the payment details appear in your dashboard.</p></details>
 </div></section>
 </main>
 
@@ -284,8 +284,8 @@ dialog{overflow:auto}
 <label>Email<input name="email" required type="email" autocomplete="email"></label>
 <label>Delivery address<textarea name="address" required rows="3" autocomplete="street-address"></textarea></label>
 <fieldset class="pay"><legend>Payment method</legend>
-<label class="opt"><input type="radio" name="method" value="card" required><span><b>ATM card</b><small>We send you a card payment link</small></span></label>
-<label class="opt"><input type="radio" name="method" value="bank"><span><b>Bank transfer</b><small>We send you our account details right away</small></span></label>
+<label class="opt"><input type="radio" name="method" value="card" required><span><b>ATM card</b><small>Payment details appear in your dashboard</small></span></label>
+<label class="opt"><input type="radio" name="method" value="bank"><span><b>Bank transfer</b><small>Our account details appear in your dashboard</small></span></label>
 <label class="opt"><input type="radio" name="method" value="crypto"><span><b>Cryptocurrency</b><small>Choose Ethereum, Bitcoin or BNB and pay to our wallet</small></span></label>
 </fieldset>
 <div class="tot"><span>Total</span><strong id="co-total"></strong></div>
@@ -459,7 +459,7 @@ $("coform").onsubmit=function(e){
     cur={id:ref.id,code:code,total:order.total};
     cart=[];drawCart();f.reset();
     if(m==="crypto")showCrypto();
-    else done(m==="bank"?"We will send our bank account details to your phone or email shortly. After you pay, press I have made the payment in your account.":"We will send you a card payment link shortly. After you pay, press I have made the payment in your account.");
+    else done(m==="bank"?"Our bank account details will appear in your dashboard shortly. Open My Dashboard, go to Payments, and press I have made the payment after you pay.":"Your card payment details will appear in your dashboard shortly. Open My Dashboard, go to Payments, and press I have made the payment after you pay.");
   }).catch(function(){err.textContent="We could not place your order. Please check your connection and try again.";err.hidden=false}).then(function(){btn.disabled=false;btn.textContent="Place order"});
 };
 $("cr-go").onclick=function(){
