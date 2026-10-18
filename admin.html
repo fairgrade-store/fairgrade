@@ -405,12 +405,15 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
 
     const cl=$("clist");cl.innerHTML="";
     const m={};
-    orders.forEach(o=>{const k=o.uid||o.customer.email;(m[k]=m[k]||{n:o.customer.name,e:o.customer.email,p:o.customer.phone,l:[]}).l.push(o)});
+    orders.forEach(o=>{const k=o.uid||o.customer.email;(m[k]=m[k]||{u:o.uid,n:o.customer.name,e:o.customer.email,p:o.customer.phone,l:[]}).l.push(o)});
     const cs=Object.values(m);
     if(!cs.length)cl.appendChild(el("p","muted","No customers yet."));
     cs.forEach(x=>{
       const c=el("div","card"),spent=x.l.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
-      c.appendChild(el("h3","",x.n));
+      const pr=users.find(u=>u.id===x.u)||{},hd=el("div");
+      hd.style.cssText="display:flex;gap:12px;align-items:center";
+      if(pr.photo){const im=new Image();im.src=pr.photo;im.alt="";im.style.cssText="width:48px;height:48px;border-radius:50%;object-fit:cover";hd.appendChild(im)}
+      hd.appendChild(el("h3","",pr.name||x.n));c.appendChild(hd);
       c.appendChild(el("div","muted",x.e+"  "+x.p));
       c.appendChild(el("p","",x.l.length+" order"+(x.l.length>1?"s":"")+"  $"+spent+" paid  Last order "+when(x.l[0])));
       const r=el("div","row");

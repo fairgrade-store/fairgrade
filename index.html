@@ -421,14 +421,27 @@ $("checkout").onclick=function(){
   if(!cart.length)return;
   $("co-total").textContent="$"+cartTotal();
   $("co-err").hidden=true;$("au-err").hidden=true;
-  if(FGok()&&window.FG.user){who(window.FG.user.email);show("coform")}else show("co-auth");
+  if(FGok()&&window.FG.user){who(window.FG.user.email);show("coform");prefill()}else show("co-auth");
   CO.showModal();
 };
 $("co-x").onclick=function(){CO.close()};
+var AMSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes."};
+function prefill(){
+  if(!FGok())return;
+  window.FG.getProfile().then(function(p){
+    var x=$("coform").elements;
+    if(p.name&&!x.name.value)x.name.value=p.name;
+    if(p.phone&&!x.phone.value)x.phone.value=p.phone;
+    if(p.address&&!x.address.value)x.address.value=p.address;
+    if(!x.email.value&&window.FG.user)x.email.value=window.FG.user.email;
+  }).catch(function(){});
+}
 function authGo(kind){
-  var er=$("au-err");er.hidden=true;
+  var er=$("au-err"),e=$("au-em").value.trim(),p=$("au-pw").value;
+  er.hidden=true;
   if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}
-  window.FG[kind]($("au-em").value.trim(),$("au-pw").value).then(function(r){who(r.user.email);show("coform")}).catch(function(){er.textContent=kind==="signUp"?"Could not create the account. Use a valid email and a password of at least 6 characters, or sign in if you already have an account.":"Could not sign in. Check your email and password.";er.hidden=false});
+  if(!e||!p){er.textContent="Enter your email and password first.";er.hidden=false;return}
+  window.FG[kind](e,p).then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||(kind==="signUp"?"Could not create the account.":"Could not sign in.");er.hidden=false});
 }
 $("au-in").onclick=function(){authGo("signIn")};
 $("au-up").onclick=function(){authGo("signUp")};
@@ -457,6 +470,7 @@ $("coform").onsubmit=function(e){
   btn.disabled=true;btn.textContent="Placing order...";err.hidden=true;
   window.FG.placeOrder(order).then(function(ref){
     cur={id:ref.id,code:code,total:order.total};
+    window.FG.saveProfile({name:order.customer.name,phone:order.customer.phone,address:order.customer.address}).catch(function(){});
     cart=[];drawCart();f.reset();
     if(m==="crypto")showCrypto();
     else done(m==="bank"?"Our bank account details will appear in your dashboard shortly. Open My Dashboard, go to Payments, and press I have made the payment after you pay.":"Your card payment details will appear in your dashboard shortly. Open My Dashboard, go to Payments, and press I have made the payment after you pay.");
