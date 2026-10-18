@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>My account | Fairgrade</title>
+<style>
+:root{--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff;--warn:#B45309}
+@media(prefers-color-scheme:dark){:root{--bg:#0B1419;--surface:#121D25;--ink:#E8EFF2;--muted:#98A7B0;--line:#24343E;--accent:#4FD1AE;--accent-ink:#06231C;--warn:#F5B94F}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+h1,h2,h3{margin:0;letter-spacing:-.01em}
+input,select,button{font:inherit;color:inherit}
+input,select{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px}
+button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;font-weight:600;text-decoration:none;display:inline-block}
+.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.b{display:inline-block;border-radius:99px;padding:2px 10px;font-size:13px;font-weight:600;border:1px solid var(--line)}
+.hot{border-color:var(--accent);color:var(--accent)}
+.muted{color:var(--muted);font-size:14px}
+label{display:block;font-weight:600;margin-top:12px}
+label input,label select{margin-top:6px;font-weight:400}
+.err{color:#d33;margin-top:8px}
+ul{margin:8px 0 0;padding-left:18px}
+.wl{border:1.5px solid var(--line);border-radius:12px;padding:12px;margin-top:8px}
+.wl b{display:block}
+.wl code{display:block;word-break:break-all;margin:6px 0;font-size:13px}
+.pay{border-top:1px solid var(--line);margin-top:12px;padding-top:4px}
+.pay button{margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="btn" href="index.html">Back to store</a><button id="out" type="button" hidden>Sign out</button></div>
+  <div id="auth">
+    <h1>My account</h1>
+    <p class="muted">Sign in to see your orders. Only you can see them.</p>
+    <div class="card">
+      <label>Email<input id="em" type="email" autocomplete="username"></label>
+      <label>Password<input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
+      <p class="err" id="ae" role="alert" hidden></p>
+      <div class="row" style="margin-top:12px;justify-content:flex-start"><button class="pri" id="in" type="button">Sign in</button><button id="up" type="button">Create account</button></div>
+    </div>
+  </div>
+  <div id="acct" hidden>
+    <h1>My orders</h1>
+    <p class="muted" id="who"></p>
+    <div id="list"></div>
+  </div>
+</div>
+<script src="config.js"></script>
+<script type="module">
+import * as FG from "./fg.js";
+const $=id=>document.getElementById(id);
+const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n};
+const LABEL={pending:"Order placed, waiting for payment",details_sent:"Payment details sent to you",payment_submitted:"Payment received, being verified",confirmed:"Confirmed and being processed",shipped:"Shipped",cancelled:"Cancelled"};
+let orders=[],unsub=null;
+if(!FG.ready){$("ae").textContent="Accounts are not switched on yet.";$("ae").hidden=false}
+function go(kind){
+  $("ae").hidden=true;
+  if(!FG.ready)return;
+  FG[kind]($("em").value.trim(),$("pw").value).catch(()=>{
+    $("ae").textContent=kind==="signUp"?"Could not create the account. Use a valid email and a password of at least 6 characters, or sign in if you already have an account.":"Could not sign in. Check your email and password.";
+    $("ae").hidden=false;
+  });
+}
+$("in").onclick=()=>go("signIn");
+$("up").onclick=()=>go("signUp");
+$("out").onclick=()=>FG.logOut();
+FG.onUser(u=>{
+  $("auth").hidden=!!u;$("acct").hidden=!u;$("out").hidden=!u;
+  if(unsub){unsub();unsub=null}
+  if(!u)return;
+  $("who").textContent=u.email;
+  unsub=FG.myOrders(l=>{
+    orders=l.sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
+    render();
+  },e=>{$("list").textContent="Cannot load orders: "+e.code});
+});
+function render(){
+  const list=$("list");list.innerHTML="";
+  if(!orders.length)list.appendChild(el("p","muted","You have no orders yet."));
+  orders.forEach(o=>{
+    const c=el("div","card"),h=el("div","row");
+    const left=el("div");
+    left.appendChild(el("h3","",o.code+"  $"+o.total));
+    left.appendChild(el("div","muted",o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleString():"just now"));
+    h.appendChild(left);
+    h.appendChild(el("span","b"+(o.status==="confirmed"||o.status==="shipped"?" hot":""),LABEL[o.status]||o.status));
+    c.appendChild(h);
+    const ul=el("ul");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));
+    c.appendChild(ul);
+    c.appendChild(el("p","muted","Delivery to: "+o.customer.address));
+    if(o.payRef)c.appendChild(el("p","muted","Your payment reference: "+o.payRef));
+    if(o.status==="pending"||o.status==="details_sent"){
+      const box=el("div","pay");
+      let sel=null;
+      if(o.method==="crypto"){
+        box.appendChild(el("p","","Send the US dollar value of $"+o.total+" in the coin you choose, to the matching address. Send only on the network shown."));
+        const w=el("div");FG.walletBox(w);box.appendChild(w);
+        const l=el("label","","Coin you paid with");sel=el("select");
+        (window.WALLETS||[]).forEach(k=>sel.appendChild(el("option","",k.coin)));
+        l.appendChild(sel);box.appendChild(l);
+      }else{
+        box.appendChild(el("p","muted",o.method==="bank"?"We will send you our bank account details by phone or email. After you pay, enter your transfer reference below.":"We will send you a card payment link. After you pay, enter your payment reference below."));
+      }
+      const l2=el("label","","Transaction ID or reference");const inp=el("input");inp.placeholder="Paste it here";
+      l2.appendChild(inp);box.appendChild(l2);
+      const btn=el("button","pri","I have made the payment");btn.type="button";
+      btn.onclick=()=>{
+        const v=inp.value.trim();
+        if(v.length<6){alert("Enter your transaction ID or reference first.");return}
+        btn.disabled=true;
+        FG.submitPayment(o.id,v,sel?sel.value:"").catch(()=>{btn.disabled=false;alert("Could not send. Please try again.")});
+      };
+      box.appendChild(btn);c.appendChild(box);
+    }
+    list.appendChild(c);
+  });
+}
+</script>
+</body>
+</html>

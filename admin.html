@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fairgrade admin</title>
+<style>
+:root{--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff;--warn:#B45309}
+@media(prefers-color-scheme:dark){:root{--bg:#0B1419;--surface:#121D25;--ink:#E8EFF2;--muted:#98A7B0;--line:#24343E;--accent:#4FD1AE;--accent-ink:#06231C;--warn:#F5B94F}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px}
+h1,h2,h3{margin:0;letter-spacing:-.01em}
+input,textarea,select,button{font:inherit;color:inherit}
+input,textarea,select{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px}
+button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;font-weight:600;text-decoration:none;display:inline-block}
+.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.b{display:inline-block;border-radius:99px;padding:2px 10px;font-size:13px;font-weight:600;border:1px solid var(--line)}
+.new{border-color:var(--warn);color:var(--warn)}
+.muted{color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin-top:14px}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.alert{background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:12px 14px;margin-top:12px;font-weight:600}
+label{display:block;font-weight:600;margin-top:12px}
+label input,label textarea{margin-top:6px;font-weight:400}
+details{margin-top:12px}
+summary{font-weight:600;cursor:pointer}
+.err{color:#d33;margin-top:8px}
+ul{margin:8px 0 0;padding-left:18px}
+</style>
+</head>
+<body>
+<div class="wrap" id="login">
+  <h1>Fairgrade admin</h1>
+  <p class="muted">Sign in to see your orders.</p>
+  <form id="lf" class="card">
+    <label>Email<input id="em" type="email" required autocomplete="username"></label>
+    <label>Password<input id="pw" type="password" required autocomplete="current-password"></label>
+    <p class="err" id="le" role="alert" hidden></p>
+    <div class="row"><button class="pri" type="submit">Sign in</button></div>
+  </form>
+</div>
+
+<div class="wrap" id="app" hidden>
+  <div class="top"><h1>Orders <span class="b new" id="newcount">0 new</span></h1><button id="out" type="button">Sign out</button></div>
+  <div class="alert" id="alert" hidden></div>
+  <div class="row"><button id="notif" type="button">Turn on alerts</button><span class="muted">Alerts work while this page is open.</span></div>
+  <details class="card"><summary>My payment details</summary>
+    <label>Bank account details<textarea id="bank" rows="4" placeholder="Bank name, account name, account number"></textarea></label>
+        <p class="muted">Saved on this phone only. They are added to the message you send customers.</p>
+  </details>
+  <div class="tabs" id="tabs"></div>
+  <div id="list"></div>
+</div>
+
+<script src="config.js"></script>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,query,orderBy,onSnapshot,doc,updateDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const $=id=>document.getElementById(id);
+const C=window.FIREBASE_CONFIG;
+const STATUS={pending:"Pending",details_sent:"Details sent",payment_submitted:"Payment submitted",confirmed:"Confirmed",shipped:"Shipped",cancelled:"Cancelled"};
+const EXPLORER={Ethereum:"https://etherscan.io/tx/",Bitcoin:"https://mempool.space/tx/",BNB:"https://bscscan.com/tx/"};
+const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
+const TABS=[["todo","To do"],["wait","Waiting"],["done","Done"],["all","All"]];
+let orders=[],tab="todo",first=true,unsub=null;
+
+if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
+  const e=$("le");e.textContent="Firebase is not set up yet. Fill in config.js first.";e.hidden=false;
+}else{
+  const app=initializeApp(C),auth=getAuth(app),db=getFirestore(app);
+
+  const store=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k)||"";localStorage.setItem(k,v)}catch(e){return ""}};
+  $("bank").value=store("fg_bank");$("wallet").value=store("fg_wallet");
+  $("bank").oninput=()=>store("fg_bank",$("bank").value);
+
+  $("lf").onsubmit=async e=>{
+    e.preventDefault();$("le").hidden=true;
+    try{await signInWithEmailAndPassword(auth,$("em").value,$("pw").value)}
+    catch(x){$("le").textContent="Could not sign in. Check your email and password.";$("le").hidden=false}
+  };
+  $("out").onclick=()=>signOut(auth);
+  $("notif").onclick=()=>{if("Notification" in window)Notification.requestPermission()};
+
+  onAuthStateChanged(auth,user=>{
+    $("login").hidden=!!user;$("app").hidden=!user;
+    if(unsub){unsub();unsub=null}
+    if(!user)return;
+    first=true;
+    unsub=onSnapshot(query(collection(db,"orders"),orderBy("createdAt","desc")),snap=>{
+      orders=snap.docs.map(d=>({id:d.id,...d.data()}));
+      if(!first)snap.docChanges().forEach(c=>{const d=c.doc.data();if(c.type==="added"&&d.status==="pending"&&d.method!=="crypto")ping("New order, send payment details:",d);else if(d.status==="payment_submitted"&&(c.type==="added"||c.type==="modified"))ping("Payment submitted:",d)});
+      first=false;render();
+    },err=>{$("list").textContent="Cannot load orders: "+err.code});
+  });
+
+  const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.25)}catch(e){}};
+  function ping(t,o){
+    $("alert").textContent=t+" "+o.code+" from "+o.customer.name;$("alert").hidden=false;
+    beep();
+    try{if("Notification" in window&&Notification.permission==="granted")new Notification("Fairgrade",{body:t+" "+o.code})}catch(e){}
+  }
+  const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
+  const todo=o=>o.status==="payment_submitted"||(o.status==="pending"&&o.method!=="crypto");
+  const inTab=o=>tab==="all"||(tab==="todo"&&todo(o))||(tab==="wait"&&!todo(o)&&(o.status==="pending"||o.status==="details_sent"))||(tab==="done"&&(o.status==="confirmed"||o.status==="shipped"));
+  function wa(o,kind){
+    const bank=store("fg_bank"),n=o.customer.name,c=o.code;
+    let m;
+    if(kind==="status"){
+      m="Hello "+n+", update on your Fairgrade order "+c+": "+(o.status==="shipped"?"it has been shipped.":"your payment is confirmed and your order has been processed.")+" Thank you for shopping with us.";
+    }else{
+      m="Hello "+n+", thank you for your Fairgrade order "+c+" (total $"+o.total+"). ";
+      if(o.method==="bank")m+="Please pay by bank transfer to:\n"+(bank||"[add your bank details]")+"\nThen press I have made the payment in your account on our website, or reply here with your receipt.";
+      else if(o.method==="card")m+="Here is your card payment link: ";
+      else m+="Please follow the crypto payment steps in your account on our website.";
+    }
+    return "https://wa.me/"+String(o.customer.phone).replace(/\D/g,"")+"?text="+encodeURIComponent(m);
+  }
+  const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s});
+  function render(){
+    const n=orders.filter(todo).length;
+    $("newcount").textContent=n+" to do";
+    document.title=(n?"("+n+") ":"")+"Fairgrade admin";
+    const tb=$("tabs");tb.innerHTML="";
+    TABS.forEach(([k,l])=>{const b=el("button","",l);b.type="button";b.setAttribute("aria-pressed",tab===k);b.onclick=()=>{tab=k;render()};tb.appendChild(b)});
+    const list=$("list");list.innerHTML="";
+    const shown=orders.filter(inTab);
+    if(!shown.length)list.appendChild(el("p","muted","No orders here yet."));
+    shown.forEach(o=>{
+      const c=el("div","card"),h=el("div","top");
+      const left=el("div");
+      left.appendChild(el("h3","",o.code+"  $"+o.total));
+      left.appendChild(el("div","muted",(o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleString():"just now")));
+      h.appendChild(left);
+      h.appendChild(el("span","b"+(todo(o)?" new":""),(METHOD[o.method]||o.method)+", "+(STATUS[o.status]||o.status)));
+      c.appendChild(h);
+      c.appendChild(el("p","",o.customer.name+"  "+o.customer.phone));
+      c.appendChild(el("div","muted",o.customer.email));
+      c.appendChild(el("div","muted",o.customer.address));
+      const ul=el("ul");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));
+      c.appendChild(ul);
+      if(o.payRef){
+        const p=el("p","","Payment reference: "+o.payRef+(o.payCoin?"  ("+o.payCoin+")":""));p.style.wordBreak="break-all";c.appendChild(p);
+        const ex=EXPLORER[o.payCoin];
+        if(ex){const x=el("a","btn","Check on blockchain explorer");x.href=ex+encodeURIComponent(o.payRef);x.target="_blank";x.rel="noopener";c.appendChild(x)}
+      }
+      const r=el("div","row");
+      if(o.status==="payment_submitted"){const b=el("button","pri","Confirm order");b.type="button";b.onclick=()=>setStatus(o,"confirmed");r.appendChild(b)}
+      if(o.status==="confirmed"||o.status==="shipped"){const w=el("a","btn pri","Notify customer on WhatsApp");w.href=wa(o,"status");w.target="_blank";w.rel="noopener";r.appendChild(w)}
+      else{const w=el("a","btn"+(o.status==="payment_submitted"?"":" pri"),"Message on WhatsApp");w.href=wa(o,"pay");w.target="_blank";w.rel="noopener";r.appendChild(w)}
+      const s=el("select");Object.keys(STATUS).forEach(k=>{const op=el("option","",STATUS[k]);op.value=k;if(k===o.status)op.selected=true;s.appendChild(op)});
+      s.style.width="auto";s.onchange=()=>setStatus(o,s.value);r.appendChild(s);
+      const t=el("a","btn","Call");t.href="tel:"+o.customer.phone;r.appendChild(t);
+      const d=el("button","","Delete");d.type="button";d.onclick=()=>{if(confirm("Delete order "+o.code+"?"))deleteDoc(doc(db,"orders",o.id))};r.appendChild(d);
+      c.appendChild(r);
+      list.appendChild(c);
+    });
+  }
+}
+</script>
+</body>
+</html>

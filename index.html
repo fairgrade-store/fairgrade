@@ -117,6 +117,29 @@ footer p{margin:0;max-width:70ch}
 .mc h3{font-size:18px}
 .from strong{font-size:24px}
 .pickbtn{padding:10px;font-size:14px}
+dialog{border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);padding:20px;width:min(460px,calc(100% - 24px));max-height:92vh}
+dialog::backdrop{background:rgba(5,12,16,.55)}
+#co label{display:block;font-weight:600;margin:12px 0 0}
+#co input,#co textarea,#co select{display:block;width:100%;margin-top:6px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit;font-weight:400}
+#co .opt{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:12px;margin:8px 0 0;font-weight:400}
+#co .opt:has(input:checked){border-color:var(--accent)}
+#co .opt input{width:auto;margin:4px 0 0}
+#co .opt small{display:block;color:var(--muted)}
+#co .opt b{font-weight:600}
+.pay{border:0;padding:0;margin:16px 0 0}
+.pay legend{font-weight:600}
+#co .tot{margin-top:16px}
+dialog{overflow:auto}
+.muted{color:var(--muted);font-size:14px}
+.err{color:#d33;margin:8px 0 0}
+.link2{background:none;border:0;text-decoration:underline;color:var(--muted);padding:0}
+.buy.alt{background:none;color:var(--ink);border:1.5px solid var(--line);margin-top:8px}
+.wl{border:1.5px solid var(--line);border-radius:12px;padding:12px;margin-top:8px}
+.wl b{display:block}
+.wl code{display:block;word-break:break-all;margin:6px 0;font-size:13px}
+.wl button{border:1.5px solid var(--line);background:none;border-radius:8px;padding:6px 12px;font-weight:600}
+.hr{display:flex;align-items:center;gap:14px}
+.acct{font-weight:600;text-decoration:none}
 @media(min-width:760px){nav{display:flex}.trust{grid-template-columns:repeat(4,1fr)}.g{grid-template-columns:170px 1fr 190px;align-items:baseline;gap:24px}.pol{grid-template-columns:repeat(3,1fr)}.cat{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:64px 0 72px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -134,7 +157,7 @@ footer p{margin:0;max-width:70ch}
 <div class="wrap bar">
 <a class="logo" href="#top" aria-label="Fairgrade home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0E7A66"/><path d="M9 17l5 5 9-11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade</a>
 <nav aria-label="Main"><a href="#models">iPhones</a><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a></nav>
-<button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button>
+<div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button></div>
 </div>
 </header>
 
@@ -226,7 +249,7 @@ footer p{margin:0;max-width:70ch}
 <details><summary>What does the warranty cover?</summary><p>Hardware faults for 12 months. If a phone develops one, we repair it, replace it, or refund you.</p></details>
 <details><summary>How do returns work?</summary><p>You have 30 days. Tell us you want to return it, and we email a prepaid label. You get a full refund, with no restocking fee.</p></details>
 <details><summary>When will my phone arrive?</summary><p>Shipping is free, and the delivery date appears on the page before you add a phone to your cart.</p></details>
-<details><summary>How do I pay?</summary><p>Checkout is not open yet. You can build a cart now, and payment will be added before we take orders.</p></details>
+<details><summary>How do I pay?</summary><p>At checkout you choose ATM card, bank transfer, or cryptocurrency. After you place your order, we send you the payment details.</p></details>
 </div></section>
 </main>
 
@@ -241,8 +264,45 @@ footer p{margin:0;max-width:70ch}
 <ul id="items"></ul>
 <p id="empty" style="color:var(--muted)">Your cart is empty. Pick an iPhone to get started.</p>
 <div class="tot"><span>Total</span><strong id="total">$0</strong></div>
-<button class="buy" disabled>Checkout opens soon</button>
+<button class="buy" id="checkout" type="button" disabled>Checkout</button>
 </aside>
+
+<dialog id="co" aria-labelledby="co-t">
+<div class="dh"><h3 id="co-t">Checkout</h3><button type="button" id="co-x">Close</button></div>
+<div id="co-auth" hidden>
+<p class="muted">Sign in or create an account. Your orders and delivery details stay private in your account.</p>
+<label>Email<input id="au-em" type="email" autocomplete="username"></label>
+<label>Password<input id="au-pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
+<p class="err" id="au-err" role="alert" hidden></p>
+<button class="buy" type="button" id="au-in">Sign in</button>
+<button class="buy alt" type="button" id="au-up">Create account</button>
+</div>
+<form id="coform" hidden>
+<p class="muted"><span id="co-who"></span> <button type="button" id="co-out" class="link2">Sign out</button></p>
+<label>Full name<input name="name" required autocomplete="name"></label>
+<label>Phone with country code<input name="phone" required type="tel" placeholder="+234 801 234 5678" autocomplete="tel"></label>
+<label>Email<input name="email" required type="email" autocomplete="email"></label>
+<label>Delivery address<textarea name="address" required rows="3" autocomplete="street-address"></textarea></label>
+<fieldset class="pay"><legend>Payment method</legend>
+<label class="opt"><input type="radio" name="method" value="card" required><span><b>ATM card</b><small>We send you a card payment link</small></span></label>
+<label class="opt"><input type="radio" name="method" value="bank"><span><b>Bank transfer</b><small>We send you our account details right away</small></span></label>
+<label class="opt"><input type="radio" name="method" value="crypto"><span><b>Cryptocurrency</b><small>Choose Ethereum, Bitcoin or BNB and pay to our wallet</small></span></label>
+</fieldset>
+<div class="tot"><span>Total</span><strong id="co-total"></strong></div>
+<p class="err" id="co-err" role="alert" hidden></p>
+<button class="buy" id="co-go" type="submit">Place order</button>
+</form>
+<div id="co-crypto" hidden>
+<h3>Pay with cryptocurrency</h3>
+<p id="cr-sum"></p>
+<div id="cr-wallets"></div>
+<label>Coin you paid with<select id="cr-coin"></select></label>
+<label>Transaction ID or reference<input id="cr-ref" autocomplete="off" placeholder="Paste your transaction hash"></label>
+<p class="err" id="cr-err" role="alert" hidden></p>
+<button class="buy" type="button" id="cr-go">I have made the payment</button>
+</div>
+<div id="co-done" hidden></div>
+</dialog>
 
 <script>
 (function(){
@@ -333,6 +393,7 @@ function drawCart(){
   $("count").textContent=cart.length;
   $("total").textContent="$"+t;
   $("empty").hidden=cart.length>0;
+  $("checkout").disabled=!cart.length;
 }
 function openCart(){$("cart").hidden=false;$("scrim").hidden=false;$("cartbtn").setAttribute("aria-expanded","true");$("close").focus()}
 function closeCart(){$("cart").hidden=true;$("scrim").hidden=true;$("cartbtn").setAttribute("aria-expanded","false");$("cartbtn").focus()}
@@ -351,8 +412,68 @@ $("cartbtn").onclick=function(){$("cart").hidden?openCart():closeCart()};
 $("close").onclick=closeCart;
 $("scrim").onclick=closeCart;
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("cart").hidden)closeCart()});
+var CO=$("co"),cur=null;
+function cartTotal(){return cart.reduce(function(a,b){return a+b.p},0)}
+function show(id){["co-auth","coform","co-crypto","co-done"].forEach(function(k){$(k).hidden=k!==id})}
+function FGok(){return window.FG&&window.FG.ready}
+function who(e){$("co-who").textContent="Signed in as "+e}
+$("checkout").onclick=function(){
+  if(!cart.length)return;
+  $("co-total").textContent="$"+cartTotal();
+  $("co-err").hidden=true;$("au-err").hidden=true;
+  if(FGok()&&window.FG.user){who(window.FG.user.email);show("coform")}else show("co-auth");
+  CO.showModal();
+};
+$("co-x").onclick=function(){CO.close()};
+function authGo(kind){
+  var er=$("au-err");er.hidden=true;
+  if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}
+  window.FG[kind]($("au-em").value.trim(),$("au-pw").value).then(function(r){who(r.user.email);show("coform")}).catch(function(){er.textContent=kind==="signUp"?"Could not create the account. Use a valid email and a password of at least 6 characters, or sign in if you already have an account.":"Could not sign in. Check your email and password.";er.hidden=false});
+}
+$("au-in").onclick=function(){authGo("signIn")};
+$("au-up").onclick=function(){authGo("signUp")};
+$("co-out").onclick=function(){window.FG.logOut().then(function(){show("co-auth")})};
+function done(msg){
+  show("co-done");
+  var d=$("co-done");
+  d.innerHTML='<h3>Thank you</h3><p>Your order number is <b></b>.</p><p></p><p><a href="account.html">Track your order in your account</a></p><button class="buy" type="button" id="co-ok">Done</button>';
+  d.querySelector("b").textContent=cur.code;
+  d.querySelectorAll("p")[1].textContent=msg;
+  $("co-ok").onclick=function(){CO.close()};
+}
+function showCrypto(){
+  show("co-crypto");
+  $("cr-sum").textContent="Order "+cur.code+". Send the US dollar value of $"+cur.total+" in the coin you choose, to the matching address below. Send only on the network shown.";
+  var w=$("cr-wallets");w.innerHTML="";window.FG.walletBox(w);
+  var s=$("cr-coin");s.innerHTML="";
+  (window.WALLETS||[]).forEach(function(k){var o=document.createElement("option");o.textContent=k.coin;s.appendChild(o)});
+  $("cr-ref").value="";$("cr-err").hidden=true;
+}
+$("coform").onsubmit=function(e){
+  e.preventDefault();
+  var f=e.target,btn=$("co-go"),err=$("co-err"),x=f.elements;
+  var m=x.method.value,code="FG-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  var order={code:code,customer:{name:x.name.value.trim(),phone:x.phone.value.trim(),email:x.email.value.trim(),address:x.address.value.trim()},items:cart.map(function(c){return{n:c.n,p:c.p}}),total:cartTotal(),method:m};
+  btn.disabled=true;btn.textContent="Placing order...";err.hidden=true;
+  window.FG.placeOrder(order).then(function(ref){
+    cur={id:ref.id,code:code,total:order.total};
+    cart=[];drawCart();f.reset();
+    if(m==="crypto")showCrypto();
+    else done(m==="bank"?"We will send our bank account details to your phone or email shortly. After you pay, press I have made the payment in your account.":"We will send you a card payment link shortly. After you pay, press I have made the payment in your account.");
+  }).catch(function(){err.textContent="We could not place your order. Please check your connection and try again.";err.hidden=false}).then(function(){btn.disabled=false;btn.textContent="Place order"});
+};
+$("cr-go").onclick=function(){
+  var r=$("cr-ref").value.trim(),er=$("cr-err");
+  if(r.length<6){er.textContent="Enter your transaction ID or reference after you pay.";er.hidden=false;return}
+  er.hidden=true;$("cr-go").disabled=true;
+  window.FG.submitPayment(cur.id,r,$("cr-coin").value).then(function(){done("Payment submitted. We will verify it and confirm your order. You can follow the status in your account.")}).catch(function(){er.textContent="Could not send. Please try again.";er.hidden=false}).then(function(){$("cr-go").disabled=false});
+};
 sync();drawCat();drawCart();
 })();
+</script>
+<script src="config.js"></script>
+<script type="module">
+try{window.FG=await import("./fg.js")}catch(e){}
 </script>
 </body>
 </html>
