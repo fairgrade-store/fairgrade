@@ -58,6 +58,17 @@ ul{margin:8px 0 0;padding-left:18px}
 .tabbar button[aria-current="true"]{color:var(--blue)}
 .tabbar svg{width:22px;height:22px}
 .bd{position:absolute;top:0;right:calc(50% - 22px);background:#d33;color:#fff;border-radius:99px;font-size:10px;font-style:normal;padding:0 5px;min-width:16px;line-height:16px}
+.pulse{display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;margin-right:8px;animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+.bars{display:flex;gap:8px;align-items:flex-end;height:130px}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%}
+.bars i{display:block;width:100%;background:var(--blue);border-radius:6px 6px 0 0;min-height:2px}
+.bars span{font-size:11px;color:var(--muted)}
+.bars b{font-size:12px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border-bottom:0}
+.kv b{text-align:right}
 .wl code{display:block;word-break:break-all;font-size:13px;margin:4px 0 10px}
 </style>
 </head>
@@ -92,8 +103,14 @@ ul{margin:8px 0 0;padding-left:18px}
   <main class="wrap">
     <div class="alert" id="alert" hidden></div>
     <section id="v-home">
-      <h2 class="sh" style="margin-top:4px">Overview</h2>
+      <h2 class="sh" style="margin-top:4px">Live</h2>
+      <div class="card"><div><span class="pulse"></span><b id="onl" style="font-size:28px">0</b> <span>people on the site right now</span></div><div class="muted" id="onl-list" style="margin-top:6px"></div></div>
+      <h2 class="sh">Overview</h2>
       <div class="stats" id="stats" style="margin-top:12px"></div>
+      <h2 class="sh">Visitors, last 7 days</h2>
+      <div class="card"><div class="bars" id="bars"></div><p class="muted" id="tsum" style="margin:10px 0 0"></p></div>
+      <h2 class="sh">Insights</h2>
+      <div class="card" id="ins"></div>
       <h2 class="sh">Needs your attention</h2>
       <div id="attn"></div>
       <h2 class="sh">Recent orders</h2>
@@ -145,7 +162,7 @@ ul{margin:8px 0 0;padding-left:18px}
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {getFirestore,collection,query,orderBy,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getFirestore,collection,query,orderBy,where,limit,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n};
@@ -158,7 +175,7 @@ const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
 const EXPLORER={Ethereum:"https://etherscan.io/tx/",Bitcoin:"https://mempool.space/tx/",BNB:"https://bscscan.com/tx/"};
 const OF=[["all","All"],["todo","To do"],["wait","Waiting"],["active","Paid and active"],["delivered","Delivered"],["cancelled","Cancelled"]];
 const PF=[["verify","To verify"],["wait","Awaiting"],["paid","Paid"],["all","All"]];
-let orders=[],tickets=[],first=true,firstT=true,unsub=null,unsub2=null,ofil="all",pfil="verify";
+let orders=[],tickets=[],visits=[],users=[],first=true,firstT=true,unsub=null,unsub2=null,unsub3=null,unsub4=null,ofil="all",pfil="verify";
 
 const todo=o=>o.status==="payment_submitted"||(o.status==="pending"&&o.method!=="crypto");
 const unpaid=o=>o.status==="pending"||o.status==="details_sent";
@@ -200,6 +217,8 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     $("login").hidden=!!user;$("app").hidden=!user;
     if(unsub){unsub();unsub=null}
     if(unsub2){unsub2();unsub2=null}
+    if(unsub3){unsub3();unsub3=null}
+    if(unsub4){unsub4();unsub4=null}
     if(!user)return;
     first=true;firstT=true;go("home");
     unsub=onSnapshot(query(collection(db,"orders"),orderBy("createdAt","desc")),snap=>{
@@ -209,6 +228,8 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
         else if(d.status==="payment_submitted"&&(c.type==="added"||c.type==="modified"))ping("Payment submitted:",d.code,d.customer.name)});
       first=false;draw();
     },err=>{$("recent").textContent="Cannot load orders: "+err.code});
+    unsub3=onSnapshot(query(collection(db,"visits"),where("lastSeen",">=",new Date(Date.now()-7*864e5)),limit(1500)),snap=>{visits=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
+    unsub4=onSnapshot(collection(db,"users"),snap=>{users=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
     unsub2=onSnapshot(collection(db,"tickets"),snap=>{
       tickets=byNew(snap.docs.map(d=>({id:d.id,...d.data()})));
       if(!firstT)snap.docChanges().forEach(c=>{if(c.type==="added")ping("New support message from",c.doc.data().email,"")});
@@ -281,6 +302,43 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     }
     c.appendChild(r);return c;
   }
+  const tm=(x,now)=>x&&x.toMillis?x.toMillis():now;
+  function tally(arr){const m={};arr.forEach(x=>{if(x)m[x]=(m[x]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])}
+  function drawStats(){
+    const now=Date.now(),d0=new Date();d0.setHours(0,0,0,0);const t0=d0.getTime();
+    const online=visits.filter(v=>now-tm(v.lastSeen,now)<150000);
+    $("onl").textContent=online.length;
+    $("onl-list").textContent=online.slice(0,5).map(v=>(v.page||"page")+" on "+(v.device||"?")+(v.ref&&v.ref!=="direct"?" from "+v.ref:"")).join("  |  ");
+    const today=visits.filter(v=>tm(v.first,now)>=t0);
+    const views=today.reduce((a,v)=>a+(v.views||1),0);
+    const oToday=orders.filter(o=>tm(o.createdAt,now)>=t0);
+    const revToday=oToday.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
+    const rev=orders.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
+    const newU=users.filter(u=>u.createdAt&&tm(u.createdAt,now)>=t0).length;
+    const nTodo=orders.filter(todo).length,nVer=orders.filter(o=>o.status==="payment_submitted").length,nOpen=tickets.filter(t=>t.status==="open").length;
+    const st=$("stats");st.innerHTML="";
+    [["Visitors today",today.length,"b","users",()=>go("home")],["Page views today",views,"b","home",()=>go("home")],["Registered customers",users.length,"p","users",()=>go("cust")],["New customers today",newU,"p","users",()=>go("cust")],["Orders today",oToday.length,"o","orders",()=>{ofil="all";go("orders");draw()}],["Revenue today","$"+revToday,"g","pay",()=>{pfil="paid";go("pay");draw()}],["Orders to do",nTodo,"o","clock",()=>{ofil="todo";go("orders");draw()}],["Payments to verify",nVer,"b","pay",()=>{pfil="verify";go("pay");draw()}],["Open support",nOpen,"p","chat",()=>go("help")],["Total revenue","$"+rev,"g","orders",()=>{ofil="active";go("orders");draw()}]].forEach(x=>{
+      const b=el("button","st c-"+x[2]);b.type="button";
+      b.innerHTML=ic(x[3])+"<b></b><span></span>";
+      b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
+      b.onclick=x[4];st.appendChild(b);
+    });
+    const bars=$("bars");bars.innerHTML="";
+    const days=[];for(let k=6;k>=0;k--){const d=new Date(t0-k*864e5);days.push({t:d.getTime(),l:d.toLocaleDateString(undefined,{weekday:"short"}),n:0})}
+    visits.forEach(v=>{const t=tm(v.first,now);for(let k=days.length-1;k>=0;k--){if(t>=days[k].t){days[k].n++;break}}});
+    const mx=Math.max(1,...days.map(d=>d.n));
+    days.forEach(d=>{const c=el("div");c.appendChild(el("b","",d.n));const i=el("i");i.style.height=Math.round(d.n/mx*80)+"%";c.appendChild(i);c.appendChild(el("span","",d.l));bars.appendChild(c)});
+    $("tsum").textContent=visits.length+" visitors and "+visits.reduce((a,v)=>a+(v.views||1),0)+" page views in the last 7 days.";
+    const sids=new Set(orders.map(o=>o.sid).filter(Boolean));
+    const o7=orders.filter(o=>now-tm(o.createdAt,now)<7*864e5).length;
+    const mob=visits.filter(v=>v.device==="mobile").length;
+    const aband=visits.filter(v=>v.cart&&!sids.has(v.id)).length;
+    const topM=tally(visits.map(v=>v.model)).slice(0,5).map(x=>x[0]+" ("+x[1]+")").join(", ")||"No data yet";
+    const topR=tally(visits.map(v=>v.ref)).slice(0,3).map(x=>x[0]+" ("+x[1]+")").join(", ")||"No data yet";
+    const ins=$("ins");ins.innerHTML="";
+    [["Conversion (orders per visitor)",visits.length?Math.min(100,Math.round(o7*100/visits.length))+"%":"No data yet"],["Phones people look at",visits.length?Math.round(mob*100/visits.length)+"% mobile, "+(100-Math.round(mob*100/visits.length))+"% desktop":"No data yet"],["Added to cart but did not order",aband],["Most wanted phones",topM],["Where visitors come from",topR]].forEach(r=>{const k=el("div","kv");k.appendChild(el("span","",r[0]));k.appendChild(el("b","",String(r[1])));ins.appendChild(k)});
+  }
+  setInterval(()=>drawStats(),20000);
   function chips(id,list,cur,fn){
     const w=$(id);w.innerHTML="";
     list.forEach(([k,l])=>{const b=el("button","",l);b.type="button";b.setAttribute("aria-pressed",cur===k);b.onclick=()=>fn(k);w.appendChild(b)});
@@ -291,13 +349,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     const rev=orders.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
     badge("bd-orders",nTodo);badge("bd-pay",nVer);badge("bd-help",nOpen);
     document.title=(nTodo+nOpen?"("+(nTodo+nOpen)+") ":"")+"Fairgrade admin";
-    const s=$("stats");s.innerHTML="";
-    [["Orders to do",nTodo,"o","clock",()=>{ofil="todo";go("orders");draw()}],["Payments to verify",nVer,"b","pay",()=>{pfil="verify";go("pay");draw()}],["Revenue","$"+rev,"g","orders",()=>{ofil="active";go("orders");draw()}],["Open support",nOpen,"p","chat",()=>go("help")]].forEach(x=>{
-      const b=el("button","st c-"+x[2]);b.type="button";
-      b.innerHTML=ic(x[3])+"<b></b><span></span>";
-      b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
-      b.onclick=x[4];s.appendChild(b);
-    });
+    drawStats();
     const at=$("attn");at.innerHTML="";
     const need=orders.filter(todo);
     if(!need.length&&!nOpen)at.appendChild(el("p","muted","Nothing needs your attention right now."));
