@@ -62,15 +62,17 @@ ul{margin:8px 0 0;padding-left:18px}
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {getFirestore,collection,query,orderBy,onSnapshot,doc,updateDoc,deleteDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getFirestore,collection,query,orderBy,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const $=id=>document.getElementById(id);
 const C=window.FIREBASE_CONFIG;
-const STATUS={pending:"Pending",details_sent:"Details sent",payment_submitted:"Payment submitted",confirmed:"Confirmed",shipped:"Shipped",cancelled:"Cancelled"};
+const STATUS={pending:"Pending",details_sent:"Details sent",payment_submitted:"Payment submitted",confirmed:"Payment confirmed",processing:"Processing",shipped:"Shipped",out_for_delivery:"Out for delivery",delivered:"Delivered",cancelled:"Cancelled"};
+const DONE=["confirmed","processing","shipped","out_for_delivery","delivered"];
+const SMSG={confirmed:"your payment is confirmed and your order has been processed.",processing:"your order is being prepared.",shipped:"it has been shipped.",out_for_delivery:"it is out for delivery.",delivered:"it has been delivered."};
 const EXPLORER={Ethereum:"https://etherscan.io/tx/",Bitcoin:"https://mempool.space/tx/",BNB:"https://bscscan.com/tx/"};
 const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
-const TABS=[["todo","To do"],["wait","Waiting"],["done","Done"],["all","All"]];
-let orders=[],tab="todo",first=true,unsub=null;
+const TABS=[["todo","To do"],["wait","Waiting"],["done","Done"],["support","Support"],["all","All"]];
+let orders=[],tickets=[],tab="todo",first=true,firstT=true,unsub=null,unsub2=null;
 
 if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   const e=$("le");e.textContent="Firebase is not set up yet. Fill in config.js first.";e.hidden=false;
@@ -92,13 +94,15 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   onAuthStateChanged(auth,user=>{
     $("login").hidden=!!user;$("app").hidden=!user;
     if(unsub){unsub();unsub=null}
+    if(unsub2){unsub2();unsub2=null}
     if(!user)return;
-    first=true;
+    first=true;firstT=true;
     unsub=onSnapshot(query(collection(db,"orders"),orderBy("createdAt","desc")),snap=>{
       orders=snap.docs.map(d=>({id:d.id,...d.data()}));
       if(!first)snap.docChanges().forEach(c=>{const d=c.doc.data();if(c.type==="added"&&d.status==="pending"&&d.method!=="crypto")ping("New order, send payment details:",d);else if(d.status==="payment_submitted"&&(c.type==="added"||c.type==="modified"))ping("Payment submitted:",d)});
       first=false;render();
     },err=>{$("list").textContent="Cannot load orders: "+err.code});
+    unsub2=onSnapshot(collection(db,"tickets"),snap=>{tickets=snap.docs.map(d=>({id:d.id,...d.data()}));if(!firstT)snap.docChanges().forEach(c=>{if(c.type==="added")ping("New support message from",{code:c.doc.data().email,customer:{name:"a customer"}})});firstT=false;render()},()=>{});
   });
 
   const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.25)}catch(e){}};
@@ -109,12 +113,12 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   }
   const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
   const todo=o=>o.status==="payment_submitted"||(o.status==="pending"&&o.method!=="crypto");
-  const inTab=o=>tab==="all"||(tab==="todo"&&todo(o))||(tab==="wait"&&!todo(o)&&(o.status==="pending"||o.status==="details_sent"))||(tab==="done"&&(o.status==="confirmed"||o.status==="shipped"));
+  const inTab=o=>tab==="all"||(tab==="todo"&&todo(o))||(tab==="wait"&&!todo(o)&&(o.status==="pending"||o.status==="details_sent"))||(tab==="done"&&DONE.includes(o.status));
   function wa(o,kind){
     const bank=store("fg_bank"),n=o.customer.name,c=o.code;
     let m;
     if(kind==="status"){
-      m="Hello "+n+", update on your Fairgrade order "+c+": "+(o.status==="shipped"?"it has been shipped.":"your payment is confirmed and your order has been processed.")+" Thank you for shopping with us.";
+      m="Hello "+n+", update on your Fairgrade order "+c+": "+(SMSG[o.status]||"it has been updated.")+" Thank you for shopping with us.";
     }else{
       m="Hello "+n+", thank you for your Fairgrade order "+c+" (total $"+o.total+"). ";
       if(o.method==="bank")m+="Please pay by bank transfer to:\n"+(bank||"[add your bank details]")+"\nThen press I have made the payment in your account on our website, or reply here with your receipt.";
@@ -123,14 +127,32 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     }
     return "https://wa.me/"+String(o.customer.phone).replace(/\D/g,"")+"?text="+encodeURIComponent(m);
   }
+  function renderSupport(list){
+    const t=[...tickets].sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
+    if(!t.length)list.appendChild(el("p","muted","No support messages yet."));
+    t.forEach(k=>{
+      const c=el("div","card"),h=el("div","top");
+      h.appendChild(el("h3","",k.email));
+      h.appendChild(el("span","b"+(k.status==="open"?" new":""),k.status==="open"?"Open":"Answered"));
+      c.appendChild(h);
+      c.appendChild(el("div","muted",(k.orderCode?"Order "+k.orderCode+"  ":"")+(k.createdAt&&k.createdAt.toDate?k.createdAt.toDate().toLocaleString():"just now")));
+      c.appendChild(el("p","",k.message));
+      if(k.reply)c.appendChild(el("p","muted","Your reply: "+k.reply));
+      const ta=el("textarea");ta.rows=3;ta.placeholder="Write your reply";
+      const r=el("div","row"),b=el("button","pri","Send reply");b.type="button";
+      b.onclick=()=>{const v=ta.value.trim();if(!v)return;b.disabled=true;updateDoc(doc(db,"tickets",k.id),{reply:v,status:"answered",repliedAt:serverTimestamp()}).catch(()=>{b.disabled=false})};
+      r.appendChild(b);c.appendChild(ta);c.appendChild(r);list.appendChild(c);
+    });
+  }
   const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s});
   function render(){
-    const n=orders.filter(todo).length;
+    const n=orders.filter(todo).length+tickets.filter(t=>t.status==="open").length;
     $("newcount").textContent=n+" to do";
     document.title=(n?"("+n+") ":"")+"Fairgrade admin";
     const tb=$("tabs");tb.innerHTML="";
     TABS.forEach(([k,l])=>{const b=el("button","",l);b.type="button";b.setAttribute("aria-pressed",tab===k);b.onclick=()=>{tab=k;render()};tb.appendChild(b)});
     const list=$("list");list.innerHTML="";
+    if(tab==="support"){renderSupport(list);return}
     const shown=orders.filter(inTab);
     if(!shown.length)list.appendChild(el("p","muted","No orders here yet."));
     shown.forEach(o=>{
@@ -153,7 +175,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
       }
       const r=el("div","row");
       if(o.status==="payment_submitted"){const b=el("button","pri","Confirm order");b.type="button";b.onclick=()=>setStatus(o,"confirmed");r.appendChild(b)}
-      if(o.status==="confirmed"||o.status==="shipped"){const w=el("a","btn pri","Notify customer on WhatsApp");w.href=wa(o,"status");w.target="_blank";w.rel="noopener";r.appendChild(w)}
+      if(DONE.includes(o.status)){const w=el("a","btn pri","Notify customer on WhatsApp");w.href=wa(o,"status");w.target="_blank";w.rel="noopener";r.appendChild(w)}
       else{const w=el("a","btn"+(o.status==="payment_submitted"?"":" pri"),"Message on WhatsApp");w.href=wa(o,"pay");w.target="_blank";w.rel="noopener";r.appendChild(w)}
       const s=el("select");Object.keys(STATUS).forEach(k=>{const op=el("option","",STATUS[k]);op.value=k;if(k===o.status)op.selected=true;s.appendChild(op)});
       s.style.width="auto";s.onchange=()=>setStatus(o,s.value);r.appendChild(s);

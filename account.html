@@ -4,64 +4,180 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>My account | Fairgrade</title>
+<title>My dashboard | Fairgrade</title>
 <style>
-:root{--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff;--warn:#B45309}
-@media(prefers-color-scheme:dark){:root{--bg:#0B1419;--surface:#121D25;--ink:#E8EFF2;--muted:#98A7B0;--line:#24343E;--accent:#4FD1AE;--accent-ink:#06231C;--warn:#F5B94F}}
+:root{--bg:#F3F6FC;--surface:#fff;--ink:#0B1B33;--muted:#5B6B82;--line:#E1E8F3;--blue:#2563EB;--on:#fff;--bb:#E7F0FF;--bt:#1D4ED8;--gb:#E5F7EC;--gt:#15803D;--ob:#FFF0E0;--ot:#B4540A;--pb:#EFE9FF;--pt:#6D3FD1;--rb:#FDE8E8;--rt:#B42318}
+@media(prefers-color-scheme:dark){:root{--bg:#0A111D;--surface:#111B2C;--ink:#E8EEF8;--muted:#9AA9BF;--line:#22314A;--blue:#5B8CFF;--on:#06122B;--bb:#142544;--bt:#8DB2FF;--gb:#0F2B1E;--gt:#6EE7A0;--ob:#33200F;--ot:#FDBA74;--pb:#241A44;--pt:#C4B0FF;--rb:#3A1414;--rt:#FCA5A5}}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-.wrap{max-width:640px;margin:0 auto;padding:16px}
+.wrap{max-width:640px;margin:0 auto;padding:16px 16px 96px}
 h1,h2,h3{margin:0;letter-spacing:-.01em}
-input,select,button{font:inherit;color:inherit}
-input,select{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 12px}
-button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 14px;font-weight:600;text-decoration:none;display:inline-block}
-.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}
-.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
-.b{display:inline-block;border-radius:99px;padding:2px 10px;font-size:13px;font-weight:600;border:1px solid var(--line)}
-.hot{border-color:var(--accent);color:var(--accent)}
+input,select,textarea,button{font:inherit;color:inherit}
+input,select,textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 12px}
+button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;font-weight:600;text-decoration:none;display:inline-block;text-align:center}
+.pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
 .muted{color:var(--muted);font-size:14px}
+.err{color:var(--rt);margin-top:8px}
 label{display:block;font-weight:600;margin-top:12px}
-label input,label select{margin-top:6px;font-weight:400}
-.err{color:#d33;margin-top:8px}
-ul{margin:8px 0 0;padding-left:18px}
+label input,label select,label textarea{margin-top:6px;font-weight:400}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:12px}
+.hero{background:linear-gradient(135deg,#0B2A6B,#2563EB);color:#fff;padding:16px 16px 26px;border-radius:0 0 24px 24px}
+.hero .in{max-width:640px;margin:0 auto}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand{color:#fff;font-weight:800;text-decoration:none;font-size:18px}
+.hero button{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;padding:7px 12px}
+.hero h1{font-size:28px}
+.hero p{margin:4px 0 0;opacity:.85}
+.sh{font-size:18px;margin:22px 0 0}
+.stats,.qa{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.st{border:0;border-radius:16px;padding:14px;text-align:left}
+.st svg{width:24px;height:24px}
+.st b{display:block;font-size:30px;line-height:1.1;margin-top:10px}
+.st span{font-weight:600;font-size:14px}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.c-b{background:var(--bb);color:var(--bt)}
+.c-g{background:var(--gb);color:var(--gt)}
+.c-o{background:var(--ob);color:var(--ot)}
+.c-p{background:var(--pb);color:var(--pt)}
+.qa a,.qa button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px;background:var(--surface);color:var(--ink)}
+.qa svg{width:24px;height:24px;color:var(--blue)}
+.ord{display:flex;gap:12px;align-items:center}
+.thumb{width:64px;height:64px;border-radius:12px;background:#fff;display:grid;place-items:center;flex:none;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.chip{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.s-pending,.s-details_sent{background:var(--ob);color:var(--ot)}
+.s-payment_submitted,.s-confirmed,.s-processing{background:var(--bb);color:var(--bt)}
+.s-shipped,.s-out_for_delivery,.s-delivered{background:var(--gb);color:var(--gt)}
+.s-cancelled{background:var(--rb);color:var(--rt)}
+.trk{list-style:none;margin:14px 0 0;padding:0}
+.trk li{display:flex;gap:12px;align-items:center;padding:6px 0;color:var(--muted)}
+.trk .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);flex:none;background:var(--surface)}
+.trk .done{color:var(--ink)}
+.trk .done .dot{background:var(--blue);border-color:var(--blue)}
+.trk .cur{color:var(--ink);font-weight:700}
+.trk .cur .dot{border-color:var(--blue)}
+.tabbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+.tabbar button{border:0;background:none;padding:6px 8px;font-size:12px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px}
+.tabbar button[aria-current="true"]{color:var(--blue)}
+.tabbar svg{width:22px;height:22px}
 .wl{border:1.5px solid var(--line);border-radius:12px;padding:12px;margin-top:8px}
 .wl b{display:block}
 .wl code{display:block;word-break:break-all;margin:6px 0;font-size:13px}
+.wl button{padding:6px 12px}
 .pay{border-top:1px solid var(--line);margin-top:12px;padding-top:4px}
 .pay button{margin-top:12px}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);width:min(520px,calc(100% - 24px));padding:20px}
+dialog::backdrop{background:rgba(5,12,24,.55)}
+.inv{width:100%;border-collapse:collapse;margin-top:10px}
+.inv td{padding:6px 0;border-bottom:1px solid var(--line)}
+.inv td:last-child{text-align:right}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+@media print{body>*:not(#inv){display:none!important}#inv .noprint{display:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="top"><a class="btn" href="index.html">Back to store</a><button id="out" type="button" hidden>Sign out</button></div>
-  <div id="auth">
-    <h1>My account</h1>
-    <p class="muted">Sign in to see your orders. Only you can see them.</p>
-    <div class="card">
-      <label>Email<input id="em" type="email" autocomplete="username"></label>
-      <label>Password<input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
-      <p class="err" id="ae" role="alert" hidden></p>
-      <div class="row" style="margin-top:12px;justify-content:flex-start"><button class="pri" id="in" type="button">Sign in</button><button id="up" type="button">Create account</button></div>
-    </div>
-  </div>
-  <div id="acct" hidden>
-    <h1>My orders</h1>
-    <p class="muted" id="who"></p>
-    <div id="list"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-orders" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-track" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+<symbol id="i-pay" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+</svg>
+
+<div class="wrap" id="auth">
+  <a class="btn" href="index.html">Back to store</a>
+  <h1 style="margin-top:16px">My dashboard</h1>
+  <p class="muted">Sign in to see your orders. Only you can see them.</p>
+  <div class="card">
+    <label>Email<input id="em" type="email" autocomplete="username"></label>
+    <label>Password<input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
+    <p class="err" id="ae" role="alert" hidden></p>
+    <div class="row"><button class="pri" id="in" type="button">Sign in</button><button id="up" type="button">Create account</button></div>
   </div>
 </div>
+
+<div id="app" hidden>
+  <header class="hero"><div class="in">
+    <div class="bar"><a class="brand" href="index.html">Fairgrade</a><button id="out" type="button">Sign out</button></div>
+    <h1>My Dashboard</h1>
+    <p>Welcome back! Manage your phones and orders.</p>
+  </div></header>
+  <main class="wrap">
+    <section id="v-home">
+      <div class="stats" id="stats"></div>
+      <h2 class="sh">Recent Order</h2>
+      <div id="recent"></div>
+      <h2 class="sh">Quick Actions</h2>
+      <div class="qa">
+        <button type="button" data-go="orders"><svg><use href="#i-track"/></svg>Track Order</button>
+        <a class="btn" href="index.html"><svg><use href="#i-phone"/></svg>Shop Phones</a>
+        <button type="button" data-go="pay"><svg><use href="#i-pay"/></svg>Payments</button>
+        <button type="button" data-go="help"><svg><use href="#i-chat"/></svg>Customer Service</button>
+      </div>
+    </section>
+    <section id="v-orders" hidden><h2 class="sh" style="margin-top:4px">My Orders</h2><div id="olist"></div></section>
+    <section id="v-pay" hidden><h2 class="sh" style="margin-top:4px">Payments and Invoices</h2><div id="plist"></div></section>
+    <section id="v-help" hidden>
+      <h2 class="sh" style="margin-top:4px">Customer Service</h2>
+      <div class="card">
+        <label>About<select id="h-order"></select></label>
+        <label>Your message<textarea id="h-msg" rows="4" placeholder="Ask a question or tell us about a problem"></textarea></label>
+        <p class="err" id="h-err" role="alert" hidden></p>
+        <div class="row"><button class="pri" id="h-send" type="button">Send message</button></div>
+      </div>
+      <div id="tlist"></div>
+    </section>
+    <section id="v-me" hidden>
+      <h2 class="sh" style="margin-top:4px">My Profile</h2>
+      <div class="card">
+        <p class="muted" id="who"></p>
+        <label>Full name<input id="p-name" autocomplete="name"></label>
+        <label>Phone with country code<input id="p-phone" type="tel" autocomplete="tel"></label>
+        <label>Delivery address<textarea id="p-addr" rows="3"></textarea></label>
+        <p class="muted" id="p-msg"></p>
+        <div class="row"><button class="pri" id="p-save" type="button">Save profile</button><button id="p-reset" type="button">Send password reset email</button></div>
+      </div>
+    </section>
+  </main>
+  <nav class="tabbar" aria-label="Dashboard">
+    <button type="button" data-v="home" aria-current="true"><svg><use href="#i-home"/></svg>Home</button>
+    <button type="button" data-v="orders"><svg><use href="#i-orders"/></svg>Orders</button>
+    <button type="button" data-v="pay"><svg><use href="#i-pay"/></svg>Payments</button>
+    <button type="button" data-v="help"><svg><use href="#i-chat"/></svg>Support</button>
+    <button type="button" data-v="me"><svg><use href="#i-user"/></svg>Profile</button>
+  </nav>
+</div>
+
+<dialog id="inv"><div id="inv-body"></div><div class="row noprint"><button class="pri" id="inv-print" type="button">Print</button><button id="inv-close" type="button">Close</button></div></dialog>
+
 <script src="config.js"></script>
+<script src="phones.js"></script>
 <script type="module">
 import * as FG from "./fg.js";
 const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n};
-const LABEL={pending:"Order placed, waiting for payment",details_sent:"Payment details sent to you",payment_submitted:"Payment received, being verified",confirmed:"Confirmed and being processed",shipped:"Shipped",cancelled:"Cancelled"};
-let orders=[],unsub=null;
+const ic=k=>'<svg><use href="#i-'+k+'"/></svg>';
+const IMG=window.PHONE_IMG||{};
+const STEPS=["Order placed","Payment confirmed","Processing","Shipped","Out for delivery","Delivered"];
+const IDX={pending:0,details_sent:0,payment_submitted:0,confirmed:1,processing:2,shipped:3,out_for_delivery:4,delivered:5};
+const LABEL={pending:"Waiting for payment",details_sent:"Payment details sent",payment_submitted:"Verifying payment",confirmed:"Payment confirmed",processing:"Processing",shipped:"Shipped",out_for_delivery:"Out for delivery",delivered:"Delivered",cancelled:"Cancelled"};
+const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
+let orders=[],tickets=[],profile={},uns=[];
+const byNew=l=>l.sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
+const model=o=>String(o.items&&o.items[0]?o.items[0].n:"").split(",")[0];
+const when=o=>o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleDateString():"just now";
+const unpaid=o=>o.status==="pending"||o.status==="details_sent";
+const transit=o=>o.status==="shipped"||o.status==="out_for_delivery";
+const chip=(s,t)=>el("span","chip s-"+s,t||LABEL[s]||s);
+function thumb(o){const d=el("div","thumb"),src=IMG[model(o)];if(src){const i=new Image();i.alt=model(o);i.src=src;d.appendChild(i)}else d.textContent="Phone";return d}
+
 if(!FG.ready){$("ae").textContent="Accounts are not switched on yet.";$("ae").hidden=false}
-function go(kind){
+function signin(kind){
   $("ae").hidden=true;
   if(!FG.ready)return;
   FG[kind]($("em").value.trim(),$("pw").value).catch(()=>{
@@ -69,60 +185,167 @@ function go(kind){
     $("ae").hidden=false;
   });
 }
-$("in").onclick=()=>go("signIn");
-$("up").onclick=()=>go("signUp");
+$("in").onclick=()=>signin("signIn");
+$("up").onclick=()=>signin("signUp");
 $("out").onclick=()=>FG.logOut();
+
+function go(v){
+  ["home","orders","pay","help","me"].forEach(k=>{$("v-"+k).hidden=k!==v});
+  document.querySelectorAll(".tabbar button").forEach(b=>b.setAttribute("aria-current",b.dataset.v===v));
+  scrollTo(0,0);
+}
+document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>go(b.dataset.v));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+
 FG.onUser(u=>{
-  $("auth").hidden=!!u;$("acct").hidden=!u;$("out").hidden=!u;
-  if(unsub){unsub();unsub=null}
+  uns.forEach(f=>f());uns=[];
+  $("auth").hidden=!!u;$("app").hidden=!u;
   if(!u)return;
-  $("who").textContent=u.email;
-  unsub=FG.myOrders(l=>{
-    orders=l.sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
-    render();
-  },e=>{$("list").textContent="Cannot load orders: "+e.code});
+  $("who").textContent="Signed in as "+u.email;
+  uns.push(FG.myOrders(l=>{orders=byNew(l);draw()},()=>{}));
+  uns.push(FG.myTickets(l=>{tickets=byNew(l);draw()},()=>{}));
+  FG.getProfile().then(p=>{profile=p||{};$("p-name").value=profile.name||"";$("p-phone").value=profile.phone||"";$("p-addr").value=profile.address||""}).catch(()=>{});
+  go("home");
 });
-function render(){
-  const list=$("list");list.innerHTML="";
-  if(!orders.length)list.appendChild(el("p","muted","You have no orders yet."));
+
+function tracker(o){
+  const w=el("ol","trk");
+  if(o.status==="cancelled"){w.appendChild(el("li","","This order was cancelled."));return w}
+  const cur=o.status==="delivered"?6:IDX[o.status];
+  STEPS.forEach((s,i)=>{
+    const li=el("li",i<cur?"done":i===cur?"cur":"");
+    li.appendChild(el("span","dot"));
+    li.appendChild(el("span","",s+(i===0&&o.status==="payment_submitted"?" (payment being verified)":"")));
+    w.appendChild(li);
+  });
+  return w;
+}
+function head(o,title,sub){
+  const h=el("div","ord"),m=el("div");
+  m.style.flex="1";
+  m.appendChild(el("h3","",title));
+  m.appendChild(el("div","muted",sub));
+  m.appendChild(el("div","","$"+o.total));
+  h.appendChild(thumb(o));h.appendChild(m);h.appendChild(chip(o.status));
+  return h;
+}
+function draw(){
+  const s=$("stats");s.innerHTML="";
+  const owed=orders.filter(unpaid).reduce((a,o)=>a+o.total,0);
+  [["My Orders",orders.length,"b","orders","orders"],["In Transit",orders.filter(transit).length,"g","truck","orders"],["Outstanding","$"+owed,"o","clock","pay"],["Support Requests",tickets.filter(t=>t.status==="open").length,"p","chat","help"]].forEach(x=>{
+    const b=el("button","st c-"+x[2]);b.type="button";
+    b.innerHTML=ic(x[3])+"<b></b><span></span>";
+    b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
+    b.onclick=()=>go(x[4]);s.appendChild(b);
+  });
+  const r=$("recent");r.innerHTML="";
+  if(!orders.length)r.appendChild(el("p","muted","No orders yet. Pick a phone in the store to get started."));
+  else{
+    const o=orders[0],c=el("div","card");
+    c.appendChild(head(o,model(o),"Order #"+o.code));
+    c.appendChild(el("p","muted","Placed "+when(o)));
+    if(unpaid(o)){const b=el("button","pri","Make payment");b.type="button";b.onclick=()=>go("pay");c.appendChild(b)}
+    r.appendChild(c);
+  }
+  const ol=$("olist");ol.innerHTML="";
+  if(!orders.length)ol.appendChild(el("p","muted","You have no orders yet."));
   orders.forEach(o=>{
-    const c=el("div","card"),h=el("div","row");
-    const left=el("div");
-    left.appendChild(el("h3","",o.code+"  $"+o.total));
-    left.appendChild(el("div","muted",o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleString():"just now"));
-    h.appendChild(left);
-    h.appendChild(el("span","b"+(o.status==="confirmed"||o.status==="shipped"?" hot":""),LABEL[o.status]||o.status));
-    c.appendChild(h);
-    const ul=el("ul");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));
-    c.appendChild(ul);
+    const c=el("div","card");
+    c.appendChild(head(o,model(o),"Order #"+o.code+"  "+when(o)));
+    const ul=el("ul","muted");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     c.appendChild(el("p","muted","Delivery to: "+o.customer.address));
+    c.appendChild(tracker(o));
+    if(unpaid(o)){const b=el("button","pri","Make payment");b.type="button";b.style.marginTop="12px";b.onclick=()=>go("pay");c.appendChild(b)}
+    ol.appendChild(c);
+  });
+  const pl=$("plist");pl.innerHTML="";
+  const pays=orders.filter(o=>o.status!=="cancelled");
+  if(!pays.length)pl.appendChild(el("p","muted","No payments yet."));
+  pays.forEach(o=>{
+    const c=el("div","card"),h=el("div","ord"),m=el("div");
+    m.style.flex="1";
+    m.appendChild(el("h3","","Order #"+o.code));
+    m.appendChild(el("div","muted",METHOD[o.method]+"  "+when(o)));
+    m.appendChild(el("div","","$"+o.total));
+    h.appendChild(m);
+    h.appendChild(unpaid(o)?chip("pending","Awaiting payment"):o.status==="payment_submitted"?chip("payment_submitted","Verifying"):chip("delivered","Paid"));
+    c.appendChild(h);
     if(o.payRef)c.appendChild(el("p","muted","Your payment reference: "+o.payRef));
-    if(o.status==="pending"||o.status==="details_sent"){
-      const box=el("div","pay");
-      let sel=null;
-      if(o.method==="crypto"){
-        box.appendChild(el("p","","Send the US dollar value of $"+o.total+" in the coin you choose, to the matching address. Send only on the network shown."));
-        const w=el("div");FG.walletBox(w);box.appendChild(w);
-        const l=el("label","","Coin you paid with");sel=el("select");
-        (window.WALLETS||[]).forEach(k=>sel.appendChild(el("option","",k.coin)));
-        l.appendChild(sel);box.appendChild(l);
-      }else{
-        box.appendChild(el("p","muted",o.method==="bank"?"We will send you our bank account details by phone or email. After you pay, enter your transfer reference below.":"We will send you a card payment link. After you pay, enter your payment reference below."));
-      }
-      const l2=el("label","","Transaction ID or reference");const inp=el("input");inp.placeholder="Paste it here";
-      l2.appendChild(inp);box.appendChild(l2);
-      const btn=el("button","pri","I have made the payment");btn.type="button";
-      btn.onclick=()=>{
-        const v=inp.value.trim();
-        if(v.length<6){alert("Enter your transaction ID or reference first.");return}
-        btn.disabled=true;
-        FG.submitPayment(o.id,v,sel?sel.value:"").catch(()=>{btn.disabled=false;alert("Could not send. Please try again.")});
-      };
-      box.appendChild(btn);c.appendChild(box);
-    }
-    list.appendChild(c);
+    const b=el("button","","View invoice");b.type="button";b.style.marginTop="10px";b.onclick=()=>invoice(o);c.appendChild(b);
+    if(unpaid(o))c.appendChild(payBox(o));
+    pl.appendChild(c);
+  });
+  const sel=$("h-order"),keep=sel.value;
+  sel.innerHTML="";
+  const g=el("option","","General question");g.value="";sel.appendChild(g);
+  orders.forEach(o=>{const p=el("option","","Order #"+o.code);p.value=o.code;sel.appendChild(p)});
+  sel.value=keep;
+  const tl=$("tlist");tl.innerHTML="";
+  tickets.forEach(t=>{
+    const c=el("div","card"),h=el("div","ord");
+    const m=el("div");m.style.flex="1";
+    m.appendChild(el("div","muted",(t.orderCode?"Order #"+t.orderCode+"  ":"")+(t.createdAt&&t.createdAt.toDate?t.createdAt.toDate().toLocaleDateString():"just now")));
+    m.appendChild(el("p","",t.message));
+    h.appendChild(m);h.appendChild(chip(t.status==="open"?"pending":"delivered",t.status==="open"?"Open":"Answered"));
+    c.appendChild(h);
+    if(t.reply){const p=el("p","","Reply: "+t.reply);p.style.fontWeight="600";c.appendChild(p)}
+    tl.appendChild(c);
   });
 }
+function payBox(o){
+  const box=el("div","pay");
+  let sel=null;
+  if(o.method==="crypto"){
+    box.appendChild(el("p","","Send the US dollar value of $"+o.total+" in the coin you choose, to the matching address. Send only on the network shown."));
+    const w=el("div");FG.walletBox(w);box.appendChild(w);
+    const l=el("label","","Coin you paid with");sel=el("select");
+    (window.WALLETS||[]).forEach(k=>sel.appendChild(el("option","",k.coin)));
+    l.appendChild(sel);box.appendChild(l);
+  }else box.appendChild(el("p","muted",o.method==="bank"?"We will send you our bank account details by phone or email. After you pay, enter your transfer reference below.":"We will send you a card payment link. After you pay, enter your payment reference below."));
+  const l2=el("label","","Transaction ID or reference"),inp=el("input");
+  inp.placeholder="Paste it here";l2.appendChild(inp);box.appendChild(l2);
+  const btn=el("button","pri","I have made the payment");btn.type="button";
+  btn.onclick=()=>{
+    const v=inp.value.trim();
+    if(v.length<6){alert("Enter your transaction ID or reference first.");return}
+    btn.disabled=true;
+    FG.submitPayment(o.id,v,sel?sel.value:"").catch(()=>{btn.disabled=false;alert("Could not send. Please try again.")});
+  };
+  box.appendChild(btn);
+  return box;
+}
+function invoice(o){
+  const d=$("inv-body");d.innerHTML="";
+  d.appendChild(el("h2","","Invoice"));
+  d.appendChild(el("p","muted","Fairgrade  Order #"+o.code+"  "+when(o)));
+  d.appendChild(el("p","","Billed to: "+o.customer.name+" ("+o.customer.email+")"));
+  const t=el("table","inv");
+  (o.items||[]).forEach(i=>{const r=el("tr");r.appendChild(el("td","",i.n));r.appendChild(el("td","","$"+i.p));t.appendChild(r)});
+  const r=el("tr");r.appendChild(el("td","","Total"));r.appendChild(el("td","","$"+o.total));r.style.fontWeight="700";t.appendChild(r);
+  d.appendChild(t);
+  d.appendChild(el("p","","Payment method: "+METHOD[o.method]));
+  d.appendChild(el("p","","Payment status: "+(unpaid(o)?"Awaiting payment":o.status==="payment_submitted"?"Being verified":o.status==="cancelled"?"Cancelled":"Paid")));
+  if(o.payRef)d.appendChild(el("p","muted","Reference: "+o.payRef));
+  $("inv").showModal();
+}
+$("inv-print").onclick=()=>window.print();
+$("inv-close").onclick=()=>$("inv").close();
+
+$("h-send").onclick=()=>{
+  const m=$("h-msg").value.trim(),er=$("h-err");
+  if(m.length<5){er.textContent="Please write your message first.";er.hidden=false;return}
+  er.hidden=true;$("h-send").disabled=true;
+  FG.addTicket({message:m,orderCode:$("h-order").value}).then(()=>{$("h-msg").value=""}).catch(()=>{er.textContent="Could not send. Please try again.";er.hidden=false}).then(()=>{$("h-send").disabled=false});
+};
+$("p-save").onclick=()=>{
+  $("p-msg").textContent="";
+  FG.saveProfile({name:$("p-name").value.trim(),phone:$("p-phone").value.trim(),address:$("p-addr").value.trim()}).then(()=>{$("p-msg").textContent="Profile saved."}).catch(()=>{$("p-msg").textContent="Could not save. Please try again."});
+};
+$("p-reset").onclick=()=>{
+  const e=FG.user&&FG.user.email;
+  if(!e)return;
+  FG.resetPassword(e).then(()=>{$("p-msg").textContent="Password reset email sent to "+e+"."}).catch(()=>{$("p-msg").textContent="Could not send the email. Please try again."});
+};
 </script>
 </body>
 </html>
