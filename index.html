@@ -2,174 +2,283 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fairgrade: graded, tested, warrantied iPhones</title>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Used iPhones, graded honestly and covered by a 12-month warranty. Unlocked, free shipping, 30-day returns.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230E7A66'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F3F6F8;--surface:#fff;--ink:#14212B;--muted:#55656F;--line:#D5DEE4;--accent:#1F5BFF;--accent-ink:#fff;--good:#1E8E5A;color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#0E161C;--surface:#16212A;--ink:#E8EEF2;--muted:#9BAAB5;--line:#26343F;--accent:#6C93FF;--accent-ink:#0E161C;--good:#4CC38A;color-scheme:dark}}
+:root{--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#0B1419;--surface:#121D25;--ink:#E8EFF2;--muted:#98A7B0;--line:#24343E;--accent:#4FD1AE;--accent-ink:#06231C}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
-h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.1;margin:0}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-.logo{font:800 22px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Schibsted Grotesk","Public Sans",system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit}
 button{font:inherit;color:inherit;cursor:pointer}
-button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.cartbtn{background:none;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600}
-#cart{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
-#cart ul{list-style:none;margin:0 0 12px;padding:0}
-#cart li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line)}
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:28px 0 48px;align-items:start}
-h1{font-size:clamp(34px,5.6vw,58px);font-weight:800;letter-spacing:-.03em}
-.lede{color:var(--muted);font-size:18px;max-width:46ch;margin:16px 0 24px}
-.promises{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.promises li{padding-left:28px;position:relative}
-.promises li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;background:var(--good)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
-.card h2{font-size:22px;margin-bottom:14px}
-fieldset{border:0;padding:0;margin:0 0 16px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px "Schibsted Grotesk",sans-serif;text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:30px;height:30px}
+nav{display:none;gap:28px;font-weight:500}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.cartbtn{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 10px 8px 16px;font-weight:600}
+.cartbtn b{background:var(--accent);color:var(--accent-ink);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:13px;padding:0 7px}
+.hero{display:grid;gap:36px;padding:40px 0 56px}
+h1{font-size:clamp(36px,7vw,64px);font-weight:800}
+.lede{font-size:18px;color:var(--muted);max-width:44ch;margin:18px 0 26px}
+.btns{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.cta{display:inline-block;background:var(--ink);color:var(--bg);border-radius:12px;padding:14px 22px;font-weight:700;text-decoration:none}
+.link{font-weight:600;text-underline-offset:4px}
+.report{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 48px -28px rgba(15,28,36,.45)}
+.rhead{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:var(--ink);color:var(--bg);font-weight:600}
+.rhead small{font-weight:500;opacity:.75}
+.rbody{padding:22px}
+fieldset{border:0;padding:0;margin:0 0 18px}
 legend{font-weight:600;margin-bottom:8px;padding:0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1.5px solid var(--line);background:none;border-radius:10px;padding:9px 14px;font-weight:500}
-.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
-.gradenote{color:var(--muted);font-size:14px;margin:8px 0 0;min-height:44px}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px}
-.facts b{display:block;font-size:16px}
-.price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
-.price strong{font:800 36px "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em}
-.price span{color:var(--muted);font-size:14px}
-.buy{width:100%;border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:14px;font-weight:600;font-size:17px}
-section{padding:36px 0}
-section h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.02em;margin-bottom:8px}
-.sub{color:var(--muted);margin:0 0 20px;max-width:60ch}
+.chip{border:1.5px solid var(--line);background:none;border-radius:10px;padding:9px 14px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.note{color:var(--muted);font-size:14px;margin:0 0 18px;min-height:44px}
+.brow{display:flex;justify-content:space-between;font-weight:600;margin-bottom:8px}
+.gauge{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.gauge i{display:block;height:100%;width:90%;background:var(--accent);transition:width .35s ease}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:20px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts b{display:block}
+.facts span{color:var(--muted);font-size:14px}
+.pr{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pr strong{font:800 42px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em}
+.pr span{color:var(--muted);font-size:14px}
+.pname{color:var(--muted);font-size:14px;margin:0}
+.buy{width:100%;border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:15px;font-weight:700;font-size:16px;margin-top:14px}
+.buy:disabled{opacity:.5;cursor:not-allowed}
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:20px;list-style:none;margin:0;padding:26px 0;border-top:1px solid var(--line)}
+.trust li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.ic{width:26px;height:26px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(26px,4.4vw,40px);font-weight:800}
+.sub{color:var(--muted);max-width:58ch;margin:10px 0 28px}
+.g{display:grid;gap:4px;padding:18px 0;border-top:1px solid var(--line)}
+.g:last-of-type{border-bottom:1px solid var(--line)}
+.g h3{font-size:22px}
+.g p{margin:0;color:var(--muted)}
+.g b{font-weight:600}
+.tests{columns:2;list-style:none;padding:0;margin:26px 0 0;max-width:560px}
+.tests li{padding:4px 0 4px 26px;position:relative;break-inside:avoid}
+.tests li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:11px;border:solid var(--accent);border-width:0 2.5px 2.5px 0;transform:translateY(-3px) rotate(40deg)}
 .scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
 table{border-collapse:collapse;width:100%;min-width:640px}
 th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
 th{font-weight:600}
 td small{display:block;color:var(--muted);margin-top:2px}
-.policies{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.policies h3{font-size:20px;margin-bottom:6px}
-.policies p{margin:0;color:var(--muted)}
-footer{padding:28px 0 40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
-@media (max-width:760px){.hero{grid-template-columns:1fr;gap:28px}.policies{grid-template-columns:1fr}}
+.pol{display:grid;gap:28px}
+.pol h3{font-size:21px;margin-bottom:8px}
+.pol p{margin:0;color:var(--muted)}
+.pol div{padding-top:18px;border-top:2px solid var(--ink)}
+details{border-top:1px solid var(--line);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:600;cursor:pointer}
+details p{margin:10px 0 0;color:var(--muted);max-width:60ch}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--muted);font-size:14px}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:16px;font-weight:500}
+footer a{text-decoration:none}
+footer p{margin:0;max-width:70ch}
+#scrim{position:fixed;inset:0;background:rgba(5,12,16,.5);z-index:25}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:30;padding:20px;overflow:auto;display:flex;flex-direction:column}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dh button,.rm{background:none;border:0;text-decoration:underline;text-underline-offset:3px;color:var(--muted);padding:6px}
+#items{list-style:none;margin:0;padding:0}
+#items li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+#items .r{display:flex;align-items:center;gap:4px;font-weight:600;white-space:nowrap}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;margin-top:auto;padding-top:18px}
+@media(min-width:760px){nav{display:flex}.trust{grid-template-columns:repeat(4,1fr)}.g{grid-template-columns:170px 1fr 190px;align-items:baseline;gap:24px}.pol{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:64px 0 72px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
+<symbol id="i-return" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+</svg>
+
 <header>
-  <div class="logo">Fairgrade</div>
-  <button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart (<span id="count">0</span>)</button>
+<div class="wrap bar">
+<a class="logo" href="#top" aria-label="Fairgrade home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0E7A66"/><path d="M9 17l5 5 9-11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade</a>
+<nav aria-label="Main"><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a></nav>
+<button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button>
+</div>
 </header>
 
-<div id="cart" hidden>
-  <ul id="items"></ul>
-  <div id="total" style="font-weight:600;margin-bottom:10px"></div>
-  <button class="buy" disabled style="opacity:.55;cursor:not-allowed">Checkout (not connected yet)</button>
-</div>
-
-<main>
+<main id="top">
+<div class="wrap">
 <div class="hero">
-  <div>
-    <h1>Every iPhone graded, tested, and warrantied.</h1>
-    <p class="lede">Pick a model, a storage size, and a condition. You see the price, the battery health, and the warranty before you add anything to your cart.</p>
-    <ul class="promises">
-      <li>12-month warranty on every phone</li>
-      <li>Unlocked, works on any US carrier</li>
-      <li>Free shipping, with the delivery date shown on the page</li>
-      <li>30-day returns, no restocking fee</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h2>Choose your iPhone</h2>
-    <fieldset><legend>Model</legend><div class="chips" id="g-model"></div></fieldset>
-    <fieldset><legend>Storage</legend><div class="chips" id="g-storage"></div></fieldset>
-    <fieldset><legend>Condition</legend><div class="chips" id="g-grade"></div><p class="gradenote" id="gradenote"></p></fieldset>
-    <div class="facts">
-      <div><b id="f-batt"></b>Minimum battery health</div>
-      <div><b>12 months</b>Warranty</div>
-      <div><b>Free</b>Shipping, arrives <span id="f-date"></span></div>
-      <div><b>30 days</b>Free returns</div>
-    </div>
-    <div class="price"><strong id="price"></strong><span>Sample price</span></div>
-    <button class="buy" id="add">Add to cart</button>
-  </div>
+<div>
+<h1>Used iPhones, graded honestly and covered for a year.</h1>
+<p class="lede">Choose a model, storage size, and condition. You see the price, battery health, and delivery date before anything goes in your cart.</p>
+<div class="btns"><a class="cta" href="#pick">Pick your iPhone</a><a class="link" href="#grading">See how we grade</a></div>
 </div>
 
-<section>
-  <h2>Compare models side by side</h2>
-  <p class="sub">Each row says what the spec means in everyday terms, so you can choose without a glossary.</p>
-  <div class="scroll"><table id="cmp"></table></div>
-</section>
+<div class="report" id="pick">
+<div class="rhead"><span>Condition report</span><small>Sample prices</small></div>
+<div class="rbody">
+<fieldset><legend>Model</legend><div class="chips" id="c-model"></div></fieldset>
+<fieldset><legend>Storage</legend><div class="chips" id="c-store"></div></fieldset>
+<fieldset><legend>Condition</legend><div class="chips" id="c-grade"></div></fieldset>
+<p class="note" id="note"></p>
+<div class="brow"><span>Battery health</span><span id="bat"></span></div>
+<div class="gauge"><i id="gauge"></i></div>
+<div class="facts">
+<div><b>12 months</b><span>Warranty</span></div>
+<div><b>30 days</b><span>Free returns</span></div>
+<div><b>Free</b><span>Shipping, arrives <span id="eta"></span></span></div>
+<div><b>Unlocked</b><span>Works on any US carrier</span></div>
+</div>
+<div class="pr"><strong id="price"></strong><span>Sample price</span></div>
+<p class="pname" id="pname"></p>
+<button class="buy" id="add" type="button">Add to cart</button>
+</div>
+</div>
+</div>
 
-<section>
-  <h2>What you get with every order</h2>
-  <div class="policies">
-    <div class="card"><h3>Tested before it ships</h3><p>Each phone is checked for battery, screen, cameras, speakers, and network, then graded so the condition you pick is the condition you get.</p></div>
-    <div class="card"><h3>Clear warranty</h3><p>Twelve months of coverage for hardware faults. We repair, replace, or refund, and the claim steps are one click from every product page.</p></div>
-    <div class="card"><h3>Returns without hassle</h3><p>Change your mind within 30 days and send it back for a full refund. We email a prepaid label.</p></div>
-  </div>
-</section>
+<ul class="trust wrap">
+<li><svg class="ic"><use href="#i-shield"/></svg>12-month warranty on every phone</li>
+<li><svg class="ic"><use href="#i-phone"/></svg>Unlocked, works on any US carrier</li>
+<li><svg class="ic"><use href="#i-truck"/></svg>Free shipping with the delivery date shown up front</li>
+<li><svg class="ic"><use href="#i-return"/></svg>30-day returns, no restocking fee</li>
+</ul>
+</div>
+
+<section id="grading"><div class="wrap">
+<h2>The condition you pick is the condition you get</h2>
+<p class="sub">Every phone is graded on how it looks and how its battery performs. Three grades, each with a battery floor you can check before you buy.</p>
+<div class="g"><h3>Excellent</h3><p>Looks like new. No marks you can see.</p><p><b>Battery 90% or higher</b></p></div>
+<div class="g"><h3>Good</h3><p>Light signs of use. Small marks that show up close or at an angle.</p><p><b>Battery 85% or higher</b></p></div>
+<div class="g"><h3>Fair</h3><p>Clear wear such as scratches or scuffs. Everything works as it should.</p><p><b>Battery 80% or higher</b></p></div>
+<ul class="tests"><li>Battery health</li><li>Screen and touch</li><li>Front and rear cameras</li><li>Speakers and microphones</li><li>Buttons and ports</li><li>Cellular and Wi-Fi</li></ul>
+</div></section>
+
+<section id="compare"><div class="wrap">
+<h2>Compare models side by side</h2>
+<p class="sub">Each row says what the spec means in everyday terms, so you can choose without a glossary.</p>
+<div class="scroll"><table>
+<thead><tr><th>Spec</th><th>iPhone 13</th><th>iPhone 14</th><th>iPhone 15</th></tr></thead>
+<tbody>
+<tr><td>Sample price from</td><td>$249</td><td>$329</td><td>$429</td></tr>
+<tr><td>Processor<small>How fast it runs apps and games</small></td><td>A15 Bionic</td><td>A15 Bionic with 5-core graphics</td><td>A16 Bionic</td></tr>
+<tr><td>Screen<small>Sharp, bright, and deep blacks</small></td><td>6.1-inch OLED</td><td>6.1-inch OLED</td><td>6.1-inch OLED</td></tr>
+<tr><td>Camera<small>Photo quality, especially in dim light</small></td><td>Dual 12MP</td><td>12MP main and ultra-wide, better in low light</td><td>48MP main camera</td></tr>
+<tr><td>Charging port<small>Which cable you need</small></td><td>Lightning</td><td>Lightning</td><td>USB-C</td></tr>
+<tr><td>Extras<small>Features beyond the basics</small></td><td>5G</td><td>Emergency SOS via satellite, Crash Detection</td><td>Dynamic Island, Emergency SOS via satellite</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section id="warranty"><div class="wrap">
+<h2>Covered after the box is open</h2>
+<p class="sub">The same promises apply to every phone, whatever grade you choose.</p>
+<div class="pol">
+<div><h3>Tested before it ships</h3><p>Each phone is checked for battery, screen, cameras, speakers, and network, then graded so the condition you pick is the condition you get.</p></div>
+<div><h3>Clear warranty</h3><p>Twelve months of coverage for hardware faults. We repair, replace, or refund, and the claim steps are one click from every product page.</p></div>
+<div><h3>Returns without hassle</h3><p>Change your mind within 30 days and send it back for a full refund. We email a prepaid label.</p></div>
+</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Questions before you buy</h2>
+<p class="sub">Short answers to what people ask most.</p>
+<details><summary>Are the phones unlocked?</summary><p>Yes. Every phone is unlocked and works on any US carrier.</p></details>
+<details><summary>What does the warranty cover?</summary><p>Hardware faults for 12 months. If a phone develops one, we repair it, replace it, or refund you.</p></details>
+<details><summary>How do returns work?</summary><p>You have 30 days. Tell us you want to return it, and we email a prepaid label. You get a full refund, with no restocking fee.</p></details>
+<details><summary>When will my phone arrive?</summary><p>Shipping is free, and the delivery date appears on the page before you add a phone to your cart.</p></details>
+<details><summary>How do I pay?</summary><p>Checkout is not open yet. You can build a cart now, and payment will be added before we take orders.</p></details>
+</div></section>
 </main>
 
-<footer>This is a design prototype. Prices, policies, and the store name are placeholders to replace with your own once you confirm your supplier terms.</footer>
-</div>
+<footer><div class="wrap">
+<div class="row"><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a></div>
+<p>Fairgrade is a design prototype. Prices, grades, policies, and store details on this page are placeholders until supplier terms are confirmed.</p>
+</div></footer>
+
+<div id="scrim" hidden></div>
+<aside class="drawer" id="cart" aria-label="Your cart" hidden>
+<div class="dh"><h3>Your cart</h3><button id="close" type="button">Close</button></div>
+<ul id="items"></ul>
+<p id="empty" style="color:var(--muted)">Your cart is empty. Pick an iPhone to get started.</p>
+<div class="tot"><span>Total</span><strong id="total">$0</strong></div>
+<button class="buy" disabled>Checkout opens soon</button>
+</aside>
 
 <script>
-var MODELS={
- "13":{n:"iPhone 13",p:329,rows:["A15 Bionic","6.1-inch OLED","Dual 12MP","Lightning","No"]},
- "14":{n:"iPhone 14",p:409,rows:["A15 Bionic (5-core graphics)","6.1-inch OLED","12MP main and ultra-wide, better low light","Lightning","Emergency SOS via satellite"]},
- "15":{n:"iPhone 15",p:509,rows:["A16 Bionic","6.1-inch OLED","48MP main camera","USB-C","Dynamic Island, Emergency SOS via satellite"]}
-};
-var STORAGE={"128 GB":0,"256 GB":60,"512 GB":160};
-var GRADES={
- "Excellent":{d:0,b:"90%",t:"Looks like new. No marks you can see."},
- "Good":{d:-40,b:"85%",t:"Light marks you only notice up close."},
- "Fair":{d:-80,b:"80%",t:"Visible scratches. Works exactly like the others."}
-};
-var st={m:"14",s:"128 GB",g:"Excellent"},cart=[];
-var $=function(i){return document.getElementById(i)};
-function price(){return MODELS[st.m].p+STORAGE[st.s]+GRADES[st.g].d}
-function chips(id,keys,label,key){
-  var h="";keys.forEach(function(k){h+='<button class="chip" aria-pressed="'+(st[key]===k)+'" data-k="'+k+'">'+label(k)+'</button>'});
-  $(id).innerHTML=h;
-  $(id).onclick=function(e){var b=e.target.closest("button");if(!b)return;st[key]=b.getAttribute("data-k");render()};
-}
-function render(){
-  chips("g-model",Object.keys(MODELS),function(k){return MODELS[k].n},"m");
-  chips("g-storage",Object.keys(STORAGE),function(k){return k},"s");
-  chips("g-grade",Object.keys(GRADES),function(k){return k},"g");
-  $("gradenote").textContent=GRADES[st.g].t;
-  $("f-batt").textContent=GRADES[st.g].b;
-  $("price").textContent="$"+price();
-}
-function dateStr(){var d=new Date();d.setDate(d.getDate()+3);return d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})}
-function drawCart(){
-  $("count").textContent=cart.length;
-  var h="",t=0;cart.forEach(function(c,i){t+=c.p;h+="<li><span>"+c.name+"</span><span>$"+c.p+' <button class="chip" data-i="'+i+'" aria-label="Remove">Remove</button></span></li>'});
-  $("items").innerHTML=h||"<li>Your cart is empty.</li>";
-  $("total").textContent=cart.length?"Total: $"+t+" (free shipping)":"";
-}
-$("add").onclick=function(){
-  cart.push({name:MODELS[st.m].n+", "+st.s+", "+st.g,p:price()});
-  drawCart();$("cart").hidden=false;$("cartbtn").setAttribute("aria-expanded","true");
-};
-$("items").onclick=function(e){var b=e.target.closest("button");if(!b)return;cart.splice(+b.getAttribute("data-i"),1);drawCart()};
-$("cartbtn").onclick=function(){var o=$("cart").hidden;$("cart").hidden=!o;this.setAttribute("aria-expanded",String(o))};
 (function(){
-  var labels=[["Processor","How fast it runs apps and games"],["Screen","Sharp, bright, and deep blacks"],["Camera","Photo quality, especially in dim light"],["Charging port","Which cable you need"],["Extras","Features beyond the basics"]];
-  var keys=Object.keys(MODELS),h="<thead><tr><th>Spec</th>";
-  keys.forEach(function(k){h+="<th>"+MODELS[k].n+"</th>"});
-  h+="</tr></thead><tbody><tr><td>Sample price from</td>";
-  keys.forEach(function(k){h+="<td><b>$"+(MODELS[k].p-80)+"</b></td>"});
-  h+="</tr>";
-  labels.forEach(function(l,i){h+="<tr><td>"+l[0]+"<small>"+l[1]+"</small></td>";keys.forEach(function(k){h+="<td>"+MODELS[k].rows[i]+"</td>"});h+="</tr>"});
-  $("cmp").innerHTML=h+"</tbody>";
+var MODELS=[["iPhone 13",249],["iPhone 14",329],["iPhone 15",429]];
+var STORE=[[128,0],[256,50],[512,130]];
+var GRADES=[["Excellent",80,90,"Looks like new. No marks you can see."],["Good",40,85,"Light signs of use. Small marks that show up close or at an angle."],["Fair",0,80,"Clear wear such as scratches or scuffs. Everything works as it should."]];
+var S={m:1,s:0,g:0},cart=[];
+var $=function(i){return document.getElementById(i)};
+function mk(id,list,key,label){
+  var el=$(id);
+  list.forEach(function(x,i){
+    var b=document.createElement("button");
+    b.type="button";b.className="chip";b.textContent=label(x);
+    b.onclick=function(){S[key]=i;sync()};
+    el.appendChild(b);
+  });
+}
+function price(){return MODELS[S.m][1]+STORE[S.s][1]+GRADES[S.g][1]}
+function name(){return MODELS[S.m][0]+", "+STORE[S.s][0]+" GB, "+GRADES[S.g][0]}
+function eta(){
+  var d=new Date(),n=0;
+  while(n<3){d.setDate(d.getDate()+1);var w=d.getDay();if(w>0&&w<6)n++}
+  return d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});
+}
+function sync(){
+  [["c-model","m"],["c-store","s"],["c-grade","g"]].forEach(function(p){
+    [].forEach.call($(p[0]).children,function(b,i){b.setAttribute("aria-pressed",S[p[1]]===i)});
+  });
+  $("note").textContent=GRADES[S.g][3];
+  $("bat").textContent=GRADES[S.g][2]+"% or higher";
+  $("gauge").style.width=GRADES[S.g][2]+"%";
+  $("eta").textContent=eta();
+  $("price").textContent="$"+price();
+  $("pname").textContent=name();
+}
+function drawCart(){
+  var ul=$("items"),t=0;
+  ul.innerHTML="";
+  cart.forEach(function(it,i){
+    t+=it.p;
+    var li=document.createElement("li"),s=document.createElement("span"),r=document.createElement("span"),b=document.createElement("button");
+    s.textContent=it.n;
+    r.className="r";r.textContent="$"+it.p;
+    b.type="button";b.className="rm";b.textContent="Remove";b.setAttribute("aria-label","Remove "+it.n);
+    b.onclick=function(){cart.splice(i,1);drawCart()};
+    r.appendChild(b);li.appendChild(s);li.appendChild(r);ul.appendChild(li);
+  });
+  $("count").textContent=cart.length;
+  $("total").textContent="$"+t;
+  $("empty").hidden=cart.length>0;
+}
+function openCart(){$("cart").hidden=false;$("scrim").hidden=false;$("cartbtn").setAttribute("aria-expanded","true");$("close").focus()}
+function closeCart(){$("cart").hidden=true;$("scrim").hidden=true;$("cartbtn").setAttribute("aria-expanded","false");$("cartbtn").focus()}
+mk("c-model",MODELS,"m",function(x){return x[0]});
+mk("c-store",STORE,"s",function(x){return x[0]+" GB"});
+mk("c-grade",GRADES,"g",function(x){return x[0]});
+$("add").onclick=function(){cart.push({n:name(),p:price()});drawCart();openCart()};
+$("cartbtn").onclick=function(){$("cart").hidden?openCart():closeCart()};
+$("close").onclick=closeCart;
+$("scrim").onclick=closeCart;
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("cart").hidden)closeCart()});
+sync();drawCart();
 })();
-$("f-date").textContent=dateStr();
-render();drawCart();
 </script>
 </body>
 </html>
