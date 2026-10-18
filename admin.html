@@ -78,7 +78,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   const app=initializeApp(C),auth=getAuth(app),db=getFirestore(app);
 
   const store=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k)||"";localStorage.setItem(k,v)}catch(e){return ""}};
-  $("bank").value=store("fg_bank");$("wallet").value=store("fg_wallet");
+  $("bank").value=store("fg_bank");
   $("bank").oninput=()=>store("fg_bank",$("bank").value);
 
   $("lf").onsubmit=async e=>{
