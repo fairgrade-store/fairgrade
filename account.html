@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%230E7A66%22/%3E%3Cpath d=%22M22 9.5H11.5V24M11.5 16.5h8%22 stroke=%22%23fff%22 stroke-width=%223.6%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3Ccircle cx=%2223%22 cy=%2223%22 r=%222.4%22 fill=%22%237CF0CF%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cdefs%3E%3ClinearGradient id=%22fgl%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2319C59B%22/%3E%3Cstop offset=%221%22 stop-color=%22%230A5F51%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2232%22 height=%2232%22 rx=%229%22 fill=%22url%28%23fgl%29%22/%3E%3Cpath d=%22M22 9.2H12.2V23.2%22 stroke=%22%23fff%22 stroke-width=%223.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M15.6 17.4l2.9 2.9 5.1-6%22 stroke=%22%23A8FBE4%22 stroke-width=%223.1%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
 <title>My dashboard | Fairgrade</title>
 <style>
 :root{--bg:#F3F6FC;--surface:#fff;--ink:#0B1B33;--muted:#5B6B82;--line:#E1E8F3;--blue:#2563EB;--on:#fff;--bb:#E7F0FF;--bt:#1D4ED8;--gb:#E5F7EC;--gt:#15803D;--ob:#FFF0E0;--ot:#B4540A;--pb:#EFE9FF;--pt:#6D3FD1;--rb:#FDE8E8;--rt:#B42318}
@@ -81,6 +81,49 @@ dialog::backdrop{background:rgba(5,12,24,.55)}
 .inv td:last-child{text-align:right}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 @media print{body>*:not(#inv){display:none!important}#inv .noprint{display:none}}
+
+.hero{position:relative;overflow:hidden}
+.hero .in{position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none;animation:drift2 14s ease-in-out infinite alternate}
+.o1{width:240px;height:240px;right:-70px;top:-90px}
+.o2{width:150px;height:150px;right:100px;bottom:-80px;animation-delay:-5s;background:rgba(124,240,207,.16)}
+.o3{width:120px;height:120px;left:-40px;bottom:-60px;animation-delay:-9s}
+@keyframes drift2{to{transform:translate(-34px,22px) scale(1.18)}}
+main>section:not([hidden]){animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(10px)}}
+.brand{display:inline-flex;align-items:center;gap:9px}
+.brand svg{width:30px;height:30px;flex:none}
+.brand svg rect{stroke:none}
+.card{transition:box-shadow .2s}
+.card:hover{box-shadow:0 16px 34px -22px rgba(11,42,107,.5)}
+.st{transition:transform .2s}
+.st:hover{transform:translateY(-2px)}
+.tgcard{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#0B2A6B,#2563EB 60%,#229ED9);color:#fff;border-radius:16px;padding:16px;margin-top:12px}
+.tgcard svg{width:34px;height:34px;fill:#fff;stroke:none;flex:none}
+.tgcard p{margin:2px 0 0;color:#dbeafe;font-size:14px}
+.tgcard a{margin-left:auto;background:#fff;color:#0B2A6B;border-radius:12px;padding:10px 14px;font-weight:700;text-decoration:none;white-space:nowrap}
+@media(max-width:480px){.tgcard{flex-wrap:wrap}.tgcard a{margin-left:0;width:100%;text-align:center}}
+a.btn{color:var(--ink)}
+a.btn.pri{color:var(--on)}
+@media(prefers-reduced-motion:reduce){.orb{animation:none}main>section:not([hidden]){animation:none}}
+
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;background:#fff;color:#1f1f1f;border:1.5px solid #dadce0;border-radius:12px;padding:12px;font-weight:600;transition:box-shadow .2s}
+.gbtn:hover{box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
+.gbtn svg{width:20px;height:20px;fill:none;stroke:none}
+.or{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:14px 0 0}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.pbar{height:8px;border-radius:99px;background:var(--line);margin-top:14px;overflow:hidden}
+.pbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#19C59B,#2563EB);transition:width 1s ease}
+.trk-map{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.trk-map h4{margin:0;font-size:16px;display:flex;align-items:center}
+.live{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-right:8px;animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 9px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.mapf{border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:10px;background:var(--bb)}
+.mapf iframe{display:block;width:100%;height:250px;border:0}
+.mapph{display:flex;gap:14px;align-items:center;padding:16px;color:var(--bt)}
+.mapph svg{width:56px;height:56px;flex:none}
+.mapph p{margin:0;color:var(--muted);font-size:14px}
+.trk .cur .dot{animation:pl 1.8s infinite}
 </style>
 </head>
 <body>
@@ -93,6 +136,7 @@ dialog::backdrop{background:rgba(5,12,24,.55)}
 <symbol id="i-track" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
 <symbol id="i-pay" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
+<symbol id="i-tg" viewBox="0 0 26 26"><path fill="currentColor" stroke="none" d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></symbol>
 <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
 </svg>
 
@@ -106,12 +150,14 @@ dialog::backdrop{background:rgba(5,12,24,.55)}
     <label>Password<input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
     <p class="err" id="ae" role="alert" hidden></p>
     <div class="row"><button class="pri" id="in" type="button">Sign in</button><button id="up" type="button">Create account</button></div>
+    <div class="or"><span>or</span></div>
+    <button class="gbtn" id="gg" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/></svg>Continue with Google</button>
   </div>
 </div>
 
 <div id="app" hidden>
-  <header class="hero"><div class="in">
-    <div class="bar"><a class="brand" href="index.html"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true" style="vertical-align:-6px;margin-right:8px;fill:none"><rect width="32" height="32" rx="8" fill="rgba(255,255,255,.22)"/><path d="M22 9.5H11.5V24M11.5 16.5h8" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="23" r="2.4" fill="#7CF0CF" stroke="none"/></svg>Fairgrade</a><button id="out" type="button">Sign out</button></div>
+  <header class="hero"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><div class="in">
+    <div class="bar"><a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade</a><button id="out" type="button">Sign out</button></div>
     <div class="who"><div class="av" id="av-h"></div><div><h1>My Dashboard</h1><p id="welcome">Welcome back! Manage your phones and orders.</p></div></div>
   </div></header>
   <main class="wrap">
@@ -125,12 +171,15 @@ dialog::backdrop{background:rgba(5,12,24,.55)}
         <a class="btn" href="index.html"><svg><use href="#i-phone"/></svg>Shop Phones</a>
         <button type="button" data-go="pay"><svg><use href="#i-pay"/></svg>Payments</button>
         <button type="button" data-go="help"><svg><use href="#i-chat"/></svg>Customer Service</button>
+        <a class="btn" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
+        <button type="button" data-go="me"><svg><use href="#i-user"/></svg>My Profile</button>
       </div>
     </section>
     <section id="v-orders" hidden><h2 class="sh" style="margin-top:4px">My Orders</h2><div id="olist"></div></section>
     <section id="v-pay" hidden><h2 class="sh" style="margin-top:4px">Payments and Invoices</h2><div id="plist"></div></section>
     <section id="v-help" hidden>
       <h2 class="sh" style="margin-top:4px">Customer Service</h2>
+      <div class="tgcard"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></svg><div><b>Chat with us on Telegram</b><p>Fastest way to reach us about stock, gadgets or your order.</p></div><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Open Telegram</a></div>
       <div class="card">
         <label>About<select id="h-order"></select></label>
         <label>Your message<textarea id="h-msg" rows="4" placeholder="Ask a question or tell us about a problem"></textarea></label>
@@ -175,7 +224,10 @@ const STEPS=["Order placed","Payment confirmed","Processing","Shipped","Out for 
 const IDX={pending:0,details_sent:0,payment_submitted:0,confirmed:1,processing:2,shipped:3,out_for_delivery:4,delivered:5};
 const LABEL={pending:"Waiting for payment",details_sent:"Payment details sent",payment_submitted:"Verifying payment",confirmed:"Payment confirmed",processing:"Processing",shipped:"Shipped",out_for_delivery:"Out for delivery",delivered:"Delivered",cancelled:"Cancelled"};
 const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
-let orders=[],tickets=[],profile={},uns=[];
+let orders=[],tickets=[],profile={},uns=[],lastSig="";
+const prevN={};
+function countUp(n,key,val){const str=String(val),m=/^(\$?)(\d+)$/.exec(str);if(!m||prevN[key]===str||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){n.textContent=str;prevN[key]=str;return}prevN[key]=str;const to=+m[2],pre=m[1],t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);n.textContent=pre+Math.round(to*e);if(k<1)requestAnimationFrame(f)})(t0)}
+
 const byNew=l=>l.sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
 const model=o=>String(o.items&&o.items[0]?o.items[0].n:"").split(",")[0];
 const when=o=>o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleDateString():"just now";
@@ -185,7 +237,7 @@ const chip=(s,t)=>el("span","chip s-"+s,t||LABEL[s]||s);
 function thumb(o){const d=el("div","thumb"),src=IMG[model(o)];if(src){const i=new Image();i.alt=model(o);i.src=src;d.appendChild(i)}else d.textContent="Phone";return d}
 
 if(!FG.ready){$("ae").textContent="Accounts are not switched on yet.";$("ae").hidden=false}
-const MSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes."};
+const MSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
 function signin(kind){
   const er=$("ae"),e=$("em").value.trim(),p=$("pw").value;
   er.hidden=true;
@@ -196,6 +248,7 @@ function signin(kind){
 }
 $("in").onclick=()=>signin("signIn");
 $("up").onclick=()=>signin("signUp");
+$("gg").onclick=()=>{const er=$("ae");er.hidden=true;if(!FG.ready){er.textContent="Accounts are not switched on yet.";er.hidden=false;return}FG.signInGoogle().catch(x=>{er.textContent=MSG[x&&x.code]||"Google sign-in did not finish. Please try again.";er.hidden=false})};
 $("out").onclick=()=>FG.logOut();
 
 function go(v){
@@ -207,7 +260,7 @@ document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>go(b.datase
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
 
 FG.onUser(u=>{
-  uns.forEach(f=>f());uns=[];
+  uns.forEach(f=>f());uns=[];lastSig="";
   $("auth").hidden=!!u;$("app").hidden=!u;
   if(!u)return;
   $("who").textContent="Signed in as "+u.email;
@@ -226,23 +279,43 @@ function setAvatar(){
   const nm=(profile.name||"").trim(),em=String((FG.user&&FG.user.email)||"");
   [$("av-h"),$("av-p")].forEach(a=>{
     a.innerHTML="";
-    if(profile.photo){const i=new Image();i.alt="";i.src=profile.photo;a.appendChild(i)}
+    if(profile.photo){const i=new Image();i.alt="";i.referrerPolicy="no-referrer";i.src=profile.photo;a.appendChild(i)}
     else a.textContent=(nm||em||"?").charAt(0).toUpperCase();
   });
   const first=nm||em.split("@")[0];
   $("welcome").textContent="Welcome back"+(first?", "+first:"")+"! Manage your phones and orders.";
 }
+const enc=encodeURIComponent;
+function mapBox(o){
+  if(o.status==="cancelled"||unpaid(o)||o.status==="payment_submitted")return null;
+  const dest=String(o.customer&&o.customer.address||"").replace(/\s+/g," ").trim(),loc=String(o.trackLoc||"").trim();
+  const box=el("div","trk-map"),h=el("h4");
+  if(o.status!=="delivered"){h.appendChild(el("span","live"))}
+  h.appendChild(document.createTextNode(o.status==="delivered"?"Delivered":"Live tracking"));box.appendChild(h);
+  let src="",link="";
+  if(o.status==="delivered"&&dest){src="https://www.google.com/maps?q="+enc(dest)+"&output=embed";link="https://www.google.com/maps/search/?api=1&query="+enc(dest)}
+  else if(loc&&dest){src="https://www.google.com/maps?saddr="+enc(loc)+"&daddr="+enc(dest)+"&output=embed";link="https://www.google.com/maps/dir/?api=1&origin="+enc(loc)+"&destination="+enc(dest)}
+  else if(loc){src="https://www.google.com/maps?q="+enc(loc)+"&output=embed";link="https://www.google.com/maps/search/?api=1&query="+enc(loc)}
+  const at=o.trackAt&&o.trackAt.toDate?o.trackAt.toDate().toLocaleString():"";
+  box.appendChild(el("p","muted",loc?"Your parcel is at: "+loc+(at?" (updated "+at+")":""):o.status==="delivered"?"Your order was delivered to your address.":"We will show where your parcel is here as soon as we update its location."));
+  const f=el("div","mapf");
+  if(src){const fr=document.createElement("iframe");fr.src=src;fr.loading="lazy";fr.title="Map for order "+o.code;fr.referrerPolicy="no-referrer-when-downgrade";fr.allowFullscreen=true;f.appendChild(fr);box.appendChild(f);
+    const a=el("a","btn","Open in Google Maps");a.href=link;a.target="_blank";a.rel="noopener";a.style.marginTop="10px";box.appendChild(a)}
+  else{const ph=el("div","mapph");ph.innerHTML='<svg viewBox="0 0 64 64"><path d="M32 6c-10 0-18 8-18 18 0 13 18 34 18 34s18-21 18-34C50 14 42 6 32 6z" fill="currentColor" stroke="none" opacity=".9"/><circle cx="32" cy="24" r="7" fill="#fff" stroke="none"/></svg>';ph.appendChild(el("p","","The map appears here once your parcel has a location."));f.appendChild(ph);box.appendChild(f)}
+  return box;
+}
 function tracker(o){
   const w=el("ol","trk");
   if(o.status==="cancelled"){w.appendChild(el("li","","This order was cancelled."));return w}
   const cur=o.status==="delivered"?6:IDX[o.status];
+  const wrap=el("div"),pb=el("div","pbar"),pi=el("i");pi.style.width=Math.min(100,Math.round(cur/5*100))+"%";pb.appendChild(pi);wrap.appendChild(pb);wrap.appendChild(w);
   STEPS.forEach((s,i)=>{
     const li=el("li",i<cur?"done":i===cur?"cur":"");
     li.appendChild(el("span","dot"));
     li.appendChild(el("span","",s+(i===0&&o.status==="payment_submitted"?" (payment being verified)":"")));
     w.appendChild(li);
   });
-  return w;
+  return wrap;
 }
 function head(o,title,sub){
   const h=el("div","ord"),m=el("div");
@@ -254,12 +327,14 @@ function head(o,title,sub){
   return h;
 }
 function draw(){
+  const sig=JSON.stringify([orders.map(o=>[o.id,o.status,o.trackLoc||"",o.trackAt&&o.trackAt.seconds||0,o.payInfo||"",o.payRef||""]),tickets.map(t=>[t.id,t.status,t.reply||""])]);
+  if(sig===lastSig)return;lastSig=sig;
   const s=$("stats");s.innerHTML="";
   const owed=orders.filter(unpaid).reduce((a,o)=>a+o.total,0);
   [["My Orders",orders.length,"b","orders","orders"],["In Transit",orders.filter(transit).length,"g","truck","orders"],["Outstanding","$"+owed,"o","clock","pay"],["Support Requests",tickets.filter(t=>t.status==="open").length,"p","chat","help"]].forEach(x=>{
     const b=el("button","st c-"+x[2]);b.type="button";
     b.innerHTML=ic(x[3])+"<b></b><span></span>";
-    b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
+    countUp(b.querySelector("b"),x[0],x[1]);b.querySelector("span").textContent=x[0];
     b.onclick=()=>go(x[4]);s.appendChild(b);
   });
   const r=$("recent");r.innerHTML="";
@@ -278,7 +353,7 @@ function draw(){
     c.appendChild(head(o,model(o),"Order #"+o.code+"  "+when(o)));
     const ul=el("ul","muted");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     c.appendChild(el("p","muted","Delivery to: "+o.customer.address));
-    c.appendChild(tracker(o));
+    c.appendChild(tracker(o));const mb=mapBox(o);if(mb)c.appendChild(mb);
     if(unpaid(o)){const b=el("button","pri",o.payInfo?"View payment details":"Make payment");b.type="button";b.style.marginTop="12px";b.onclick=()=>go("pay");c.appendChild(b)}
     ol.appendChild(c);
   });
