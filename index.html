@@ -140,7 +140,61 @@ dialog{overflow:auto}
 .wl button{border:1.5px solid var(--line);background:none;border-radius:8px;padding:6px 12px;font-weight:600}
 .hr{display:flex;align-items:center;gap:14px}
 .acct{font-weight:600;text-decoration:none}
-@media(min-width:760px){nav{display:flex}.trust{grid-template-columns:repeat(4,1fr)}.g{grid-template-columns:170px 1fr 190px;align-items:baseline;gap:24px}.pol{grid-template-columns:repeat(3,1fr)}.cat{grid-template-columns:repeat(4,1fr)}}
+.announce{background:var(--ink);color:var(--bg);text-align:center;font-size:13px;padding:7px 12px}
+.srch{position:relative;padding:12px 0 0}
+.srch svg{position:absolute;left:15px;top:25px;width:20px;height:20px;color:var(--muted);pointer-events:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.srch input{width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 16px 11px 44px;font:inherit}
+nav a{white-space:nowrap}
+nav.open{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 20px 16px;gap:0;z-index:19}
+nav.open a{padding:11px 0;border-bottom:1px solid var(--line)}
+.menubtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:600}
+.tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 14px}
+.sortl{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.sortl select{width:auto}
+.cat .muted{grid-column:1/-1}
+.ph{display:flex;gap:8px;margin-top:6px}
+.ph select{width:46%;flex:none}
+.ph input{flex:1;min-width:0;margin-top:0!important}
+.ci{display:flex;gap:12px;align-items:center}
+.cth{width:64px;height:64px;border-radius:12px;background:#fff;flex:none;display:grid;place-items:center;overflow:hidden}
+.cth img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.cinfo{flex:1;display:flex;flex-direction:column;min-width:0}
+.cinfo span{color:var(--muted);font-size:14px}
+.cpr{display:flex;flex-direction:column;align-items:flex-end;font-weight:700;gap:2px}
+.empty{text-align:center;padding:48px 8px}
+.empty svg{width:56px;height:56px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.empty .buy{margin-top:16px}
+.csum{margin-top:auto;padding-top:16px}
+.kv{display:flex;justify-content:space-between;padding:6px 0}
+.tot2 strong{font-size:22px}
+.perks{list-style:none;margin:14px 0 0;padding:0;color:var(--muted);font-size:14px}
+.perks li{padding:3px 0 3px 22px;position:relative}
+.perks li::before{content:"";position:absolute;left:4px;top:7px;width:5px;height:9px;border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(40deg)}
+#cmp th:first-child,#cmp td:first-child{position:sticky;left:0;background:var(--surface);font-weight:600}
+#cmp td button{border:1.5px solid var(--line);background:none;border-radius:8px;padding:5px 12px;font-weight:600}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:12px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;margin-bottom:8px}
+.steps b{display:block}
+.steps span{color:var(--muted)}
+.fcols{display:grid;gap:24px;grid-template-columns:1fr 1fr;margin-bottom:8px}
+.fcols h4{margin:0 0 8px;color:var(--ink);font-size:14px}
+.fcols a{display:block;padding:3px 0;color:var(--muted);text-decoration:none}
+.fcols a:hover{color:var(--ink)}
+.fcols p{margin:8px 0 0}
+.fcols>div:first-child{grid-column:1/-1}
+.logo2{font:800 20px "Schibsted Grotesk",sans-serif;color:var(--ink)}
+.pm{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 10px}
+.pm b{border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--ink);font-weight:600;font-size:13px}
+.fine{margin:0;font-size:13px}
+.nb{position:fixed;left:12px;right:12px;bottom:12px;max-width:520px;background:var(--ink);color:var(--bg);border-radius:14px;padding:12px 14px;z-index:15;display:flex;gap:12px;align-items:center;font-size:14px}
+.nb[hidden]{display:none}
+.nb a{color:inherit}
+.nb button{background:var(--bg);color:var(--ink);border:0;border-radius:10px;padding:8px 14px;font-weight:700}
+html{scroll-padding-top:80px}
+@media(min-width:1000px){nav{display:flex!important}.menubtn{display:none}}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}.fcols{grid-template-columns:2fr 1fr 1fr 1fr}.fcols>div:first-child{grid-column:auto}}
+@media(min-width:760px){.trust{grid-template-columns:repeat(4,1fr)}.g{grid-template-columns:170px 1fr 190px;align-items:baseline;gap:24px}.pol{grid-template-columns:repeat(3,1fr)}.cat{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:64px 0 72px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -153,13 +207,15 @@ dialog{overflow:auto}
 <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
 </svg>
 
+<div class="announce">Free shipping on every order. 12-month warranty. 30-day returns.</div>
 <header>
 <div class="wrap bar">
 <a class="logo" href="#top" aria-label="Fairgrade home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0E7A66"/><path d="M9 17l5 5 9-11" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade</a>
-<nav aria-label="Main"><a href="#models">iPhones</a><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a></nav>
-<div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button></div>
+<nav id="nav" aria-label="Main"><a href="#models">iPhones</a><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a></nav>
+<div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button><button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button></div>
 </div>
 </header>
+<div class="wrap"><form class="srch" id="srch" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Search phones, for example iPhone 15 Pro" aria-label="Search phones" autocomplete="off"></form></div>
 
 <main id="top">
 <div class="wrap">
@@ -204,6 +260,7 @@ dialog{overflow:auto}
 <h2>The iPhones we sell</h2>
 <p class="sub">Every model comes with the same warranty, returns, and grading. Prices start at the Fair grade and rise with condition and storage.</p>
 <div class="chips" id="filters" style="margin-bottom:20px"></div>
+<div class="tools"><span class="muted" id="rc"></span><label class="sortl">Sort <select id="sort" class="sel"><option value="">Featured</option><option value="new">Newest first</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option></select></label></div>
 <div class="cat" id="cat"></div>
 <p class="sub" style="margin:18px 0 0;font-size:14px">Pictures show the model, not the exact phone. Condition and price follow the grade you pick. Prices are samples.</p>
 </div></section>
@@ -218,19 +275,11 @@ dialog{overflow:auto}
 </div></section>
 
 <section id="compare"><div class="wrap">
-<h2>Compare popular models</h2>
-<p class="sub">Each row says what the spec means in everyday terms, so you can choose without a glossary.</p>
-<div class="scroll"><table>
-<thead><tr><th>Spec</th><th>iPhone 13</th><th>iPhone 14</th><th>iPhone 15</th></tr></thead>
-<tbody>
-<tr><td>Sample price from</td><td>$249</td><td>$329</td><td>$429</td></tr>
-<tr><td>Processor<small>How fast it runs apps and games</small></td><td>A15 Bionic</td><td>A15 Bionic with 5-core graphics</td><td>A16 Bionic</td></tr>
-<tr><td>Screen<small>Sharp, bright, and deep blacks</small></td><td>6.1-inch OLED</td><td>6.1-inch OLED</td><td>6.1-inch OLED</td></tr>
-<tr><td>Camera<small>Photo quality, especially in dim light</small></td><td>Dual 12MP</td><td>12MP main and ultra-wide, better in low light</td><td>48MP main camera</td></tr>
-<tr><td>Charging port<small>Which cable you need</small></td><td>Lightning</td><td>Lightning</td><td>USB-C</td></tr>
-<tr><td>Extras<small>Features beyond the basics</small></td><td>5G</td><td>Emergency SOS via satellite, Crash Detection</td><td>Dynamic Island, Emergency SOS via satellite</td></tr>
-</tbody></table></div>
+<h2>Compare all iPhones</h2>
+<p class="sub">Every model we sell, side by side. Scroll sideways to see all columns.</p>
+<div class="scroll"><table id="cmp"><thead><tr><th>Model</th><th>From</th><th>Chip</th><th>Screen</th><th>Camera</th><th>Port</th><th></th></tr></thead><tbody></tbody></table></div>
 </div></section>
+
 
 <section id="warranty"><div class="wrap">
 <h2>Covered after the box is open</h2>
@@ -240,6 +289,17 @@ dialog{overflow:auto}
 <div><h3>Clear warranty</h3><p>Twelve months of coverage for hardware faults. We repair, replace, or refund, and the claim steps are one click from every product page.</p></div>
 <div><h3>Returns without hassle</h3><p>Change your mind within 30 days and send it back for a full refund. We email a prepaid label.</p></div>
 </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+<h2>How ordering works</h2>
+<p class="sub">From picking a phone to tracking your delivery, in four steps.</p>
+<ol class="steps">
+<li><b>Pick your iPhone</b><span>Choose the model, storage and condition.</span></li>
+<li><b>Check out</b><span>Create an account and choose ATM card, bank transfer or cryptocurrency.</span></li>
+<li><b>Pay</b><span>Your payment details appear in your dashboard. Pay, then press I have made the payment.</span></li>
+<li><b>Track</b><span>We confirm your payment, then you follow processing, shipping and delivery in your dashboard.</span></li>
+</ol>
 </div></section>
 
 <section id="faq"><div class="wrap">
@@ -254,17 +314,30 @@ dialog{overflow:auto}
 </main>
 
 <footer><div class="wrap">
-<div class="row"><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a></div>
-<p>Fairgrade is a design prototype. Prices, grades, policies, and store details on this page are placeholders until supplier terms are confirmed.</p>
+<div class="fcols">
+<div><div class="logo2">Fairgrade</div><p>Graded, tested, warrantied iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
+<div><h4>Shop</h4><a href="#models">All iPhones</a><a href="#compare">Compare models</a><a href="#grading">How we grade</a></div>
+<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a></div>
+<div><h4>Legal</h4><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
+</div>
+<div class="pm"><span>We accept</span><b>ATM card</b><b>Bank transfer</b><b>Cryptocurrency</b></div>
+<p class="fine">Pictures show the model, not the exact phone. Prices and availability may change. 2026 Fairgrade. All rights reserved.</p>
 </div></footer>
+<div class="nb" id="note-bar" hidden>We use anonymous analytics to improve the store. <a href="privacy.html">Privacy policy</a> <button id="nb-ok" type="button">OK</button></div>
 
 <div id="scrim" hidden></div>
 <aside class="drawer" id="cart" aria-label="Your cart" hidden>
-<div class="dh"><h3>Your cart</h3><button id="close" type="button">Close</button></div>
+<div class="dh"><h3>Your cart <span class="muted" id="cart-n"></span></h3><button id="close" type="button">Close</button></div>
 <ul id="items"></ul>
-<p id="empty" style="color:var(--muted)">Your cart is empty. Pick an iPhone to get started.</p>
-<div class="tot"><span>Total</span><strong id="total">$0</strong></div>
+<div id="empty" class="empty"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg><h3>Your cart is empty</h3><p class="muted">Pick an iPhone and it will show up here.</p><button class="buy" id="shop" type="button">Browse iPhones</button></div>
+<div class="csum" id="csum">
+<div class="kv"><span>Subtotal</span><b id="sub">$0</b></div>
+<div class="kv"><span>Shipping</span><b>Free</b></div>
+<div class="kv tot2"><span>Total</span><strong id="total">$0</strong></div>
 <button class="buy" id="checkout" type="button" disabled>Checkout</button>
+<button class="buy alt" id="keep" type="button">Continue shopping</button>
+<ul class="perks"><li>12-month warranty on every phone</li><li>30-day returns, no restocking fee</li><li>Pay by ATM card, bank transfer or crypto</li></ul>
+</div>
 </aside>
 
 <dialog id="co" aria-labelledby="co-t">
@@ -280,7 +353,8 @@ dialog{overflow:auto}
 <form id="coform" hidden>
 <p class="muted"><span id="co-who"></span> <button type="button" id="co-out" class="link2">Sign out</button></p>
 <label>Full name<input name="name" required autocomplete="name"></label>
-<label>Phone with country code<input name="phone" required type="tel" placeholder="+234 801 234 5678" autocomplete="tel"></label>
+<label for="ph-n">Phone number</label>
+<div class="ph"><select id="cc" aria-label="Country code"></select><input id="ph-n" name="phone" required type="tel" inputmode="tel" placeholder="(555) 123-4567" autocomplete="tel-national"></div>
 <label>Email<input name="email" required type="email" autocomplete="email"></label>
 <label>Delivery address<textarea name="address" required rows="3" autocomplete="street-address"></textarea></label>
 <fieldset class="pay"><legend>Payment method</legend>
@@ -311,7 +385,7 @@ var MODELS=DATA.split(";").map(function(r){var p=r.split("|");return{n:p[0],b:+p
 var GRADES=[["Excellent",1.25,90,"Looks like new. No marks you can see."],["Good",1.12,85,"Light signs of use. Small marks that show up close or at an angle."],["Fair",1,80,"Clear wear such as scratches or scuffs. Everything works as it should."]];
 var FILTERS=["All","X","11","12","13","14","15","16","17","18"];
 var PAL=["#C9B8B0","#3E4A5A","#D7C9A8","#8FA3B5","#B7C4B0","#C7A9B5"],GR=[["#3b6fb6","#7a4fb0"],["#e0742f","#c43b6b"],["#17a2a2","#2f5fb8"],["#d4a017","#c0392b"],["#4a8f5e","#2a5d8f"]];
-var S={m:15,s:0,g:0,f:"All"},cart=[];
+var S={m:15,s:0,g:0,f:"All"},cart=[],Q="",SORT="";
 var $=function(i){return document.getElementById(i)};
 function series(n){var k=/iPhone (\d+)/.exec(n);return k?k[1]:/Air/.test(n)?"17":"X"}
 function island(n){var k=/iPhone (\d+)/.exec(n),x=k?+k[1]:0;return x>=15||/Air/.test(n)||(x===14&&/Pro/.test(n))}
@@ -361,11 +435,20 @@ function sync(){
   $("pname").textContent=name();
 }
 function choose(i){S.m=i;S.s=0;buildStore();sync();$("pick").scrollIntoView({behavior:"smooth"})}
+function ord(){
+  var a=MODELS.map(function(m,i){return i});
+  if(SORT==="lo")a.sort(function(x,y){return MODELS[x].b-MODELS[y].b});
+  if(SORT==="hi")a.sort(function(x,y){return MODELS[y].b-MODELS[x].b});
+  if(SORT==="new")a.reverse();
+  return a;
+}
 function drawCat(){
   var cat=$("cat");
   cat.innerHTML="";
-  MODELS.forEach(function(m,i){
-    if(S.f!=="All"&&series(m.n)!==S.f)return;
+  ord().forEach(function(i){
+    var m=MODELS[i];
+    if(!Q&&S.f!=="All"&&series(m.n)!==S.f)return;
+    if(Q&&m.n.toLowerCase().indexOf(Q)<0)return;
     var a=document.createElement("article"),b=document.createElement("button"),h=document.createElement("h3"),p=document.createElement("p");
     a.className="mc";
     h.textContent=m.n;
@@ -376,23 +459,33 @@ function drawCat(){
     a.appendChild(pic(i));a.appendChild(h);a.appendChild(p);a.appendChild(b);
     cat.appendChild(a);
   });
-  [].forEach.call($("filters").children,function(x,i){x.setAttribute("aria-pressed",FILTERS[i]===S.f)});
+  var cnt=cat.children.length;
+  $("rc").textContent=cnt+" phone"+(cnt===1?"":"s");
+  if(!cnt){var np=document.createElement("p");np.className="muted";np.textContent="No phones match your search.";cat.appendChild(np)}
+  [].forEach.call($("filters").children,function(x,i){x.setAttribute("aria-pressed",!Q&&FILTERS[i]===S.f)});
 }
 function drawCart(){
   var ul=$("items"),t=0;
   ul.innerHTML="";
   cart.forEach(function(it,i){
     t+=it.p;
-    var li=document.createElement("li"),s=document.createElement("span"),r=document.createElement("span"),b=document.createElement("button");
-    s.textContent=it.n;
-    r.className="r";r.textContent="$"+it.p;
+    var li=document.createElement("li"),th=document.createElement("div"),inf=document.createElement("div"),pr=document.createElement("div"),b=document.createElement("button"),n=document.createElement("b"),d=document.createElement("span"),parts=it.n.split(",");
+    li.className="ci";th.className="cth";
+    var src=IMG[parts[0]];
+    if(src){var im=new Image();im.alt=parts[0];im.src=src;th.appendChild(im)}
+    inf.className="cinfo";
+    n.textContent=parts[0];d.textContent=parts.slice(1).join(",").trim();
+    inf.appendChild(n);inf.appendChild(d);
+    pr.className="cpr";pr.textContent="$"+it.p;
     b.type="button";b.className="rm";b.textContent="Remove";b.setAttribute("aria-label","Remove "+it.n);
     b.onclick=function(){cart.splice(i,1);drawCart()};
-    r.appendChild(b);li.appendChild(s);li.appendChild(r);ul.appendChild(li);
+    pr.appendChild(b);
+    li.appendChild(th);li.appendChild(inf);li.appendChild(pr);ul.appendChild(li);
   });
   $("count").textContent=cart.length;
-  $("total").textContent="$"+t;
-  $("empty").hidden=cart.length>0;
+  $("cart-n").textContent=cart.length?"("+cart.length+")":"";
+  $("sub").textContent="$"+t;$("total").textContent="$"+t;
+  $("empty").hidden=cart.length>0;$("csum").hidden=!cart.length;
   $("checkout").disabled=!cart.length;
 }
 function openCart(){$("cart").hidden=false;$("scrim").hidden=false;$("cartbtn").setAttribute("aria-expanded","true");$("close").focus()}
@@ -410,6 +503,8 @@ buildStore();
 $("add").onclick=function(){cart.push({n:name(),p:price()});drawCart();openCart()};
 $("cartbtn").onclick=function(){$("cart").hidden?openCart():closeCart()};
 $("close").onclick=closeCart;
+$("keep").onclick=closeCart;
+$("shop").onclick=function(){closeCart();$("models").scrollIntoView({behavior:"smooth"})};
 $("scrim").onclick=closeCart;
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("cart").hidden)closeCart()});
 var CO=$("co"),cur=null;
@@ -431,7 +526,7 @@ function prefill(){
   window.FG.getProfile().then(function(p){
     var x=$("coform").elements;
     if(p.name&&!x.name.value)x.name.value=p.name;
-    if(p.phone&&!x.phone.value)x.phone.value=p.phone;
+    if(p.phone&&!x.phone.value)setPhone(p.phone);
     if(p.address&&!x.address.value)x.address.value=p.address;
     if(!x.email.value&&window.FG.user)x.email.value=window.FG.user.email;
   }).catch(function(){});
@@ -465,8 +560,10 @@ function showCrypto(){
 $("coform").onsubmit=function(e){
   e.preventDefault();
   var f=e.target,btn=$("co-go"),err=$("co-err"),x=f.elements;
+  var dg=x.phone.value.replace(/\D/g,"").replace(/^0+/,"");
+  if(dg.length<6||dg.length>14){err.textContent="Enter a valid phone number.";err.hidden=false;return}
   var m=x.method.value,code="FG-"+Math.random().toString(36).slice(2,8).toUpperCase();
-  var order={code:code,customer:{name:x.name.value.trim(),phone:x.phone.value.trim(),email:x.email.value.trim(),address:x.address.value.trim()},items:cart.map(function(c){return{n:c.n,p:c.p}}),total:cartTotal(),method:m};
+  var order={code:code,customer:{name:x.name.value.trim(),phone:fullPhone(x),email:x.email.value.trim(),address:x.address.value.trim()},items:cart.map(function(c){return{n:c.n,p:c.p}}),total:cartTotal(),method:m};
   btn.disabled=true;btn.textContent="Placing order...";err.hidden=true;
   window.FG.placeOrder(order).then(function(ref){
     cur={id:ref.id,code:code,total:order.total};
@@ -482,6 +579,48 @@ $("cr-go").onclick=function(){
   er.hidden=true;$("cr-go").disabled=true;
   window.FG.submitPayment(cur.id,r,$("cr-coin").value).then(function(){done("Payment submitted. We will verify it and confirm your order. You can follow the status in your account.")}).catch(function(){er.textContent="Could not send. Please try again.";er.hidden=false}).then(function(){$("cr-go").disabled=false});
 };
+var COUNTRIES="US|United States|1;CA|Canada|1;AF|Afghanistan|93;AL|Albania|355;DZ|Algeria|213;AD|Andorra|376;AO|Angola|244;AG|Antigua and Barbuda|1268;AR|Argentina|54;AM|Armenia|374;AU|Australia|61;AT|Austria|43;AZ|Azerbaijan|994;BS|Bahamas|1242;BH|Bahrain|973;BD|Bangladesh|880;BB|Barbados|1246;BY|Belarus|375;BE|Belgium|32;BZ|Belize|501;BJ|Benin|229;BT|Bhutan|975;BO|Bolivia|591;BA|Bosnia and Herzegovina|387;BW|Botswana|267;BR|Brazil|55;BN|Brunei|673;BG|Bulgaria|359;BF|Burkina Faso|226;BI|Burundi|257;KH|Cambodia|855;CM|Cameroon|237;CV|Cape Verde|238;CF|Central African Republic|236;TD|Chad|235;CL|Chile|56;CN|China|86;CO|Colombia|57;KM|Comoros|269;CG|Congo|242;CD|DR Congo|243;CR|Costa Rica|506;CI|Cote d'Ivoire|225;HR|Croatia|385;CU|Cuba|53;CY|Cyprus|357;CZ|Czechia|420;DK|Denmark|45;DJ|Djibouti|253;DO|Dominican Republic|1809;EC|Ecuador|593;EG|Egypt|20;SV|El Salvador|503;GQ|Equatorial Guinea|240;ER|Eritrea|291;EE|Estonia|372;SZ|Eswatini|268;ET|Ethiopia|251;FJ|Fiji|679;FI|Finland|358;FR|France|33;GA|Gabon|241;GM|Gambia|220;GE|Georgia|995;DE|Germany|49;GH|Ghana|233;GR|Greece|30;GT|Guatemala|502;GN|Guinea|224;GW|Guinea-Bissau|245;GY|Guyana|592;HT|Haiti|509;HN|Honduras|504;HK|Hong Kong|852;HU|Hungary|36;IS|Iceland|354;IN|India|91;ID|Indonesia|62;IR|Iran|98;IQ|Iraq|964;IE|Ireland|353;IL|Israel|972;IT|Italy|39;JM|Jamaica|1876;JP|Japan|81;JO|Jordan|962;KZ|Kazakhstan|7;KE|Kenya|254;KW|Kuwait|965;KG|Kyrgyzstan|996;LA|Laos|856;LV|Latvia|371;LB|Lebanon|961;LS|Lesotho|266;LR|Liberia|231;LY|Libya|218;LI|Liechtenstein|423;LT|Lithuania|370;LU|Luxembourg|352;MO|Macao|853;MG|Madagascar|261;MW|Malawi|265;MY|Malaysia|60;MV|Maldives|960;ML|Mali|223;MT|Malta|356;MR|Mauritania|222;MU|Mauritius|230;MX|Mexico|52;MD|Moldova|373;MC|Monaco|377;MN|Mongolia|976;ME|Montenegro|382;MA|Morocco|212;MZ|Mozambique|258;MM|Myanmar|95;NA|Namibia|264;NP|Nepal|977;NL|Netherlands|31;NZ|New Zealand|64;NI|Nicaragua|505;NE|Niger|227;NG|Nigeria|234;KP|North Korea|850;MK|North Macedonia|389;NO|Norway|47;OM|Oman|968;PK|Pakistan|92;PS|Palestine|970;PA|Panama|507;PG|Papua New Guinea|675;PY|Paraguay|595;PE|Peru|51;PH|Philippines|63;PL|Poland|48;PT|Portugal|351;PR|Puerto Rico|1787;QA|Qatar|974;RO|Romania|40;RU|Russia|7;RW|Rwanda|250;SA|Saudi Arabia|966;SN|Senegal|221;RS|Serbia|381;SC|Seychelles|248;SL|Sierra Leone|232;SG|Singapore|65;SK|Slovakia|421;SI|Slovenia|386;SB|Solomon Islands|677;SO|Somalia|252;ZA|South Africa|27;KR|South Korea|82;SS|South Sudan|211;ES|Spain|34;LK|Sri Lanka|94;SD|Sudan|249;SR|Suriname|597;SE|Sweden|46;CH|Switzerland|41;SY|Syria|963;TW|Taiwan|886;TJ|Tajikistan|992;TZ|Tanzania|255;TH|Thailand|66;TL|Timor-Leste|670;TG|Togo|228;TO|Tonga|676;TT|Trinidad and Tobago|1868;TN|Tunisia|216;TR|Turkey|90;TM|Turkmenistan|993;UG|Uganda|256;UA|Ukraine|380;AE|United Arab Emirates|971;GB|United Kingdom|44;UY|Uruguay|598;UZ|Uzbekistan|998;VU|Vanuatu|678;VA|Vatican City|379;VE|Venezuela|58;VN|Vietnam|84;YE|Yemen|967;ZM|Zambia|260;ZW|Zimbabwe|263",DIAL={};
+(function(){
+  var list=COUNTRIES.split(";").map(function(r){var p=r.split("|");return{i:p[0],n:p[1],d:p[2]}});
+  var head=list.slice(0,2),rest=list.slice(2).sort(function(a,b){return a.n<b.n?-1:1});
+  head.concat(rest).forEach(function(c){
+    DIAL[c.i]=c.d;
+    var o=document.createElement("option");
+    o.value=c.i;
+    o.textContent=c.i.replace(/./g,function(ch){return String.fromCodePoint(127397+ch.charCodeAt(0))})+" "+c.n+" (+"+c.d+")";
+    $("cc").appendChild(o);
+  });
+  $("cc").value="US";
+})();
+function fullPhone(x){
+  var d=x.phone.value.replace(/\D/g,"").replace(/^0+/,"");
+  return d?"+"+DIAL[$("cc").value]+" "+d:"";
+}
+function setPhone(full){
+  var m=/^\+(\d+)\s+(.+)$/.exec(String(full)),x=$("coform").elements;
+  if(m){for(var k in DIAL){if(DIAL[k]===m[1]){$("cc").value=k;break}}x.phone.value=m[2]}
+  else x.phone.value=full;
+}
+var SPECS="A11 Bionic|5.8-inch OLED|Dual 12MP|Lightning;A12 Bionic|6.1-inch LCD|Single 12MP|Lightning;A12 Bionic|5.8-inch OLED|Dual 12MP|Lightning;A12 Bionic|6.5-inch OLED|Dual 12MP|Lightning;A13 Bionic|6.1-inch LCD|Dual 12MP|Lightning;A13 Bionic|5.8-inch OLED|Triple 12MP|Lightning;A13 Bionic|6.5-inch OLED|Triple 12MP|Lightning;A14 Bionic|5.4-inch OLED|Dual 12MP|Lightning;A14 Bionic|6.1-inch OLED|Dual 12MP|Lightning;A14 Bionic|6.1-inch OLED|Triple 12MP with LiDAR|Lightning;A14 Bionic|6.7-inch OLED|Triple 12MP with LiDAR|Lightning;A15 Bionic|5.4-inch OLED|Dual 12MP|Lightning;A15 Bionic|6.1-inch OLED|Dual 12MP|Lightning;A15 Bionic|6.1-inch OLED, 120Hz|Triple 12MP with LiDAR|Lightning;A15 Bionic|6.7-inch OLED, 120Hz|Triple 12MP with LiDAR|Lightning;A15 Bionic|6.1-inch OLED|Dual 12MP|Lightning;A15 Bionic|6.7-inch OLED|Dual 12MP|Lightning;A16 Bionic|6.1-inch OLED, 120Hz|48MP main, triple|Lightning;A16 Bionic|6.7-inch OLED, 120Hz|48MP main, triple|Lightning;A16 Bionic|6.1-inch OLED|48MP main, dual|USB-C;A16 Bionic|6.7-inch OLED|48MP main, dual|USB-C;A17 Pro|6.1-inch OLED, 120Hz|48MP main, triple, 3x zoom|USB-C;A17 Pro|6.7-inch OLED, 120Hz|48MP main, triple, 5x zoom|USB-C;A18|6.1-inch OLED|48MP Fusion, dual|USB-C;A18|6.7-inch OLED|48MP Fusion, dual|USB-C;A18 Pro|6.3-inch OLED, 120Hz|48MP Fusion, triple, 5x zoom|USB-C;A18 Pro|6.9-inch OLED, 120Hz|48MP Fusion, triple, 5x zoom|USB-C;A19|6.3-inch OLED, 120Hz|48MP Fusion, dual|USB-C;A19 Pro|6.5-inch OLED, 120Hz|48MP Fusion, single|USB-C;A19 Pro|6.3-inch OLED, 120Hz|48MP Fusion, triple, 8x zoom|USB-C;A19 Pro|6.9-inch OLED, 120Hz|48MP Fusion, triple, 8x zoom|USB-C;A20 Pro|6.3-inch OLED, 120Hz|48MP Fusion, triple, variable aperture|USB-C;A20 Pro|6.9-inch OLED, 120Hz|48MP Fusion, triple, variable aperture|USB-C".split(";");
+(function(){
+  var tb=document.querySelector("#cmp tbody");
+  MODELS.forEach(function(m,i){
+    var sp=SPECS[i].split("|"),tr=document.createElement("tr");
+    [m.n,"$"+m.b].concat(sp).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});
+    var td=document.createElement("td"),b=document.createElement("button");
+    b.type="button";b.textContent="Choose";b.setAttribute("aria-label","Choose "+m.n);
+    b.onclick=function(){choose(i)};
+    td.appendChild(b);tr.appendChild(td);
+    tb.appendChild(tr);
+  });
+})();
+$("q").oninput=function(){Q=this.value.trim().toLowerCase();drawCat()};
+$("srch").onsubmit=function(e){e.preventDefault();$("models").scrollIntoView({behavior:"smooth"})};
+$("sort").onchange=function(){SORT=this.value;drawCat()};
+$("menubtn").onclick=function(){var o=$("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)};
+document.querySelectorAll("#nav a").forEach(function(a){a.onclick=function(){$("nav").classList.remove("open");$("menubtn").setAttribute("aria-expanded","false")}});
+try{if(!localStorage.getItem("fg_nb"))$("note-bar").hidden=false}catch(e){}
+$("nb-ok").onclick=function(){$("note-bar").hidden=true;try{localStorage.setItem("fg_nb","1")}catch(e){}};
 sync();drawCat();drawCart();
 })();
 </script>
