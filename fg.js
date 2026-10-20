@@ -37,3 +37,7 @@ export function walletBox(parent){
     d.append(b,c,k);parent.appendChild(d);
   });
 }
+
+export const approvedReviews=(cb,err)=>onSnapshot(query(collection(db,"reviews"),where("approved","==",true)),s=>cb(s.docs.map(d=>({id:d.id,...d.data()}))),err||(()=>{}));
+export const myReviews=(cb,err)=>onSnapshot(query(collection(db,"reviews"),where("uid","==",auth.currentUser.uid)),s=>cb(s.docs.map(d=>({id:d.id,...d.data()}))),err||(()=>{}));
+export const addReview=r=>addDoc(collection(db,"reviews"),{orderId:r.orderId,rating:r.rating,text:r.text,name:r.name,model:r.model,uid:auth.currentUser.uid,approved:false,createdAt:serverTimestamp()});

@@ -160,6 +160,9 @@ a.btn.pri{color:var(--on)}
     <section id="v-help" hidden>
       <h2 class="sh" style="margin-top:4px">Customer support</h2>
       <div id="tlist"></div>
+      <h2 class="sh">Customer reviews</h2>
+      <p class="muted">Approve a review to show it on the store. Customers can only review delivered orders.</p>
+      <div id="rvlist"></div>
     </section>
     <section id="v-cust" hidden>
       <h2 class="sh" style="margin-top:4px">Customers</h2>
@@ -209,7 +212,7 @@ const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
 const EXPLORER={Ethereum:"https://etherscan.io/tx/",Bitcoin:"https://mempool.space/tx/",BNB:"https://bscscan.com/tx/"};
 const OF=[["all","All"],["todo","To do"],["wait","Waiting"],["active","Paid and active"],["delivered","Delivered"],["cancelled","Cancelled"]];
 const PF=[["verify","To verify"],["wait","Awaiting"],["paid","Paid"],["all","All"]];
-let orders=[],tickets=[],visits=[],users=[],first=true,firstT=true,unsub=null,unsub2=null,unsub3=null,unsub4=null,ofil="all",pfil="verify";
+let reviews=[],orders=[],tickets=[],visits=[],users=[],first=true,firstT=true,unsub=null,unsub2=null,unsub3=null,unsub4=null,unsub5=null,ofil="all",pfil="verify";
 
 const todo=o=>o.status==="payment_submitted"||(o.status==="pending"&&o.method!=="crypto");
 const unpaid=o=>o.status==="pending"||o.status==="details_sent";
@@ -253,6 +256,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     if(unsub2){unsub2();unsub2=null}
     if(unsub3){unsub3();unsub3=null}
     if(unsub4){unsub4();unsub4=null}
+    if(unsub5){unsub5();unsub5=null}
     if(!user)return;
     first=true;firstT=true;go("home");
     unsub=onSnapshot(query(collection(db,"orders"),orderBy("createdAt","desc")),snap=>{
@@ -264,6 +268,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     },err=>{$("recent").textContent="Cannot load orders: "+err.code});
     unsub3=onSnapshot(query(collection(db,"visits"),where("lastSeen",">=",new Date(Date.now()-7*864e5)),limit(1500)),snap=>{visits=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
     unsub4=onSnapshot(collection(db,"users"),snap=>{users=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
+    unsub5=onSnapshot(collection(db,"reviews"),snap=>{reviews=snap.docs.map(d=>({id:d.id,...d.data()}));drawReviews()},()=>{});
     unsub2=onSnapshot(collection(db,"tickets"),snap=>{
       tickets=byNew(snap.docs.map(d=>({id:d.id,...d.data()})));
       if(!firstT)snap.docChanges().forEach(c=>{if(c.type==="added")ping("New support message from",c.doc.data().email,"")});
@@ -405,6 +410,22 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     [["Conversion (orders per visitor)",visits.length?Math.min(100,Math.round(o7*100/visits.length))+"%":"No data yet"],["Phones people look at",visits.length?Math.round(mob*100/visits.length)+"% mobile, "+(100-Math.round(mob*100/visits.length))+"% desktop":"No data yet"],["Added to cart but did not order",aband],["Most wanted phones",topM],["Where visitors come from",topR]].forEach(r=>{const k=el("div","kv");k.appendChild(el("span","",r[0]));k.appendChild(el("b","",String(r[1])));ins.appendChild(k)});
   }
   setInterval(()=>drawStats(),20000);
+
+  function drawReviews(){
+    const w=$("rvlist");w.innerHTML="";
+    if(!reviews.length){w.appendChild(el("p","muted","No reviews yet."));return}
+    byNew(reviews.slice()).forEach(r=>{
+      const c=el("div","card"),h=el("div","top"),l=el("div");
+      l.appendChild(el("h3","","\u2605".repeat(r.rating)+"\u2606".repeat(5-r.rating)));
+      l.appendChild(el("div","muted",(r.name||"Customer")+(r.model?"  "+r.model:"")));
+      h.appendChild(l);h.appendChild(el("span","chip s-"+(r.approved?"delivered":"pending"),r.approved?"Shown":"Waiting"));
+      c.appendChild(h);c.appendChild(el("p","",r.text));
+      const row=el("div","row");
+      const a=el("button",r.approved?"":"pri",r.approved?"Hide":"Approve");a.type="button";a.onclick=()=>updateDoc(doc(db,"reviews",r.id),{approved:!r.approved});row.appendChild(a);
+      const d=el("button","","Delete");d.type="button";d.onclick=()=>{if(confirm("Delete this review?"))deleteDoc(doc(db,"reviews",r.id))};row.appendChild(d);
+      c.appendChild(row);w.appendChild(c);
+    });
+  }
   function chips(id,list,cur,fn){
     const w=$(id);w.innerHTML="";
     list.forEach(([k,l])=>{const b=el("button","",l);b.type="button";b.setAttribute("aria-pressed",cur===k);b.onclick=()=>fn(k);w.appendChild(b)});

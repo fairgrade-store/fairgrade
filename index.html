@@ -337,6 +337,15 @@ nav.open .navacct{display:block}
 @media(max-width:520px){.acct{display:none}.hr{gap:8px}.logo{font-size:20px;gap:8px}.logo svg{width:32px;height:32px}.cartbtn{padding:7px 8px 7px 12px}.menubtn{padding:8px 12px}}
 @media(prefers-reduced-motion:reduce){.fl,.mesh i,.mq .tr,.gcard svg.gsvg,.tg::before{animation:none!important}.js .rv{opacity:1}.rv.in{animation:none}}
 
+
+.rvs{display:grid;gap:14px;margin-top:22px}
+@media(min-width:760px){.rvs{grid-template-columns:repeat(3,1fr)}}
+.rvc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.rvc p{margin:10px 0 12px}
+.rvc small{color:var(--muted)}
+.stars{color:#F5A524;letter-spacing:2px;font-size:18px}
+.rvsum{display:flex;align-items:center;gap:12px;margin-top:14px;font-weight:700}
+.rvempty{margin-top:22px;border:1.5px dashed var(--line);border-radius:18px;padding:24px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -514,6 +523,13 @@ nav.open .navacct{display:block}
 </ol>
 </div></section>
 
+<section id="reviews"><div class="wrap">
+<h2>What customers say</h2>
+<p class="sub">Reviews come only from customers whose order was delivered.</p>
+<div id="rvsum" class="rvsum" hidden></div>
+<div id="rvs" class="rvs"></div>
+<div id="rvempty" class="rvempty">No reviews yet. After your phone is delivered, you can review it from your dashboard.</div>
+</div></section>
 <section id="faq"><div class="wrap">
 <h2>Questions before you buy</h2>
 <p class="sub">Short answers to what people ask most.</p>
@@ -534,7 +550,7 @@ nav.open .navacct{display:block}
 <div><div class="logo2"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl2)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fair<b>grade</b></span></div><p>Graded, tested, warrantied iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
 <div><h4>Shop</h4><a href="#models">All iPhones</a><a href="#compare">Compare models</a><a href="#grading">How we grade</a></div>
 <div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Telegram support</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a></div>
-<div><h4>Legal</h4><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
+<div><h4>Legal</h4><a href="about.html">About us</a><a href="faq.html">All questions</a><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
 </div>
 <div class="pm"><span>We accept</span><b>ATM card</b><b>Bank transfer</b><b>Cryptocurrency</b></div>
 <p class="fine">Pictures show the model, not the exact phone. Prices and availability may change. 2026 Fairgrade. All rights reserved.</p>
@@ -741,7 +757,7 @@ $("checkout").onclick=function(){
   CO.showModal();
 };
 $("co-x").onclick=function(){CO.close()};
-var AMSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
+var AMSG={"auth/unauthorized-domain":"Google sign-in is not allowed on this website address yet. The store owner must add this domain in Firebase.","auth/operation-not-allowed":"Google sign-in is not switched on yet. The store owner must enable it in Firebase.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/popup-closed-by-user":"The Google window was closed before finishing. Please try again.","auth/cancelled-popup-request":"Please tap Continue with Google once and wait.","auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
 function prefill(){
   if(!FGok())return;
   window.FG.getProfile().then(function(p){
@@ -761,7 +777,7 @@ function authGo(kind){
 }
 $("au-in").onclick=function(){authGo("signIn")};
 $("au-up").onclick=function(){authGo("signUp")};
-$("au-g").onclick=function(){var er=$("au-err");er.hidden=true;if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}window.FG.signInGoogle().then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||"Google sign-in did not finish. Please try again.";er.hidden=false})};
+$("au-g").onclick=function(){var er=$("au-err");er.hidden=true;if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}window.FG.signInGoogle().then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||"Google sign-in did not finish ("+(x&&x.code||"unknown")+"). Please try again.";er.hidden=false})};
 $("co-out").onclick=function(){window.FG.logOut().then(function(){show("co-auth")})};
 function done(msg){
   show("co-done");
@@ -890,6 +906,22 @@ if(xv){
 /* add to cart feedback */
 var tt;function toast(m){var t=$("toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},2400)}
 var add=$("add");if(add)add.addEventListener("click",function(){toast("Added to cart: "+($("pname")?$("pname").textContent:"iPhone"));var c=$("count");if(c){c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")}});
+})();
+</script>
+<script>
+(function(){
+function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
+function stars(n){return "\u2605".repeat(n)+"\u2606".repeat(5-n)}
+function draw(l){
+ l=l.filter(function(r){return r.approved}).sort(function(a,b){return (b.createdAt&&b.createdAt.seconds||0)-(a.createdAt&&a.createdAt.seconds||0)}).slice(0,9);
+ var box=document.getElementById("rvs");box.innerHTML="";
+ document.getElementById("rvempty").hidden=l.length>0;
+ var sm=document.getElementById("rvsum");sm.hidden=!l.length;
+ if(l.length){var avg=l.reduce(function(a,r){return a+r.rating},0)/l.length;sm.innerHTML='<span class="stars">'+stars(Math.round(avg))+'</span><span>'+avg.toFixed(1)+' out of 5 from '+l.length+' review'+(l.length>1?'s':'')+'</span>'}
+ l.forEach(function(r){var c=document.createElement("div");c.className="rvc";
+  c.innerHTML='<div class="stars">'+stars(r.rating)+'</div><p>'+esc(r.text)+'</p><small>'+esc(r.name||"Customer")+(r.model?' \u00b7 '+esc(r.model):'')+'</small>';box.appendChild(c)});
+}
+var tries=0;(function init(){if(window.FG&&window.FG.ready){try{window.FG.approvedReviews(draw)}catch(e){}}else if(tries++<30)setTimeout(init,500)})();
 })();
 </script>
 </body>

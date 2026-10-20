@@ -224,7 +224,7 @@ const STEPS=["Order placed","Payment confirmed","Processing","Shipped","Out for 
 const IDX={pending:0,details_sent:0,payment_submitted:0,confirmed:1,processing:2,shipped:3,out_for_delivery:4,delivered:5};
 const LABEL={pending:"Waiting for payment",details_sent:"Payment details sent",payment_submitted:"Verifying payment",confirmed:"Payment confirmed",processing:"Processing",shipped:"Shipped",out_for_delivery:"Out for delivery",delivered:"Delivered",cancelled:"Cancelled"};
 const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
-let orders=[],tickets=[],profile={},uns=[],lastSig="";
+let reviews=[],orders=[],tickets=[],profile={},uns=[],lastSig="";
 const prevN={};
 function countUp(n,key,val){const str=String(val),m=/^(\$?)(\d+)$/.exec(str);if(!m||prevN[key]===str||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){n.textContent=str;prevN[key]=str;return}prevN[key]=str;const to=+m[2],pre=m[1],t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);n.textContent=pre+Math.round(to*e);if(k<1)requestAnimationFrame(f)})(t0)}
 
@@ -237,7 +237,7 @@ const chip=(s,t)=>el("span","chip s-"+s,t||LABEL[s]||s);
 function thumb(o){const d=el("div","thumb"),src=IMG[model(o)];if(src){const i=new Image();i.alt=model(o);i.src=src;d.appendChild(i)}else d.textContent="Phone";return d}
 
 if(!FG.ready){$("ae").textContent="Accounts are not switched on yet.";$("ae").hidden=false}
-const MSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
+const MSG={"auth/unauthorized-domain":"Google sign-in is not allowed on this website address yet. The store owner must add this domain in Firebase.","auth/operation-not-allowed":"Google sign-in is not switched on yet. The store owner must enable it in Firebase.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/popup-closed-by-user":"The Google window was closed before finishing. Please try again.","auth/cancelled-popup-request":"Please tap Continue with Google once and wait.","auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
 function signin(kind){
   const er=$("ae"),e=$("em").value.trim(),p=$("pw").value;
   er.hidden=true;
@@ -248,7 +248,7 @@ function signin(kind){
 }
 $("in").onclick=()=>signin("signIn");
 $("up").onclick=()=>signin("signUp");
-$("gg").onclick=()=>{const er=$("ae");er.hidden=true;if(!FG.ready){er.textContent="Accounts are not switched on yet.";er.hidden=false;return}FG.signInGoogle().catch(x=>{er.textContent=MSG[x&&x.code]||"Google sign-in did not finish. Please try again.";er.hidden=false})};
+$("gg").onclick=()=>{const er=$("ae");er.hidden=true;if(!FG.ready){er.textContent="Accounts are not switched on yet.";er.hidden=false;return}FG.signInGoogle().catch(x=>{er.textContent=MSG[x&&x.code]||"Google sign-in did not finish ("+(x&&x.code||"unknown")+"). Please try again.";er.hidden=false})};
 $("out").onclick=()=>FG.logOut();
 
 function go(v){
@@ -265,6 +265,7 @@ FG.onUser(u=>{
   if(!u)return;
   $("who").textContent="Signed in as "+u.email;
   uns.push(FG.myOrders(l=>{orders=byNew(l);draw()},()=>{}));
+  uns.push(FG.myReviews(l=>{reviews=l;draw()},()=>{}));
   uns.push(FG.myTickets(l=>{tickets=byNew(l);draw()},()=>{}));
   uns.push(FG.watchProfile(p=>{
     profile=p||{};
@@ -303,6 +304,28 @@ function mapBox(o){
     const a=el("a","btn","Open in Google Maps");a.href=link;a.target="_blank";a.rel="noopener";a.style.marginTop="10px";box.appendChild(a)}
   else{const ph=el("div","mapph");ph.innerHTML='<svg viewBox="0 0 64 64"><path d="M32 6c-10 0-18 8-18 18 0 13 18 34 18 34s18-21 18-34C50 14 42 6 32 6z" fill="currentColor" stroke="none" opacity=".9"/><circle cx="32" cy="24" r="7" fill="#fff" stroke="none"/></svg>';ph.appendChild(el("p","","The map appears here once your parcel has a location."));f.appendChild(ph);box.appendChild(f)}
   return box;
+}
+
+function reviewBox(o){
+  if(o.status!=="delivered")return null;
+  const box=el("div","pay"),have=reviews.find(r=>r.orderId===o.id);
+  if(have){box.appendChild(el("p","muted","Thank you for your review. "+(have.approved?"It is now shown on the store.":"It will appear on the store after we approve it.")));return box}
+  box.appendChild(el("h3","","Review your phone"));
+  let rate=0;const row=el("div","row"),btns=[];
+  for(let i=1;i<=5;i++){const b=el("button","",i+"\u2605");b.type="button";b.onclick=()=>{rate=i;btns.forEach((x,k)=>x.classList.toggle("pri",k<i))};btns.push(b);row.appendChild(b)}
+  box.appendChild(row);
+  const ta=el("textarea");ta.rows=3;ta.maxLength=600;ta.placeholder="Tell other buyers about the phone and delivery";ta.style.marginTop="10px";box.appendChild(ta);
+  const er=el("p","err");er.hidden=true;box.appendChild(er);
+  const send=el("button","pri","Send review");send.type="button";send.style.marginTop="10px";
+  send.onclick=()=>{
+    const t=ta.value.trim();
+    if(!rate){er.textContent="Tap a star rating first.";er.hidden=false;return}
+    if(t.length<10){er.textContent="Please write at least 10 characters.";er.hidden=false;return}
+    er.hidden=true;send.disabled=true;
+    const nm=String((profile&&profile.name)||o.customer.name||"").trim().split(/\s+/)[0]||"Customer";
+    FG.addReview({orderId:o.id,rating:rate,text:t,name:nm,model:model(o)}).catch(()=>{send.disabled=false;er.textContent="Could not send. Please try again.";er.hidden=false});
+  };
+  box.appendChild(send);return box;
 }
 function tracker(o){
   const w=el("ol","trk");
@@ -353,7 +376,7 @@ function draw(){
     c.appendChild(head(o,model(o),"Order #"+o.code+"  "+when(o)));
     const ul=el("ul","muted");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     c.appendChild(el("p","muted","Delivery to: "+o.customer.address));
-    c.appendChild(tracker(o));const mb=mapBox(o);if(mb)c.appendChild(mb);
+    c.appendChild(tracker(o));const mb=mapBox(o);if(mb)c.appendChild(mb);const rb=reviewBox(o);if(rb)c.appendChild(rb);
     if(unpaid(o)){const b=el("button","pri",o.payInfo?"View payment details":"Make payment");b.type="button";b.style.marginTop="12px";b.onclick=()=>go("pay");c.appendChild(b)}
     ol.appendChild(c);
   });
