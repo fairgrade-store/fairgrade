@@ -121,6 +121,9 @@ a.btn.pri{color:var(--on)}
     <label>Password<input id="pw" type="password" required autocomplete="current-password"></label>
     <p class="err" id="le" role="alert" hidden></p>
     <div class="row"><button class="pri" type="submit">Sign in</button></div>
+    <div class="row"><button id="gg" type="button" style="width:100%;background:#fff;color:#1f1f1f;border-color:#dadce0">Continue with Google</button></div>
+    <div class="row"><button id="fp" type="button" style="border:0;background:none;padding:6px 0;text-decoration:underline;color:var(--muted)">Forgot password? Send reset email</button></div>
+    <p class="muted" id="lm" role="status" hidden></p>
   </form>
 </div>
 
@@ -195,7 +198,7 @@ a.btn.pri{color:var(--on)}
 <script src="config.js"></script>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut,GoogleAuthProvider,signInWithPopup,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {getFirestore,collection,query,orderBy,where,limit,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const $=id=>document.getElementById(id);
@@ -236,8 +239,11 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   $("lf").onsubmit=async e=>{
     e.preventDefault();$("le").hidden=true;
     try{await signInWithEmailAndPassword(auth,$("em").value,$("pw").value)}
-    catch(x){$("le").textContent="Could not sign in. Check your email and password.";$("le").hidden=false}
+    catch(x){$("le").textContent=(MSGS[x&&x.code]||"Could not sign in. Check your email and password.")+" ("+(x&&x.code||"unknown")+")";$("le").hidden=false}
   };
+  const MSGS={"auth/unauthorized-domain":"This website address is not allowed in Firebase yet.","auth/operation-not-allowed":"Google sign-in is not switched on in Firebase.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups and try again.","auth/popup-closed-by-user":"The Google window was closed. Try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Wait a few minutes."};
+  $("gg").onclick=async()=>{$("le").hidden=true;$("lm").hidden=true;try{const p=new GoogleAuthProvider();p.setCustomParameters({prompt:"select_account"});await signInWithPopup(auth,p)}catch(x){$("le").textContent=(MSGS[x&&x.code]||"Google sign-in did not finish")+" ("+(x&&x.code||"unknown")+")";$("le").hidden=false}};
+  $("fp").onclick=async()=>{$("le").hidden=true;$("lm").hidden=true;const e=$("em").value.trim();if(!e){$("le").textContent="Type your email first, then tap this again.";$("le").hidden=false;return}try{await sendPasswordResetEmail(auth,e);$("lm").textContent="Reset email sent to "+e+". Open it, choose a new password, then sign in. Check Spam too.";$("lm").hidden=false}catch(x){$("le").textContent=(MSGS[x&&x.code]||"Could not send the email")+" ("+(x&&x.code||"unknown")+")";$("le").hidden=false}};
   $("out").onclick=()=>signOut(auth);
   $("notif").onclick=()=>{if("Notification" in window)Notification.requestPermission()};
   $("alert").onclick=()=>{$("alert").hidden=true};
