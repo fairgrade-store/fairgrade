@@ -132,6 +132,7 @@ a.btn.pri{color:var(--on)}
     <div class="bar"><span class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade admin</span><button id="out" type="button">Sign out</button></div>
     <h1>Admin Dashboard</h1>
     <p>Manage orders, payments, customers and support.</p>
+    <p id="me" style="font-size:13px"></p>
   </div></header>
   <main class="wrap">
     <div class="alert" id="alert" hidden></div>
@@ -230,7 +231,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   $("le").textContent="Firebase is not set up yet. Fill in config.js first.";$("le").hidden=false;
 }else{
   const app=initializeApp(C),auth=getAuth(app),db=getFirestore(app);
-  const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s});
+  const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s}).catch(x=>alert("Could not update ("+(x&&x.code||"unknown")+"). "+(x&&x.code==="permission-denied"?"You are not signed in as admin.":"Please try again.")));
 
   $("bank").value=store("fg_bank");
   $("bank").oninput=()=>store("fg_bank",$("bank").value);
@@ -257,6 +258,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>go(b.dataset.v));
 
   onAuthStateChanged(auth,user=>{
+    $("me").textContent=user?"Signed in as "+user.email:"";
     $("login").hidden=!!user;$("app").hidden=!user;
     if(unsub){unsub();unsub=null}
     if(unsub2){unsub2();unsub2=null}
@@ -321,7 +323,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
       const v=ta.value.trim();
       if(!v){alert(o.method==="bank"?"Add your bank details first, here or in Settings.":"Write or paste the payment details first.");return}
       b.disabled=true;
-      updateDoc(doc(db,"orders",o.id),{payInfo:v,status:"details_sent",infoAt:serverTimestamp()}).then(()=>{b.textContent="Sent"}).catch(()=>{b.disabled=false;alert("Could not send. Please try again.")});
+      updateDoc(doc(db,"orders",o.id),{payInfo:v,status:"details_sent",infoAt:serverTimestamp()}).then(()=>{b.textContent="Sent"}).catch(x=>{b.disabled=false;const c=x&&x.code||"unknown";alert((c==="permission-denied"?"Not allowed. You are signed in with an account that is not the admin account. Sign out and sign in with your admin email.":"Could not send. Please try again.")+" ("+c+")")});
     };
     d.appendChild(ta);d.appendChild(b);return d;
   }
