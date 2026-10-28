@@ -499,7 +499,6 @@ main>*:not(.glow){position:relative;z-index:1}
 <p class="fine">Pictures show the model, not the exact phone. Prices and availability may change. 2026 Fairgrade. All rights reserved.</p>
 </div></footer>
 <a class="tg" href="https://t.me/fairgradestore" target="_blank" rel="noopener" aria-label="Chat with us on Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span>Chat with us</span></a>
-<div class="nb" id="note-bar" hidden>We use anonymous analytics to improve the store. <a href="privacy.html">Privacy policy</a> <button id="nb-ok" type="button">OK</button></div>
 
 <div id="scrim" hidden></div>
 <aside class="drawer" id="cart" aria-label="Your cart" hidden>
@@ -798,8 +797,6 @@ $("srch").onsubmit=function(e){e.preventDefault();$("models").scrollIntoView({be
 $("sort").onchange=function(){SORT=this.value;drawCat()};
 $("menubtn").onclick=function(){var o=$("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)};
 document.querySelectorAll("#nav a").forEach(function(a){a.onclick=function(){$("nav").classList.remove("open");$("menubtn").setAttribute("aria-expanded","false")}});
-try{if(!localStorage.getItem("fg_nb"))$("note-bar").hidden=false}catch(e){}
-$("nb-ok").onclick=function(){$("note-bar").hidden=true;try{localStorage.setItem("fg_nb","1")}catch(e){}};
 AMSG["auth/popup-closed-by-user"]="Google sign-in was cancelled.";
 AMSG["auth/cancelled-popup-request"]="Google sign-in was cancelled.";
 AMSG["auth/popup-blocked"]="Your browser blocked the Google window. Allow pop-ups and try again.";
