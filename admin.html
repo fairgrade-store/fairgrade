@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='fgH' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.16'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230B1B33'/%3E%3Crect width='64' height='64' rx='17' fill='url(%23fgH)'/%3E%3Crect x='24' y='29' width='17' height='7.6' rx='2.6' fill='%233DE0B8'/%3E%3Crect x='21' y='14' width='8' height='36' rx='2.6' fill='%23fff'/%3E%3Crect x='21' y='14' width='24' height='8' rx='2.6' fill='%23fff'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cdefs%3E%3ClinearGradient id=%22fgl%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2319C59B%22/%3E%3Cstop offset=%221%22 stop-color=%22%230A5F51%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2232%22 height=%2232%22 rx=%229%22 fill=%22url%28%23fgl%29%22/%3E%3Cpath d=%22M22 9.2H12.2V23.2%22 stroke=%22%23fff%22 stroke-width=%223.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M15.6 17.4l2.9 2.9 5.1-6%22 stroke=%22%23A8FBE4%22 stroke-width=%223.1%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
 <title>Fairgrade admin</title>
 <style>
 :root{--bg:#F3F6FC;--surface:#fff;--ink:#0B1B33;--muted:#5B6B82;--line:#E1E8F3;--blue:#2563EB;--on:#fff;--bb:#E7F0FF;--bt:#1D4ED8;--gb:#E5F7EC;--gt:#15803D;--ob:#FFF0E0;--ot:#B4540A;--pb:#EFE9FF;--pt:#6D3FD1;--rb:#FDE8E8;--rt:#B42318}
@@ -19,7 +19,8 @@ h1,h2,h3{margin:0;letter-spacing:-.01em}
 input,select,textarea,button{font:inherit;color:inherit}
 input,select,textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 12px}
 button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 14px;font-weight:600;text-decoration:none;display:inline-block;text-align:center}
-.pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
+a.btn{color:var(--ink)}
+.pri,a.btn.pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
 .muted{color:var(--muted);font-size:14px}
 .err{color:var(--rt);margin-top:8px}
 label{display:block;font-weight:600;margin-top:12px}
@@ -31,7 +32,10 @@ label input,label textarea{margin-top:6px;font-weight:400}
 .hero{background:linear-gradient(135deg,#0B2A6B,#2563EB);color:#fff;padding:16px 16px 26px;border-radius:0 0 24px 24px}
 .hero .in{max-width:720px;margin:0 auto}
 .bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.brand{font-weight:800;font-size:18px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .lm{width:32px;height:32px}
+.brand .wmk{width:104px;height:15px;color:#fff}
+.brand small{opacity:.8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
 .hero button{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;padding:7px 12px}
 .hero h1{font-size:28px}
 .hero p{margin:4px 0 0;opacity:.85}
@@ -73,37 +77,12 @@ ul{margin:8px 0 0;padding-left:18px}
 .kv:last-child{border-bottom:0}
 .kv b{text-align:right}
 .wl code{display:block;word-break:break-all;font-size:13px;margin:4px 0 10px}
-
-.hero{position:relative;overflow:hidden}
-.hero .in{position:relative;z-index:1}
-.orb{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none;animation:drift2 14s ease-in-out infinite alternate}
-.o1{width:240px;height:240px;right:-70px;top:-90px}
-.o2{width:150px;height:150px;right:100px;bottom:-80px;animation-delay:-5s;background:rgba(124,240,207,.16)}
-.o3{width:120px;height:120px;left:-40px;bottom:-60px;animation-delay:-9s}
-@keyframes drift2{to{transform:translate(-34px,22px) scale(1.18)}}
-main>section:not([hidden]){animation:fadein .35s ease}
-@keyframes fadein{from{opacity:0;transform:translateY(10px)}}
-.brand{display:inline-flex;align-items:center;gap:9px}
-.brand svg{width:30px;height:30px;flex:none}
-.brand svg rect{stroke:none}
-.card{transition:box-shadow .2s}
-.card:hover{box-shadow:0 16px 34px -22px rgba(11,42,107,.5)}
-.st{transition:transform .2s}
-.st:hover{transform:translateY(-2px)}
-.tgcard{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#0B2A6B,#2563EB 60%,#229ED9);color:#fff;border-radius:16px;padding:16px;margin-top:12px}
-.tgcard svg{width:34px;height:34px;fill:#fff;stroke:none;flex:none}
-.tgcard p{margin:2px 0 0;color:#dbeafe;font-size:14px}
-.tgcard a{margin-left:auto;background:#fff;color:#0B2A6B;border-radius:12px;padding:10px 14px;font-weight:700;text-decoration:none;white-space:nowrap}
-@media(max-width:480px){.tgcard{flex-wrap:wrap}.tgcard a{margin-left:0;width:100%;text-align:center}}
-a.btn{color:var(--ink)}
-a.btn.pri{color:var(--on)}
-@media(prefers-reduced-motion:reduce){.orb{animation:none}main>section:not([hidden]){animation:none}}
-
-.row input{flex:1;min-width:200px;width:auto}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-logo" viewBox="0 0 64 64"><g stroke="none"><defs><linearGradient id="fgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="#0B1B33"/><rect width="64" height="64" rx="17" fill="url(#fgH)"/><rect x="24" y="29" width="17" height="7.6" rx="2.6" fill="#3DE0B8"/><rect x="21" y="14" width="8" height="36" rx="2.6" fill="#fff"/><rect x="21" y="14" width="24" height="8" rx="2.6" fill="#fff"/></g></symbol>
+<symbol id="i-wm" viewBox="0 0 141 20"><path transform="translate(0 15)" fill="currentColor" stroke="none" d="M9.7 -13.9V-12.0H3.8V-7.9H8.4V-6.1H3.8V0.0H1.5V-13.9Z M24.2 -2.8H18.4L17.4 0.0H15.0L20.0 -13.9H22.6L27.6 0.0H25.2ZM23.5 -4.7 21.3 -11.2 19.0 -4.7Z M36.0 -13.9V0.0H33.7V-13.9Z M50.2 0.0 47.0 -5.6H45.3V0.0H43.0V-13.9H47.8Q49.4 -13.9 50.5 -13.3Q51.6 -12.8 52.2 -11.8Q52.7 -10.9 52.7 -9.7Q52.7 -8.4 51.9 -7.3Q51.2 -6.2 49.5 -5.8L53.0 0.0ZM45.3 -7.4H47.8Q49.1 -7.4 49.8 -8.0Q50.4 -8.7 50.4 -9.7Q50.4 -10.8 49.8 -11.4Q49.1 -12.0 47.8 -12.0H45.3Z M69.7 -9.9Q69.2 -10.9 68.2 -11.5Q67.3 -12.0 66.0 -12.0Q64.6 -12.0 63.5 -11.4Q62.5 -10.8 61.8 -9.6Q61.2 -8.5 61.2 -7.0Q61.2 -5.5 61.8 -4.3Q62.5 -3.2 63.5 -2.6Q64.6 -1.9 66.0 -1.9Q67.9 -1.9 69.0 -3.0Q70.2 -4.0 70.4 -5.8H65.2V-7.6H72.9V-5.8Q72.7 -4.2 71.7 -2.9Q70.8 -1.5 69.3 -0.7Q67.8 0.1 66.0 0.1Q64.0 0.1 62.4 -0.8Q60.8 -1.7 59.8 -3.3Q58.9 -4.9 58.9 -7.0Q58.9 -9.0 59.8 -10.6Q60.8 -12.3 62.4 -13.2Q64.1 -14.1 66.0 -14.1Q68.2 -14.1 69.9 -13.0Q71.7 -11.9 72.5 -9.9Z M86.3 0.0 83.1 -5.6H81.4V0.0H79.1V-13.9H83.9Q85.5 -13.9 86.6 -13.3Q87.7 -12.8 88.3 -11.8Q88.8 -10.9 88.8 -9.7Q88.8 -8.4 88.1 -7.3Q87.3 -6.2 85.6 -5.8L89.1 0.0ZM81.4 -7.4H83.9Q85.2 -7.4 85.8 -8.0Q86.5 -8.7 86.5 -9.7Q86.5 -10.8 85.9 -11.4Q85.2 -12.0 83.9 -12.0H81.4Z M104.1 -2.8H98.3L97.3 0.0H94.9L99.9 -13.9H102.6L107.5 0.0H105.1ZM103.5 -4.7 101.2 -11.2 99.0 -4.7Z M125.6 -6.9Q125.6 -4.8 124.7 -3.2Q123.8 -1.7 122.1 -0.8Q120.5 0.0 118.2 0.0H113.7V-13.9H118.2Q120.5 -13.9 122.1 -13.1Q123.8 -12.2 124.7 -10.6Q125.6 -9.0 125.6 -6.9ZM123.3 -6.9Q123.3 -9.3 122.0 -10.7Q120.7 -12.0 118.2 -12.0H116.0V-1.9H118.2Q120.7 -1.9 122.0 -3.2Q123.3 -4.5 123.3 -6.9Z M134.2 -12.1V-8.0H139.0V-6.1H134.2V-1.9H139.6V0.0H131.9V-13.9H139.6V-12.1Z"/></symbol>
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
 <symbol id="i-orders" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></symbol>
 <symbol id="i-pay" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
@@ -121,18 +100,14 @@ a.btn.pri{color:var(--on)}
     <label>Password<input id="pw" type="password" required autocomplete="current-password"></label>
     <p class="err" id="le" role="alert" hidden></p>
     <div class="row"><button class="pri" type="submit">Sign in</button></div>
-    <div class="row"><button id="gg" type="button" style="width:100%;background:#fff;color:#1f1f1f;border-color:#dadce0">Continue with Google</button></div>
-    <div class="row"><button id="fp" type="button" style="border:0;background:none;padding:6px 0;text-decoration:underline;color:var(--muted)">Forgot password? Send reset email</button></div>
-    <p class="muted" id="lm" role="status" hidden></p>
   </form>
 </div>
 
 <div id="app" hidden>
-  <header class="hero"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><div class="in">
-    <div class="bar"><span class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade admin</span><button id="out" type="button">Sign out</button></div>
+  <header class="hero"><div class="in">
+    <div class="bar"><span class="brand"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg><small>admin</small></span><button id="out" type="button">Sign out</button></div>
     <h1>Admin Dashboard</h1>
     <p>Manage orders, payments, customers and support.</p>
-    <p id="me" style="font-size:13px"></p>
   </div></header>
   <main class="wrap">
     <div class="alert" id="alert" hidden></div>
@@ -164,9 +139,6 @@ a.btn.pri{color:var(--on)}
     <section id="v-help" hidden>
       <h2 class="sh" style="margin-top:4px">Customer support</h2>
       <div id="tlist"></div>
-      <h2 class="sh">Customer reviews</h2>
-      <p class="muted">Approve a review to show it on the store. Customers can only review delivered orders.</p>
-      <div id="rvlist"></div>
     </section>
     <section id="v-cust" hidden>
       <h2 class="sh" style="margin-top:4px">Customers</h2>
@@ -178,8 +150,17 @@ a.btn.pri{color:var(--on)}
         <label>My bank account details<textarea id="bank" rows="4" placeholder="Bank name, account name, account number"></textarea></label>
         <p class="muted">Saved on this phone only. It fills in automatically when you send payment details to a customer's dashboard.</p>
       </div>
-      <div class="tgcard"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></svg><div><b>Telegram contact</b><p>Customers see t.me/fairgradestore on the store and in their dashboard.</p></div><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Open</a></div>
       <div class="card wl"><h3>Crypto wallets shown to customers</h3><div id="wl" style="margin-top:8px"></div><p class="muted">To change a wallet, edit config.js on GitHub.</p></div>
+      <div class="card"><h3>Promotions and ads</h3><p class="muted">These appear in a banner at the top of your store.</p>
+        <label>Title<input id="ad-t" maxlength="60" placeholder="Weekend deal on iPhone 15"></label>
+        <label>Text (optional)<input id="ad-x" maxlength="120"></label>
+        <label>Button text (optional)<input id="ad-b" maxlength="24" placeholder="Shop now"></label>
+        <label>Button link (optional)<input id="ad-l" placeholder="#models or https://..."></label>
+        <label>Show a phone picture<select id="ad-m"></select></label>
+        <label>Color<select id="ad-c"><option value="blue">Blue</option><option value="green">Green</option><option value="purple">Purple</option><option value="orange">Orange</option><option value="dark">Dark</option></select></label>
+        <div class="row"><button class="pri" id="ad-add" type="button">Add promotion</button></div>
+        <div id="ad-list"></div>
+      </div>
       <div class="card">
         <div class="row" style="margin-top:0"><button id="notif" type="button">Turn on alerts</button><button id="exp" type="button">Download orders (CSV)</button></div>
         <p class="muted">Alerts work while this page is open.</p>
@@ -199,13 +180,10 @@ a.btn.pri{color:var(--on)}
 <script src="config.js"></script>
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut,GoogleAuthProvider,signInWithPopup,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {getFirestore,collection,query,orderBy,where,limit,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,query,orderBy,where,limit,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp,addDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const $=id=>document.getElementById(id);
-const prevN={};
-function countUp(n,key,val){const str=String(val),m=/^(\$?)(\d+)$/.exec(str);if(!m||prevN[key]===str||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){n.textContent=str;prevN[key]=str;return}prevN[key]=str;const to=+m[2],pre=m[1],t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);n.textContent=pre+Math.round(to*e);if(k<1)requestAnimationFrame(f)})(t0)}
-
 const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n};
 const ic=k=>'<svg><use href="#i-'+k+'"/></svg>';
 const C=window.FIREBASE_CONFIG;
@@ -216,7 +194,7 @@ const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
 const EXPLORER={Ethereum:"https://etherscan.io/tx/",Bitcoin:"https://mempool.space/tx/",BNB:"https://bscscan.com/tx/"};
 const OF=[["all","All"],["todo","To do"],["wait","Waiting"],["active","Paid and active"],["delivered","Delivered"],["cancelled","Cancelled"]];
 const PF=[["verify","To verify"],["wait","Awaiting"],["paid","Paid"],["all","All"]];
-let reviews=[],orders=[],tickets=[],visits=[],users=[],first=true,firstT=true,unsub=null,unsub2=null,unsub3=null,unsub4=null,unsub5=null,ofil="all",pfil="verify";
+let orders=[],tickets=[],visits=[],users=[],first=true,firstT=true,unsub=null,unsub2=null,unsub3=null,unsub4=null,unsub5=null,ads=[],ofil="all",pfil="verify";
 
 const todo=o=>o.status==="payment_submitted"||(o.status==="pending"&&o.method!=="crypto");
 const unpaid=o=>o.status==="pending"||o.status==="details_sent";
@@ -231,7 +209,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   $("le").textContent="Firebase is not set up yet. Fill in config.js first.";$("le").hidden=false;
 }else{
   const app=initializeApp(C),auth=getAuth(app),db=getFirestore(app);
-  const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s}).catch(x=>alert("Could not update ("+(x&&x.code||"unknown")+"). "+(x&&x.code==="permission-denied"?"You are not signed in as admin.":"Please try again.")));
+  const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s});
 
   $("bank").value=store("fg_bank");
   $("bank").oninput=()=>store("fg_bank",$("bank").value);
@@ -240,11 +218,8 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   $("lf").onsubmit=async e=>{
     e.preventDefault();$("le").hidden=true;
     try{await signInWithEmailAndPassword(auth,$("em").value,$("pw").value)}
-    catch(x){$("le").textContent=(MSGS[x&&x.code]||"Could not sign in. Check your email and password.")+" ("+(x&&x.code||"unknown")+")";$("le").hidden=false}
+    catch(x){$("le").textContent="Could not sign in. Check your email and password.";$("le").hidden=false}
   };
-  const MSGS={"auth/unauthorized-domain":"This website address is not allowed in Firebase yet.","auth/operation-not-allowed":"Google sign-in is not switched on in Firebase.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups and try again.","auth/popup-closed-by-user":"The Google window was closed. Try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Wait a few minutes."};
-  $("gg").onclick=async()=>{$("le").hidden=true;$("lm").hidden=true;try{const p=new GoogleAuthProvider();p.setCustomParameters({prompt:"select_account"});await signInWithPopup(auth,p)}catch(x){$("le").textContent=(MSGS[x&&x.code]||"Google sign-in did not finish")+" ("+(x&&x.code||"unknown")+")";$("le").hidden=false}};
-  $("fp").onclick=async()=>{$("le").hidden=true;$("lm").hidden=true;const e=$("em").value.trim();if(!e){$("le").textContent="Type your email first, then tap this again.";$("le").hidden=false;return}try{await sendPasswordResetEmail(auth,e);$("lm").textContent="Reset email sent to "+e+". Open it, choose a new password, then sign in. Check Spam too.";$("lm").hidden=false}catch(x){$("le").textContent=(MSGS[x&&x.code]||"Could not send the email")+" ("+(x&&x.code||"unknown")+")";$("le").hidden=false}};
   $("out").onclick=()=>signOut(auth);
   $("notif").onclick=()=>{if("Notification" in window)Notification.requestPermission()};
   $("alert").onclick=()=>{$("alert").hidden=true};
@@ -258,7 +233,6 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
   document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>go(b.dataset.v));
 
   onAuthStateChanged(auth,user=>{
-    $("me").textContent=user?"Signed in as "+user.email:"";
     $("login").hidden=!!user;$("app").hidden=!user;
     if(unsub){unsub();unsub=null}
     if(unsub2){unsub2();unsub2=null}
@@ -275,8 +249,8 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
       first=false;draw();
     },err=>{$("recent").textContent="Cannot load orders: "+err.code});
     unsub3=onSnapshot(query(collection(db,"visits"),where("lastSeen",">=",new Date(Date.now()-7*864e5)),limit(1500)),snap=>{visits=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
+    unsub5=onSnapshot(collection(db,"ads"),snap=>{ads=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.order||0)-(a.order||0));drawAds()},()=>{});
     unsub4=onSnapshot(collection(db,"users"),snap=>{users=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
-    unsub5=onSnapshot(collection(db,"reviews"),snap=>{reviews=snap.docs.map(d=>({id:d.id,...d.data()}));drawReviews()},()=>{});
     unsub2=onSnapshot(collection(db,"tickets"),snap=>{
       tickets=byNew(snap.docs.map(d=>({id:d.id,...d.data()})));
       if(!firstT)snap.docChanges().forEach(c=>{if(c.type==="added")ping("New support message from",c.doc.data().email,"")});
@@ -312,6 +286,35 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     const w=el("a","btn"+(d?" pri":""),"Notify on WhatsApp");
     w.href=wa(o,d?"status":"pay");w.target="_blank";w.rel="noopener";return w;
   }
+  function trackBox(o){
+    const d=el("div","row");
+    const s=el("select");["USPS","UPS","FedEx","DHL","Other"].forEach(k=>{const op=el("option","",k);op.value=k;if(k===o.carrier)op.selected=true;s.appendChild(op)});
+    const i=el("input");i.placeholder="Tracking number";i.value=o.trackNo||"";i.style.width="auto";i.style.flex="1";i.style.minWidth="140px";
+    const b=el("button","","Save tracking");b.type="button";
+    b.onclick=()=>{b.disabled=true;updateDoc(doc(db,"orders",o.id),{carrier:s.value,trackNo:i.value.trim()}).then(()=>{b.textContent="Saved";b.disabled=false}).catch(()=>{b.disabled=false;alert("Could not save. Please try again.")})};
+    d.appendChild(s);d.appendChild(i);d.appendChild(b);return d;
+  }
+  const MODELN="iPhone X,iPhone XR,iPhone XS,iPhone XS Max,iPhone 11,iPhone 11 Pro,iPhone 11 Pro Max,iPhone 12 mini,iPhone 12,iPhone 12 Pro,iPhone 12 Pro Max,iPhone 13 mini,iPhone 13,iPhone 13 Pro,iPhone 13 Pro Max,iPhone 14,iPhone 14 Plus,iPhone 14 Pro,iPhone 14 Pro Max,iPhone 15,iPhone 15 Plus,iPhone 15 Pro,iPhone 15 Pro Max,iPhone 16,iPhone 16 Plus,iPhone 16 Pro,iPhone 16 Pro Max,iPhone 17,iPhone Air,iPhone 17 Pro,iPhone 17 Pro Max,iPhone 18 Pro,iPhone 18 Pro Max".split(",");
+  (function(){const m=$("ad-m");const o=el("option","","No picture");o.value="";m.appendChild(o);MODELN.forEach(n=>{const p=el("option","",n);p.value=n;m.appendChild(p)})})();
+  $("ad-add").onclick=()=>{
+    const t=$("ad-t").value.trim(),l=$("ad-l").value.trim();
+    if(!t){alert("Write a title first.");return}
+    if(l&&!/^(https?:\/\/|#|mailto:)/i.test(l)){alert("The link must start with https://, # or mailto:");return}
+    $("ad-add").disabled=true;
+    addDoc(collection(db,"ads"),{title:t,text:$("ad-x").value.trim(),button:$("ad-b").value.trim(),link:l,model:$("ad-m").value,theme:$("ad-c").value,active:true,order:Date.now(),createdAt:serverTimestamp()}).then(()=>{["ad-t","ad-x","ad-b","ad-l"].forEach(k=>{$(k).value=""});$("ad-add").disabled=false}).catch(()=>{$("ad-add").disabled=false;alert("Could not save. Check that the Firebase rules were updated.")});
+  };
+  function drawAds(){
+    const l=$("ad-list");l.innerHTML="";
+    ads.forEach(a=>{
+      const c=el("div","card"),h=el("div","top"),t=el("div");
+      t.appendChild(el("h3","",a.title));if(a.text)t.appendChild(el("div","muted",a.text));
+      h.appendChild(t);h.appendChild(el("span","chip s-"+(a.active?"delivered":"cancelled"),a.active?"Showing":"Hidden"));c.appendChild(h);
+      const r=el("div","row");
+      const b1=el("button","",a.active?"Hide":"Show");b1.type="button";b1.onclick=()=>updateDoc(doc(db,"ads",a.id),{active:!a.active});r.appendChild(b1);
+      const b2=el("button","","Delete");b2.type="button";b2.onclick=()=>{if(confirm("Delete this promotion?"))deleteDoc(doc(db,"ads",a.id))};r.appendChild(b2);
+      c.appendChild(r);l.appendChild(c);
+    });
+  }
   function sendBox(o){
     const d=el("div");d.style.marginTop="12px";
     d.appendChild(el("div","muted",o.status==="details_sent"?"Sent to the customer's dashboard. You can edit and send again.":"Payment details for the customer's dashboard"));
@@ -323,7 +326,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
       const v=ta.value.trim();
       if(!v){alert(o.method==="bank"?"Add your bank details first, here or in Settings.":"Write or paste the payment details first.");return}
       b.disabled=true;
-      updateDoc(doc(db,"orders",o.id),{payInfo:v,status:"details_sent",infoAt:serverTimestamp()}).then(()=>{b.textContent="Sent"}).catch(x=>{b.disabled=false;const c=x&&x.code||"unknown";alert((c==="permission-denied"?"Not allowed. You are signed in with an account that is not the admin account. Sign out and sign in with your admin email.":"Could not send. Please try again.")+" ("+c+")")});
+      updateDoc(doc(db,"orders",o.id),{payInfo:v,status:"details_sent",infoAt:serverTimestamp()}).then(()=>{b.textContent="Sent"}).catch(()=>{b.disabled=false;alert("Could not send. Please try again.")});
     };
     d.appendChild(ta);d.appendChild(b);return d;
   }
@@ -331,22 +334,6 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     const h=el("div","top"),l=el("div");
     l.appendChild(el("h3","",o.code+"  $"+o.total));l.appendChild(el("div","muted",when(o)));
     h.appendChild(l);h.appendChild(chip(o));return h;
-  }
-  const TRK=["confirmed","processing","shipped","out_for_delivery"];
-  function trackBox(o){
-    if(!TRK.includes(o.status))return null;
-    const d=el("div");d.style.marginTop="12px";
-    d.appendChild(el("div","muted","Where is the parcel now? The customer sees this on a Google map in their dashboard."));
-    const r=el("div","row");r.style.marginTop="6px";
-    const i=el("input");i.placeholder="City, country, for example Lagos, Nigeria";i.value=o.trackLoc||"";i.autocomplete="off";
-    const b=el("button","pri","Update location");b.type="button";
-    b.onclick=()=>{
-      const v=i.value.trim();
-      if(!v){alert("Type the city or place where the parcel is now.");return}
-      b.disabled=true;
-      updateDoc(doc(db,"orders",o.id),{trackLoc:v,trackAt:serverTimestamp()}).then(()=>{b.textContent="Saved";setTimeout(()=>{b.textContent="Update location";b.disabled=false},1500)}).catch(()=>{b.disabled=false;alert("Could not save. Please try again.")});
-    };
-    r.appendChild(i);r.appendChild(b);d.appendChild(r);return d;
   }
   function orderCard(o){
     const c=el("div","card");
@@ -357,7 +344,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     const ul=el("ul");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     proof(o,c);
     if(unpaid(o)&&o.method!=="crypto")c.appendChild(sendBox(o));
-    const tb=trackBox(o);if(tb)c.appendChild(tb);
+    if(DONE.includes(o.status))c.appendChild(trackBox(o));
     const r=el("div","row");
     if(o.status==="payment_submitted"){const b=el("button","pri","Confirm payment");b.type="button";b.onclick=()=>setStatus(o,"confirmed");r.appendChild(b)}
     r.appendChild(waBtn(o));
@@ -399,7 +386,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     [["Visitors today",today.length,"b","users",()=>go("home")],["Page views today",views,"b","home",()=>go("home")],["Registered customers",users.length,"p","users",()=>go("cust")],["New customers today",newU,"p","users",()=>go("cust")],["Orders today",oToday.length,"o","orders",()=>{ofil="all";go("orders");draw()}],["Revenue today","$"+revToday,"g","pay",()=>{pfil="paid";go("pay");draw()}],["Orders to do",nTodo,"o","clock",()=>{ofil="todo";go("orders");draw()}],["Payments to verify",nVer,"b","pay",()=>{pfil="verify";go("pay");draw()}],["Open support",nOpen,"p","chat",()=>go("help")],["Total revenue","$"+rev,"g","orders",()=>{ofil="active";go("orders");draw()}]].forEach(x=>{
       const b=el("button","st c-"+x[2]);b.type="button";
       b.innerHTML=ic(x[3])+"<b></b><span></span>";
-      countUp(b.querySelector("b"),x[0],x[1]);b.querySelector("span").textContent=x[0];
+      b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
       b.onclick=x[4];st.appendChild(b);
     });
     const bars=$("bars");bars.innerHTML="";
@@ -418,22 +405,6 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
     [["Conversion (orders per visitor)",visits.length?Math.min(100,Math.round(o7*100/visits.length))+"%":"No data yet"],["Phones people look at",visits.length?Math.round(mob*100/visits.length)+"% mobile, "+(100-Math.round(mob*100/visits.length))+"% desktop":"No data yet"],["Added to cart but did not order",aband],["Most wanted phones",topM],["Where visitors come from",topR]].forEach(r=>{const k=el("div","kv");k.appendChild(el("span","",r[0]));k.appendChild(el("b","",String(r[1])));ins.appendChild(k)});
   }
   setInterval(()=>drawStats(),20000);
-
-  function drawReviews(){
-    const w=$("rvlist");w.innerHTML="";
-    if(!reviews.length){w.appendChild(el("p","muted","No reviews yet."));return}
-    byNew(reviews.slice()).forEach(r=>{
-      const c=el("div","card"),h=el("div","top"),l=el("div");
-      l.appendChild(el("h3","","\u2605".repeat(r.rating)+"\u2606".repeat(5-r.rating)));
-      l.appendChild(el("div","muted",(r.name||"Customer")+(r.model?"  "+r.model:"")));
-      h.appendChild(l);h.appendChild(el("span","chip s-"+(r.approved?"delivered":"pending"),r.approved?"Shown":"Waiting"));
-      c.appendChild(h);c.appendChild(el("p","",r.text));
-      const row=el("div","row");
-      const a=el("button",r.approved?"":"pri",r.approved?"Hide":"Approve");a.type="button";a.onclick=()=>updateDoc(doc(db,"reviews",r.id),{approved:!r.approved});row.appendChild(a);
-      const d=el("button","","Delete");d.type="button";d.onclick=()=>{if(confirm("Delete this review?"))deleteDoc(doc(db,"reviews",r.id))};row.appendChild(d);
-      c.appendChild(row);w.appendChild(c);
-    });
-  }
   function chips(id,list,cur,fn){
     const w=$(id);w.innerHTML="";
     list.forEach(([k,l])=>{const b=el("button","",l);b.type="button";b.setAttribute("aria-pressed",cur===k);b.onclick=()=>fn(k);w.appendChild(b)});
@@ -492,7 +463,7 @@ if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
       const c=el("div","card"),spent=x.l.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
       const pr=users.find(u=>u.id===x.u)||{},hd=el("div");
       hd.style.cssText="display:flex;gap:12px;align-items:center";
-      if(pr.photo){const im=new Image();im.referrerPolicy="no-referrer";im.src=pr.photo;im.alt="";im.style.cssText="width:48px;height:48px;border-radius:50%;object-fit:cover";hd.appendChild(im)}
+      if(pr.photo){const im=new Image();im.src=pr.photo;im.alt="";im.style.cssText="width:48px;height:48px;border-radius:50%;object-fit:cover";hd.appendChild(im)}
       hd.appendChild(el("h3","",pr.name||x.n));c.appendChild(hd);
       c.appendChild(el("div","muted",x.e+"  "+x.p));
       c.appendChild(el("p","",x.l.length+" order"+(x.l.length>1?"s":"")+"  $"+spent+" paid  Last order "+when(x.l[0])));

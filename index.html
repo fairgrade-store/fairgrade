@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>document.documentElement.classList.add("js")</script>
-<meta name="theme-color" content="#0E7A66">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fairgrade: graded, tested, warrantied iPhones</title>
 <meta name="description" content="Used iPhones, graded honestly and covered by a 12-month warranty. Unlocked, free shipping, 30-day returns.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cdefs%3E%3ClinearGradient id=%22fgl%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2319C59B%22/%3E%3Cstop offset=%221%22 stop-color=%22%230A5F51%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2232%22 height=%2232%22 rx=%229%22 fill=%22url%28%23fgl%29%22/%3E%3Cpath d=%22M22 9.2H12.2V23.2%22 stroke=%22%23fff%22 stroke-width=%223.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M15.6 17.4l2.9 2.9 5.1-6%22 stroke=%22%23A8FBE4%22 stroke-width=%223.1%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='fgH' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.16'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230B1B33'/%3E%3Crect width='64' height='64' rx='17' fill='url(%23fgH)'/%3E%3Crect x='24' y='29' width='17' height='7.6' rx='2.6' fill='%233DE0B8'/%3E%3Crect x='21' y='14' width='8' height='36' rx='2.6' fill='%23fff'/%3E%3Crect x='21' y='14' width='24' height='8' rx='2.6' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff}
-@media(prefers-color-scheme:dark){:root{--bg:#0B1419;--surface:#121D25;--ink:#E8EFF2;--muted:#98A7B0;--line:#24343E;--accent:#4FD1AE;--accent-ink:#06231C}}
+@media(prefers-color-scheme:dark){:root{--bg:#070D18;--surface:#0F1827;--ink:#E8EFF2;--muted:#98A7B0;--line:#1B2A41;--accent:#4FD1AE;--accent-ink:#06231C}}
 *{box-sizing:border-box}
 :root{color-scheme:light dark}
 input:-webkit-autofill,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-text-fill-color:var(--ink);caret-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--surface) inset;transition:background-color 9999s}
@@ -196,207 +194,172 @@ nav.open a{padding:11px 0;border-bottom:1px solid var(--line)}
 .nb a{color:inherit}
 .nb button{background:var(--bg);color:var(--ink);border:0;border-radius:10px;padding:8px 14px;font-weight:700}
 html{scroll-padding-top:80px}
+.logo{gap:10px}
+.logo .lm{width:36px;height:36px}
+.logo .wmk{width:112px;height:16px;color:var(--ink)}
+.logo2{display:flex;align-items:center;gap:10px}
+.logo2 .lm{width:34px;height:34px}
+.logo2 .wmk{width:108px;height:15px;color:var(--ink)}
+header{transition:box-shadow .3s}
+header.sc{box-shadow:0 8px 24px -14px rgba(11,27,51,.45)}
+main{position:relative}
+main>*:not(.glow){position:relative;z-index:1}
+.glow{position:absolute;left:0;right:0;top:0;height:760px;overflow:hidden;pointer-events:none;z-index:0!important}
+.glow i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.28}
+.glow i:nth-child(1){width:380px;height:380px;background:#2F6BFF;left:-100px;top:-70px;animation:drift 18s ease-in-out infinite}
+.glow i:nth-child(2){width:320px;height:320px;background:#12B9A0;right:-70px;top:150px;animation:drift 22s ease-in-out infinite reverse}
+.glow i:nth-child(3){width:240px;height:240px;background:#7C5CFF;left:38%;top:420px;animation:drift 26s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(40px,30px) scale(1.12)}}
+@keyframes float{50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+@keyframes bump{40%{transform:scale(1.4)}}
+@keyframes mq{to{transform:translateX(-50%)}}
+.gt2{background:linear-gradient(90deg,#2F6BFF,#12B9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.buy{position:relative;overflow:hidden}
+.buy:not(:disabled)::after,.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:shine 5s ease-in-out infinite;pointer-events:none}
+.cta{position:relative;overflow:hidden}
+#count.bump{animation:bump .4s}
+.ads{position:relative;border-radius:22px;overflow:hidden;margin-top:16px}
+.adtrack{display:flex;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ad{min-width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 22px 30px;color:#fff;min-height:150px}
+.ad h3{font-size:22px;color:#fff}
+.ad p{margin:6px 0 12px;opacity:.92}
+.ad a{background:#fff;color:#0B1B33;border-radius:999px;padding:8px 16px;font-weight:700;text-decoration:none;display:inline-block}
+.ad img{height:112px;width:auto;background:#fff;border-radius:14px;padding:6px;flex:none;max-width:44%;object-fit:contain}
+.th-blue{background:linear-gradient(120deg,#1E40AF,#2563EB 60%,#12B9A0)}
+.th-green{background:linear-gradient(120deg,#065F46,#0E7A66 60%,#34D399)}
+.th-purple{background:linear-gradient(120deg,#5B21B6,#7C3AED 60%,#EC4899)}
+.th-orange{background:linear-gradient(120deg,#C2410C,#F97316 60%,#FBBF24)}
+.th-dark{background:linear-gradient(120deg,#0B1B33,#1E293B 55%,#2F6BFF)}
+.addots{position:absolute;bottom:9px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.addots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.5);transition:width .3s}
+.addots button[aria-current="true"]{background:#fff;width:22px;border-radius:4px}
+.show{border-top:0;padding:28px 0 8px}
+.panel{position:relative;overflow:hidden;border-radius:28px;padding:26px;color:#fff;background:linear-gradient(135deg,#0B2A6B,#1E5BFF 58%,#12B9A0);display:grid;gap:22px}
+.panel::before{content:"";position:absolute;width:380px;height:380px;right:-80px;top:-130px;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 65%);animation:drift 14s ease-in-out infinite}
+.panel::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:22px 22px;opacity:.5;pointer-events:none}
+.ptxt,.stage{position:relative;z-index:1}
+.panel h2{color:#fff;font-size:clamp(24px,5vw,38px);margin:10px 0}
+.panel p{margin:0 0 18px;opacity:.92}
+.tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.panel .cta{background:#fff;color:#0B1B33}
+.stage{height:270px}
+.dev{position:absolute;width:34%;background:#fff;border-radius:18px;padding:8px;box-shadow:0 24px 48px -16px rgba(0,0,0,.55);transform:rotate(var(--r,0deg));animation:float 6s ease-in-out infinite}
+.dev img{width:100%;display:block;border-radius:10px}
+.d1{left:3%;top:42px;--r:-9deg}
+.d2{left:33%;top:0;z-index:2;width:36%;animation-delay:-2s}
+.d3{right:3%;top:46px;--r:9deg;animation-delay:-4s}
+.gad{position:absolute;width:62px;height:62px;animation:float 7s ease-in-out infinite;filter:drop-shadow(0 10px 14px rgba(0,0,0,.3));z-index:3}
+.ga1{left:0;bottom:0}
+.ga2{right:0;bottom:6px;animation-delay:-3s}
+.ga3{left:44%;bottom:-8px;animation-delay:-5s}
+.statsb{border-top:0;padding:20px 0}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sgrid>div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}
+.sgrid b{display:block;font:800 40px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em;color:var(--accent)}
+.sgrid span{color:var(--muted);font-weight:600;font-size:14px}
+.mq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-top:8px;background:var(--surface)}
+.mqt{display:flex;width:max-content;animation:mq 80s linear infinite}
+.mq:hover .mqt{animation-play-state:paused}
+.mqt span{white-space:nowrap;font-weight:700;color:var(--muted);font-size:15px;margin-right:36px}
+.mqt span::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:36px;vertical-align:middle}
+.gearg{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.gt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 12px;border-radius:20px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);text-align:center}
+.gt svg{width:96px;height:96px;animation:float 6s ease-in-out infinite}
+.gt:nth-child(2n) svg{animation-delay:-2s}
+.gt:nth-child(3n) svg{animation-delay:-4s}
+.soon{font-size:12px;font-weight:700;background:rgba(37,99,235,.12);color:var(--accent);padding:2px 10px;border-radius:99px}
+.mc{transition:transform .25s ease,box-shadow .25s ease}
+.mc:hover,.gt:hover{transform:translateY(-6px);box-shadow:0 18px 36px -18px rgba(11,27,51,.5)}
+.mc .pic img{transition:transform .4s ease}
+.mc:hover .pic img{transform:scale(1.06)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.mc.rv.in,.gt.rv.in{transition:opacity .6s ease,transform .25s ease,box-shadow .25s ease}
+.tg{position:fixed;right:14px;bottom:14px;z-index:14;display:flex;align-items:center;gap:8px;background:#229ED9;color:#fff;border-radius:999px;padding:12px;font-weight:700;text-decoration:none;box-shadow:0 10px 26px -10px rgba(34,158,217,.8)}
+.tg svg{width:24px;height:24px;fill:#fff;stroke:none}
+.tg span{display:none}
+.nb{right:78px}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:13px;font-weight:700}
+.gbtn svg{width:20px;height:20px;fill:none}
+.or{text-align:center;color:var(--muted);font-size:13px;margin:12px 0 0}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}}
+@media(min-width:600px){.tg span{display:inline}.tg{padding:12px 16px}.nb{right:200px}}
+@media(min-width:760px){.panel{grid-template-columns:1fr 1fr;align-items:center;padding:44px}.stage{height:340px}.gearg{grid-template-columns:repeat(4,1fr)}.sgrid{grid-template-columns:repeat(4,1fr)}.ad{padding:28px 32px 34px}.ad h3{font-size:28px}.ad img{height:150px}.gad{width:84px;height:84px}}
+.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:8px}
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#2F6BFF,#8B5CF6);z-index:60}
+#gear{background:radial-gradient(70% 50% at 50% 0,rgba(47,107,255,.14),transparent 70%)}
+.gcards{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.gc{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:var(--surface);padding:14px 16px 18px;transition:transform .25s ease,box-shadow .25s ease}
+.gc::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--glow),transparent 62%);opacity:.75;pointer-events:none}
+.gc>*{position:relative}
+.gc .gi{height:150px;display:grid;place-items:center}
+.gc .gi svg{height:150px;width:auto;animation:float 6s ease-in-out infinite}
+.gc:nth-child(2n) .gi svg{animation-delay:-2s}
+.gc:nth-child(3n) .gi svg{animation-delay:-4s}
+.gc h3{font-size:19px;margin:10px 0 4px}
+.gc p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.gc a{color:var(--accent);font-weight:700;text-decoration:none}
+.gc:hover{transform:translateY(-6px);box-shadow:0 18px 36px -18px rgba(11,27,51,.55)}
+#layers{background:radial-gradient(70% 45% at 50% 0,rgba(47,107,255,.14),transparent 70%)}
+.lay{display:grid;gap:22px;margin-top:8px}
+.stack{width:100%;max-width:430px;margin:0 auto;display:block;overflow:visible}
+.ly{transition:transform .35s ease,filter .35s ease;cursor:pointer}
+.ly.on{transform:translate(-8px,-12px);filter:drop-shadow(0 0 14px var(--c))}
+.llist{display:grid;gap:10px}
+.li{display:flex;gap:12px;text-align:left;align-items:flex-start;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);font-weight:400;color:var(--ink)}
+.li .d{width:11px;height:11px;border-radius:50%;margin-top:6px;flex:none}
+.li b{display:block}
+.li em{font-style:normal;color:var(--muted);font-size:15px}
+.li[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.tg span{display:inline}
+.tg{padding:12px 18px;background:linear-gradient(90deg,#1d8fe0,#22b0e8)}
+.nb{right:12px;bottom:78px}
+@media(min-width:760px){.gcards{grid-template-columns:repeat(3,1fr)}.lay{grid-template-columns:1fr 1fr;align-items:center}}
+@media(max-width:519px){.logo .wmk{width:88px;height:13px}.logo .lm{width:32px;height:32px}.acct{display:none}}
+@media(min-width:1000px){.navacct{display:none}}
 @media(min-width:1000px){nav{display:flex!important}.menubtn{display:none}}
 @media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}.fcols{grid-template-columns:2fr 1fr 1fr 1fr}.fcols>div:first-child{grid-column:auto}}
 @media(min-width:760px){.trust{grid-template-columns:repeat(4,1fr)}.g{grid-template-columns:170px 1fr 190px;align-items:baseline;gap:24px}.pol{grid-template-columns:repeat(3,1fr)}.cat{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:64px 0 72px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-/* ===== FX: graphics + motion ===== */
-.js .rv{opacity:0}
-.rv.in{opacity:1;animation:rise .75s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:var(--d,0ms)}
-@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-#prog{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#19C59B,#35a7ff,#8b5cf6);z-index:60}
-header{transition:background .25s,box-shadow .25s}
-header.sh{background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 10px 30px -18px rgba(0,0,0,.4)}
-.logo{gap:11px}
-.logo svg{width:36px;height:36px;filter:drop-shadow(0 5px 10px rgba(14,122,102,.35))}
-.logo span b{color:var(--accent);font-weight:800}
-.logo2{display:flex;align-items:center;gap:10px}
-.logo2 svg{width:30px;height:30px}
-.logo2 b{color:var(--accent);font-weight:800}
-nav{gap:22px}
-main{position:relative;overflow-x:clip}
-.mesh{position:absolute;inset:0 0 auto 0;height:920px;pointer-events:none;z-index:0;overflow:hidden}
-.mesh i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.42;animation:drift 18s ease-in-out infinite alternate}
-.mesh i:nth-child(1){width:440px;height:440px;left:-90px;top:-70px;background:#19C59B}
-.mesh i:nth-child(2){width:400px;height:400px;right:-70px;top:30px;background:#5b8cff;animation-delay:-6s}
-.mesh i:nth-child(3){width:340px;height:340px;left:38%;top:380px;background:#b78cff;opacity:.3;animation-delay:-11s}
-@media(prefers-color-scheme:dark){.mesh i{opacity:.24}}
-@keyframes drift{to{transform:translate(70px,46px) scale(1.18)}}
-main>.wrap,main>section,main>.mq{position:relative;z-index:1}
-.gt{background:linear-gradient(100deg,var(--accent),#3b82f6 60%,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
-.cta{transition:transform .2s,box-shadow .2s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(14,122,102,.7)}
-.buy{transition:transform .15s,box-shadow .2s,filter .2s}
-.buy:not(:disabled):hover{filter:brightness(1.08);box-shadow:0 12px 24px -12px rgba(14,122,102,.8)}
-.buy:not(:disabled):active{transform:scale(.98)}
-.report{backdrop-filter:blur(6px)}
-.hart{margin-top:28px;max-width:520px}
-.hart svg{width:100%;height:auto;display:block;transition:transform .25s ease-out;transform:perspective(900px) rotateY(calc(var(--px,0)*9deg)) rotateX(calc(var(--py,0)*-7deg))}
-.fl{animation:fl 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-.fl2{animation-duration:7.5s;animation-delay:-2s}
-.fl3{animation-duration:5.5s;animation-delay:-4s}
-@keyframes fl{50%{transform:translateY(-10px)}}
-.mq{overflow:hidden;border-block:1px solid var(--line);background:var(--surface);padding:14px 0;white-space:nowrap}
-.mq .tr{display:flex;width:max-content;animation:mq 42s linear infinite}
-.mq:hover .tr{animation-play-state:paused}
-.mq .tr>div{display:flex;gap:44px;padding-right:44px}
-.mq span{display:inline-flex;align-items:center;gap:10px;font:700 15px "Schibsted Grotesk",sans-serif;color:var(--muted)}
-.mq span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
-@keyframes mq{to{transform:translateX(-50%)}}
-.stats4{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:44px 0 4px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;position:relative;overflow:hidden}
-.stat::after{content:"";position:absolute;right:-34px;top:-34px;width:104px;height:104px;border-radius:50%;background:radial-gradient(var(--accent),transparent 70%);opacity:.2}
-.stat b{display:block;font:800 40px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em;line-height:1}
-.stat span{color:var(--muted);font-size:14px}
-@media(min-width:760px){.stats4{grid-template-columns:repeat(4,1fr)}}
-.mc{position:relative;transition:box-shadow .25s,border-color .25s,transform .15s ease-out;will-change:transform}
-.mc:hover{box-shadow:0 24px 46px -24px rgba(14,122,102,.6);border-color:var(--accent)}
-.mc::after,.gcard::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(240px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.2),transparent 62%);opacity:0;transition:opacity .25s}
-.mc:hover::after,.gcard:hover::after{opacity:1}
-.dark{background:radial-gradient(1100px 520px at 85% -10%,#12385c 0%,transparent 60%),radial-gradient(900px 520px at 0% 110%,#0a4a3e 0%,transparent 55%),#070d14;color:#e8eff5;border-top:0;position:relative;overflow:hidden}
-.dark h2{color:#fff}
-.dark .sub{color:#9fb0bd}
-.dark .kick{color:#7CF0CF}
-.kick{display:inline-block;font:700 13px "Schibsted Grotesk",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.gg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(min-width:900px){.gg{grid-template-columns:repeat(3,1fr);gap:18px}}
-.gcard{position:relative;border-radius:20px;padding:16px;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.13);overflow:hidden;transition:box-shadow .25s,border-color .25s,transform .15s ease-out;will-change:transform}
-.gcard::before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;left:50%;top:6px;transform:translateX(-50%);background:var(--gc,#19C59B);filter:blur(60px);opacity:.38}
-.gcard svg.gsvg{position:relative;width:100%;height:auto;max-height:150px;display:block;margin:0 auto 10px;animation:fl 6s ease-in-out infinite}
-.gcard:nth-child(2n) svg.gsvg{animation-delay:-2s}
-.gcard:nth-child(3n) svg.gsvg{animation-delay:-4s}
-.gcard h3{position:relative;font-size:19px;color:#fff}
-.gcard p{position:relative;margin:4px 0 12px;color:#aab9c5;font-size:14px}
-.gcard a{position:relative;color:#7CF0CF;font-weight:700;text-decoration:none;font-size:14px}
-.gcard:hover{border-color:rgba(124,240,207,.55);box-shadow:0 26px 50px -26px rgba(25,197,155,.55)}
-.inx{display:grid;gap:30px;align-items:center}
-@media(min-width:860px){.inx{grid-template-columns:1fr 1fr;gap:50px}}
-.xv{height:400px;perspective:1100px;display:grid;place-items:center}
-.stack{position:relative;width:150px;height:300px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-36deg)}
-.lay{position:absolute;inset:0;border-radius:26px;transform:translateZ(calc(var(--i)*6px));transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .25s;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
-.xv.open .lay{transform:translateZ(calc(var(--i)*44px))}
-.lay.hl{filter:brightness(1.4) saturate(1.3)}
-.l0{background:linear-gradient(150deg,#3a4658,#161c26)}
-.l1{background:linear-gradient(150deg,#12342f,#0a1d1f);border:2px solid rgba(25,197,155,.35)}
-.l2{background:linear-gradient(150deg,#0e5a4a,#0a3a4a)}
-.l3{background:linear-gradient(150deg,#19C59B,#3b82f6 60%,#8b5cf6)}
-.l4{background:rgba(255,255,255,.13);border:1.5px solid rgba(255,255,255,.5);box-shadow:inset 0 0 30px rgba(255,255,255,.14)}
-.l0 .cam{position:absolute;left:12px;top:12px;width:56px;height:56px;border-radius:15px;background:#0a0e14;border:2px solid #556}
-.l0 .cam::before,.l0 .cam::after{content:"";position:absolute;width:17px;height:17px;border-radius:50%;background:#1b2330;border:2px solid #778}
-.l0 .cam::before{left:6px;top:6px}
-.l0 .cam::after{left:29px;top:29px}
-.l1 .cell{position:absolute;left:16px;right:16px;height:78px;border-radius:12px;background:linear-gradient(90deg,#19C59B,#0e9a78);opacity:.9}
-.l1 .cell:nth-child(1){top:22px}
-.l1 .cell:nth-child(2){top:112px;opacity:.7}
-.l1 .cell:nth-child(3){top:202px;opacity:.5}
-.l2 .chip{position:absolute;border-radius:7px;background:#071217;border:1.5px solid rgba(70,224,189,.6)}
-.l2 .chip:nth-child(1){left:18px;top:24px;width:62px;height:62px}
-.l2 .chip:nth-child(2){left:90px;top:40px;width:42px;height:28px}
-.l2 .chip:nth-child(3){left:20px;top:120px;width:112px;height:20px}
-.l2 .chip:nth-child(4){left:30px;top:170px;width:34px;height:60px}
-.l2 .chip:nth-child(5){left:80px;top:180px;width:52px;height:44px}
-.l4 .isl{position:absolute;top:12px;left:50%;width:48px;height:15px;border-radius:9px;background:#05080c;transform:translateX(-50%)}
-.xl{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
-.xl li{display:flex;gap:14px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);transition:background .2s,border-color .2s}
-.xl li:hover,.xl li.hl{background:rgba(25,197,155,.15);border-color:rgba(124,240,207,.55)}
-.xl b{display:block;color:#fff}
-.xl span{color:#aab9c5;font-size:14px}
-.xl i{flex:none;width:12px;height:12px;border-radius:50%;margin-top:6px;background:var(--c)}
-.cbox{display:grid;gap:18px;border-radius:26px;padding:28px;background:linear-gradient(135deg,#0B2A6B,#2563EB 58%,#229ED9);color:#fff;position:relative;overflow:hidden}
-.cbox::before,.cbox::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.1)}
-.cbox::before{width:260px;height:260px;right:-60px;top:-90px}
-.cbox::after{width:160px;height:160px;right:140px;bottom:-90px}
-.cbox>*{position:relative;z-index:1}
-.cbox h2{color:#fff}
-.cbox p{margin:10px 0 0;max-width:52ch;color:#dbeafe}
-.cbox .tgb{display:inline-flex;gap:10px;align-items:center;background:#fff;color:#0B2A6B;font-weight:800;border-radius:14px;padding:15px 22px;text-decoration:none;width:max-content;transition:transform .2s,box-shadow .2s}
-.cbox .tgb:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
-.cbox .tgb svg{width:22px;height:22px;fill:#229ED9}
-@media(min-width:760px){.cbox{grid-template-columns:1fr auto;align-items:center;padding:44px}}
-.tg{position:fixed;right:16px;bottom:16px;z-index:22;display:flex;align-items:center;gap:10px;background:#229ED9;color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 18px 12px 14px;box-shadow:0 14px 30px -8px rgba(34,158,217,.75);transition:transform .2s}
-.tg:hover{transform:translateY(-2px)}
-.tg svg{width:24px;height:24px;fill:#fff}
-.tg::before{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid #229ED9;animation:ring 2.4s ease-out infinite;pointer-events:none}
-@keyframes ring{from{transform:scale(1);opacity:.8}to{transform:scale(1.4);opacity:0}}
-@media(max-width:600px){.tg span{display:none}.tg{padding:14px}}
-.nb{right:84px}
-#toast{position:fixed;left:50%;bottom:88px;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font-weight:600;font-size:14px;z-index:60;pointer-events:none;transition:opacity .3s,transform .3s;max-width:calc(100% - 32px);text-align:center}
-#toast.on{opacity:1;transform:translate(-50%,0)}
-#count.bump{animation:bump .5s}
-@keyframes bump{40%{transform:scale(1.55)}}
-.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;background:#fff;color:#1f1f1f;border:1.5px solid #dadce0;border-radius:12px;padding:13px;font-weight:600;font-size:16px;transition:box-shadow .2s}
-.gbtn:hover{box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
-.gbtn svg{width:20px;height:20px}
-.or{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:14px 0 0}
-.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
-.tgl{display:inline-flex;align-items:center;gap:6px}
-.navacct{display:none}
-nav.open .navacct{display:block}
-@media(min-width:1000px){.navacct{display:none!important}}
-@media(max-width:520px){.acct{display:none}.hr{gap:8px}.logo{font-size:20px;gap:8px}.logo svg{width:32px;height:32px}.cartbtn{padding:7px 8px 7px 12px}.menubtn{padding:8px 12px}}
-@media(prefers-reduced-motion:reduce){.fl,.mesh i,.mq .tr,.gcard svg.gsvg,.tg::before{animation:none!important}.js .rv{opacity:1}.rv.in{animation:none}}
-
-
-.rvs{display:grid;gap:14px;margin-top:22px}
-@media(min-width:760px){.rvs{grid-template-columns:repeat(3,1fr)}}
-.rvc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
-.rvc p{margin:10px 0 12px}
-.rvc small{color:var(--muted)}
-.stars{color:#F5A524;letter-spacing:2px;font-size:18px}
-.rvsum{display:flex;align-items:center;gap:12px;margin-top:14px;font-weight:700}
-.rvempty{margin-top:22px;border:1.5px dashed var(--line);border-radius:18px;padding:24px;color:var(--muted)}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE5F0"/></linearGradient><linearGradient id="gB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2F6BFF"/><stop offset="1" stop-color="#12B9A0"/></linearGradient><linearGradient id="gS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E3A8A"/><stop offset="1" stop-color="#0B1B33"/></linearGradient></defs>
+<symbol id="i-logo" viewBox="0 0 64 64"><g stroke="none"><defs><linearGradient id="fgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="#0B1B33"/><rect width="64" height="64" rx="17" fill="url(#fgH)"/><rect x="24" y="29" width="17" height="7.6" rx="2.6" fill="#3DE0B8"/><rect x="21" y="14" width="8" height="36" rx="2.6" fill="#fff"/><rect x="21" y="14" width="24" height="8" rx="2.6" fill="#fff"/></g></symbol>
+<symbol id="i-wm" viewBox="0 0 141 20"><path transform="translate(0 15)" fill="currentColor" stroke="none" d="M9.7 -13.9V-12.0H3.8V-7.9H8.4V-6.1H3.8V0.0H1.5V-13.9Z M24.2 -2.8H18.4L17.4 0.0H15.0L20.0 -13.9H22.6L27.6 0.0H25.2ZM23.5 -4.7 21.3 -11.2 19.0 -4.7Z M36.0 -13.9V0.0H33.7V-13.9Z M50.2 0.0 47.0 -5.6H45.3V0.0H43.0V-13.9H47.8Q49.4 -13.9 50.5 -13.3Q51.6 -12.8 52.2 -11.8Q52.7 -10.9 52.7 -9.7Q52.7 -8.4 51.9 -7.3Q51.2 -6.2 49.5 -5.8L53.0 0.0ZM45.3 -7.4H47.8Q49.1 -7.4 49.8 -8.0Q50.4 -8.7 50.4 -9.7Q50.4 -10.8 49.8 -11.4Q49.1 -12.0 47.8 -12.0H45.3Z M69.7 -9.9Q69.2 -10.9 68.2 -11.5Q67.3 -12.0 66.0 -12.0Q64.6 -12.0 63.5 -11.4Q62.5 -10.8 61.8 -9.6Q61.2 -8.5 61.2 -7.0Q61.2 -5.5 61.8 -4.3Q62.5 -3.2 63.5 -2.6Q64.6 -1.9 66.0 -1.9Q67.9 -1.9 69.0 -3.0Q70.2 -4.0 70.4 -5.8H65.2V-7.6H72.9V-5.8Q72.7 -4.2 71.7 -2.9Q70.8 -1.5 69.3 -0.7Q67.8 0.1 66.0 0.1Q64.0 0.1 62.4 -0.8Q60.8 -1.7 59.8 -3.3Q58.9 -4.9 58.9 -7.0Q58.9 -9.0 59.8 -10.6Q60.8 -12.3 62.4 -13.2Q64.1 -14.1 66.0 -14.1Q68.2 -14.1 69.9 -13.0Q71.7 -11.9 72.5 -9.9Z M86.3 0.0 83.1 -5.6H81.4V0.0H79.1V-13.9H83.9Q85.5 -13.9 86.6 -13.3Q87.7 -12.8 88.3 -11.8Q88.8 -10.9 88.8 -9.7Q88.8 -8.4 88.1 -7.3Q87.3 -6.2 85.6 -5.8L89.1 0.0ZM81.4 -7.4H83.9Q85.2 -7.4 85.8 -8.0Q86.5 -8.7 86.5 -9.7Q86.5 -10.8 85.9 -11.4Q85.2 -12.0 83.9 -12.0H81.4Z M104.1 -2.8H98.3L97.3 0.0H94.9L99.9 -13.9H102.6L107.5 0.0H105.1ZM103.5 -4.7 101.2 -11.2 99.0 -4.7Z M125.6 -6.9Q125.6 -4.8 124.7 -3.2Q123.8 -1.7 122.1 -0.8Q120.5 0.0 118.2 0.0H113.7V-13.9H118.2Q120.5 -13.9 122.1 -13.1Q123.8 -12.2 124.7 -10.6Q125.6 -9.0 125.6 -6.9ZM123.3 -6.9Q123.3 -9.3 122.0 -10.7Q120.7 -12.0 118.2 -12.0H116.0V-1.9H118.2Q120.7 -1.9 122.0 -3.2Q123.3 -4.5 123.3 -6.9Z M134.2 -12.1V-8.0H139.0V-6.1H134.2V-1.9H139.6V0.0H131.9V-13.9H139.6V-12.1Z"/></symbol>
+<symbol id="g-buds" viewBox="0 0 120 120"><rect x="16" y="58" width="88" height="50" rx="22" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><path d="M18 80h84" stroke="#CBD5E1" stroke-width="2"/><circle cx="60" cy="94" r="3.5" fill="#3DE0B8"/><g transform="rotate(-14 38 34)"><rect x="30" y="8" width="16" height="44" rx="8" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="38" cy="16" r="12" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="38" cy="16" r="4" fill="#94A3B8"/></g><g transform="rotate(14 82 34)"><rect x="74" y="8" width="16" height="44" rx="8" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="82" cy="16" r="12" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="82" cy="16" r="4" fill="#94A3B8"/></g></symbol>
+<symbol id="g-watch" viewBox="0 0 120 120"><rect x="42" y="2" width="36" height="32" rx="10" fill="url(#gB)"/><rect x="42" y="86" width="36" height="32" rx="10" fill="url(#gB)"/><rect x="26" y="24" width="68" height="72" rx="22" fill="#0B1B33"/><rect x="32" y="30" width="56" height="60" rx="17" fill="url(#gS)"/><path d="M60 44v17l11 7" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="61" r="3.2" fill="#3DE0B8"/><rect x="94" y="50" width="6" height="16" rx="3" fill="#1E3A8A"/></symbol>
+<symbol id="g-charger" viewBox="0 0 120 120"><rect x="46" y="6" width="7" height="24" rx="3.5" fill="#94A3B8"/><rect x="67" y="6" width="7" height="24" rx="3.5" fill="#94A3B8"/><rect x="28" y="28" width="64" height="62" rx="16" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><rect x="44" y="46" width="32" height="15" rx="7.5" fill="#0B1B33"/><rect x="50" y="51" width="20" height="5" rx="2.5" fill="#3DE0B8"/><path d="M60 90v8c0 12 22 8 22 20" stroke="#2F6BFF" stroke-width="5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="g-case" viewBox="0 0 120 120"><rect x="30" y="6" width="60" height="108" rx="17" fill="url(#gB)"/><rect x="36" y="12" width="48" height="96" rx="12" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><rect x="38" y="16" width="27" height="27" rx="9" fill="#0B1B33"/><circle cx="47" cy="25" r="5" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/><circle cx="57" cy="35" r="5" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/><circle cx="47" cy="35" r="2.2" fill="#3DE0B8"/><circle cx="60" cy="74" r="11" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/></symbol>
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
 <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
 <symbol id="i-return" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
 </svg>
 
+<div class="prog" id="prog"></div>
 <div class="announce">Free shipping on every order. 12-month warranty. 30-day returns.</div>
 <header>
 <div class="wrap bar">
-<a class="logo" href="#top" aria-label="Fairgrade home"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fair<b>grade</b></span></a>
-<nav id="nav" aria-label="Main"><a href="#models">iPhones</a><a href="#gadgets">Gadgets</a><a href="#grading">How we grade</a><a href="#compare">Compare</a><a href="#warranty">Warranty</a><a href="#faq">Questions</a><a href="#contact">Contact</a><a class="navacct" href="account.html">My account</a></nav>
+<a class="logo" href="#top" aria-label="Fairgrade home"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></a>
+<nav id="nav" aria-label="Main"><a href="#models">iPhones</a><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a><a class="navacct" href="account.html">My account</a></nav>
 <div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button><button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button></div>
 </div>
 </header>
 <div class="wrap"><form class="srch" id="srch" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Search phones, for example iPhone 15 Pro" aria-label="Search phones" autocomplete="off"></form></div>
 
 <main id="top">
-<div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wrap" id="adsw" hidden><div class="ads" id="ads" role="region" aria-label="Promotions"><div class="adtrack" id="adtrack"></div><div class="addots" id="addots"></div></div></div>
 <div class="wrap">
 <div class="hero">
 <div>
-<h1>Used iPhones, graded <span class="gt">honestly</span> and covered for a year.</h1>
+<h1>Used iPhones, <span class="gt2">graded honestly</span> and covered for a year.</h1>
 <p class="lede">Choose a model, storage size, and condition. You see the price, battery health, and delivery date before anything goes in your cart.</p>
 <div class="btns"><a class="cta" href="#pick">Pick your iPhone</a><a class="link" href="#grading">See how we grade</a></div>
-<div class="hart" id="hart"><svg viewBox="0 0 480 350" role="img" aria-label="Illustration of an iPhone with a smartwatch, earbuds and a tablet"><defs>
-<radialGradient id="ha-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#19C59B" stop-opacity=".5"/><stop offset="1" stop-color="#19C59B" stop-opacity="0"/></radialGradient>
-<linearGradient id="ha-scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset=".55" stop-color="#2f6bff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
-<linearGradient id="ha-frame" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6b7587"/><stop offset=".5" stop-color="#232a36"/><stop offset="1" stop-color="#0f131a"/></linearGradient>
-<linearGradient id="ha-tab" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a6a"/><stop offset="1" stop-color="#c13cff"/></linearGradient>
-<linearGradient id="ha-wb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b6478"/><stop offset="1" stop-color="#171b25"/></linearGradient>
-<linearGradient id="ha-ws" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a5c"/><stop offset="1" stop-color="#ff2d6f"/></linearGradient>
-<linearGradient id="ha-cs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bcc6d6"/></linearGradient>
-</defs>
-<ellipse cx="240" cy="330" rx="170" ry="12" fill="#000" opacity=".18"/>
-<circle cx="240" cy="178" r="176" fill="url(#ha-glow)"/>
-<g class="fl fl3"><g transform="translate(8 62) rotate(-9)"><rect width="210" height="146" rx="17" fill="#1b2130"/><rect x="7" y="7" width="196" height="132" rx="11" fill="url(#ha-tab)"/><circle cx="64" cy="58" r="26" fill="#fff" opacity=".22"/><rect x="104" y="40" width="74" height="9" rx="4.5" fill="#fff" opacity=".85"/><rect x="104" y="58" width="52" height="7" rx="3.5" fill="#fff" opacity=".5"/><rect x="30" y="100" width="24" height="24" rx="6" fill="#fff" opacity=".3"/><rect x="62" y="92" width="24" height="32" rx="6" fill="#fff" opacity=".45"/><rect x="94" y="82" width="24" height="42" rx="6" fill="#fff" opacity=".6"/><rect x="126" y="72" width="24" height="52" rx="6" fill="#fff" opacity=".8"/></g></g>
-<g class="fl"><g transform="translate(166 14)"><rect width="150" height="316" rx="35" fill="url(#ha-frame)"/><rect x="6" y="6" width="138" height="304" rx="30" fill="url(#ha-scr)"/><rect x="55" y="17" width="40" height="12" rx="6" fill="#05080c"/>
-<text x="75" y="94" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="46" font-weight="700" fill="#fff">9:41</text><text x="75" y="114" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="11" fill="#fff" opacity=".85">Graded Excellent</text>
-<rect x="18" y="138" width="51" height="51" rx="15" fill="#fff" opacity=".22"/><circle cx="43.5" cy="163.5" r="14" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="5"/><circle cx="43.5" cy="163.5" r="14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="80 90" transform="rotate(-90 43.5 163.5)"/>
-<rect x="81" y="138" width="51" height="51" rx="15" fill="#fff" opacity=".22"/><path d="M95 172l8-8 6 6 9-11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="18" y="200" width="114" height="50" rx="15" fill="#fff" opacity=".22"/><rect x="30" y="214" width="60" height="8" rx="4" fill="#fff" opacity=".85"/><rect x="30" y="230" width="40" height="6" rx="3" fill="#fff" opacity=".5"/>
-<rect x="18" y="268" width="26" height="26" rx="8" fill="#fff" opacity=".38"/><rect x="48" y="268" width="26" height="26" rx="8" fill="#fff" opacity=".38"/><rect x="78" y="268" width="26" height="26" rx="8" fill="#fff" opacity=".38"/><rect x="108" y="268" width="24" height="26" rx="8" fill="#fff" opacity=".38"/>
-<path d="M6 150 150 6v70L6 220z" fill="#fff" opacity=".06"/></g></g>
-<g class="fl fl2"><g transform="translate(346 150) scale(.78)"><rect x="40" y="0" width="44" height="44" rx="12" fill="url(#ha-ws)"/><rect x="40" y="136" width="44" height="44" rx="12" fill="url(#ha-ws)"/><rect x="20" y="28" width="88" height="124" rx="28" fill="url(#ha-wb)"/><rect x="109" y="68" width="7" height="22" rx="3.5" fill="#6b7489"/><rect x="26" y="34" width="76" height="112" rx="22" fill="#05070c"/>
-<g transform="rotate(-90 64 98)" fill="none" stroke-linecap="round" stroke-width="7"><circle cx="64" cy="98" r="27" stroke="#ff2d6f" stroke-opacity=".25"/><circle cx="64" cy="98" r="27" stroke="#ff2d6f" stroke-dasharray="130 170"/><circle cx="64" cy="98" r="18" stroke="#8bf24a" stroke-opacity=".25"/><circle cx="64" cy="98" r="18" stroke="#8bf24a" stroke-dasharray="80 113"/><circle cx="64" cy="98" r="9" stroke="#35d0ff" stroke-opacity=".25"/><circle cx="64" cy="98" r="9" stroke="#35d0ff" stroke-dasharray="38 57"/></g></g></g>
-<g class="fl fl3"><g transform="translate(34 230) scale(.8)"><rect x="0" y="40" width="112" height="76" rx="32" fill="url(#ha-cs)"/><path d="M0 68H112" stroke="#9aa6ba" stroke-width="2"/><circle cx="56" cy="94" r="4.5" fill="#19C59B"/><circle cx="26" cy="22" r="16" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><rect x="34" y="24" width="9" height="30" rx="4.5" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><g transform="translate(112 0) scale(-1 1)"><circle cx="26" cy="22" r="16" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><rect x="34" y="24" width="9" height="30" rx="4.5" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/></g></g></g>
-</svg></div>
 </div>
 
 <div class="report" id="pick">
@@ -429,8 +392,15 @@ nav.open .navacct{display:block}
 </ul>
 </div>
 
-<div class="mq" aria-hidden="true"><div class="tr"><div><span>Graded honestly</span><span>12-month warranty</span><span>Free shipping</span><span>30-day returns</span><span>Unlocked iPhones</span><span>Tested before it ships</span><span>Pay by card, bank or crypto</span><span>Track your order on a map</span></div><div><span>Graded honestly</span><span>12-month warranty</span><span>Free shipping</span><span>30-day returns</span><span>Unlocked iPhones</span><span>Tested before it ships</span><span>Pay by card, bank or crypto</span><span>Track your order on a map</span></div></div></div>
-<div class="wrap"><div class="stats4"><div class="stat rv"><b data-count="0" id="n-models">0</b><span>iPhone models</span></div><div class="stat rv"><b data-count="12">0</b><span>Months of warranty</span></div><div class="stat rv"><b data-count="30">0</b><span>Days to return</span></div><div class="stat rv"><b data-count="3">0</b><span>Ways to pay</span></div></div></div>
+<section class="show" id="showcase"><div class="wrap"><div class="panel">
+<div class="ptxt"><span class="tag">New arrivals</span><h2>The latest iPhones, graded and ready to ship</h2><p>From the iPhone X to the iPhone 18 Pro Max. Every phone is tested, graded and covered for 12 months.</p><a class="cta" href="#models">Shop all iPhones</a></div>
+<div class="stage" aria-hidden="true">
+<div class="dev d1"><img id="st1" alt=""></div><div class="dev d2"><img id="st2" alt=""></div><div class="dev d3"><img id="st3" alt=""></div>
+<svg class="gad ga1" viewBox="0 0 120 120"><use href="#g-buds"/></svg><svg class="gad ga2" viewBox="0 0 120 120"><use href="#g-watch"/></svg><svg class="gad ga3" viewBox="0 0 120 120"><use href="#g-charger"/></svg>
+</div></div></div></section>
+<section class="statsb"><div class="wrap"><div class="sgrid"><div><b data-n="12">0</b><span>month warranty</span></div><div><b data-n="30">0</b><span>day returns</span></div><div><b data-n="33" id="n-models">0</b><span>iPhone models</span></div><div><b data-n="3">0</b><span>ways to pay</span></div></div></div></section>
+<div class="mq" aria-hidden="true"><div class="mqt" id="mqt"></div></div>
+
 <section id="models"><div class="wrap">
 <h2>The iPhones we sell</h2>
 <p class="sub">Every model comes with the same warranty, returns, and grading. Prices start at the Fair grade and rise with condition and storage.</p>
@@ -440,30 +410,19 @@ nav.open .navacct{display:block}
 <p class="sub" style="margin:18px 0 0;font-size:14px">Pictures show the model, not the exact phone. Condition and price follow the grade you pick. Prices are samples.</p>
 </div></section>
 
-<section id="gadgets" class="dark"><div class="wrap">
-<span class="kick">More than phones</span>
+<section id="gear"><div class="wrap">
+<div class="eyebrow">More than phones</div>
 <h2>Gadgets that go with your iPhone</h2>
 <p class="sub">Smartwatches, earbuds, tablets, laptops, chargers and cases. Stock and prices change often, so message us on Telegram and we will tell you what is available.</p>
-<div class="gg"><article class="gcard rv" style="--gc:#ff4d8d"><svg class="gsvg" viewBox="0 0 200 160" aria-hidden="true"><defs><linearGradient id="gwb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b6478"/><stop offset="1" stop-color="#171b25"/></linearGradient><linearGradient id="gws" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8a5c"/><stop offset="1" stop-color="#ff2d6f"/></linearGradient></defs>
-<rect x="78" y="0" width="44" height="44" rx="12" fill="url(#gws)"/><rect x="78" y="116" width="44" height="44" rx="12" fill="url(#gws)"/>
-<rect x="56" y="28" width="88" height="104" rx="26" fill="url(#gwb)"/><rect x="147" y="58" width="7" height="20" rx="3.5" fill="#6b7489"/>
-<rect x="62" y="34" width="76" height="92" rx="21" fill="#05070c"/>
-<g transform="rotate(-90 100 88)" fill="none" stroke-linecap="round" stroke-width="7"><circle cx="100" cy="88" r="27" stroke="#ff2d6f" stroke-opacity=".25"/><circle cx="100" cy="88" r="27" stroke="#ff2d6f" stroke-dasharray="130 170"/><circle cx="100" cy="88" r="18" stroke="#8bf24a" stroke-opacity=".25"/><circle cx="100" cy="88" r="18" stroke="#8bf24a" stroke-dasharray="80 113"/><circle cx="100" cy="88" r="9" stroke="#35d0ff" stroke-opacity=".25"/><circle cx="100" cy="88" r="9" stroke="#35d0ff" stroke-dasharray="38 57"/></g>
-<text x="100" y="52" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="10" font-weight="700" fill="#fff">9:41</text></svg><h3>Smartwatches</h3><p>Track fitness, calls and notifications from your wrist.</p><a class="tgl" href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></article><article class="gcard rv" style="--gc:#8b5cf6"><svg class="gsvg" viewBox="0 0 200 160" aria-hidden="true"><defs><linearGradient id="gec" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#bcc6d6"/></linearGradient></defs>
-<rect x="44" y="74" width="112" height="76" rx="32" fill="url(#gec)"/><path d="M44 102H156" stroke="#9aa6ba" stroke-width="2"/><circle cx="100" cy="128" r="4.5" fill="#19C59B"/>
-<g><circle cx="68" cy="40" r="16" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><rect x="76" y="42" width="9" height="34" rx="4.5" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><circle cx="68" cy="40" r="4" fill="#dfe5ee"/></g><g transform="translate(200 0) scale(-1 1)"><circle cx="68" cy="40" r="16" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><rect x="76" y="42" width="9" height="34" rx="4.5" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><circle cx="68" cy="40" r="4" fill="#dfe5ee"/></g></svg><h3>Wireless earbuds</h3><p>Pocket-size charging cases and all-day sound.</p><a class="tgl" href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></article><article class="gcard rv" style="--gc:#3b82f6"><svg class="gsvg" viewBox="0 0 200 160" aria-hidden="true"><defs><linearGradient id="gts" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a5cff"/><stop offset="1" stop-color="#00d4ff"/></linearGradient></defs>
-<rect x="14" y="22" width="172" height="116" rx="16" fill="#1b2130"/><rect x="21" y="29" width="158" height="102" rx="10" fill="url(#gts)"/>
-<circle cx="64" cy="66" r="24" fill="#fff" opacity=".2"/><rect x="100" y="48" width="64" height="8" rx="4" fill="#fff" opacity=".8"/><rect x="100" y="64" width="46" height="6" rx="3" fill="#fff" opacity=".45"/>
-<rect x="36" y="100" width="22" height="20" rx="5" fill="#fff" opacity=".3"/><rect x="64" y="92" width="22" height="28" rx="5" fill="#fff" opacity=".45"/><rect x="92" y="84" width="22" height="36" rx="5" fill="#fff" opacity=".6"/><rect x="120" y="76" width="22" height="44" rx="5" fill="#fff" opacity=".8"/>
-<circle cx="17.5" cy="80" r="2" fill="#3a4254"/></svg><h3>Tablets</h3><p>Big screens for reading, drawing and video.</p><a class="tgl" href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></article><article class="gcard rv" style="--gc:#19C59B"><svg class="gsvg" viewBox="0 0 200 160" aria-hidden="true"><defs><linearGradient id="gls" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#1b4fc4"/></linearGradient><linearGradient id="glb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7dde8"/><stop offset="1" stop-color="#9aa4b6"/></linearGradient></defs>
-<rect x="42" y="18" width="116" height="86" rx="8" fill="#1b2130"/><rect x="48" y="24" width="104" height="74" rx="4" fill="url(#gls)"/>
-<rect x="56" y="32" width="46" height="34" rx="4" fill="#fff" opacity=".85"/><rect x="108" y="32" width="36" height="8" rx="4" fill="#fff" opacity=".7"/><rect x="108" y="46" width="28" height="6" rx="3" fill="#fff" opacity=".45"/><rect x="56" y="74" width="88" height="14" rx="7" fill="#fff" opacity=".25"/>
-<path d="M18 106H182L172 126Q170 130 165 130H35Q30 130 28 126Z" fill="url(#glb)"/><rect x="84" y="106" width="32" height="5" rx="2.5" fill="#7d8798"/></svg><h3>Laptops</h3><p>Light, fast laptops for work and study.</p><a class="tgl" href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></article><article class="gcard rv" style="--gc:#f5b942"><svg class="gsvg" viewBox="0 0 200 160" aria-hidden="true"><defs><linearGradient id="gcp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a3a52"/><stop offset="1" stop-color="#0d1420"/></linearGradient></defs>
-<rect x="38" y="26" width="8" height="18" rx="2" fill="#aab4c4"/><rect x="62" y="26" width="8" height="18" rx="2" fill="#aab4c4"/><rect x="28" y="40" width="52" height="60" rx="12" fill="#fff" stroke="#d3dae6" stroke-width="1.5"/><rect x="44" y="92" width="20" height="5" rx="2.5" fill="#cfd6e2"/>
-<rect x="112" y="34" width="52" height="94" rx="14" fill="url(#gcp)" stroke="#3b4a63"/><rect x="124" y="46" width="28" height="6" rx="3" fill="#19C59B"/><rect x="124" y="58" width="20" height="6" rx="3" fill="#19C59B" opacity=".6"/><rect x="124" y="70" width="12" height="6" rx="3" fill="#19C59B" opacity=".35"/><circle cx="138" cy="106" r="8" fill="none" stroke="#7CF0CF" stroke-width="2"/>
-<path d="M54 100C54 150 112 154 124 128" fill="none" stroke="#cfd6e2" stroke-width="5" stroke-linecap="round"/></svg><h3>Chargers and power banks</h3><p>Fast wall chargers, cables and portable power.</p><a class="tgl" href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></article><article class="gcard rv" style="--gc:#ff7a59"><svg class="gsvg" viewBox="0 0 200 160" aria-hidden="true"><defs><linearGradient id="gxa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a6a"/><stop offset="1" stop-color="#ff3d7f"/></linearGradient><linearGradient id="gxb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0a6b78"/></linearGradient><linearGradient id="gxc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs>
-<g transform="translate(28 26) rotate(-9)"><rect width="62" height="116" rx="14" fill="url(#gxa)"/><rect x="7" y="7" width="27" height="27" rx="8" fill="#0b0f16" opacity=".85"/><circle cx="15" cy="15" r="5" fill="#2a3340" stroke="#8a93a6"/><circle cx="26" cy="26" r="5" fill="#2a3340" stroke="#8a93a6"/><path d="M8 94H54" stroke="#fff" stroke-opacity=".28" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(112 26) rotate(9)"><rect width="62" height="116" rx="14" fill="url(#gxc)"/><rect x="7" y="7" width="27" height="27" rx="8" fill="#0b0f16" opacity=".85"/><circle cx="15" cy="15" r="5" fill="#2a3340" stroke="#8a93a6"/><circle cx="26" cy="26" r="5" fill="#2a3340" stroke="#8a93a6"/><path d="M8 94H54" stroke="#fff" stroke-opacity=".28" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(69 14) rotate(0)"><rect width="62" height="116" rx="14" fill="url(#gxb)"/><rect x="7" y="7" width="27" height="27" rx="8" fill="#0b0f16" opacity=".85"/><circle cx="15" cy="15" r="5" fill="#2a3340" stroke="#8a93a6"/><circle cx="26" cy="26" r="5" fill="#2a3340" stroke="#8a93a6"/><path d="M8 94H54" stroke="#fff" stroke-opacity=".28" stroke-width="2" stroke-linecap="round"/></g></svg><h3>Cases and protectors</h3><p>Cases and screen protectors to keep your phone safe.</p><a class="tgl" href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></article></div>
-</div></section>
+<div class="gcards">
+<div class="gc" style="--glow:rgba(244,63,94,.38)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="gwB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7A6B"/><stop offset="1" stop-color="#F43F5E"/></linearGradient></defs><rect x="76" y="2" width="48" height="40" rx="12" fill="url(#gwB)"/><rect x="76" y="108" width="48" height="40" rx="12" fill="url(#gwB)"/><rect x="58" y="24" width="84" height="102" rx="26" fill="#0B1020" stroke="#1F2A44" stroke-width="3"/><rect x="143" y="62" width="6" height="22" rx="3" fill="#1F2A44"/><text x="100" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">9:41</text><g transform="rotate(-90 100 82)" fill="none" stroke-linecap="round" stroke-width="7"><circle cx="100" cy="82" r="26" stroke="#3A0F1E"/><circle cx="100" cy="82" r="26" stroke="#FF2D55" stroke-dasharray="125 164"/><circle cx="100" cy="82" r="17" stroke="#1B3A12"/><circle cx="100" cy="82" r="17" stroke="#A3F54A" stroke-dasharray="85 107"/><circle cx="100" cy="82" r="8.5" stroke="#0E3A44"/><circle cx="100" cy="82" r="8.5" stroke="#34D3F4" stroke-dasharray="40 53"/></g></svg></div><h3>Smartwatches</h3><p>Track fitness, calls and notifications from your wrist.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(139,92,246,.4)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="geW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D5DCE8"/></linearGradient></defs><rect x="42" y="64" width="116" height="78" rx="34" fill="url(#geW)"/><path d="M46 96h108" stroke="#C3CCDA" stroke-width="2"/><circle cx="100" cy="118" r="4" fill="#22C55E"/><rect x="64" y="16" width="10" height="56" rx="5" fill="url(#geW)"/><circle cx="62" cy="22" r="14" fill="url(#geW)"/><circle cx="62" cy="22" r="5" fill="#E2E8F0"/><rect x="126" y="16" width="10" height="56" rx="5" fill="url(#geW)"/><circle cx="138" cy="22" r="14" fill="url(#geW)"/><circle cx="138" cy="22" r="5" fill="#E2E8F0"/></svg></div><h3>Wireless earbuds</h3><p>Pocket-size charging cases and all-day sound.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(59,130,246,.4)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="gtS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5BFF"/><stop offset="1" stop-color="#14C8FF"/></linearGradient></defs><rect x="28" y="18" width="144" height="110" rx="14" fill="#0B1020" stroke="#1F2A44" stroke-width="3"/><rect x="36" y="26" width="128" height="94" rx="8" fill="url(#gtS)"/><circle cx="62" cy="52" r="13" fill="#fff" opacity=".45"/><rect x="84" y="42" width="58" height="6" rx="3" fill="#fff" opacity=".8"/><rect x="84" y="55" width="40" height="6" rx="3" fill="#fff" opacity=".55"/><rect x="46" y="88" width="20" height="22" rx="4" fill="#fff" opacity=".4"/><rect x="72" y="76" width="20" height="34" rx="4" fill="#fff" opacity=".6"/><rect x="98" y="66" width="20" height="44" rx="4" fill="#fff" opacity=".85"/></svg></div><h3>Tablets</h3><p>Big screens for reading, drawing and video.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(16,185,129,.34)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="glS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#2563EB"/></linearGradient><linearGradient id="glB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2E8F0"/><stop offset="1" stop-color="#94A3B8"/></linearGradient></defs><rect x="46" y="10" width="108" height="86" rx="9" fill="#0B1020" stroke="#1F2A44" stroke-width="3"/><rect x="52" y="16" width="96" height="74" rx="5" fill="url(#glS)"/><rect x="58" y="24" width="30" height="26" rx="3" fill="#fff" opacity=".85"/><rect x="94" y="24" width="46" height="6" rx="3" fill="#fff" opacity=".8"/><rect x="94" y="36" width="34" height="6" rx="3" fill="#fff" opacity=".55"/><rect x="58" y="58" width="82" height="12" rx="6" fill="#fff" opacity=".4"/><path d="M22 100h156l-14 14a8 8 0 0 1-6 3H42a8 8 0 0 1-6-3z" fill="url(#glB)"/><rect x="82" y="100" width="36" height="5" rx="2.5" fill="#64748B" opacity=".7"/></svg></div><h3>Laptops</h3><p>Light, fast laptops for work and study.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(245,158,11,.36)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><rect x="42" y="8" width="7" height="20" rx="3" fill="#E2E8F0"/><rect x="56" y="8" width="7" height="20" rx="3" fill="#E2E8F0"/><rect x="30" y="26" width="44" height="50" rx="12" fill="#FFFFFF"/><rect x="44" y="64" width="16" height="6" rx="3" fill="#CBD5E1"/><path d="M52 76c0 40 20 52 52 52s40-14 40-34" fill="none" stroke="#E2E8F0" stroke-width="5" stroke-linecap="round"/><rect x="116" y="36" width="52" height="88" rx="12" fill="#0F172A" stroke="#1F2A44" stroke-width="3"/><rect x="130" y="52" width="24" height="6" rx="3" fill="#22D3A5"/><rect x="130" y="64" width="16" height="6" rx="3" fill="#22D3A5" opacity=".7"/><rect x="130" y="76" width="10" height="6" rx="3" fill="#22D3A5" opacity=".4"/><circle cx="142" cy="102" r="8" fill="none" stroke="#22D3A5" stroke-width="3"/></svg></div><h3>Chargers and power banks</h3><p>Fast wall chargers, cables and portable power.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(249,115,22,.36)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><g transform="rotate(-9 70 80)"><rect x="40" y="18" width="62" height="112" rx="14" fill="#FB7185"/><rect x="48" y="26" width="26" height="26" rx="8" fill="#0B1020"/><circle cx="56" cy="34" r="5" fill="#1E293B"/><circle cx="66" cy="44" r="5" fill="#1E293B"/></g><g transform="rotate(10 132 80)"><rect x="104" y="22" width="62" height="112" rx="14" fill="#6366F1"/><rect x="132" y="30" width="26" height="26" rx="8" fill="#0B1020"/><circle cx="140" cy="38" r="5" fill="#1E293B"/><circle cx="150" cy="48" r="5" fill="#1E293B"/></g><rect x="70" y="10" width="62" height="118" rx="14" fill="#14B8A6"/><rect x="78" y="18" width="28" height="28" rx="9" fill="#0B1020"/><circle cx="87" cy="27" r="5.5" fill="#1E293B" stroke="#64748B"/><circle cx="98" cy="38" r="5.5" fill="#1E293B" stroke="#64748B"/><circle cx="87" cy="38" r="2.5" fill="#F8FAFC"/><path d="M80 112h40" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Cases and protectors</h3><p>Cases and screen protectors to keep your phone safe.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+</div></div></section>
+
 
 <section id="grading"><div class="wrap">
 <h2>The condition you pick is the condition you get</h2>
@@ -474,26 +433,20 @@ nav.open .navacct{display:block}
 <ul class="tests"><li>Battery health</li><li>Screen and touch</li><li>Front and rear cameras</li><li>Speakers and microphones</li><li>Buttons and ports</li><li>Cellular and Wi-Fi</li></ul>
 </div></section>
 
-<section id="inside" class="dark"><div class="wrap">
-<span class="kick">Inside every phone</span>
+<section id="layers"><div class="wrap">
+<div class="eyebrow">Inside every phone</div>
 <h2>Tested layer by layer</h2>
 <p class="sub">Before a phone is graded, every part is checked. Hover a layer, or tap one in the list, to see what we test.</p>
-<div class="inx">
-<div class="xv" id="xv" aria-hidden="true"><div class="stack">
-<div class="lay l0" style="--i:0" data-l="4"><span class="cam"></span></div>
-<div class="lay l1" style="--i:1" data-l="3"><span class="cell"></span><span class="cell"></span><span class="cell"></span></div>
-<div class="lay l2" style="--i:2" data-l="2"><span class="chip"></span><span class="chip"></span><span class="chip"></span><span class="chip"></span><span class="chip"></span></div>
-<div class="lay l3" style="--i:3" data-l="1"></div>
-<div class="lay l4" style="--i:4" data-l="0"><span class="isl"></span></div>
-</div></div>
-<ul class="xl" id="xl">
-<li data-l="0" style="--c:#cfe9ff"><i></i><div><b>Screen and touch</b><span>The glass is checked for cracks and the screen for touch response.</span></div></li>
-<li data-l="1" style="--c:#8b5cf6"><i></i><div><b>Display</b><span>Looked over under light for marks that affect the grade.</span></div></li>
-<li data-l="2" style="--c:#19C59B"><i></i><div><b>Cellular and Wi-Fi</b><span>Network, speakers and microphones are tested on the main board.</span></div></li>
-<li data-l="3" style="--c:#7CF0CF"><i></i><div><b>Battery health</b><span>Measured against the grade floor: 90%, 85% or 80%.</span></div></li>
-<li data-l="4" style="--c:#9aa6ba"><i></i><div><b>Cameras, buttons and ports</b><span>Front and rear cameras, buttons and ports are all checked.</span></div></li>
-</ul></div>
-</div></section>
+<div class="lay">
+<svg class="stack" id="stack" viewBox="0 0 360 330" role="img" aria-label="Exploded view of a phone showing five tested layers"><defs><linearGradient id="lyD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset=".55" stop-color="#3B82F6"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs>
+<g class="ly" data-i="4" style="--c:#94A3B8"><g transform="translate(0 168)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#1E293B" stroke="#334155" stroke-width="2"/><rect x="10" y="10" width="40" height="40" rx="12" fill="#0F172A"/><circle cx="22" cy="22" r="7" fill="#1E293B" stroke="#475569"/><circle cx="38" cy="38" r="7" fill="#1E293B" stroke="#475569"/></g></g></g>
+<g class="ly" data-i="3" style="--c:#34D399"><g transform="translate(0 126)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#047857"/><rect x="12" y="40" width="76" height="120" rx="10" fill="#059669"/><rect x="40" y="26" width="20" height="10" rx="3" fill="#34D399"/><path d="M52 70l-16 30h14l-6 28 22-36H54z" fill="#ECFDF5" opacity=".85"/></g></g></g>
+<g class="ly" data-i="2" style="--c:#10B981"><g transform="translate(0 84)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#064E3B"/><rect x="14" y="20" width="34" height="34" rx="6" fill="#10B981" opacity=".85"/><rect x="56" y="20" width="30" height="16" rx="4" fill="#34D399" opacity=".7"/><rect x="14" y="66" width="72" height="8" rx="4" fill="#10B981" opacity=".5"/><rect x="14" y="84" width="50" height="8" rx="4" fill="#10B981" opacity=".4"/></g></g></g>
+<g class="ly" data-i="1" style="--c:#8B5CF6"><g transform="translate(0 42)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="url(#lyD)"/><rect x="34" y="8" width="32" height="7" rx="3.5" fill="#0B1020" fill-opacity=".6"/></g></g></g>
+<g class="ly" data-i="0" style="--c:#E2E8F0"><g transform="translate(0 0)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#E2E8F0" fill-opacity=".14" stroke="#E2E8F0" stroke-opacity=".65" stroke-width="2"/><rect x="34" y="8" width="32" height="7" rx="3.5" fill="#0B1020" fill-opacity=".7"/></g></g></g>
+</svg>
+<div class="llist" id="llist"></div>
+</div></div></section>
 
 <section id="compare"><div class="wrap">
 <h2>Compare all iPhones</h2>
@@ -523,13 +476,6 @@ nav.open .navacct{display:block}
 </ol>
 </div></section>
 
-<section id="reviews"><div class="wrap">
-<h2>What customers say</h2>
-<p class="sub">Reviews come only from customers whose order was delivered.</p>
-<div id="rvsum" class="rvsum" hidden></div>
-<div id="rvs" class="rvs"></div>
-<div id="rvempty" class="rvempty">No reviews yet. After your phone is delivered, you can review it from your dashboard.</div>
-</div></section>
 <section id="faq"><div class="wrap">
 <h2>Questions before you buy</h2>
 <p class="sub">Short answers to what people ask most.</p>
@@ -538,28 +484,23 @@ nav.open .navacct{display:block}
 <details><summary>How do returns work?</summary><p>You have 30 days. Tell us you want to return it, and we email a prepaid label. You get a full refund, with no restocking fee.</p></details>
 <details><summary>When will my phone arrive?</summary><p>Shipping is free, and the delivery date appears on the page before you add a phone to your cart.</p></details>
 <details><summary>How do I pay?</summary><p>At checkout you choose ATM card, bank transfer, or cryptocurrency. After you place your order, the payment details appear in your dashboard.</p></details>
+<details><summary>How can I contact you?</summary><p>Message us on Telegram at @fairgradestore, email <a href="mailto:fairgradestore@gmail.com">fairgradestore@gmail.com</a>, or use Customer service in your dashboard.</p></details>
 </div></section>
-<section id="contact"><div class="wrap"><div class="cbox rv">
-<div><h2>Talk to a real person</h2><p>Questions about a phone, a gadget, stock or your order? Message us on Telegram and we will reply as soon as we can.</p></div>
-<a class="tgb" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></svg>Message us on Telegram</a>
-</div></div></section>
 </main>
 
 <footer><div class="wrap">
 <div class="fcols">
-<div><div class="logo2"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl2)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Fair<b>grade</b></span></div><p>Graded, tested, warrantied iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
+<div><div class="logo2"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></div><p>Graded, tested, warrantied iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
 <div><h4>Shop</h4><a href="#models">All iPhones</a><a href="#compare">Compare models</a><a href="#grading">How we grade</a></div>
-<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Telegram support</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a></div>
-<div><h4>Legal</h4><a href="about.html">About us</a><a href="faq.html">All questions</a><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
+<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Telegram: @fairgradestore</a><a href="mailto:fairgradestore@gmail.com">fairgradestore@gmail.com</a></div>
+<div><h4>Legal</h4><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
 </div>
 <div class="pm"><span>We accept</span><b>ATM card</b><b>Bank transfer</b><b>Cryptocurrency</b></div>
 <p class="fine">Pictures show the model, not the exact phone. Prices and availability may change. 2026 Fairgrade. All rights reserved.</p>
 </div></footer>
+<a class="tg" href="https://t.me/fairgradestore" target="_blank" rel="noopener" aria-label="Chat with us on Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span>Chat with us</span></a>
 <div class="nb" id="note-bar" hidden>We use anonymous analytics to improve the store. <a href="privacy.html">Privacy policy</a> <button id="nb-ok" type="button">OK</button></div>
 
-<div id="prog" aria-hidden="true"></div>
-<a class="tg" href="https://t.me/fairgradestore" target="_blank" rel="noopener" aria-label="Chat with us on Telegram"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></svg><span>Chat with us</span></a>
-<div id="toast" role="status" aria-live="polite"></div>
 <div id="scrim" hidden></div>
 <aside class="drawer" id="cart" aria-label="Your cart" hidden>
 <div class="dh"><h3>Your cart <span class="muted" id="cart-n"></span></h3><button id="close" type="button">Close</button></div>
@@ -584,8 +525,8 @@ nav.open .navacct{display:block}
 <p class="err" id="au-err" role="alert" hidden></p>
 <button class="buy" type="button" id="au-in">Sign in</button>
 <button class="buy alt" type="button" id="au-up">Create account</button>
-<div class="or"><span>or</span></div>
-<button class="gbtn" type="button" id="au-g"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/></svg>Continue with Google</button>
+<div class="or">or</div>
+<button class="gbtn" type="button" id="au-g"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Continue with Google</button>
 </div>
 <form id="coform" hidden>
 <p class="muted"><span id="co-who"></span> <button type="button" id="co-out" class="link2">Sign out</button></p>
@@ -700,6 +641,7 @@ function drawCat(){
   $("rc").textContent=cnt+" phone"+(cnt===1?"":"s");
   if(!cnt){var np=document.createElement("p");np.className="muted";np.textContent="No phones match your search.";cat.appendChild(np)}
   [].forEach.call($("filters").children,function(x,i){x.setAttribute("aria-pressed",!Q&&FILTERS[i]===S.f)});
+  reveal();
 }
 function drawCart(){
   var ul=$("items"),t=0;
@@ -737,7 +679,7 @@ FILTERS.forEach(function(f){
 });
 mk("c-grade",GRADES,"g",function(x){return x[0]});
 buildStore();
-$("add").onclick=function(){cart.push({n:name(),p:price()});drawCart();openCart()};
+$("add").onclick=function(){cart.push({n:name(),p:price()});drawCart();var c=$("count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");openCart()};
 $("cartbtn").onclick=function(){$("cart").hidden?openCart():closeCart()};
 $("close").onclick=closeCart;
 $("keep").onclick=closeCart;
@@ -757,7 +699,7 @@ $("checkout").onclick=function(){
   CO.showModal();
 };
 $("co-x").onclick=function(){CO.close()};
-var AMSG={"auth/unauthorized-domain":"Google sign-in is not allowed on this website address yet. The store owner must add this domain in Firebase.","auth/operation-not-allowed":"Google sign-in is not switched on yet. The store owner must enable it in Firebase.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/popup-closed-by-user":"The Google window was closed before finishing. Please try again.","auth/cancelled-popup-request":"Please tap Continue with Google once and wait.","auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
+var AMSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes."};
 function prefill(){
   if(!FGok())return;
   window.FG.getProfile().then(function(p){
@@ -777,12 +719,11 @@ function authGo(kind){
 }
 $("au-in").onclick=function(){authGo("signIn")};
 $("au-up").onclick=function(){authGo("signUp")};
-$("au-g").onclick=function(){var er=$("au-err");er.hidden=true;if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}window.FG.signInGoogle().then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||"Google sign-in did not finish ("+(x&&x.code||"unknown")+"). Please try again.";er.hidden=false})};
 $("co-out").onclick=function(){window.FG.logOut().then(function(){show("co-auth")})};
 function done(msg){
   show("co-done");
   var d=$("co-done");
-  d.innerHTML='<h3>Thank you</h3><p>Your order number is <b></b>.</p><p></p><p><a href="account.html">Track your order on a map in your account</a></p><p>Need help? <a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Message us on Telegram</a></p><button class="buy" type="button" id="co-ok">Done</button>';
+  d.innerHTML='<h3>Thank you</h3><p>Your order number is <b></b>.</p><p></p><p><a href="account.html">Track your order in your account</a></p><button class="buy" type="button" id="co-ok">Done</button>';
   d.querySelector("b").textContent=cur.code;
   d.querySelectorAll("p")[1].textContent=msg;
   $("co-ok").onclick=function(){CO.close()};
@@ -859,70 +800,86 @@ $("menubtn").onclick=function(){var o=$("nav").classList.toggle("open");this.set
 document.querySelectorAll("#nav a").forEach(function(a){a.onclick=function(){$("nav").classList.remove("open");$("menubtn").setAttribute("aria-expanded","false")}});
 try{if(!localStorage.getItem("fg_nb"))$("note-bar").hidden=false}catch(e){}
 $("nb-ok").onclick=function(){$("note-bar").hidden=true;try{localStorage.setItem("fg_nb","1")}catch(e){}};
-sync();drawCat();drawCart();
+AMSG["auth/popup-closed-by-user"]="Google sign-in was cancelled.";
+AMSG["auth/cancelled-popup-request"]="Google sign-in was cancelled.";
+AMSG["auth/popup-blocked"]="Your browser blocked the Google window. Allow pop-ups and try again.";
+AMSG["auth/unauthorized-domain"]="This website is not approved for Google sign-in yet.";
+AMSG["auth/operation-not-allowed"]="Google sign-in is not switched on yet.";
+$("au-g").onclick=function(){
+  var er=$("au-err");er.hidden=true;
+  if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}
+  window.FG.googleSignIn().then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||"Could not sign in with Google.";er.hidden=false});
+};
+[["st1","iPhone 17 Pro"],["st2","iPhone 18 Pro Max"],["st3","iPhone 15 Pro"]].forEach(function(p){var e=$(p[0]);if(e&&IMG[p[1]]){e.src=IMG[p[1]];e.alt=p[1]}});
+var RM=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+$("n-models").dataset.n=MODELS.length;
+function countUp(e){
+  var n=+e.dataset.n,t0=null;
+  if(RM){e.textContent=n;return}
+  function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1200);e.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}
+  requestAnimationFrame(f);
+}
+var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var t=en.target;if(t.classList.contains("rv"))t.classList.add("in");if(t.dataset&&t.dataset.n)countUp(t);io.unobserve(t)}})},{threshold:.12}):null;
+function reveal(){
+  document.querySelectorAll(".sgrid b").forEach(function(e){if(!e.__o){e.__o=1;if(io)io.observe(e);else e.textContent=e.dataset.n}});
+  document.querySelectorAll("section h2,.sub,.mc,.pol>div,.steps li,.gc,.li,.g,details,.panel,.sgrid>div").forEach(function(e){if(!e.__o){e.__o=1;if(io){e.classList.add("rv");io.observe(e)}}});
+}
+window.reveal=reveal;
+(function(){
+  var L=[["Screen and touch","The glass is checked for cracks and the screen for touch response.","#E2E8F0"],["Display","Looked over under light for marks that affect the grade.","#8B5CF6"],["Cellular and Wi-Fi","Network, speakers and microphones are tested on the board.","#10B981"],["Battery health","Capacity is read so the phone meets the battery level of its grade.","#34D399"],["Cameras and body","Front and rear cameras, buttons and ports are tested, and the frame is checked for dents.","#94A3B8"]];
+  var list=$("llist"),ly=document.querySelectorAll("#stack .ly");
+  function on(i){
+    [].forEach.call(ly,function(g){g.classList.toggle("on",+g.dataset.i===i)});
+    [].forEach.call(list.children,function(b,k){b.setAttribute("aria-pressed",k===i)});
+  }
+  L.forEach(function(x,i){
+    var b=document.createElement("button"),d=document.createElement("i"),w=document.createElement("span"),t=document.createElement("b"),e=document.createElement("em");
+    b.type="button";b.className="li";d.className="d";d.style.background=x[2];
+    t.textContent=x[0];e.textContent=x[1];w.appendChild(t);w.appendChild(e);b.appendChild(d);b.appendChild(w);
+    b.onclick=function(){on(i)};b.onmouseenter=function(){on(i)};
+    list.appendChild(b);
+  });
+  [].forEach.call(ly,function(g){g.addEventListener("mouseenter",function(){on(+g.dataset.i)});g.addEventListener("click",function(){on(+g.dataset.i)})});
+  on(0);
+})();
+window.addEventListener("scroll",function(){document.querySelector("header").classList.toggle("sc",window.scrollY>8);var h=document.documentElement;$("prog").style.width=(h.scrollTop/((h.scrollHeight-h.clientHeight)||1)*100)+"%"},{passive:true});
+(function(){var t=$("mqt");[0,1].forEach(function(){MODELS.forEach(function(m){var s=document.createElement("span");s.textContent=m.n;t.appendChild(s)})})})();
+function adOK(u){return /^(https?:\/\/|#|mailto:)/i.test(u)}
+function buildAds(list){
+  if(!list.length)return;
+  var tr=$("adtrack"),dots=$("addots"),cur=0,timer;
+  tr.innerHTML="";dots.innerHTML="";
+  function show(i){cur=i;tr.style.transform="translateX(-"+(i*100)+"%)";[].forEach.call(dots.children,function(b,k){b.setAttribute("aria-current",k===i)})}
+  function auto(){clearInterval(timer);if(list.length>1&&!RM)timer=setInterval(function(){show((cur+1)%list.length)},6000)}
+  list.forEach(function(a,i){
+    var d=document.createElement("div"),t=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");
+    d.className="ad th-"+(/^(blue|green|purple|orange|dark)$/.test(a.theme)?a.theme:"blue");
+    h.textContent=a.title||"";t.appendChild(h);
+    if(a.text){p.textContent=a.text;t.appendChild(p)}
+    if(a.button&&adOK(a.link||"")){var l=document.createElement("a");l.href=a.link;l.textContent=a.button;if(/^https?:/i.test(a.link)){l.target="_blank";l.rel="noopener"}t.appendChild(l)}
+    d.appendChild(t);
+    if(a.model&&IMG[a.model]){var im=new Image();im.alt=a.model;im.src=IMG[a.model];d.appendChild(im)}
+    tr.appendChild(d);
+    var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Show promotion "+(i+1));b.onclick=function(){show(i);auto()};dots.appendChild(b);
+  });
+  $("adsw").hidden=false;
+  $("ads").onmouseenter=function(){clearInterval(timer)};$("ads").onmouseleave=auto;
+  var sx=0;
+  $("ads").addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+  $("ads").addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){show((cur+(dx<0?1:list.length-1))%list.length);auto()}},{passive:true});
+  show(0);auto();
+}
+function loadAds(){if(window.FG&&window.FG.ready&&window.FG.getAds)window.FG.getAds().then(buildAds).catch(function(){})}
+window.addEventListener("fg-ready",loadAds);
+loadAds();
+sync();drawCat();drawCart();reveal();
 })();
 </script>
 <script src="config.js"></script>
 <script type="module">
 try{window.FG=await import("./fg.js")}catch(e){}
+window.dispatchEvent(new Event("fg-ready"));
 </script>
 <script type="module" src="track.js"></script>
-<script>
-(function(){
-var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-function $(i){return document.getElementById(i)}
-var hd=document.querySelector("header"),pg=$("prog");
-function sc(){var y=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;if(hd)hd.classList.toggle("sh",y>8);if(pg)pg.style.transform="scaleX("+(h>0?Math.min(1,y/h):0)+")"}
-addEventListener("scroll",sc,{passive:true});sc();
-/* reveal on scroll */
-var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var n=e.target;io.unobserve(n);n.classList.add("in");if(n.querySelector&&n.hasAttribute("data-count"))count(n)})},{threshold:.12,rootMargin:"0px 0px -30px 0px"}):null;
-function rv(root){(root||document).querySelectorAll(".rv:not(.in)").forEach(function(n){var i=[].indexOf.call(n.parentNode.children,n);n.style.setProperty("--d",Math.min(i,8)*70+"ms");if(io)io.observe(n);else n.classList.add("in")})}
-/* count up */
-function count(box){var b=box.matches("[data-count]")?box:box.querySelector("[data-count]");if(!b)return;var to=+b.getAttribute("data-count");if(rm||!to){b.textContent=to;return}var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-k,3);b.textContent=Math.round(to*e);if(k<1)requestAnimationFrame(f)})(t0)}
-var nm=document.querySelectorAll("#cmp tbody tr").length;var nmEl=$("n-models");if(nmEl)nmEl.setAttribute("data-count",nm);
-var stats=document.querySelectorAll(".stat");stats.forEach(function(s){s.addEventListener("animationstart",function(){},{once:true})});
-/* stats: count when the card is revealed */
-if(io){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io2.unobserve(e.target);count(e.target)}})},{threshold:.4});stats.forEach(function(s){io2.observe(s)})}else stats.forEach(count);
-rv();
-/* new product cards animate in as the list changes */
-var cat=$("cat");
-if(cat){new MutationObserver(function(ms){var any=false;ms.forEach(function(m){m.addedNodes.forEach(function(n){if(n.nodeType===1&&n.classList.contains("mc")){n.classList.add("rv");any=true}})});if(any)rv(cat)}).observe(cat,{childList:true});cat.querySelectorAll(".mc").forEach(function(n){n.classList.add("rv")});rv(cat)}
-/* 3D tilt on cards */
-if(!rm){
-  var sel=".mc,.gcard";
-  document.addEventListener("pointermove",function(e){if(e.pointerType==="touch")return;var c=e.target.closest&&e.target.closest(sel);if(!c)return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform="perspective(800px) rotateY("+(x*7).toFixed(2)+"deg) rotateX("+(-y*7).toFixed(2)+"deg) translateY(-3px)";c.style.setProperty("--mx",((x+.5)*100)+"%");c.style.setProperty("--my",((y+.5)*100)+"%")});
-  document.addEventListener("pointerout",function(e){var c=e.target.closest&&e.target.closest(sel);if(c&&!c.contains(e.relatedTarget))c.style.transform=""});
-  var ha=document.querySelector(".hart");
-  if(ha){ha.addEventListener("pointermove",function(e){var r=ha.getBoundingClientRect();ha.style.setProperty("--px",((e.clientX-r.left)/r.width-.5).toFixed(3));ha.style.setProperty("--py",((e.clientY-r.top)/r.height-.5).toFixed(3))});ha.addEventListener("pointerleave",function(){ha.style.setProperty("--px",0);ha.style.setProperty("--py",0)})}
-}
-/* exploded phone */
-var xv=$("xv"),xl=$("xl");
-if(xv){
-  if("IntersectionObserver" in window){var io3=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){xv.classList.add("open");io3.disconnect()}})},{threshold:.3});io3.observe(xv)}else xv.classList.add("open");
-  function hl(l,on){xv.querySelectorAll(".lay").forEach(function(n){n.classList.toggle("hl",on&&n.getAttribute("data-l")===l)});xl.querySelectorAll("li").forEach(function(n){n.classList.toggle("hl",on&&n.getAttribute("data-l")===l)})}
-  xl.querySelectorAll("li").forEach(function(li){var l=li.getAttribute("data-l");li.addEventListener("mouseenter",function(){hl(l,true)});li.addEventListener("mouseleave",function(){hl(l,false)});li.addEventListener("click",function(){hl(l,true);setTimeout(function(){hl(l,false)},1600)})});
-  xv.querySelectorAll(".lay").forEach(function(n){n.addEventListener("mouseenter",function(){hl(n.getAttribute("data-l"),true)});n.addEventListener("mouseleave",function(){hl(n.getAttribute("data-l"),false)})});
-}
-/* add to cart feedback */
-var tt;function toast(m){var t=$("toast");if(!t)return;t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(function(){t.classList.remove("on")},2400)}
-var add=$("add");if(add)add.addEventListener("click",function(){toast("Added to cart: "+($("pname")?$("pname").textContent:"iPhone"));var c=$("count");if(c){c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")}});
-})();
-</script>
-<script>
-(function(){
-function esc(t){var d=document.createElement("div");d.textContent=t;return d.innerHTML}
-function stars(n){return "\u2605".repeat(n)+"\u2606".repeat(5-n)}
-function draw(l){
- l=l.filter(function(r){return r.approved}).sort(function(a,b){return (b.createdAt&&b.createdAt.seconds||0)-(a.createdAt&&a.createdAt.seconds||0)}).slice(0,9);
- var box=document.getElementById("rvs");box.innerHTML="";
- document.getElementById("rvempty").hidden=l.length>0;
- var sm=document.getElementById("rvsum");sm.hidden=!l.length;
- if(l.length){var avg=l.reduce(function(a,r){return a+r.rating},0)/l.length;sm.innerHTML='<span class="stars">'+stars(Math.round(avg))+'</span><span>'+avg.toFixed(1)+' out of 5 from '+l.length+' review'+(l.length>1?'s':'')+'</span>'}
- l.forEach(function(r){var c=document.createElement("div");c.className="rvc";
-  c.innerHTML='<div class="stars">'+stars(r.rating)+'</div><p>'+esc(r.text)+'</p><small>'+esc(r.name||"Customer")+(r.model?' \u00b7 '+esc(r.model):'')+'</small>';box.appendChild(c)});
-}
-var tries=0;(function init(){if(window.FG&&window.FG.ready){try{window.FG.approvedReviews(draw)}catch(e){}}else if(tries++<30)setTimeout(init,500)})();
-})();
-</script>
 </body>
 </html>

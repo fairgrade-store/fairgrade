@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='fgH' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.16'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230B1B33'/%3E%3Crect width='64' height='64' rx='17' fill='url(%23fgH)'/%3E%3Crect x='24' y='29' width='17' height='7.6' rx='2.6' fill='%233DE0B8'/%3E%3Crect x='21' y='14' width='8' height='36' rx='2.6' fill='%23fff'/%3E%3Crect x='21' y='14' width='24' height='8' rx='2.6' fill='%23fff'/%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Cdefs%3E%3ClinearGradient id=%22fgl%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2319C59B%22/%3E%3Cstop offset=%221%22 stop-color=%22%230A5F51%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2232%22 height=%2232%22 rx=%229%22 fill=%22url%28%23fgl%29%22/%3E%3Cpath d=%22M22 9.2H12.2V23.2%22 stroke=%22%23fff%22 stroke-width=%223.4%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3Cpath d=%22M15.6 17.4l2.9 2.9 5.1-6%22 stroke=%22%23A8FBE4%22 stroke-width=%223.1%22 fill=%22none%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E">
 <title>My dashboard | Fairgrade</title>
 <style>
 :root{--bg:#F3F6FC;--surface:#fff;--ink:#0B1B33;--muted:#5B6B82;--line:#E1E8F3;--blue:#2563EB;--on:#fff;--bb:#E7F0FF;--bt:#1D4ED8;--gb:#E5F7EC;--gt:#15803D;--ob:#FFF0E0;--ot:#B4540A;--pb:#EFE9FF;--pt:#6D3FD1;--rb:#FDE8E8;--rt:#B42318}
@@ -19,7 +19,8 @@ h1,h2,h3{margin:0;letter-spacing:-.01em}
 input,select,textarea,button{font:inherit;color:inherit}
 input,select,textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 12px}
 button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;font-weight:600;text-decoration:none;display:inline-block;text-align:center}
-.pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
+a.btn{color:var(--ink)}
+.pri,a.btn.pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
 .muted{color:var(--muted);font-size:14px}
 .err{color:var(--rt);margin-top:8px}
 label{display:block;font-weight:600;margin-top:12px}
@@ -28,7 +29,9 @@ label input,label select,label textarea{margin-top:6px;font-weight:400}
 .hero{background:linear-gradient(135deg,#0B2A6B,#2563EB);color:#fff;padding:16px 16px 26px;border-radius:0 0 24px 24px}
 .hero .in{max-width:640px;margin:0 auto}
 .bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.brand{color:#fff;font-weight:800;text-decoration:none;font-size:18px}
+.brand{color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand .lm{width:34px;height:34px}
+.brand .wmk{width:108px;height:15px;color:#fff}
 .hero button{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;padding:7px 12px}
 .hero h1{font-size:28px}
 .hero p{margin:4px 0 0;opacity:.85}
@@ -80,54 +83,21 @@ dialog::backdrop{background:rgba(5,12,24,.55)}
 .inv td{padding:6px 0;border-bottom:1px solid var(--line)}
 .inv td:last-child{text-align:right}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tgb{display:flex;align-items:center;justify-content:center;gap:10px;background:#229ED9;border-color:#229ED9;color:#fff;margin-top:12px}
+.tgb svg{width:22px;height:22px;fill:#fff;stroke:none}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:8px;padding:12px}
+.gbtn svg{width:20px;height:20px}
+.or{text-align:center;color:var(--muted);font-size:13px;margin:12px 0 0}
+main>section{animation:fadein .35s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{body>*:not(#inv){display:none!important}#inv .noprint{display:none}}
-
-.hero{position:relative;overflow:hidden}
-.hero .in{position:relative;z-index:1}
-.orb{position:absolute;border-radius:50%;background:rgba(255,255,255,.12);pointer-events:none;animation:drift2 14s ease-in-out infinite alternate}
-.o1{width:240px;height:240px;right:-70px;top:-90px}
-.o2{width:150px;height:150px;right:100px;bottom:-80px;animation-delay:-5s;background:rgba(124,240,207,.16)}
-.o3{width:120px;height:120px;left:-40px;bottom:-60px;animation-delay:-9s}
-@keyframes drift2{to{transform:translate(-34px,22px) scale(1.18)}}
-main>section:not([hidden]){animation:fadein .35s ease}
-@keyframes fadein{from{opacity:0;transform:translateY(10px)}}
-.brand{display:inline-flex;align-items:center;gap:9px}
-.brand svg{width:30px;height:30px;flex:none}
-.brand svg rect{stroke:none}
-.card{transition:box-shadow .2s}
-.card:hover{box-shadow:0 16px 34px -22px rgba(11,42,107,.5)}
-.st{transition:transform .2s}
-.st:hover{transform:translateY(-2px)}
-.tgcard{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#0B2A6B,#2563EB 60%,#229ED9);color:#fff;border-radius:16px;padding:16px;margin-top:12px}
-.tgcard svg{width:34px;height:34px;fill:#fff;stroke:none;flex:none}
-.tgcard p{margin:2px 0 0;color:#dbeafe;font-size:14px}
-.tgcard a{margin-left:auto;background:#fff;color:#0B2A6B;border-radius:12px;padding:10px 14px;font-weight:700;text-decoration:none;white-space:nowrap}
-@media(max-width:480px){.tgcard{flex-wrap:wrap}.tgcard a{margin-left:0;width:100%;text-align:center}}
-a.btn{color:var(--ink)}
-a.btn.pri{color:var(--on)}
-@media(prefers-reduced-motion:reduce){.orb{animation:none}main>section:not([hidden]){animation:none}}
-
-.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:12px;background:#fff;color:#1f1f1f;border:1.5px solid #dadce0;border-radius:12px;padding:12px;font-weight:600;transition:box-shadow .2s}
-.gbtn:hover{box-shadow:0 6px 18px -8px rgba(0,0,0,.35)}
-.gbtn svg{width:20px;height:20px;fill:none;stroke:none}
-.or{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:14px 0 0}
-.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
-.pbar{height:8px;border-radius:99px;background:var(--line);margin-top:14px;overflow:hidden}
-.pbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#19C59B,#2563EB);transition:width 1s ease}
-.trk-map{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
-.trk-map h4{margin:0;font-size:16px;display:flex;align-items:center}
-.live{display:inline-block;width:9px;height:9px;border-radius:50%;background:#22c55e;margin-right:8px;animation:pl 1.6s infinite}
-@keyframes pl{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 9px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
-.mapf{border-radius:14px;overflow:hidden;border:1px solid var(--line);margin-top:10px;background:var(--bb)}
-.mapf iframe{display:block;width:100%;height:250px;border:0}
-.mapph{display:flex;gap:14px;align-items:center;padding:16px;color:var(--bt)}
-.mapph svg{width:56px;height:56px;flex:none}
-.mapph p{margin:0;color:var(--muted);font-size:14px}
-.trk .cur .dot{animation:pl 1.8s infinite}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-logo" viewBox="0 0 64 64"><g stroke="none"><defs><linearGradient id="fgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="#0B1B33"/><rect width="64" height="64" rx="17" fill="url(#fgH)"/><rect x="24" y="29" width="17" height="7.6" rx="2.6" fill="#3DE0B8"/><rect x="21" y="14" width="8" height="36" rx="2.6" fill="#fff"/><rect x="21" y="14" width="24" height="8" rx="2.6" fill="#fff"/></g></symbol>
+<symbol id="i-wm" viewBox="0 0 141 20"><path transform="translate(0 15)" fill="currentColor" stroke="none" d="M9.7 -13.9V-12.0H3.8V-7.9H8.4V-6.1H3.8V0.0H1.5V-13.9Z M24.2 -2.8H18.4L17.4 0.0H15.0L20.0 -13.9H22.6L27.6 0.0H25.2ZM23.5 -4.7 21.3 -11.2 19.0 -4.7Z M36.0 -13.9V0.0H33.7V-13.9Z M50.2 0.0 47.0 -5.6H45.3V0.0H43.0V-13.9H47.8Q49.4 -13.9 50.5 -13.3Q51.6 -12.8 52.2 -11.8Q52.7 -10.9 52.7 -9.7Q52.7 -8.4 51.9 -7.3Q51.2 -6.2 49.5 -5.8L53.0 0.0ZM45.3 -7.4H47.8Q49.1 -7.4 49.8 -8.0Q50.4 -8.7 50.4 -9.7Q50.4 -10.8 49.8 -11.4Q49.1 -12.0 47.8 -12.0H45.3Z M69.7 -9.9Q69.2 -10.9 68.2 -11.5Q67.3 -12.0 66.0 -12.0Q64.6 -12.0 63.5 -11.4Q62.5 -10.8 61.8 -9.6Q61.2 -8.5 61.2 -7.0Q61.2 -5.5 61.8 -4.3Q62.5 -3.2 63.5 -2.6Q64.6 -1.9 66.0 -1.9Q67.9 -1.9 69.0 -3.0Q70.2 -4.0 70.4 -5.8H65.2V-7.6H72.9V-5.8Q72.7 -4.2 71.7 -2.9Q70.8 -1.5 69.3 -0.7Q67.8 0.1 66.0 0.1Q64.0 0.1 62.4 -0.8Q60.8 -1.7 59.8 -3.3Q58.9 -4.9 58.9 -7.0Q58.9 -9.0 59.8 -10.6Q60.8 -12.3 62.4 -13.2Q64.1 -14.1 66.0 -14.1Q68.2 -14.1 69.9 -13.0Q71.7 -11.9 72.5 -9.9Z M86.3 0.0 83.1 -5.6H81.4V0.0H79.1V-13.9H83.9Q85.5 -13.9 86.6 -13.3Q87.7 -12.8 88.3 -11.8Q88.8 -10.9 88.8 -9.7Q88.8 -8.4 88.1 -7.3Q87.3 -6.2 85.6 -5.8L89.1 0.0ZM81.4 -7.4H83.9Q85.2 -7.4 85.8 -8.0Q86.5 -8.7 86.5 -9.7Q86.5 -10.8 85.9 -11.4Q85.2 -12.0 83.9 -12.0H81.4Z M104.1 -2.8H98.3L97.3 0.0H94.9L99.9 -13.9H102.6L107.5 0.0H105.1ZM103.5 -4.7 101.2 -11.2 99.0 -4.7Z M125.6 -6.9Q125.6 -4.8 124.7 -3.2Q123.8 -1.7 122.1 -0.8Q120.5 0.0 118.2 0.0H113.7V-13.9H118.2Q120.5 -13.9 122.1 -13.1Q123.8 -12.2 124.7 -10.6Q125.6 -9.0 125.6 -6.9ZM123.3 -6.9Q123.3 -9.3 122.0 -10.7Q120.7 -12.0 118.2 -12.0H116.0V-1.9H118.2Q120.7 -1.9 122.0 -3.2Q123.3 -4.5 123.3 -6.9Z M134.2 -12.1V-8.0H139.0V-6.1H134.2V-1.9H139.6V0.0H131.9V-13.9H139.6V-12.1Z"/></symbol>
 <symbol id="i-orders" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></symbol>
 <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
 <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
@@ -136,7 +106,6 @@ a.btn.pri{color:var(--on)}
 <symbol id="i-track" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
 <symbol id="i-pay" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
-<symbol id="i-tg" viewBox="0 0 26 26"><path fill="currentColor" stroke="none" d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></symbol>
 <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
 </svg>
 
@@ -150,14 +119,14 @@ a.btn.pri{color:var(--on)}
     <label>Password<input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
     <p class="err" id="ae" role="alert" hidden></p>
     <div class="row"><button class="pri" id="in" type="button">Sign in</button><button id="up" type="button">Create account</button></div>
-    <div class="or"><span>or</span></div>
-    <button class="gbtn" id="gg" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/></svg>Continue with Google</button>
+    <div class="or">or</div>
+    <button class="gbtn" id="gg" type="button"><svg viewBox="0 0 48 48" stroke="none" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Continue with Google</button>
   </div>
 </div>
 
 <div id="app" hidden>
-  <header class="hero"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><div class="in">
-    <div class="bar"><a class="brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="fgl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19C59B"/><stop offset="1" stop-color="#0A5F51"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#fgl)"/><path d="M22 9.2H12.2V23.2" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.6 17.4l2.9 2.9 5.1-6" stroke="#A8FBE4" stroke-width="3.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fairgrade</a><button id="out" type="button">Sign out</button></div>
+  <header class="hero"><div class="in">
+    <div class="bar"><a class="brand" href="index.html" aria-label="Fairgrade home"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></a><button id="out" type="button">Sign out</button></div>
     <div class="who"><div class="av" id="av-h"></div><div><h1>My Dashboard</h1><p id="welcome">Welcome back! Manage your phones and orders.</p></div></div>
   </div></header>
   <main class="wrap">
@@ -171,15 +140,14 @@ a.btn.pri{color:var(--on)}
         <a class="btn" href="index.html"><svg><use href="#i-phone"/></svg>Shop Phones</a>
         <button type="button" data-go="pay"><svg><use href="#i-pay"/></svg>Payments</button>
         <button type="button" data-go="help"><svg><use href="#i-chat"/></svg>Customer Service</button>
-        <a class="btn" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
-        <button type="button" data-go="me"><svg><use href="#i-user"/></svg>My Profile</button>
       </div>
     </section>
     <section id="v-orders" hidden><h2 class="sh" style="margin-top:4px">My Orders</h2><div id="olist"></div></section>
     <section id="v-pay" hidden><h2 class="sh" style="margin-top:4px">Payments and Invoices</h2><div id="plist"></div></section>
     <section id="v-help" hidden>
       <h2 class="sh" style="margin-top:4px">Customer Service</h2>
-      <div class="tgcard"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M21.6 3.3 2.9 10.5c-.9.3-.9 1.4 0 1.7l4.8 1.5 1.8 5.6c.2.7 1 .9 1.5.4l2.6-2.5 5 3.7c.6.4 1.4.1 1.6-.6L23.3 4.6c.2-.9-.7-1.6-1.7-1.3zM9.1 13.2l9.6-6-7.4 7.2-.3 3.4z"/></svg><div><b>Chat with us on Telegram</b><p>Fastest way to reach us about stock, gadgets or your order.</p></div><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Open Telegram</a></div>
+      <a class="btn tgb" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Chat with us on Telegram</a>
+      <a class="btn" style="display:block;margin-top:10px" href="mailto:fairgradestore@gmail.com">Email fairgradestore@gmail.com</a>
       <div class="card">
         <label>About<select id="h-order"></select></label>
         <label>Your message<textarea id="h-msg" rows="4" placeholder="Ask a question or tell us about a problem"></textarea></label>
@@ -220,14 +188,12 @@ const $=id=>document.getElementById(id);
 const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n};
 const ic=k=>'<svg><use href="#i-'+k+'"/></svg>';
 const IMG=window.PHONE_IMG||{};
+const TRK={USPS:"https://tools.usps.com/go/TrackConfirmAction?tLabels=",UPS:"https://www.ups.com/track?tracknum=",FedEx:"https://www.fedex.com/fedextrack/?trknbr=",DHL:"https://www.dhl.com/en/express/tracking.html?AWB="};
 const STEPS=["Order placed","Payment confirmed","Processing","Shipped","Out for delivery","Delivered"];
 const IDX={pending:0,details_sent:0,payment_submitted:0,confirmed:1,processing:2,shipped:3,out_for_delivery:4,delivered:5};
 const LABEL={pending:"Waiting for payment",details_sent:"Payment details sent",payment_submitted:"Verifying payment",confirmed:"Payment confirmed",processing:"Processing",shipped:"Shipped",out_for_delivery:"Out for delivery",delivered:"Delivered",cancelled:"Cancelled"};
 const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
-let reviews=[],orders=[],tickets=[],profile={},uns=[],lastSig="";
-const prevN={};
-function countUp(n,key,val){const str=String(val),m=/^(\$?)(\d+)$/.exec(str);if(!m||prevN[key]===str||(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){n.textContent=str;prevN[key]=str;return}prevN[key]=str;const to=+m[2],pre=m[1],t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);n.textContent=pre+Math.round(to*e);if(k<1)requestAnimationFrame(f)})(t0)}
-
+let orders=[],tickets=[],profile={},uns=[];
 const byNew=l=>l.sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
 const model=o=>String(o.items&&o.items[0]?o.items[0].n:"").split(",")[0];
 const when=o=>o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleDateString():"just now";
@@ -237,7 +203,7 @@ const chip=(s,t)=>el("span","chip s-"+s,t||LABEL[s]||s);
 function thumb(o){const d=el("div","thumb"),src=IMG[model(o)];if(src){const i=new Image();i.alt=model(o);i.src=src;d.appendChild(i)}else d.textContent="Phone";return d}
 
 if(!FG.ready){$("ae").textContent="Accounts are not switched on yet.";$("ae").hidden=false}
-const MSG={"auth/unauthorized-domain":"Google sign-in is not allowed on this website address yet. The store owner must add this domain in Firebase.","auth/operation-not-allowed":"Google sign-in is not switched on yet. The store owner must enable it in Firebase.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/popup-closed-by-user":"The Google window was closed before finishing. Please try again.","auth/cancelled-popup-request":"Please tap Continue with Google once and wait.","auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes.","auth/popup-closed-by-user":"The Google window was closed before sign-in finished.","auth/cancelled-popup-request":"The Google window was closed before sign-in finished.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups for this site and try again.","auth/unauthorized-domain":"Google sign-in is not switched on for this website yet. Please tell the store owner.","auth/operation-not-allowed":"Google sign-in is not switched on yet. Please tell the store owner."};
+const MSG={"auth/popup-closed-by-user":"Google sign-in was cancelled.","auth/cancelled-popup-request":"Google sign-in was cancelled.","auth/popup-blocked":"Your browser blocked the Google window. Allow pop-ups and try again.","auth/unauthorized-domain":"This website is not approved for Google sign-in yet.","auth/operation-not-allowed":"Google sign-in is not switched on yet.","auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes."};
 function signin(kind){
   const er=$("ae"),e=$("em").value.trim(),p=$("pw").value;
   er.hidden=true;
@@ -247,8 +213,8 @@ function signin(kind){
   call.catch(x=>{er.textContent=MSG[x&&x.code]||(kind==="signUp"?"Could not create the account.":"Could not sign in.");er.hidden=false});
 }
 $("in").onclick=()=>signin("signIn");
+$("gg").onclick=()=>{const er=$("ae");er.hidden=true;if(!FG.ready)return;FG.googleSignIn().catch(x=>{er.textContent=MSG[x&&x.code]||"Could not sign in with Google.";er.hidden=false})};
 $("up").onclick=()=>signin("signUp");
-$("gg").onclick=()=>{const er=$("ae");er.hidden=true;if(!FG.ready){er.textContent="Accounts are not switched on yet.";er.hidden=false;return}FG.signInGoogle().catch(x=>{er.textContent=MSG[x&&x.code]||"Google sign-in did not finish ("+(x&&x.code||"unknown")+"). Please try again.";er.hidden=false})};
 $("out").onclick=()=>FG.logOut();
 
 function go(v){
@@ -260,12 +226,11 @@ document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>go(b.datase
 document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
 
 FG.onUser(u=>{
-  uns.forEach(f=>f());uns=[];lastSig="";
+  uns.forEach(f=>f());uns=[];
   $("auth").hidden=!!u;$("app").hidden=!u;
   if(!u)return;
   $("who").textContent="Signed in as "+u.email;
   uns.push(FG.myOrders(l=>{orders=byNew(l);draw()},()=>{}));
-  uns.push(FG.myReviews(l=>{reviews=l;draw()},()=>{}));
   uns.push(FG.myTickets(l=>{tickets=byNew(l);draw()},()=>{}));
   uns.push(FG.watchProfile(p=>{
     profile=p||{};
@@ -280,65 +245,23 @@ function setAvatar(){
   const nm=(profile.name||"").trim(),em=String((FG.user&&FG.user.email)||"");
   [$("av-h"),$("av-p")].forEach(a=>{
     a.innerHTML="";
-    if(profile.photo){const i=new Image();i.alt="";i.referrerPolicy="no-referrer";i.src=profile.photo;a.appendChild(i)}
+    if(profile.photo){const i=new Image();i.alt="";i.src=profile.photo;a.appendChild(i)}
     else a.textContent=(nm||em||"?").charAt(0).toUpperCase();
   });
   const first=nm||em.split("@")[0];
   $("welcome").textContent="Welcome back"+(first?", "+first:"")+"! Manage your phones and orders.";
 }
-const enc=encodeURIComponent;
-function mapBox(o){
-  if(o.status==="cancelled"||unpaid(o)||o.status==="payment_submitted")return null;
-  const dest=String(o.customer&&o.customer.address||"").replace(/\s+/g," ").trim(),loc=String(o.trackLoc||"").trim();
-  const box=el("div","trk-map"),h=el("h4");
-  if(o.status!=="delivered"){h.appendChild(el("span","live"))}
-  h.appendChild(document.createTextNode(o.status==="delivered"?"Delivered":"Live tracking"));box.appendChild(h);
-  let src="",link="";
-  if(o.status==="delivered"&&dest){src="https://www.google.com/maps?q="+enc(dest)+"&output=embed";link="https://www.google.com/maps/search/?api=1&query="+enc(dest)}
-  else if(loc&&dest){src="https://www.google.com/maps?saddr="+enc(loc)+"&daddr="+enc(dest)+"&output=embed";link="https://www.google.com/maps/dir/?api=1&origin="+enc(loc)+"&destination="+enc(dest)}
-  else if(loc){src="https://www.google.com/maps?q="+enc(loc)+"&output=embed";link="https://www.google.com/maps/search/?api=1&query="+enc(loc)}
-  const at=o.trackAt&&o.trackAt.toDate?o.trackAt.toDate().toLocaleString():"";
-  box.appendChild(el("p","muted",loc?"Your parcel is at: "+loc+(at?" (updated "+at+")":""):o.status==="delivered"?"Your order was delivered to your address.":"We will show where your parcel is here as soon as we update its location."));
-  const f=el("div","mapf");
-  if(src){const fr=document.createElement("iframe");fr.src=src;fr.loading="lazy";fr.title="Map for order "+o.code;fr.referrerPolicy="no-referrer-when-downgrade";fr.allowFullscreen=true;f.appendChild(fr);box.appendChild(f);
-    const a=el("a","btn","Open in Google Maps");a.href=link;a.target="_blank";a.rel="noopener";a.style.marginTop="10px";box.appendChild(a)}
-  else{const ph=el("div","mapph");ph.innerHTML='<svg viewBox="0 0 64 64"><path d="M32 6c-10 0-18 8-18 18 0 13 18 34 18 34s18-21 18-34C50 14 42 6 32 6z" fill="currentColor" stroke="none" opacity=".9"/><circle cx="32" cy="24" r="7" fill="#fff" stroke="none"/></svg>';ph.appendChild(el("p","","The map appears here once your parcel has a location."));f.appendChild(ph);box.appendChild(f)}
-  return box;
-}
-
-function reviewBox(o){
-  if(o.status!=="delivered")return null;
-  const box=el("div","pay"),have=reviews.find(r=>r.orderId===o.id);
-  if(have){box.appendChild(el("p","muted","Thank you for your review. "+(have.approved?"It is now shown on the store.":"It will appear on the store after we approve it.")));return box}
-  box.appendChild(el("h3","","Review your phone"));
-  let rate=0;const row=el("div","row"),btns=[];
-  for(let i=1;i<=5;i++){const b=el("button","",i+"\u2605");b.type="button";b.onclick=()=>{rate=i;btns.forEach((x,k)=>x.classList.toggle("pri",k<i))};btns.push(b);row.appendChild(b)}
-  box.appendChild(row);
-  const ta=el("textarea");ta.rows=3;ta.maxLength=600;ta.placeholder="Tell other buyers about the phone and delivery";ta.style.marginTop="10px";box.appendChild(ta);
-  const er=el("p","err");er.hidden=true;box.appendChild(er);
-  const send=el("button","pri","Send review");send.type="button";send.style.marginTop="10px";
-  send.onclick=()=>{
-    const t=ta.value.trim();
-    if(!rate){er.textContent="Tap a star rating first.";er.hidden=false;return}
-    if(t.length<10){er.textContent="Please write at least 10 characters.";er.hidden=false;return}
-    er.hidden=true;send.disabled=true;
-    const nm=String((profile&&profile.name)||o.customer.name||"").trim().split(/\s+/)[0]||"Customer";
-    FG.addReview({orderId:o.id,rating:rate,text:t,name:nm,model:model(o)}).catch(()=>{send.disabled=false;er.textContent="Could not send. Please try again.";er.hidden=false});
-  };
-  box.appendChild(send);return box;
-}
 function tracker(o){
   const w=el("ol","trk");
   if(o.status==="cancelled"){w.appendChild(el("li","","This order was cancelled."));return w}
   const cur=o.status==="delivered"?6:IDX[o.status];
-  const wrap=el("div"),pb=el("div","pbar"),pi=el("i");pi.style.width=Math.min(100,Math.round(cur/5*100))+"%";pb.appendChild(pi);wrap.appendChild(pb);wrap.appendChild(w);
   STEPS.forEach((s,i)=>{
     const li=el("li",i<cur?"done":i===cur?"cur":"");
     li.appendChild(el("span","dot"));
     li.appendChild(el("span","",s+(i===0&&o.status==="payment_submitted"?" (payment being verified)":"")));
     w.appendChild(li);
   });
-  return wrap;
+  return w;
 }
 function head(o,title,sub){
   const h=el("div","ord"),m=el("div");
@@ -350,14 +273,12 @@ function head(o,title,sub){
   return h;
 }
 function draw(){
-  const sig=JSON.stringify([orders.map(o=>[o.id,o.status,o.trackLoc||"",o.trackAt&&o.trackAt.seconds||0,o.payInfo||"",o.payRef||""]),tickets.map(t=>[t.id,t.status,t.reply||""])]);
-  if(sig===lastSig)return;lastSig=sig;
   const s=$("stats");s.innerHTML="";
   const owed=orders.filter(unpaid).reduce((a,o)=>a+o.total,0);
   [["My Orders",orders.length,"b","orders","orders"],["In Transit",orders.filter(transit).length,"g","truck","orders"],["Outstanding","$"+owed,"o","clock","pay"],["Support Requests",tickets.filter(t=>t.status==="open").length,"p","chat","help"]].forEach(x=>{
     const b=el("button","st c-"+x[2]);b.type="button";
     b.innerHTML=ic(x[3])+"<b></b><span></span>";
-    countUp(b.querySelector("b"),x[0],x[1]);b.querySelector("span").textContent=x[0];
+    b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
     b.onclick=()=>go(x[4]);s.appendChild(b);
   });
   const r=$("recent");r.innerHTML="";
@@ -376,7 +297,24 @@ function draw(){
     c.appendChild(head(o,model(o),"Order #"+o.code+"  "+when(o)));
     const ul=el("ul","muted");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
     c.appendChild(el("p","muted","Delivery to: "+o.customer.address));
-    c.appendChild(tracker(o));const mb=mapBox(o);if(mb)c.appendChild(mb);const rb=reviewBox(o);if(rb)c.appendChild(rb);
+    c.appendChild(tracker(o));
+    if(o.trackNo){
+      c.appendChild(el("p","","Tracking number: "+o.trackNo+(o.carrier&&o.carrier!=="Other"?" ("+o.carrier+")":"")));
+      if(TRK[o.carrier]){const a=el("a","btn","Track with "+o.carrier);a.href=TRK[o.carrier]+encodeURIComponent(o.trackNo);a.target="_blank";a.rel="noopener";c.appendChild(a)}
+    }
+    if(o.status!=="cancelled"){
+      const mb=el("button","","Show delivery map");mb.type="button";mb.style.marginTop="10px";
+      let fr=null;
+      mb.onclick=()=>{
+        if(fr){fr.remove();fr=null;mb.textContent="Show delivery map";return}
+        fr=document.createElement("iframe");
+        fr.src="https://maps.google.com/maps?q="+encodeURIComponent(o.customer.address)+"&z=14&output=embed";
+        fr.loading="lazy";fr.title="Delivery address map";
+        fr.style.cssText="display:block;width:100%;height:240px;border:0;border-radius:12px;margin-top:10px";
+        mb.after(fr);mb.textContent="Hide delivery map";
+      };
+      c.appendChild(mb);
+    }
     if(unpaid(o)){const b=el("button","pri",o.payInfo?"View payment details":"Make payment");b.type="button";b.style.marginTop="12px";b.onclick=()=>go("pay");c.appendChild(b)}
     ol.appendChild(c);
   });
