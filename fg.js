@@ -31,7 +31,12 @@ export const visitSet=(sid,d)=>updateDoc(doc(db,"visits",sid),d);
 export function walletBox(parent){
   (window.WALLETS||[]).forEach(w=>{
     const d=document.createElement("div");d.className="wl";
-    const b=document.createElement("b");b.textContent=w.coin+" ("+w.net+")";
+    const b=document.createElement("b");
+    const ns="http://www.w3.org/2000/svg",ic=document.createElementNS(ns,"svg"),u=document.createElementNS(ns,"use"),sp=document.createElement("span");
+    ic.setAttribute("viewBox","0 0 24 24");ic.setAttribute("width","24");ic.setAttribute("height","24");
+    u.setAttribute("href","#p-"+({Ethereum:"eth",Bitcoin:"btc",BNB:"bnb"}[w.coin]||"btc"));ic.appendChild(u);
+    sp.textContent=w.coin+" ("+w.net+")";
+    b.style.cssText="display:flex;align-items:center;gap:8px";b.appendChild(ic);b.appendChild(sp);
     const c=document.createElement("code");c.textContent=w.addr;
     const k=document.createElement("button");k.type="button";k.textContent="Copy address";
     k.onclick=()=>{navigator.clipboard.writeText(w.addr).then(()=>{k.textContent="Copied"}).catch(()=>{k.textContent="Press and hold the address to copy"})};
