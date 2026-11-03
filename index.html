@@ -318,6 +318,8 @@ main>*:not(.glow){position:relative;z-index:1}
 .tg{padding:12px 18px;background:linear-gradient(90deg,#1d8fe0,#22b0e8)}
 .nb{right:12px;bottom:78px}
 @media(min-width:760px){.gcards{grid-template-columns:repeat(3,1fr)}.lay{grid-template-columns:1fr 1fr;align-items:center}}
+.dlogo{width:28px;height:28px;vertical-align:middle;margin-right:8px}
+.dlogo.big{width:52px;height:52px;display:block;margin:0 0 10px}
 .pi{width:30px;height:30px;flex:none;margin-top:1px}
 .coins{display:flex;flex:none;align-items:center}
 .coins .pi{width:26px;height:26px;border-radius:50%;box-shadow:0 0 0 2px var(--surface);margin:0 0 0 -9px}
@@ -531,7 +533,7 @@ main>*:not(.glow){position:relative;z-index:1}
 </aside>
 
 <dialog id="co" aria-labelledby="co-t">
-<div class="dh"><h3 id="co-t">Checkout</h3><button type="button" id="co-x">Close</button></div>
+<div class="dh"><h3 id="co-t"><svg class="dlogo" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg>Checkout</h3><button type="button" id="co-x">Close</button></div>
 <div id="co-auth" hidden>
 <p class="muted">Sign in or create an account. Your orders and delivery details stay private in your account.</p>
 <label>Email<input id="au-em" type="email" autocomplete="username"></label>
@@ -737,7 +739,7 @@ $("co-out").onclick=function(){window.FG.logOut().then(function(){show("co-auth"
 function done(msg){
   show("co-done");
   var d=$("co-done");
-  d.innerHTML='<h3>Thank you</h3><p>Your order number is <b></b>.</p><p></p><p><a href="account.html">Track your order in your account</a></p><button class="buy" type="button" id="co-ok">Done</button>';
+  d.innerHTML='<svg class="dlogo big" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><h3>Thank you</h3><p>Your order number is <b></b>.</p><p></p><p><a href="account.html">Track your order in your account</a></p><button class="buy" type="button" id="co-ok">Done</button>';
   d.querySelector("b").textContent=cur.code;
   d.querySelectorAll("p")[1].textContent=msg;
   $("co-ok").onclick=function(){CO.close()};
