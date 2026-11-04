@@ -328,6 +328,30 @@ main>*:not(.glow){position:relative;z-index:1}
 .pm .pi{width:18px;height:18px;margin:0}
 .pm .coins .pi{width:18px;height:18px;margin-left:-6px;box-shadow:0 0 0 1.5px var(--surface)}
 .pm .coins .pi:first-child{margin-left:0}
+#pd{padding:0;width:min(520px,calc(100% - 20px))}
+.pdw{padding:14px 18px 22px}
+.pdh{display:flex;justify-content:flex-end}
+.pdh button{background:none;border:0;text-decoration:underline;color:var(--muted);padding:4px}
+.pdimg .pic{min-height:230px;border-radius:16px}
+.pdimg .pic img,.pdimg .pic svg{height:220px;width:auto;max-width:100%;object-fit:contain}
+#pd h3{font-size:26px;margin:14px 0 2px}
+.pdprice{display:flex;align-items:baseline;gap:10px;margin:10px 0 4px}
+.pdprice strong{font:800 38px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em}
+.pdprice span{color:var(--muted);font-size:14px}
+.pdl{font-weight:600;margin:14px 0 6px}
+.pds{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.pds div{background:var(--bg);border-radius:12px;padding:10px 12px}
+.pds span{display:block;color:var(--muted);font-size:13px}
+.mc{cursor:pointer}
+.cs{margin:2px 0 6px;color:var(--muted);font-size:13px}
+.findg{display:grid;gap:18px}
+.mapbox{border-radius:20px;overflow:hidden;border:1px solid var(--line);height:280px;background:var(--surface)}
+.mapbox iframe{width:100%;height:100%;border:0}
+.addr{display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.addr svg{width:26px;height:26px;flex:none}
+.addr b{display:block}
+.findc a{display:block;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none;text-align:center;margin-top:10px}
+@media(min-width:760px){.findg{grid-template-columns:1.4fr 1fr;align-items:center}}
 @media(max-width:519px){.logo .wmk{width:88px;height:13px}.logo .lm{width:32px;height:32px}.acct{display:none}}
 @media(min-width:1000px){.navacct{display:none}}
 @media(min-width:1000px){nav{display:flex!important}.menubtn{display:none}}
@@ -336,6 +360,7 @@ main>*:not(.glow){position:relative;z-index:1}
 @media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:64px 0 72px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Fairgrade","description":"Graded, tested, warrantied iPhones.","email":"fairgradestore@gmail.com","address":{"@type":"PostalAddress","streetAddress":"11 Wall Street","addressLocality":"New York","addressRegion":"NY","postalCode":"10005","addressCountry":"US"},"sameAs":["https://t.me/fairgradestore"]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -362,7 +387,7 @@ main>*:not(.glow){position:relative;z-index:1}
 <header>
 <div class="wrap bar">
 <a class="logo" href="#top" aria-label="Fairgrade home"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></a>
-<nav id="nav" aria-label="Main"><a href="#models">iPhones</a><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a><a class="navacct" href="account.html">My account</a></nav>
+<nav id="nav" aria-label="Main"><a href="#models">iPhones</a><a href="#grading">How we grade</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a><a href="#find">Find us</a><a class="navacct" href="account.html">My account</a></nav>
 <div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button><button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button></div>
 </div>
 </header>
@@ -505,11 +530,24 @@ main>*:not(.glow){position:relative;z-index:1}
 </div></section>
 </main>
 
+<section id="find"><div class="wrap">
+<div class="eyebrow">Visit us</div>
+<h2>Find us</h2>
+<p class="sub">We are based at 11 Wall Street in New York, in the Wall Street area.</p>
+<div class="findg">
+<div class="mapbox"><iframe title="Map of Fairgrade at 11 Wall Street, New York" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=11%20Wall%20Street%2C%20New%20York%2C%20NY%2010005&z=16&output=embed"></iframe></div>
+<div class="findc">
+<div class="addr"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><path fill="#EF4444" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span><b>Address</b>11 Wall Street<br>New York, NY 10005, USA<br>Wall Street area</span></div>
+<a href="https://www.google.com/maps/dir/?api=1&destination=11%20Wall%20Street%2C%20New%20York%2C%20NY%2010005" target="_blank" rel="noopener">Get directions</a>
+<a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Chat on Telegram</a>
+<a href="mailto:fairgradestore@gmail.com">Email us</a>
+</div></div></div></section>
+
 <footer><div class="wrap">
 <div class="fcols">
 <div><div class="logo2"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></div><p>Graded, tested, warrantied iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
 <div><h4>Shop</h4><a href="#models">All iPhones</a><a href="#compare">Compare models</a><a href="#grading">How we grade</a></div>
-<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a><a class="ct" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" transform="translate(3.4 3.6) scale(.72)" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Telegram: @fairgradestore</a><a class="ct" href="mailto:fairgradestore@gmail.com"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="3" fill="#fff"/><rect x="1.5" y="7" width="3.6" height="12.5" rx="1.4" fill="#4285F4"/><rect x="18.9" y="7" width="3.6" height="12.5" rx="1.4" fill="#34A853"/><path d="M3.2 7.2l8.8 6.6 8.8-6.6" fill="none" stroke="#EA4335" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>fairgradestore@gmail.com</a></div>
+<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a><a class="ct" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" transform="translate(3.4 3.6) scale(.72)" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Telegram: @fairgradestore</a><a class="ct" href="mailto:fairgradestore@gmail.com"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="3" fill="#fff"/><rect x="1.5" y="7" width="3.6" height="12.5" rx="1.4" fill="#4285F4"/><rect x="18.9" y="7" width="3.6" height="12.5" rx="1.4" fill="#34A853"/><path d="M3.2 7.2l8.8 6.6 8.8-6.6" fill="none" stroke="#EA4335" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>fairgradestore@gmail.com</a><a class="ct" href="https://www.google.com/maps/search/?api=1&query=11%20Wall%20Street%2C%20New%20York%2C%20NY%2010005" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><path fill="#EF4444" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg>11 Wall Street, New York, NY 10005, USA</a></div>
 <div><h4>Legal</h4><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
 </div>
 <div class="pm"><span>We accept</span><b><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-card"/></svg>ATM card</b><b><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-bank"/></svg>Bank transfer</b><b><span class="coins"><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-btc"/></svg><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-eth"/></svg><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-bnb"/></svg></span>Cryptocurrency</b></div>
@@ -531,6 +569,28 @@ main>*:not(.glow){position:relative;z-index:1}
 <ul class="perks"><li>12-month warranty on every phone</li><li>30-day returns, no restocking fee</li><li>Pay by ATM card, bank transfer or crypto</li></ul>
 </div>
 </aside>
+
+<dialog id="pd" aria-labelledby="pd-t"><div class="pdw">
+<div class="pdh"><button type="button" id="pd-x">Close</button></div>
+<div class="pdimg" id="pd-img"></div>
+<h3 id="pd-t"></h3>
+<p class="muted" id="pd-sub"></p>
+<div class="pdprice"><strong id="pd-price"></strong><span>Sample price</span></div>
+<div class="pdl">Storage</div><div class="chips" id="pd-st"></div>
+<div class="pdl">Condition</div><div class="chips" id="pd-gr"></div>
+<p class="note" id="pd-note"></p>
+<div class="brow"><span>Battery health</span><span id="pd-bat"></span></div>
+<div class="gauge"><i id="pd-gauge"></i></div>
+<div class="facts">
+<div><b>12 months</b><span>Warranty</span></div>
+<div><b>30 days</b><span>Free returns</span></div>
+<div><b>Free</b><span>Shipping, arrives <span id="pd-eta"></span></span></div>
+<div><b>Unlocked</b><span>Works on any US carrier</span></div>
+</div>
+<div class="pds" id="pd-specs"></div>
+<button class="buy" id="pd-add" type="button">Add to cart</button>
+<a class="gbtn" href="https://t.me/fairgradestore" target="_blank" rel="noopener" style="text-decoration:none">Ask about this phone on Telegram</a>
+</div></dialog>
 
 <dialog id="co" aria-labelledby="co-t">
 <div class="dh"><h3 id="co-t"><svg class="dlogo" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg>Checkout</h3><button type="button" id="co-x">Close</button></div>
@@ -647,10 +707,13 @@ function drawCat(){
     a.className="mc";
     h.textContent=m.n;
     p.className="from";p.innerHTML="From <strong>$"+m.b+"</strong>";
-    b.type="button";b.className="pickbtn";b.textContent="Choose";
-    b.setAttribute("aria-label","Choose "+m.n);
-    b.onclick=function(){choose(i)};
-    a.appendChild(pic(i));a.appendChild(h);a.appendChild(p);a.appendChild(b);
+    b.type="button";b.className="pickbtn";b.textContent="View details";
+    b.setAttribute("aria-label","View details for "+m.n);
+    var sp=SPECS[i].split("|"),cs=document.createElement("p");
+    cs.className="cs";cs.textContent=sp[0]+", "+sp[1].split(" ")[0];
+    a.onclick=function(){openPD(i)};
+    b.onclick=function(e){e.stopPropagation();openPD(i)};
+    a.appendChild(pic(i));a.appendChild(h);a.appendChild(cs);a.appendChild(p);a.appendChild(b);
     cat.appendChild(a);
   });
   var cnt=cat.children.length;
@@ -803,12 +866,52 @@ var SPECS="A11 Bionic|5.8-inch OLED|Dual 12MP|Lightning;A12 Bionic|6.1-inch LCD|
     var sp=SPECS[i].split("|"),tr=document.createElement("tr");
     [m.n,"$"+m.b].concat(sp).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});
     var td=document.createElement("td"),b=document.createElement("button");
-    b.type="button";b.textContent="Choose";b.setAttribute("aria-label","Choose "+m.n);
-    b.onclick=function(){choose(i)};
+    b.type="button";b.textContent="View";b.setAttribute("aria-label","View "+m.n);
+    b.onclick=function(){openPD(i)};
     td.appendChild(b);tr.appendChild(td);
     tb.appendChild(tr);
   });
 })();
+var PD={m:0,s:0,g:0};
+function pdPrice(){var m=MODELS[PD.m],step=Math.round(m.b*0.1/5)*5;return Math.round((m.b+PD.s*step)*GRADES[PD.g][1])}
+function pdName(){return MODELS[PD.m].n+", "+gb(MODELS[PD.m].s[PD.s])+", "+GRADES[PD.g][0]}
+function pdDraw(){
+  [["pd-st",PD.s],["pd-gr",PD.g]].forEach(function(p){[].forEach.call($(p[0]).children,function(b,i){b.setAttribute("aria-pressed",p[1]===i)})});
+  $("pd-price").textContent="$"+pdPrice();
+  $("pd-note").textContent=GRADES[PD.g][3];
+  $("pd-bat").textContent=GRADES[PD.g][2]+"% or higher";
+  $("pd-gauge").style.width=GRADES[PD.g][2]+"%";
+  $("pd-eta").textContent=eta();
+}
+function openPD(i){
+  PD={m:i,s:0,g:0};
+  var m=MODELS[i],sp=SPECS[i].split("|");
+  $("pd-t").textContent=m.n;
+  $("pd-sub").textContent=sp[0]+", "+sp[1];
+  var im=$("pd-img");im.innerHTML="";im.appendChild(pic(i));
+  function chipsFor(id,list,key,label){
+    var w=$(id);w.innerHTML="";
+    list.forEach(function(v,k){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=label(v);b.onclick=function(){PD[key]=k;pdDraw()};w.appendChild(b)});
+  }
+  chipsFor("pd-st",m.s,"s",gb);
+  chipsFor("pd-gr",GRADES,"g",function(g){return g[0]});
+  var ss=$("pd-specs");ss.innerHTML="";
+  [["Chip",sp[0]],["Screen",sp[1]],["Camera",sp[2]],["Port",sp[3]]].forEach(function(r){
+    var d=document.createElement("div"),a=document.createElement("span"),b=document.createElement("b");
+    a.textContent=r[0];b.textContent=r[1];d.appendChild(a);d.appendChild(b);ss.appendChild(d);
+  });
+  pdDraw();
+  $("pd").showModal();
+  try{if(window.FG&&FG.visitSet&&window.__sid)FG.visitSet(window.__sid,{model:m.n.slice(0,40)}).catch(function(){})}catch(e){}
+}
+$("pd-x").onclick=function(){$("pd").close()};
+$("pd").onclick=function(e){if(e.target===this)this.close()};
+$("pd-add").onclick=function(){
+  cart.push({n:pdName(),p:pdPrice()});drawCart();
+  var c=$("count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");
+  $("pd").close();openCart();
+  try{if(window.FG&&FG.visitSet&&window.__sid)FG.visitSet(window.__sid,{cart:true}).catch(function(){})}catch(e){}
+};
 $("q").oninput=function(){Q=this.value.trim().toLowerCase();drawCat()};
 $("srch").onsubmit=function(e){e.preventDefault();$("models").scrollIntoView({behavior:"smooth"})};
 $("sort").onchange=function(){SORT=this.value;drawCat()};

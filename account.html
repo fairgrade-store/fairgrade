@@ -160,6 +160,7 @@ main>section{animation:fadein .35s ease}
       <h2 class="sh" style="margin-top:4px">Customer Service</h2>
       <a class="btn tgb" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Chat with us on Telegram</a>
       <a class="btn tgm" href="mailto:fairgradestore@gmail.com"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="3" fill="#fff"/><rect x="1.5" y="7" width="3.6" height="12.5" rx="1.4" fill="#4285F4"/><rect x="18.9" y="7" width="3.6" height="12.5" rx="1.4" fill="#34A853"/><path d="M3.2 7.2l8.8 6.6 8.8-6.6" fill="none" stroke="#EA4335" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Email fairgradestore@gmail.com</a>
+      <p class="muted" style="margin:12px 0 0">11 Wall Street, New York, NY 10005, USA</p>
       <div class="card">
         <label>About<select id="h-order"></select></label>
         <label>Your message<textarea id="h-msg" rows="4" placeholder="Ask a question or tell us about a problem"></textarea></label>
@@ -401,7 +402,8 @@ function invoice(o){
   const d=$("inv-body");d.innerHTML="";
   const lg=el("div","lk");lg.style.margin="0 0 12px";lg.innerHTML='<svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg>';d.appendChild(lg);
   d.appendChild(el("h2","","Invoice"));
-  d.appendChild(el("p","muted","Fairgrade  Order #"+o.code+"  "+when(o)));
+  d.appendChild(el("p","muted","Fairgrade, 11 Wall Street, New York, NY 10005, USA"));
+  d.appendChild(el("p","muted","Order #"+o.code+"  "+when(o)));
   d.appendChild(el("p","","Billed to: "+o.customer.name+" ("+o.customer.email+")"));
   const t=el("table","inv");
   (o.items||[]).forEach(i=>{const r=el("tr");r.appendChild(el("td","",i.n));r.appendChild(el("td","","$"+i.p));t.appendChild(r)});
