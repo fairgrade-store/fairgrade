@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | Fairgrade</title>
+<script>
+var m=location.pathname.match(/^(.*\/)products\/([^\/]+?)(?:\.html)?\/?$/);
+if(m){location.replace(m[1]+"product.html?slug="+encodeURIComponent(m[2]))}
+</script>
+<style>
+:root{--bg:#F3F6FC;--ink:#0B1B33;--muted:#5B6B82;--blue:#2563EB}
+@media(prefers-color-scheme:dark){:root{--bg:#070D18;--ink:#E8EEF8;--muted:#9AA9BF;--blue:#5B8CFF}}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--ink);font:400 16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:center;padding:24px}
+h1{font-size:72px;margin:0;letter-spacing:-.04em}
+p{color:var(--muted);margin:8px 0 22px}
+a{display:inline-block;background:var(--blue);color:#fff;border-radius:12px;padding:12px 20px;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body><main><h1>404</h1><p>We could not find that page.</p><a id="home" href="index.html">Back to the store</a></main>
+<script>var b=location.pathname.match(/^(\/[^\/]+\/)/);document.getElementById("home").href=(b?b[1]:"/");</script>
+</body>
+</html>

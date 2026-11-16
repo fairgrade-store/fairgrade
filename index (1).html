@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fairgrade: brand new iPhones</title>
+<meta name="description" content="Brand new iPhones with a 12-month warranty. Unlocked, free shipping, 30-day returns.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='fgH' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.16'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230B1B33'/%3E%3Crect width='64' height='64' rx='17' fill='url(%23fgH)'/%3E%3Crect x='24' y='29' width='17' height='7.6' rx='2.6' fill='%233DE0B8'/%3E%3Crect x='21' y='14' width='8' height='36' rx='2.6' fill='%23fff'/%3E%3Crect x='21' y='14' width='24' height='8' rx='2.6' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#070D18;--surface:#0F1827;--ink:#E8EFF2;--muted:#98A7B0;--line:#1B2A41;--accent:#4FD1AE;--accent-ink:#06231C}}
+*{box-sizing:border-box}
+:root{color-scheme:light dark}
+input:-webkit-autofill,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-text-fill-color:var(--ink);caret-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--surface) inset;transition:background-color 9999s}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Schibsted Grotesk","Public Sans",system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:800 22px "Schibsted Grotesk",sans-serif;text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:30px;height:30px}
+nav{display:none;gap:28px;font-weight:500}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.cartbtn{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 10px 8px 16px;font-weight:600}
+.cartbtn b{background:var(--accent);color:var(--accent-ink);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:13px;padding:0 7px}
+.hero{display:grid;gap:36px;padding:40px 0 56px}
+h1{font-size:clamp(36px,7vw,64px);font-weight:800}
+.lede{font-size:18px;color:var(--muted);max-width:44ch;margin:18px 0 26px}
+.btns{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.cta{display:inline-block;background:var(--ink);color:var(--bg);border-radius:12px;padding:14px 22px;font-weight:700;text-decoration:none}
+.link{font-weight:600;text-underline-offset:4px}
+.report{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 48px -28px rgba(15,28,36,.45)}
+.rhead{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:var(--ink);color:var(--bg);font-weight:600}
+.rhead small{font-weight:500;opacity:.75}
+.rbody{padding:22px}
+fieldset{border:0;padding:0;margin:0 0 18px}
+legend{font-weight:600;margin-bottom:8px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:none;border-radius:10px;padding:9px 14px;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.note{color:var(--muted);font-size:14px;margin:0 0 18px;min-height:44px}
+.brow{display:flex;justify-content:space-between;font-weight:600;margin-bottom:8px}
+.gauge{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.gauge i{display:block;height:100%;width:90%;background:var(--accent);transition:width .35s ease}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin:20px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts b{display:block}
+.facts span{color:var(--muted);font-size:14px}
+.pr{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.pr strong{font:800 42px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em}
+.pr span{color:var(--muted);font-size:14px}
+.pname{color:var(--muted);font-size:14px;margin:0}
+.buy{width:100%;border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:15px;font-weight:700;font-size:16px;margin-top:14px}
+.buy:disabled{opacity:.5;cursor:not-allowed}
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:20px;list-style:none;margin:0;padding:26px 0;border-top:1px solid var(--line)}
+.trust li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.ic{width:26px;height:26px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(26px,4.4vw,40px);font-weight:800}
+.sub{color:var(--muted);max-width:58ch;margin:10px 0 28px}
+.g{display:grid;gap:4px;padding:18px 0;border-top:1px solid var(--line)}
+.g:last-of-type{border-bottom:1px solid var(--line)}
+.g h3{font-size:22px}
+.g p{margin:0;color:var(--muted)}
+.g b{font-weight:600}
+.tests{columns:2;list-style:none;padding:0;margin:26px 0 0;max-width:560px}
+.tests li{padding:4px 0 4px 26px;position:relative;break-inside:avoid}
+.tests li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:11px;border:solid var(--accent);border-width:0 2.5px 2.5px 0;transform:translateY(-3px) rotate(40deg)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-weight:600}
+td small{display:block;color:var(--muted);margin-top:2px}
+.pol{display:grid;gap:28px}
+.pol h3{font-size:21px;margin-bottom:8px}
+.pol p{margin:0;color:var(--muted)}
+.pol div{padding-top:18px;border-top:2px solid var(--ink)}
+details{border-top:1px solid var(--line);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:600;cursor:pointer}
+details p{margin:10px 0 0;color:var(--muted);max-width:60ch}
+footer{border-top:1px solid var(--line);padding:32px 0 44px;color:var(--muted);font-size:14px}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:16px;font-weight:500}
+footer a{text-decoration:none}
+footer p{margin:0;max-width:70ch}
+#scrim{position:fixed;inset:0;background:rgba(5,12,16,.5);z-index:25}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:30;padding:20px;overflow:auto;display:flex;flex-direction:column}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dh button,.rm{background:none;border:0;text-decoration:underline;text-underline-offset:3px;color:var(--muted);padding:6px}
+#items{list-style:none;margin:0;padding:0}
+#items li{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+#items .r{display:flex;align-items:center;gap:4px;font-weight:600;white-space:nowrap}
+.tot{display:flex;justify-content:space-between;font-weight:700;font-size:18px;margin-top:auto;padding-top:18px}
+.cat{display:grid;gap:18px}
+.mc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column}
+.pic{background:var(--bg);border-radius:14px;padding:18px 0;display:grid;place-items:center;margin-bottom:16px}
+.pic svg{height:210px;width:auto}
+.mc h3{font-size:24px}
+.spec{color:var(--muted);margin:4px 0 14px;font-size:15px}
+.from{margin:auto 0 14px}
+.from strong{font:800 30px "Schibsted Grotesk",sans-serif;letter-spacing:-.02em}
+.pickbtn{border:1.5px solid var(--ink);background:none;border-radius:12px;padding:12px;font-weight:700}
+.pickbtn:hover{background:var(--ink);color:var(--bg)}
+.sel{width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit;font-weight:600}
+.cat{grid-template-columns:1fr 1fr;gap:12px}
+.mc{padding:12px}
+.pic{min-height:170px;padding:14px 0;background:#fff}
+.pic img{mix-blend-mode:multiply}
+.pic svg,.pic img{height:150px;width:auto;max-width:100%;object-fit:contain}
+.mc h3{font-size:18px}
+.from strong{font-size:24px}
+.pickbtn{padding:10px;font-size:14px}
+dialog{border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--ink);padding:20px;width:min(460px,calc(100% - 24px));max-height:92vh}
+dialog::backdrop{background:rgba(5,12,16,.55)}
+#co label{display:block;font-weight:600;margin:12px 0 0}
+#co input,#co textarea,#co select{display:block;width:100%;margin-top:6px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit;font-weight:400}
+#co .opt{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:12px;margin:8px 0 0;font-weight:400}
+#co .opt:has(input:checked){border-color:var(--accent)}
+#co .opt input{width:auto;margin:4px 0 0}
+#co .opt small{display:block;color:var(--muted)}
+#co .opt b{font-weight:600}
+.pay{border:0;padding:0;margin:16px 0 0}
+.pay legend{font-weight:600}
+#co .tot{margin-top:16px}
+dialog{overflow:auto}
+.muted{color:var(--muted);font-size:14px}
+.err{color:#d33;margin:8px 0 0}
+.link2{background:none;border:0;text-decoration:underline;color:var(--muted);padding:0}
+.buy.alt{background:none;color:var(--ink);border:1.5px solid var(--line);margin-top:8px}
+.wl{border:1.5px solid var(--line);border-radius:12px;padding:12px;margin-top:8px}
+.wl b{display:block}
+.wl code{display:block;word-break:break-all;margin:6px 0;font-size:13px}
+.wl button{border:1.5px solid var(--line);background:none;border-radius:8px;padding:6px 12px;font-weight:600}
+.hr{display:flex;align-items:center;gap:14px}
+.acct{font-weight:600;text-decoration:none}
+.announce{background:var(--ink);color:var(--bg);text-align:center;font-size:13px;padding:7px 12px}
+.srch{position:relative;padding:12px 0 0}
+.srch svg{position:absolute;left:15px;top:25px;width:20px;height:20px;color:var(--muted);pointer-events:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.srch input{width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 16px 11px 44px;font:inherit}
+nav a{white-space:nowrap}
+nav.open{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:64px;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 20px 16px;gap:0;z-index:19}
+nav.open a{padding:11px 0;border-bottom:1px solid var(--line)}
+.menubtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:600}
+.tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0 0 14px}
+.sortl{display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px}
+.sortl select{width:auto}
+.cat .muted{grid-column:1/-1}
+.ph{display:grid;gap:8px;margin-top:6px}
+.ph select{width:100%}
+.ph input{width:100%;margin-top:0!important;font-size:18px}
+.ci{display:flex;gap:12px;align-items:center}
+.cth{width:64px;height:64px;border-radius:12px;background:#fff;flex:none;display:grid;place-items:center;overflow:hidden}
+.cth img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.cinfo{flex:1;display:flex;flex-direction:column;min-width:0}
+.cinfo span{color:var(--muted);font-size:14px}
+.cpr{display:flex;flex-direction:column;align-items:flex-end;font-weight:700;gap:2px}
+.empty{text-align:center;padding:48px 8px}
+.empty svg{width:56px;height:56px;color:var(--muted);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.empty .buy{margin-top:16px}
+.csum{margin-top:auto;padding-top:16px}
+.kv{display:flex;justify-content:space-between;padding:6px 0}
+.tot2 strong{font-size:22px}
+.perks{list-style:none;margin:14px 0 0;padding:0;color:var(--muted);font-size:14px}
+.perks li{padding:3px 0 3px 22px;position:relative}
+.perks li::before{content:"";position:absolute;left:4px;top:7px;width:5px;height:9px;border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(40deg)}
+#cmp th:first-child,#cmp td:first-child{position:sticky;left:0;background:var(--surface);font-weight:600}
+#cmp td button{border:1.5px solid var(--line);background:none;border-radius:8px;padding:5px 12px;font-weight:600}
+.steps{list-style:none;padding:0;margin:0;display:grid;gap:14px;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:12px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;margin-bottom:8px}
+.steps b{display:block}
+.steps span{color:var(--muted)}
+.fcols{display:grid;gap:24px;grid-template-columns:1fr 1fr;margin-bottom:8px}
+.fcols h4{margin:0 0 8px;color:var(--ink);font-size:14px}
+.fcols a{display:block;padding:3px 0;color:var(--muted);text-decoration:none}
+.fcols a:hover{color:var(--ink)}
+.fcols p{margin:8px 0 0}
+.fcols a.ct{display:flex;align-items:center;gap:10px;padding:6px 0}
+.fcols a.ct svg{width:22px;height:22px;flex:none}
+.fcols>div:first-child{grid-column:1/-1}
+.logo2{font:800 20px "Schibsted Grotesk",sans-serif;color:var(--ink)}
+.pm{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:20px 0 10px}
+.pm b{border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--ink);font-weight:600;font-size:13px}
+.fine{margin:0;font-size:13px}
+.nb{position:fixed;left:12px;right:12px;bottom:12px;max-width:520px;background:var(--ink);color:var(--bg);border-radius:14px;padding:12px 14px;z-index:15;display:flex;gap:12px;align-items:center;font-size:14px}
+.nb[hidden]{display:none}
+.nb a{color:inherit}
+.nb button{background:var(--bg);color:var(--ink);border:0;border-radius:10px;padding:8px 14px;font-weight:700}
+html{scroll-padding-top:80px}
+.logo{gap:10px}
+.logo .lm{width:36px;height:36px}
+.logo .wmk{width:112px;height:16px;color:var(--ink)}
+.logo2{display:flex;align-items:center;gap:10px}
+.logo2 .lm{width:34px;height:34px}
+.logo2 .wmk{width:108px;height:15px;color:var(--ink)}
+header{transition:box-shadow .3s}
+header.sc{box-shadow:0 8px 24px -14px rgba(11,27,51,.45)}
+main{position:relative}
+main>*:not(.glow){position:relative;z-index:1}
+.glow{position:absolute;left:0;right:0;top:0;height:760px;overflow:hidden;pointer-events:none;z-index:0!important}
+.glow i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.28}
+.glow i:nth-child(1){width:380px;height:380px;background:#2F6BFF;left:-100px;top:-70px;animation:drift 18s ease-in-out infinite}
+.glow i:nth-child(2){width:320px;height:320px;background:#12B9A0;right:-70px;top:150px;animation:drift 22s ease-in-out infinite reverse}
+.glow i:nth-child(3){width:240px;height:240px;background:#7C5CFF;left:38%;top:420px;animation:drift 26s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(40px,30px) scale(1.12)}}
+@keyframes float{50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+@keyframes bump{40%{transform:scale(1.4)}}
+@keyframes mq{to{transform:translateX(-50%)}}
+.gt2{background:linear-gradient(90deg,#2F6BFF,#12B9A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.buy{position:relative;overflow:hidden}
+.buy:not(:disabled)::after,.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:shine 5s ease-in-out infinite;pointer-events:none}
+.cta{position:relative;overflow:hidden}
+#count.bump{animation:bump .4s}
+.ads{position:relative;border-radius:22px;overflow:hidden;margin-top:16px}
+.adtrack{display:flex;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ad{min-width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 22px 30px;color:#fff;min-height:150px}
+.ad h3{font-size:22px;color:#fff}
+.ad p{margin:6px 0 12px;opacity:.92}
+.ad a{background:#fff;color:#0B1B33;border-radius:999px;padding:8px 16px;font-weight:700;text-decoration:none;display:inline-block}
+.ad img{height:112px;width:auto;background:#fff;border-radius:14px;padding:6px;flex:none;max-width:44%;object-fit:contain}
+.th-blue{background:linear-gradient(120deg,#1E40AF,#2563EB 60%,#12B9A0)}
+.th-green{background:linear-gradient(120deg,#065F46,#0E7A66 60%,#34D399)}
+.th-purple{background:linear-gradient(120deg,#5B21B6,#7C3AED 60%,#EC4899)}
+.th-orange{background:linear-gradient(120deg,#C2410C,#F97316 60%,#FBBF24)}
+.th-dark{background:linear-gradient(120deg,#0B1B33,#1E293B 55%,#2F6BFF)}
+.addots{position:absolute;bottom:9px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.addots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.5);transition:width .3s}
+.addots button[aria-current="true"]{background:#fff;width:22px;border-radius:4px}
+.show{border-top:0;padding:28px 0 8px}
+.panel{position:relative;overflow:hidden;border-radius:28px;padding:26px;color:#fff;background:linear-gradient(135deg,#0B2A6B,#1E5BFF 58%,#12B9A0);display:grid;gap:22px}
+.panel::before{content:"";position:absolute;width:380px;height:380px;right:-80px;top:-130px;background:radial-gradient(circle,rgba(255,255,255,.3),transparent 65%);animation:drift 14s ease-in-out infinite}
+.panel::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:22px 22px;opacity:.5;pointer-events:none}
+.ptxt,.stage{position:relative;z-index:1}
+.panel h2{color:#fff;font-size:clamp(24px,5vw,38px);margin:10px 0}
+.panel p{margin:0 0 18px;opacity:.92}
+.tag{display:inline-block;background:rgba(255,255,255,.2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.panel .cta{background:#fff;color:#0B1B33}
+.stage{height:270px}
+.dev{position:absolute;width:34%;background:#fff;border-radius:18px;padding:8px;box-shadow:0 24px 48px -16px rgba(0,0,0,.55);transform:rotate(var(--r,0deg));animation:float 6s ease-in-out infinite}
+.dev img{width:100%;display:block;border-radius:10px}
+.d1{left:3%;top:42px;--r:-9deg}
+.d2{left:33%;top:0;z-index:2;width:36%;animation-delay:-2s}
+.d3{right:3%;top:46px;--r:9deg;animation-delay:-4s}
+.gad{position:absolute;width:62px;height:62px;animation:float 7s ease-in-out infinite;filter:drop-shadow(0 10px 14px rgba(0,0,0,.3));z-index:3}
+.ga1{left:0;bottom:0}
+.ga2{right:0;bottom:6px;animation-delay:-3s}
+.ga3{left:44%;bottom:-8px;animation-delay:-5s}
+.statsb{border-top:0;padding:20px 0}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sgrid>div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}
+.sgrid b{display:block;font:800 40px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em;color:var(--accent)}
+.sgrid span{color:var(--muted);font-weight:600;font-size:14px}
+.mq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-top:8px;background:var(--surface)}
+.mqt{display:flex;width:max-content;animation:mq 80s linear infinite}
+.mq:hover .mqt{animation-play-state:paused}
+.mqt a{white-space:nowrap;font-weight:700;color:var(--muted);font-size:15px;margin-right:36px}
+.mqt a::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:36px;vertical-align:middle}
+.gearg{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.gt{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 12px;border-radius:20px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink);text-align:center}
+.gt svg{width:96px;height:96px;animation:float 6s ease-in-out infinite}
+.gt:nth-child(2n) svg{animation-delay:-2s}
+.gt:nth-child(3n) svg{animation-delay:-4s}
+.soon{font-size:12px;font-weight:700;background:rgba(37,99,235,.12);color:var(--accent);padding:2px 10px;border-radius:99px}
+.mc{transition:transform .25s ease,box-shadow .25s ease}
+.mc:hover,.gt:hover{transform:translateY(-6px);box-shadow:0 18px 36px -18px rgba(11,27,51,.5)}
+.mc .pic img{transition:transform .4s ease}
+.mc:hover .pic img{transform:scale(1.06)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.mc.rv.in,.gt.rv.in{transition:opacity .6s ease,transform .25s ease,box-shadow .25s ease}
+.tg{position:fixed;right:14px;bottom:14px;z-index:14;display:flex;align-items:center;gap:8px;background:#229ED9;color:#fff;border-radius:999px;padding:12px;font-weight:700;text-decoration:none;box-shadow:0 10px 26px -10px rgba(34,158,217,.8)}
+.tg svg{width:24px;height:24px;fill:#fff;stroke:none}
+.tg span{display:none}
+.nb{right:78px}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:13px;font-weight:700}
+.gbtn svg{width:20px;height:20px;fill:none}
+.or{text-align:center;color:var(--muted);font-size:13px;margin:12px 0 0}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important}}
+@media(min-width:600px){.tg span{display:inline}.tg{padding:12px 16px}.nb{right:200px}}
+@media(min-width:760px){.panel{grid-template-columns:1fr 1fr;align-items:center;padding:44px}.stage{height:340px}.gearg{grid-template-columns:repeat(4,1fr)}.sgrid{grid-template-columns:repeat(4,1fr)}.ad{padding:28px 32px 34px}.ad h3{font-size:28px}.ad img{height:150px}.gad{width:84px;height:84px}}
+.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:8px}
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,#2F6BFF,#8B5CF6);z-index:60}
+#gear{background:radial-gradient(70% 50% at 50% 0,rgba(47,107,255,.14),transparent 70%)}
+.gcards{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.gc{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);background:var(--surface);padding:14px 16px 18px;transition:transform .25s ease,box-shadow .25s ease}
+.gc::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--glow),transparent 62%);opacity:.75;pointer-events:none}
+.gc>*{position:relative}
+.gc .gi{height:150px;display:grid;place-items:center}
+.gc .gi svg{height:150px;width:auto;animation:float 6s ease-in-out infinite}
+.gc:nth-child(2n) .gi svg{animation-delay:-2s}
+.gc:nth-child(3n) .gi svg{animation-delay:-4s}
+.gc h3{font-size:19px;margin:10px 0 4px}
+.gc p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.gc a{color:var(--accent);font-weight:700;text-decoration:none}
+.gc:hover{transform:translateY(-6px);box-shadow:0 18px 36px -18px rgba(11,27,51,.55)}
+#layers{background:radial-gradient(70% 45% at 50% 0,rgba(47,107,255,.14),transparent 70%)}
+.lay{display:grid;gap:22px;margin-top:8px}
+.stack{width:100%;max-width:430px;margin:0 auto;display:block;overflow:visible}
+.ly{transition:transform .35s ease,filter .35s ease;cursor:pointer}
+.ly.on{transform:translate(-8px,-12px);filter:drop-shadow(0 0 14px var(--c))}
+.llist{display:grid;gap:10px}
+.li{display:flex;gap:12px;text-align:left;align-items:flex-start;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface);font-weight:400;color:var(--ink)}
+.li .d{width:11px;height:11px;border-radius:50%;margin-top:6px;flex:none}
+.li b{display:block}
+.li em{font-style:normal;color:var(--muted);font-size:15px}
+.li[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.tg span{display:inline}
+.tg{padding:12px 18px;background:linear-gradient(90deg,#1d8fe0,#22b0e8)}
+.nb{right:12px;bottom:78px}
+@media(min-width:760px){.gcards{grid-template-columns:repeat(3,1fr)}.lay{grid-template-columns:1fr 1fr;align-items:center}}
+.dlogo{width:28px;height:28px;vertical-align:middle;margin-right:8px}
+.dlogo.big{width:52px;height:52px;display:block;margin:0 0 10px}
+.pi{width:30px;height:30px;flex:none;margin-top:1px}
+.coins{display:flex;flex:none;align-items:center}
+.coins .pi{width:26px;height:26px;border-radius:50%;box-shadow:0 0 0 2px var(--surface);margin:0 0 0 -9px}
+.coins .pi:first-child{margin-left:0}
+.pm b{display:inline-flex;align-items:center;gap:7px}
+.pm .pi{width:18px;height:18px;margin:0}
+.pm .coins .pi{width:18px;height:18px;margin-left:-6px;box-shadow:0 0 0 1.5px var(--surface)}
+.pm .coins .pi:first-child{margin-left:0}
+#pd{padding:0;width:min(520px,calc(100% - 20px))}
+.pdw{padding:14px 18px 22px}
+.pdh{display:flex;justify-content:flex-end}
+.pdh button{background:none;border:0;text-decoration:underline;color:var(--muted);padding:4px}
+.pdimg .pic{min-height:230px;border-radius:16px}
+.pdimg .pic img,.pdimg .pic svg{height:220px;width:auto;max-width:100%;object-fit:contain}
+#pd h3{font-size:26px;margin:14px 0 2px}
+.pdprice{display:flex;align-items:baseline;gap:10px;margin:10px 0 4px}
+.pdprice strong{font:800 38px "Schibsted Grotesk",sans-serif;letter-spacing:-.03em}
+.pdprice span{color:var(--muted);font-size:14px}
+.pdl{font-weight:600;margin:14px 0 6px}
+.pds{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.pds div{background:var(--bg);border-radius:12px;padding:10px 12px}
+.pds span{display:block;color:var(--muted);font-size:13px}
+.mc{cursor:pointer}
+.pic{position:relative}
+.nw{position:absolute;top:8px;left:8px;background:#0E7A66;color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:99px;padding:3px 9px}
+.newb{display:inline-block;margin-top:6px;background:rgba(18,185,160,.16);color:var(--accent);border-radius:99px;padding:3px 12px;font-weight:700;font-size:13px}
+.cs{margin:2px 0 6px;color:var(--muted);font-size:13px}
+.findg{display:grid;gap:18px}
+.mapbox{border-radius:20px;overflow:hidden;border:1px solid var(--line);height:280px;background:var(--surface)}
+.mapbox iframe{width:100%;height:100%;border:0}
+.addr{display:flex;gap:12px;align-items:flex-start;line-height:1.5}
+.addr svg{width:26px;height:26px;flex:none}
+.addr b{display:block}
+.findc a{display:block;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:12px 16px;font-weight:700;text-decoration:none;text-align:center;margin-top:10px}
+@media(min-width:760px){.findg{grid-template-columns:1.4fr 1fr;align-items:center}}
+.hrt{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);display:grid;place-items:center;padding:0;cursor:pointer}
+.hrt svg{width:18px;height:18px;fill:none;stroke:#64748B;stroke-width:2}
+.hrt[aria-pressed="true"] svg{fill:#EF4444;stroke:#EF4444}
+.cbtns{display:grid;gap:8px}
+.pickbtn.add{background:var(--ink);color:var(--bg)}
+a.pickbtn{display:block;text-align:center;text-decoration:none;color:var(--ink)}
+.mc h3 a{color:inherit;text-decoration:none}
+.dev{display:block}
+.vb{border:1.5px solid var(--line);border-radius:8px;padding:5px 12px;font-weight:600;color:var(--ink);text-decoration:none}
+.vlink{display:block;text-align:center;margin-top:12px;font-weight:700;color:var(--accent);text-decoration:none}
+.mqt a{text-decoration:none}
+@media(min-width:420px){.cbtns{grid-template-columns:1fr 1fr}}
+@media(max-width:519px){.logo .wmk{width:88px;height:13px}.logo .lm{width:32px;height:32px}.acct{display:none}}
+@media(min-width:1000px){.navacct{display:none}}
+@media(min-width:1000px){nav{display:flex!important}.menubtn{display:none}}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}.fcols{grid-template-columns:2fr 1fr 1fr 1fr}.fcols>div:first-child{grid-column:auto}}
+@media(min-width:760px){.trust{grid-template-columns:repeat(4,1fr)}.g{grid-template-columns:170px 1fr 190px;align-items:baseline;gap:24px}.pol{grid-template-columns:repeat(3,1fr)}.cat{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr;align-items:center;padding:64px 0 72px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Fairgrade","description":"Brand new iPhones.","email":"fairgradestore@gmail.com","address":{"@type":"PostalAddress","streetAddress":"11 Wall Street","addressLocality":"New York","addressRegion":"NY","postalCode":"10005","addressCountry":"US"},"sameAs":["https://t.me/fairgradestore"]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs><linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE5F0"/></linearGradient><linearGradient id="gB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2F6BFF"/><stop offset="1" stop-color="#12B9A0"/></linearGradient><linearGradient id="gS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1E3A8A"/><stop offset="1" stop-color="#0B1B33"/></linearGradient></defs>
+<symbol id="i-logo" viewBox="0 0 64 64"><g stroke="none"><defs><linearGradient id="fgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="#0B1B33"/><rect width="64" height="64" rx="17" fill="url(#fgH)"/><rect x="24" y="29" width="17" height="7.6" rx="2.6" fill="#3DE0B8"/><rect x="21" y="14" width="8" height="36" rx="2.6" fill="#fff"/><rect x="21" y="14" width="24" height="8" rx="2.6" fill="#fff"/></g></symbol>
+<symbol id="i-wm" viewBox="0 0 141 20"><path transform="translate(0 15)" fill="currentColor" stroke="none" d="M9.7 -13.9V-12.0H3.8V-7.9H8.4V-6.1H3.8V0.0H1.5V-13.9Z M24.2 -2.8H18.4L17.4 0.0H15.0L20.0 -13.9H22.6L27.6 0.0H25.2ZM23.5 -4.7 21.3 -11.2 19.0 -4.7Z M36.0 -13.9V0.0H33.7V-13.9Z M50.2 0.0 47.0 -5.6H45.3V0.0H43.0V-13.9H47.8Q49.4 -13.9 50.5 -13.3Q51.6 -12.8 52.2 -11.8Q52.7 -10.9 52.7 -9.7Q52.7 -8.4 51.9 -7.3Q51.2 -6.2 49.5 -5.8L53.0 0.0ZM45.3 -7.4H47.8Q49.1 -7.4 49.8 -8.0Q50.4 -8.7 50.4 -9.7Q50.4 -10.8 49.8 -11.4Q49.1 -12.0 47.8 -12.0H45.3Z M69.7 -9.9Q69.2 -10.9 68.2 -11.5Q67.3 -12.0 66.0 -12.0Q64.6 -12.0 63.5 -11.4Q62.5 -10.8 61.8 -9.6Q61.2 -8.5 61.2 -7.0Q61.2 -5.5 61.8 -4.3Q62.5 -3.2 63.5 -2.6Q64.6 -1.9 66.0 -1.9Q67.9 -1.9 69.0 -3.0Q70.2 -4.0 70.4 -5.8H65.2V-7.6H72.9V-5.8Q72.7 -4.2 71.7 -2.9Q70.8 -1.5 69.3 -0.7Q67.8 0.1 66.0 0.1Q64.0 0.1 62.4 -0.8Q60.8 -1.7 59.8 -3.3Q58.9 -4.9 58.9 -7.0Q58.9 -9.0 59.8 -10.6Q60.8 -12.3 62.4 -13.2Q64.1 -14.1 66.0 -14.1Q68.2 -14.1 69.9 -13.0Q71.7 -11.9 72.5 -9.9Z M86.3 0.0 83.1 -5.6H81.4V0.0H79.1V-13.9H83.9Q85.5 -13.9 86.6 -13.3Q87.7 -12.8 88.3 -11.8Q88.8 -10.9 88.8 -9.7Q88.8 -8.4 88.1 -7.3Q87.3 -6.2 85.6 -5.8L89.1 0.0ZM81.4 -7.4H83.9Q85.2 -7.4 85.8 -8.0Q86.5 -8.7 86.5 -9.7Q86.5 -10.8 85.9 -11.4Q85.2 -12.0 83.9 -12.0H81.4Z M104.1 -2.8H98.3L97.3 0.0H94.9L99.9 -13.9H102.6L107.5 0.0H105.1ZM103.5 -4.7 101.2 -11.2 99.0 -4.7Z M125.6 -6.9Q125.6 -4.8 124.7 -3.2Q123.8 -1.7 122.1 -0.8Q120.5 0.0 118.2 0.0H113.7V-13.9H118.2Q120.5 -13.9 122.1 -13.1Q123.8 -12.2 124.7 -10.6Q125.6 -9.0 125.6 -6.9ZM123.3 -6.9Q123.3 -9.3 122.0 -10.7Q120.7 -12.0 118.2 -12.0H116.0V-1.9H118.2Q120.7 -1.9 122.0 -3.2Q123.3 -4.5 123.3 -6.9Z M134.2 -12.1V-8.0H139.0V-6.1H134.2V-1.9H139.6V0.0H131.9V-13.9H139.6V-12.1Z"/></symbol>
+<symbol id="p-card" viewBox="0 0 24 24"><g stroke="none"><rect x="1.5" y="4.5" width="21" height="15" rx="3.2" fill="#2F6BFF"/><rect x="1.5" y="8.2" width="21" height="3.4" fill="#0B1B33" opacity=".5"/><rect x="4.2" y="14" width="6.5" height="2.6" rx="1.3" fill="#fff"/><circle cx="18" cy="15.3" r="1.6" fill="#fff" opacity=".7"/></g></symbol>
+<symbol id="p-bank" viewBox="0 0 24 24"><g stroke="none" fill="#10B981"><path d="M12 2L2.3 7.4v2h19.4v-2z"/><rect x="4.4" y="11" width="2.8" height="7" rx=".9"/><rect x="10.6" y="11" width="2.8" height="7" rx=".9"/><rect x="16.8" y="11" width="2.8" height="7" rx=".9"/><rect x="2.3" y="19.4" width="19.4" height="2.4" rx="1.1"/></g></symbol>
+<symbol id="p-btc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#F7931A" stroke="none"/><path d="M9.2 7.2v9.6M9.2 7.2h3.6a2.5 2.5 0 0 1 0 5H9.2m0 0h4.1a2.6 2.6 0 0 1 0 5.2H9.2M11 5.6v1.6M13.6 5.6v1.6M11 16.8v1.6M13.6 16.8v1.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="p-eth" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#627EEA" stroke="none"/><g fill="#fff" stroke="none"><path d="M12 3.5L6.9 12.2 12 15z" opacity=".6"/><path d="M12 3.5l5.1 8.7L12 15z"/><path d="M6.9 13.4l5.1 2.9v4.2z" opacity=".6"/><path d="M17.1 13.4L12 16.3v4.2z"/></g></symbol>
+<symbol id="p-bnb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#F3BA2F" stroke="none"/><g fill="#0B1B33" stroke="none"><path d="M12 5.2l1.9 1.9-1.9 1.9-1.9-1.9z"/><path d="M7.1 10.1L9 12l-1.9 1.9L5.2 12z"/><path d="M16.9 10.1L18.8 12l-1.9 1.9L15 12z"/><path d="M12 15l1.9 1.9-1.9 1.9-1.9-1.9z"/><path d="M12 10.1l1.9 1.9-1.9 1.9-1.9-1.9z"/></g></symbol>
+<symbol id="g-buds" viewBox="0 0 120 120"><rect x="16" y="58" width="88" height="50" rx="22" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><path d="M18 80h84" stroke="#CBD5E1" stroke-width="2"/><circle cx="60" cy="94" r="3.5" fill="#3DE0B8"/><g transform="rotate(-14 38 34)"><rect x="30" y="8" width="16" height="44" rx="8" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="38" cy="16" r="12" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="38" cy="16" r="4" fill="#94A3B8"/></g><g transform="rotate(14 82 34)"><rect x="74" y="8" width="16" height="44" rx="8" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="82" cy="16" r="12" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><circle cx="82" cy="16" r="4" fill="#94A3B8"/></g></symbol>
+<symbol id="g-watch" viewBox="0 0 120 120"><rect x="42" y="2" width="36" height="32" rx="10" fill="url(#gB)"/><rect x="42" y="86" width="36" height="32" rx="10" fill="url(#gB)"/><rect x="26" y="24" width="68" height="72" rx="22" fill="#0B1B33"/><rect x="32" y="30" width="56" height="60" rx="17" fill="url(#gS)"/><path d="M60 44v17l11 7" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="61" r="3.2" fill="#3DE0B8"/><rect x="94" y="50" width="6" height="16" rx="3" fill="#1E3A8A"/></symbol>
+<symbol id="g-charger" viewBox="0 0 120 120"><rect x="46" y="6" width="7" height="24" rx="3.5" fill="#94A3B8"/><rect x="67" y="6" width="7" height="24" rx="3.5" fill="#94A3B8"/><rect x="28" y="28" width="64" height="62" rx="16" fill="url(#gW)" stroke="#CBD5E1" stroke-width="2"/><rect x="44" y="46" width="32" height="15" rx="7.5" fill="#0B1B33"/><rect x="50" y="51" width="20" height="5" rx="2.5" fill="#3DE0B8"/><path d="M60 90v8c0 12 22 8 22 20" stroke="#2F6BFF" stroke-width="5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="g-case" viewBox="0 0 120 120"><rect x="30" y="6" width="60" height="108" rx="17" fill="url(#gB)"/><rect x="36" y="12" width="48" height="96" rx="12" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2"/><rect x="38" y="16" width="27" height="27" rx="9" fill="#0B1B33"/><circle cx="47" cy="25" r="5" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/><circle cx="57" cy="35" r="5" fill="#1E293B" stroke="#64748B" stroke-width="1.5"/><circle cx="47" cy="35" r="2.2" fill="#3DE0B8"/><circle cx="60" cy="74" r="11" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
+<symbol id="i-return" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+</svg>
+
+<div class="prog" id="prog"></div>
+<div class="announce">Free shipping on every order. 12-month warranty. 30-day returns.</div>
+<header>
+<div class="wrap bar">
+<a class="logo" href="#top" aria-label="Fairgrade home"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></a>
+<nav id="nav" aria-label="Main"><a href="#models">iPhones</a><a href="#grading">Why brand new</a><a href="#compare">Compare models</a><a href="#warranty">Warranty and returns</a><a href="#faq">Questions</a><a href="#find">Find us</a><a class="navacct" href="account.html">My account</a></nav>
+<div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button><button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button></div>
+</div>
+</header>
+<div class="wrap"><form class="srch" id="srch" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Search phones, for example iPhone 15 Pro" aria-label="Search phones" autocomplete="off"></form></div>
+
+<main id="top">
+<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="wrap" id="adsw" hidden><div class="ads" id="ads" role="region" aria-label="Promotions"><div class="adtrack" id="adtrack"></div><div class="addots" id="addots"></div></div></div>
+<div class="wrap">
+<div class="hero">
+<div>
+<h1><span class="gt2">Brand new iPhones</span>, delivered to your door.</h1>
+<p class="lede">Choose a model and storage size. You see the price, warranty and delivery date before anything goes in your cart.</p>
+<div class="btns"><a class="cta" href="#pick">Pick your iPhone</a><a class="link" href="#grading">Why brand new</a></div>
+</div>
+
+<div class="report" id="pick">
+<div class="rhead"><span>Your iPhone</span><small>Prices in USD</small></div>
+<div class="rbody">
+<fieldset><legend><label for="c-model">Model</label></legend><select id="c-model" class="sel"></select></fieldset>
+<fieldset><legend>Storage</legend><div class="chips" id="c-store"></div></fieldset>
+<fieldset hidden><legend>Condition</legend><div class="chips" id="c-grade"></div></fieldset>
+<p class="note" id="note" hidden></p>
+<div class="brow" hidden><span>Battery health</span><span id="bat"></span></div>
+<div class="gauge" hidden><i id="gauge"></i></div>
+<div class="facts">
+<div><b>12 months</b><span>Warranty</span></div>
+<div><b>30 days</b><span>Free returns</span></div>
+<div><b>Free</b><span>Shipping, arrives <span id="eta"></span></span></div>
+<div><b>Unlocked</b><span>Works on any US carrier</span></div>
+</div>
+<div class="pr"><strong id="price"></strong><span>Price in USD</span></div>
+<p class="pname" id="pname"></p>
+<button class="buy" id="add" type="button">Add to cart</button>
+<a class="vlink" id="vl" href="product.html?slug=iphone-14">View full product page</a>
+</div>
+</div>
+</div>
+
+<ul class="trust wrap">
+<li><svg class="ic"><use href="#i-shield"/></svg>12-month warranty on every phone</li>
+<li><svg class="ic"><use href="#i-phone"/></svg>Unlocked, works on any US carrier</li>
+<li><svg class="ic"><use href="#i-truck"/></svg>Free shipping with the delivery date shown up front</li>
+<li><svg class="ic"><use href="#i-return"/></svg>30-day returns, no restocking fee</li>
+</ul>
+</div>
+
+<section class="show" id="showcase"><div class="wrap"><div class="panel">
+<div class="ptxt"><span class="tag">New arrivals</span><h2>The latest iPhones, brand new and ready to ship</h2><p>Brand new iPhones, from older favorites to the latest Pro Max. Every phone is covered for 12 months.</p><a class="cta" href="#models">Shop all iPhones</a></div>
+<div class="stage">
+<a class="dev d1" href="product.html?slug=iphone-17-pro"><img id="st1" alt=""></a><a class="dev d2" href="product.html?slug=iphone-18-pro-max"><img id="st2" alt=""></a><a class="dev d3" href="product.html?slug=iphone-15-pro"><img id="st3" alt=""></a>
+<svg class="gad ga1" viewBox="0 0 120 120"><use href="#g-buds"/></svg><svg class="gad ga2" viewBox="0 0 120 120"><use href="#g-watch"/></svg><svg class="gad ga3" viewBox="0 0 120 120"><use href="#g-charger"/></svg>
+</div></div></div></section>
+<section class="statsb"><div class="wrap"><div class="sgrid"><div><b data-n="12">0</b><span>month warranty</span></div><div><b data-n="30">0</b><span>day returns</span></div><div><b data-n="33" id="n-models">0</b><span>iPhone models</span></div><div><b data-n="3">0</b><span>ways to pay</span></div></div></div></section>
+<div class="mq"><div class="mqt" id="mqt"></div></div>
+
+<section id="models"><div class="wrap">
+<h2>The iPhones we sell</h2>
+<p class="sub">Every model is brand new and comes with the same warranty and returns. Prices rise with storage size.</p>
+<div class="chips" id="filters" style="margin-bottom:20px"></div>
+<div class="tools"><span class="muted" id="rc"></span><label class="sortl">Sort <select id="sort" class="sel"><option value="">Featured</option><option value="new">Newest first</option><option value="lo">Price, low to high</option><option value="hi">Price, high to low</option></select></label></div>
+<div class="cat" id="cat"></div>
+<p class="sub" style="margin:18px 0 0;font-size:14px">Pictures show the model, not the exact phone. Prices are in US dollars.</p>
+</div></section>
+
+<section id="gear"><div class="wrap">
+<div class="eyebrow">More than phones</div>
+<h2>Gadgets that go with your iPhone</h2>
+<p class="sub">Smartwatches, earbuds, tablets, laptops, chargers and cases. Stock and prices change often, so message us on Telegram and we will tell you what is available.</p>
+<div class="gcards">
+<div class="gc" style="--glow:rgba(244,63,94,.38)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="gwB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF7A6B"/><stop offset="1" stop-color="#F43F5E"/></linearGradient></defs><rect x="76" y="2" width="48" height="40" rx="12" fill="url(#gwB)"/><rect x="76" y="108" width="48" height="40" rx="12" fill="url(#gwB)"/><rect x="58" y="24" width="84" height="102" rx="26" fill="#0B1020" stroke="#1F2A44" stroke-width="3"/><rect x="143" y="62" width="6" height="22" rx="3" fill="#1F2A44"/><text x="100" y="45" text-anchor="middle" font-size="9" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">9:41</text><g transform="rotate(-90 100 82)" fill="none" stroke-linecap="round" stroke-width="7"><circle cx="100" cy="82" r="26" stroke="#3A0F1E"/><circle cx="100" cy="82" r="26" stroke="#FF2D55" stroke-dasharray="125 164"/><circle cx="100" cy="82" r="17" stroke="#1B3A12"/><circle cx="100" cy="82" r="17" stroke="#A3F54A" stroke-dasharray="85 107"/><circle cx="100" cy="82" r="8.5" stroke="#0E3A44"/><circle cx="100" cy="82" r="8.5" stroke="#34D3F4" stroke-dasharray="40 53"/></g></svg></div><h3>Smartwatches</h3><p>Track fitness, calls and notifications from your wrist.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(139,92,246,.4)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="geW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D5DCE8"/></linearGradient></defs><rect x="42" y="64" width="116" height="78" rx="34" fill="url(#geW)"/><path d="M46 96h108" stroke="#C3CCDA" stroke-width="2"/><circle cx="100" cy="118" r="4" fill="#22C55E"/><rect x="64" y="16" width="10" height="56" rx="5" fill="url(#geW)"/><circle cx="62" cy="22" r="14" fill="url(#geW)"/><circle cx="62" cy="22" r="5" fill="#E2E8F0"/><rect x="126" y="16" width="10" height="56" rx="5" fill="url(#geW)"/><circle cx="138" cy="22" r="14" fill="url(#geW)"/><circle cx="138" cy="22" r="5" fill="#E2E8F0"/></svg></div><h3>Wireless earbuds</h3><p>Pocket-size charging cases and all-day sound.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(59,130,246,.4)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="gtS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D5BFF"/><stop offset="1" stop-color="#14C8FF"/></linearGradient></defs><rect x="28" y="18" width="144" height="110" rx="14" fill="#0B1020" stroke="#1F2A44" stroke-width="3"/><rect x="36" y="26" width="128" height="94" rx="8" fill="url(#gtS)"/><circle cx="62" cy="52" r="13" fill="#fff" opacity=".45"/><rect x="84" y="42" width="58" height="6" rx="3" fill="#fff" opacity=".8"/><rect x="84" y="55" width="40" height="6" rx="3" fill="#fff" opacity=".55"/><rect x="46" y="88" width="20" height="22" rx="4" fill="#fff" opacity=".4"/><rect x="72" y="76" width="20" height="34" rx="4" fill="#fff" opacity=".6"/><rect x="98" y="66" width="20" height="44" rx="4" fill="#fff" opacity=".85"/></svg></div><h3>Tablets</h3><p>Big screens for reading, drawing and video.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(16,185,129,.34)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><defs><linearGradient id="glS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#2563EB"/></linearGradient><linearGradient id="glB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E2E8F0"/><stop offset="1" stop-color="#94A3B8"/></linearGradient></defs><rect x="46" y="10" width="108" height="86" rx="9" fill="#0B1020" stroke="#1F2A44" stroke-width="3"/><rect x="52" y="16" width="96" height="74" rx="5" fill="url(#glS)"/><rect x="58" y="24" width="30" height="26" rx="3" fill="#fff" opacity=".85"/><rect x="94" y="24" width="46" height="6" rx="3" fill="#fff" opacity=".8"/><rect x="94" y="36" width="34" height="6" rx="3" fill="#fff" opacity=".55"/><rect x="58" y="58" width="82" height="12" rx="6" fill="#fff" opacity=".4"/><path d="M22 100h156l-14 14a8 8 0 0 1-6 3H42a8 8 0 0 1-6-3z" fill="url(#glB)"/><rect x="82" y="100" width="36" height="5" rx="2.5" fill="#64748B" opacity=".7"/></svg></div><h3>Laptops</h3><p>Light, fast laptops for work and study.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(245,158,11,.36)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><rect x="42" y="8" width="7" height="20" rx="3" fill="#E2E8F0"/><rect x="56" y="8" width="7" height="20" rx="3" fill="#E2E8F0"/><rect x="30" y="26" width="44" height="50" rx="12" fill="#FFFFFF"/><rect x="44" y="64" width="16" height="6" rx="3" fill="#CBD5E1"/><path d="M52 76c0 40 20 52 52 52s40-14 40-34" fill="none" stroke="#E2E8F0" stroke-width="5" stroke-linecap="round"/><rect x="116" y="36" width="52" height="88" rx="12" fill="#0F172A" stroke="#1F2A44" stroke-width="3"/><rect x="130" y="52" width="24" height="6" rx="3" fill="#22D3A5"/><rect x="130" y="64" width="16" height="6" rx="3" fill="#22D3A5" opacity=".7"/><rect x="130" y="76" width="10" height="6" rx="3" fill="#22D3A5" opacity=".4"/><circle cx="142" cy="102" r="8" fill="none" stroke="#22D3A5" stroke-width="3"/></svg></div><h3>Chargers and power banks</h3><p>Fast wall chargers, cables and portable power.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+<div class="gc" style="--glow:rgba(249,115,22,.36)"><div class="gi"><svg viewBox="0 0 200 150" aria-hidden="true"><g transform="rotate(-9 70 80)"><rect x="40" y="18" width="62" height="112" rx="14" fill="#FB7185"/><rect x="48" y="26" width="26" height="26" rx="8" fill="#0B1020"/><circle cx="56" cy="34" r="5" fill="#1E293B"/><circle cx="66" cy="44" r="5" fill="#1E293B"/></g><g transform="rotate(10 132 80)"><rect x="104" y="22" width="62" height="112" rx="14" fill="#6366F1"/><rect x="132" y="30" width="26" height="26" rx="8" fill="#0B1020"/><circle cx="140" cy="38" r="5" fill="#1E293B"/><circle cx="150" cy="48" r="5" fill="#1E293B"/></g><rect x="70" y="10" width="62" height="118" rx="14" fill="#14B8A6"/><rect x="78" y="18" width="28" height="28" rx="9" fill="#0B1020"/><circle cx="87" cy="27" r="5.5" fill="#1E293B" stroke="#64748B"/><circle cx="98" cy="38" r="5.5" fill="#1E293B" stroke="#64748B"/><circle cx="87" cy="38" r="2.5" fill="#F8FAFC"/><path d="M80 112h40" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Cases and protectors</h3><p>Cases and screen protectors to keep your phone safe.</p><a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Ask on Telegram &rarr;</a></div>
+</div></div></section>
+
+
+<section id="grading"><div class="wrap">
+<div class="eyebrow">Why Fairgrade</div>
+<h2>Brand new, every time</h2>
+<p class="sub">No used phones and no surprises. Here is what you get with every order.</p>
+<div class="g"><h3>Brand new</h3><p>Every iPhone is new and unused.</p><p><b>Sealed in the box</b></p></div>
+<div class="g"><h3>Unlocked</h3><p>Works on any US carrier, ready to set up.</p><p><b>No contract</b></p></div>
+<div class="g"><h3>Warranty</h3><p>Covered against hardware faults for 12 months.</p><p><b>12 months</b></p></div>
+</div></section>
+
+
+<section id="layers"><div class="wrap">
+<div class="eyebrow">Inside every phone</div>
+<h2>Built layer by layer</h2>
+<p class="sub">Every iPhone is made of the same key layers. Hover a layer, or tap one in the list, to see what it does.</p>
+<div class="lay">
+<svg class="stack" id="stack" viewBox="0 0 360 330" role="img" aria-label="Exploded view of a phone showing five tested layers"><defs><linearGradient id="lyD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset=".55" stop-color="#3B82F6"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs>
+<g class="ly" data-i="4" style="--c:#94A3B8"><g transform="translate(0 168)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#1E293B" stroke="#334155" stroke-width="2"/><rect x="10" y="10" width="40" height="40" rx="12" fill="#0F172A"/><circle cx="22" cy="22" r="7" fill="#1E293B" stroke="#475569"/><circle cx="38" cy="38" r="7" fill="#1E293B" stroke="#475569"/></g></g></g>
+<g class="ly" data-i="3" style="--c:#34D399"><g transform="translate(0 126)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#047857"/><rect x="12" y="40" width="76" height="120" rx="10" fill="#059669"/><rect x="40" y="26" width="20" height="10" rx="3" fill="#34D399"/><path d="M52 70l-16 30h14l-6 28 22-36H54z" fill="#ECFDF5" opacity=".85"/></g></g></g>
+<g class="ly" data-i="2" style="--c:#10B981"><g transform="translate(0 84)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#064E3B"/><rect x="14" y="20" width="34" height="34" rx="6" fill="#10B981" opacity=".85"/><rect x="56" y="20" width="30" height="16" rx="4" fill="#34D399" opacity=".7"/><rect x="14" y="66" width="72" height="8" rx="4" fill="#10B981" opacity=".5"/><rect x="14" y="84" width="50" height="8" rx="4" fill="#10B981" opacity=".4"/></g></g></g>
+<g class="ly" data-i="1" style="--c:#8B5CF6"><g transform="translate(0 42)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="url(#lyD)"/><rect x="34" y="8" width="32" height="7" rx="3.5" fill="#0B1020" fill-opacity=".6"/></g></g></g>
+<g class="ly" data-i="0" style="--c:#E2E8F0"><g transform="translate(0 0)"><g transform="matrix(.86 .5 -.86 .5 200 0)"><rect width="100" height="190" rx="14" fill="#E2E8F0" fill-opacity=".14" stroke="#E2E8F0" stroke-opacity=".65" stroke-width="2"/><rect x="34" y="8" width="32" height="7" rx="3.5" fill="#0B1020" fill-opacity=".7"/></g></g></g>
+</svg>
+<div class="llist" id="llist"></div>
+</div></div></section>
+
+<section id="compare"><div class="wrap">
+<h2>Compare all iPhones</h2>
+<p class="sub">Every model we sell, side by side. Scroll sideways to see all columns.</p>
+<div class="scroll"><table id="cmp"><thead><tr><th>Model</th><th>From</th><th>Chip</th><th>Screen</th><th>Camera</th><th>Port</th><th></th></tr></thead><tbody></tbody></table></div>
+</div></section>
+
+
+<section id="warranty"><div class="wrap">
+<h2>Covered after the box is open</h2>
+<p class="sub">The same promises apply to every phone.</p>
+<div class="pol">
+<div><h3>Brand new in the box</h3><p>Every iPhone is new and unused, so you get a phone that is ready to set up and use from day one.</p></div>
+<div><h3>Clear warranty</h3><p>Twelve months of coverage for hardware faults. We repair, replace, or refund, and the claim steps are one click from every product page.</p></div>
+<div><h3>Returns without hassle</h3><p>Change your mind within 30 days and send it back for a full refund. We email a prepaid label.</p></div>
+</div>
+</div></section>
+
+<section id="how"><div class="wrap">
+<h2>How ordering works</h2>
+<p class="sub">From picking a phone to tracking your delivery, in four steps.</p>
+<ol class="steps">
+<li><b>Pick your iPhone</b><span>Choose the model and storage.</span></li>
+<li><b>Check out</b><span>Create an account and choose ATM card, bank transfer or cryptocurrency.</span></li>
+<li><b>Pay</b><span>Your payment details appear in your dashboard. Pay, then press I have made the payment.</span></li>
+<li><b>Track</b><span>We confirm your payment, then you follow processing, shipping and delivery in your dashboard.</span></li>
+</ol>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Questions before you buy</h2>
+<p class="sub">Short answers to what people ask most.</p>
+<details><summary>Are the phones really brand new?</summary><p>Yes. Every iPhone we sell is brand new and unused.</p></details>
+<details><summary>Are the phones unlocked?</summary><p>Yes. Every phone is unlocked and works on any US carrier.</p></details>
+<details><summary>What does the warranty cover?</summary><p>Hardware faults for 12 months. If a phone develops one, we repair it, replace it, or refund you.</p></details>
+<details><summary>How do returns work?</summary><p>You have 30 days. Tell us you want to return it, and we email a prepaid label. You get a full refund, with no restocking fee.</p></details>
+<details><summary>When will my phone arrive?</summary><p>Shipping is free, and the delivery date appears on the page before you add a phone to your cart.</p></details>
+<details><summary>How do I pay?</summary><p>At checkout you choose ATM card, bank transfer, or cryptocurrency. After you place your order, the payment details appear in your dashboard.</p></details>
+<details><summary>How can I contact you?</summary><p>Message us on Telegram at @fairgradestore, email <a href="mailto:fairgradestore@gmail.com">fairgradestore@gmail.com</a>, or use Customer service in your dashboard.</p></details>
+</div></section>
+</main>
+
+<section id="find"><div class="wrap">
+<div class="eyebrow">Visit us</div>
+<h2>Find us</h2>
+<p class="sub">We are based at 11 Wall Street in New York, in the Wall Street area.</p>
+<div class="findg">
+<div class="mapbox"><iframe title="Map of Fairgrade at 11 Wall Street, New York" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=11%20Wall%20Street%2C%20New%20York%2C%20NY%2010005&z=16&output=embed"></iframe></div>
+<div class="findc">
+<div class="addr"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><path fill="#EF4444" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg><span><b>Address</b>11 Wall Street<br>New York, NY 10005, USA<br>Wall Street area</span></div>
+<a href="https://www.google.com/maps/dir/?api=1&destination=11%20Wall%20Street%2C%20New%20York%2C%20NY%2010005" target="_blank" rel="noopener">Get directions</a>
+<a href="https://t.me/fairgradestore" target="_blank" rel="noopener">Chat on Telegram</a>
+<a href="mailto:fairgradestore@gmail.com">Email us</a>
+</div></div></div></section>
+
+<footer><div class="wrap">
+<div class="fcols">
+<div><div class="logo2"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></div><p>Brand new iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
+<div><h4>Shop</h4><a href="#models">All iPhones</a><a href="#compare">Compare models</a><a href="#grading">Why brand new</a></div>
+<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="#faq">Questions</a><a href="#warranty">Warranty and returns</a><a class="ct" href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" transform="translate(3.4 3.6) scale(.72)" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Telegram: @fairgradestore</a><a class="ct" href="mailto:fairgradestore@gmail.com"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="3" fill="#fff"/><rect x="1.5" y="7" width="3.6" height="12.5" rx="1.4" fill="#4285F4"/><rect x="18.9" y="7" width="3.6" height="12.5" rx="1.4" fill="#34A853"/><path d="M3.2 7.2l8.8 6.6 8.8-6.6" fill="none" stroke="#EA4335" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>fairgradestore@gmail.com</a><a class="ct" href="https://www.google.com/maps/search/?api=1&query=11%20Wall%20Street%2C%20New%20York%2C%20NY%2010005" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" stroke="none" aria-hidden="true"><path fill="#EF4444" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg>11 Wall Street, New York, NY 10005, USA</a></div>
+<div><h4>Legal</h4><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
+</div>
+<div class="pm"><span>We accept</span><b><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-card"/></svg>ATM card</b><b><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-bank"/></svg>Bank transfer</b><b><span class="coins"><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-btc"/></svg><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-eth"/></svg><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-bnb"/></svg></span>Cryptocurrency</b></div>
+<p class="fine">Pictures show the model, not the exact phone. Prices and availability may change. 2026 Fairgrade. All rights reserved.</p>
+</div></footer>
+<a class="tg" href="https://t.me/fairgradestore" target="_blank" rel="noopener" aria-label="Chat with us on Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg><span>Chat with us</span></a>
+
+<div id="scrim" hidden></div>
+<aside class="drawer" id="cart" aria-label="Your cart" hidden>
+<div class="dh"><h3>Your cart <span class="muted" id="cart-n"></span></h3><button id="close" type="button">Close</button></div>
+<ul id="items"></ul>
+<div id="empty" class="empty"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg><h3>Your cart is empty</h3><p class="muted">Pick an iPhone and it will show up here.</p><button class="buy" id="shop" type="button">Browse iPhones</button></div>
+<div class="csum" id="csum">
+<div class="kv"><span>Subtotal</span><b id="sub">$0</b></div>
+<div class="kv"><span>Shipping</span><b>Free</b></div>
+<div class="kv tot2"><span>Total</span><strong id="total">$0</strong></div>
+<button class="buy" id="checkout" type="button" disabled>Checkout</button>
+<button class="buy alt" id="keep" type="button">Continue shopping</button>
+<ul class="perks"><li>12-month warranty on every phone</li><li>30-day returns, no restocking fee</li><li>Pay by ATM card, bank transfer or crypto</li></ul>
+</div>
+</aside>
+
+<dialog id="co" aria-labelledby="co-t">
+<div class="dh"><h3 id="co-t"><svg class="dlogo" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg>Checkout</h3><button type="button" id="co-x">Close</button></div>
+<div id="co-auth" hidden>
+<p class="muted">Sign in or create an account. Your orders and delivery details stay private in your account.</p>
+<label>Email<input id="au-em" type="email" autocomplete="username"></label>
+<label>Password<input id="au-pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></label>
+<p class="err" id="au-err" role="alert" hidden></p>
+<button class="buy" type="button" id="au-in">Sign in</button>
+<button class="buy alt" type="button" id="au-up">Create account</button>
+<div class="or">or</div>
+<button class="gbtn" type="button" id="au-g"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Continue with Google</button>
+</div>
+<form id="coform" hidden>
+<p class="muted"><span id="co-who"></span> <button type="button" id="co-out" class="link2">Sign out</button></p>
+<label>Full name<input name="name" required autocomplete="name"></label>
+<label for="ph-n">Phone number</label>
+<div class="ph"><select id="cc" aria-label="Country code"></select><input id="ph-n" name="phone" required type="tel" inputmode="tel" placeholder="(555) 123-4567" autocomplete="tel-national"></div>
+<label>Email<input name="email" required type="email" autocomplete="email"></label>
+<label>Delivery address<textarea name="address" required rows="3" autocomplete="street-address"></textarea></label>
+<fieldset class="pay"><legend>Payment method</legend>
+<label class="opt"><input type="radio" name="method" value="card" required><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-card"/></svg><span><b>ATM card</b><small>Payment details appear in your dashboard</small></span></label>
+<label class="opt"><input type="radio" name="method" value="bank"><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-bank"/></svg><span><b>Bank transfer</b><small>Our account details appear in your dashboard</small></span></label>
+<label class="opt"><input type="radio" name="method" value="crypto"><span class="coins"><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-btc"/></svg><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-eth"/></svg><svg class="pi" viewBox="0 0 24 24" aria-hidden="true"><use href="#p-bnb"/></svg></span><span><b>Cryptocurrency</b><small>Choose Ethereum, Bitcoin or BNB and pay to our wallet</small></span></label>
+</fieldset>
+<div class="tot"><span>Total</span><strong id="co-total"></strong></div>
+<p class="err" id="co-err" role="alert" hidden></p>
+<button class="buy" id="co-go" type="submit">Place order</button>
+</form>
+<div id="co-crypto" hidden>
+<h3>Pay with cryptocurrency</h3>
+<p id="cr-sum"></p>
+<div id="cr-wallets"></div>
+<label>Coin you paid with<select id="cr-coin"></select></label>
+<label>Transaction ID or reference<input id="cr-ref" autocomplete="off" placeholder="Paste your transaction hash"></label>
+<p class="err" id="cr-err" role="alert" hidden></p>
+<button class="buy" type="button" id="cr-go">I have made the payment</button>
+</div>
+<div id="co-done" hidden></div>
+</dialog>
+
+<script src="phones.js"></script>
+<script src="products.js"></script>
+<script>
+(function(){
+var MODELS=window.PRODUCTS.map(function(p){return{n:p.name,b:p.price,s:p.storages,slug:p.slug}});
+var GRADES=[["Brand new",1,100,"Sealed in the box, never used."]];
+var FILTERS=["All","Saved","X","11","12","13","14","15","16","17","18"];
+var PAL=["#C9B8B0","#3E4A5A","#D7C9A8","#8FA3B5","#B7C4B0","#C7A9B5"],GR=[["#3b6fb6","#7a4fb0"],["#e0742f","#c43b6b"],["#17a2a2","#2f5fb8"],["#d4a017","#c0392b"],["#4a8f5e","#2a5d8f"]];
+var S={m:15,s:0,g:0,f:"All"},cart=loadCart(),Q="",SORT="";
+var $=function(i){return document.getElementById(i)};
+function series(n){var k=/iPhone (\d+)/.exec(n);return k?k[1]:/Air/.test(n)?"17":"X"}
+function island(n){var k=/iPhone (\d+)/.exec(n),x=k?+k[1]:0;return x>=15||/Air/.test(n)||(x===14&&/Pro/.test(n))}
+function gb(v){return v>=1024?(v/1024)+" TB":v+" GB"}
+function price(){var m=MODELS[S.m],step=Math.round(m.b*0.12/10)*10;return Math.round((m.b+S.s*step)*GRADES[S.g][1])}
+function name(){var m=MODELS[S.m];return m.n+", "+gb(m.s[S.s])+", "+GRADES[S.g][0]}
+function eta(){
+  var d=new Date(),n=0;
+  while(n<3){d.setDate(d.getDate()+1);var w=d.getDay();if(w>0&&w<6)n++}
+  return d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"});
+}
+function svg(i){
+  var m=MODELS[i],c=/Pro|Max|XS/.test(m.n)?"#4A4F55":PAL[i%PAL.length],g=GR[i%GR.length],id="g"+i;
+  return '<svg viewBox="0 0 120 200" role="img" aria-label="'+m.n+' illustration"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+g[0]+'"/><stop offset="1" stop-color="'+g[1]+'"/></linearGradient></defs><rect x="12" y="4" width="96" height="192" rx="20" fill="'+c+'"/><rect x="17" y="9" width="86" height="182" rx="16" fill="url(#'+id+')"/>'+(island(m.n)?'<rect x="47" y="15" width="26" height="8" rx="4" fill="#05090c"/>':'<path d="M42 9h36v4c0 4-3 7-7 7H49c-4 0-7-3-7-7z" fill="#05090c"/>')+'<rect x="44" y="182" width="32" height="3" rx="1.5" fill="#fff" opacity=".7"/></svg>';
+}
+var IMG=window.PHONE_IMG||{};
+function pic(i){
+  var m=MODELS[i],box=document.createElement("div"),im=new Image();
+  box.className="pic";
+  im.alt=m.n;im.loading="lazy";
+  im.onerror=function(){box.innerHTML=svg(i)};
+  im.src=IMG[m.n]||m.n.toLowerCase().replace(/ /g,"-")+".jpg";
+  box.appendChild(im);
+  return box;
+}
+function mk(id,list,key,label){
+  var el=$(id);
+  el.innerHTML="";
+  list.forEach(function(x,i){
+    var b=document.createElement("button");
+    b.type="button";b.className="chip";b.textContent=label(x);
+    b.onclick=function(){S[key]=i;sync()};
+    el.appendChild(b);
+  });
+}
+function buildStore(){mk("c-store",MODELS[S.m].s,"s",gb)}
+function sync(){
+  [["c-store","s"],["c-grade","g"]].forEach(function(p){
+    [].forEach.call($(p[0]).children,function(b,i){b.setAttribute("aria-pressed",S[p[1]]===i)});
+  });
+  $("c-model").value=S.m;
+  $("note").textContent=GRADES[S.g][3];
+  $("bat").textContent=GRADES[S.g][2]+"% or higher";
+  $("gauge").style.width=GRADES[S.g][2]+"%";
+  $("eta").textContent=eta();
+  $("price").textContent="$"+price();
+  $("pname").textContent=name();
+  $("vl").href="product.html?slug="+MODELS[S.m].slug;
+}
+function choose(i){S.m=i;S.s=0;buildStore();sync();$("pick").scrollIntoView({behavior:"smooth"})}
+function WL(){try{var l=JSON.parse(localStorage.getItem("fg_wl")||"[]");return Array.isArray(l)?l:[]}catch(e){return[]}}
+function toggleWL(sl){var l=WL(),i=l.indexOf(sl);if(i>-1)l.splice(i,1);else l.push(sl);try{localStorage.setItem("fg_wl",JSON.stringify(l))}catch(e){}}
+function bump(){var c=$("count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")}
+function loadCart(){try{var c=JSON.parse(localStorage.getItem("fg_cart")||"[]");return Array.isArray(c)?c.filter(function(x){return x&&typeof x.n==="string"&&typeof x.p==="number"}).slice(0,20):[]}catch(e){return[]}}
+function ord(){
+  var a=MODELS.map(function(m,i){return i});
+  if(SORT==="lo")a.sort(function(x,y){return MODELS[x].b-MODELS[y].b});
+  if(SORT==="hi")a.sort(function(x,y){return MODELS[y].b-MODELS[x].b});
+  if(SORT==="new")a.reverse();
+  return a;
+}
+function drawCat(){
+  var cat=$("cat");
+  cat.innerHTML="";
+  ord().forEach(function(i){
+    var m=MODELS[i];
+    if(!Q&&S.f==="Saved"){if(WL().indexOf(m.slug)<0)return}else if(!Q&&S.f!=="All"&&series(m.n)!==S.f)return;
+    if(Q&&m.n.toLowerCase().indexOf(Q)<0)return;
+    var a=document.createElement("article"),b=document.createElement("button"),h=document.createElement("h3"),p=document.createElement("p");
+    a.className="mc";
+    h.textContent=m.n;
+    p.className="from";p.innerHTML="From <strong>$"+m.b+"</strong>";
+    b.type="button";b.className="pickbtn add";b.textContent="Add to cart";
+    b.setAttribute("aria-label","Add "+m.n+" to cart");
+    b.onclick=function(e){e.stopPropagation();cart.push({n:m.n+", "+gb(m.s[0]),p:m.b});drawCart();bump();openCart()};
+    var href="product.html?slug="+m.slug;
+    var ha=document.createElement("a");ha.href=href;ha.textContent=m.n;h.textContent="";h.appendChild(ha);
+    var v=document.createElement("a");v.className="pickbtn";v.href=href;v.textContent="View product";v.setAttribute("aria-label","View "+m.n);
+    var cb=document.createElement("div");cb.className="cbtns";cb.appendChild(v);cb.appendChild(b);
+    var sp=SPECS[i].split("|"),cs=document.createElement("p");
+    cs.className="cs";cs.textContent=sp[0]+", "+sp[1].split(" ")[0];
+    a.onclick=function(e){if(!e.target.closest("a,button"))location.href=href};
+    var pc=pic(i),nbg=document.createElement("span"),hb=document.createElement("button");
+    nbg.className="nw";nbg.textContent="New";pc.appendChild(nbg);
+    hb.type="button";hb.className="hrt";hb.setAttribute("aria-label","Save "+m.n);hb.setAttribute("aria-pressed",WL().indexOf(m.slug)>-1);
+    hb.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6 5c2 0 3.2 1 4 2.2C10.8 6 12 5 14 5c3.3 0 5.1 3.4 3.6 6.8C19.5 16.4 12 21 12 21z"/></svg>';
+    hb.onclick=function(e){e.stopPropagation();toggleWL(m.slug);hb.setAttribute("aria-pressed",WL().indexOf(m.slug)>-1);if(S.f==="Saved")drawCat()};
+    pc.appendChild(hb);
+    a.appendChild(pc);a.appendChild(h);a.appendChild(cs);a.appendChild(p);a.appendChild(cb);
+    cat.appendChild(a);
+  });
+  var cnt=cat.children.length;
+  $("rc").textContent=cnt+" phone"+(cnt===1?"":"s");
+  if(!cnt){var np=document.createElement("p");np.className="muted";np.textContent="No phones match your search.";cat.appendChild(np)}
+  [].forEach.call($("filters").children,function(x,i){x.setAttribute("aria-pressed",!Q&&FILTERS[i]===S.f)});
+  reveal();
+}
+function drawCart(){
+  var ul=$("items"),t=0;
+  ul.innerHTML="";
+  cart.forEach(function(it,i){
+    t+=it.p;
+    var li=document.createElement("li"),th=document.createElement("div"),inf=document.createElement("div"),pr=document.createElement("div"),b=document.createElement("button"),n=document.createElement("b"),d=document.createElement("span"),parts=it.n.split(",");
+    li.className="ci";th.className="cth";
+    var src=IMG[parts[0]];
+    if(src){var im=new Image();im.alt=parts[0];im.src=src;th.appendChild(im)}
+    inf.className="cinfo";
+    n.textContent=parts[0];d.textContent=parts.slice(1).join(",").trim();
+    inf.appendChild(n);inf.appendChild(d);
+    pr.className="cpr";pr.textContent="$"+it.p;
+    b.type="button";b.className="rm";b.textContent="Remove";b.setAttribute("aria-label","Remove "+it.n);
+    b.onclick=function(){cart.splice(i,1);drawCart()};
+    pr.appendChild(b);
+    li.appendChild(th);li.appendChild(inf);li.appendChild(pr);ul.appendChild(li);
+  });
+  $("count").textContent=cart.length;
+  $("cart-n").textContent=cart.length?"("+cart.length+")":"";
+  $("sub").textContent="$"+t;$("total").textContent="$"+t;
+  $("empty").hidden=cart.length>0;$("csum").hidden=!cart.length;
+  $("checkout").disabled=!cart.length;
+  try{localStorage.setItem("fg_cart",JSON.stringify(cart))}catch(e){}
+}
+function openCart(){$("cart").hidden=false;$("scrim").hidden=false;$("cartbtn").setAttribute("aria-expanded","true");$("close").focus()}
+function closeCart(){$("cart").hidden=true;$("scrim").hidden=true;$("cartbtn").setAttribute("aria-expanded","false");$("cartbtn").focus()}
+MODELS.forEach(function(m,i){var o=document.createElement("option");o.value=i;o.textContent=m.n;$("c-model").appendChild(o)});
+$("c-model").onchange=function(){S.m=+this.value;S.s=0;buildStore();sync()};
+FILTERS.forEach(function(f){
+  var b=document.createElement("button");
+  b.type="button";b.className="chip";b.textContent=f==="All"?"All models":f==="Saved"?"Saved":f==="X"?"X series":"iPhone "+f;
+  b.onclick=function(){S.f=f;drawCat()};
+  $("filters").appendChild(b);
+});
+mk("c-grade",GRADES,"g",function(x){return x[0]});
+buildStore();
+$("add").onclick=function(){cart.push({n:name(),p:price()});drawCart();var c=$("count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump");openCart()};
+$("cartbtn").onclick=function(){$("cart").hidden?openCart():closeCart()};
+$("close").onclick=closeCart;
+$("keep").onclick=closeCart;
+$("shop").onclick=function(){closeCart();$("models").scrollIntoView({behavior:"smooth"})};
+$("scrim").onclick=closeCart;
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("cart").hidden)closeCart()});
+var CO=$("co"),cur=null;
+function cartTotal(){return cart.reduce(function(a,b){return a+b.p},0)}
+function show(id){["co-auth","coform","co-crypto","co-done"].forEach(function(k){$(k).hidden=k!==id})}
+function FGok(){return window.FG&&window.FG.ready}
+function who(e){$("co-who").textContent="Signed in as "+e}
+$("checkout").onclick=function(){
+  if(!cart.length)return;
+  $("co-total").textContent="$"+cartTotal();
+  $("co-err").hidden=true;$("au-err").hidden=true;
+  if(FGok()&&window.FG.user){who(window.FG.user.email);show("coform");prefill()}else show("co-auth");
+  CO.showModal();
+};
+$("co-x").onclick=function(){CO.close()};
+var AMSG={"auth/email-already-in-use":"This email already has an account. Tap Sign in instead.","auth/invalid-email":"That email address does not look right.","auth/weak-password":"Your password must have at least 6 characters.","auth/network-request-failed":"No internet connection. Please try again.","auth/invalid-credential":"Wrong email or password.","auth/user-not-found":"No account with this email. Tap Create account.","auth/wrong-password":"Wrong email or password.","auth/too-many-requests":"Too many tries. Please wait a few minutes."};
+function prefill(){
+  if(!FGok())return;
+  window.FG.getProfile().then(function(p){
+    var x=$("coform").elements;
+    if(p.name&&!x.name.value)x.name.value=p.name;
+    if(p.phone&&!x.phone.value)setPhone(p.phone);
+    if(p.address&&!x.address.value)x.address.value=p.address;
+    if(!x.email.value&&window.FG.user)x.email.value=window.FG.user.email;
+  }).catch(function(){});
+}
+function authGo(kind){
+  var er=$("au-err"),e=$("au-em").value.trim(),p=$("au-pw").value;
+  er.hidden=true;
+  if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}
+  if(!e||!p){er.textContent="Enter your email and password first.";er.hidden=false;return}
+  window.FG[kind](e,p).then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||(kind==="signUp"?"Could not create the account.":"Could not sign in.");er.hidden=false});
+}
+$("au-in").onclick=function(){authGo("signIn")};
+$("au-up").onclick=function(){authGo("signUp")};
+$("co-out").onclick=function(){window.FG.logOut().then(function(){show("co-auth")})};
+function done(msg){
+  show("co-done");
+  var d=$("co-done");
+  d.innerHTML='<svg class="dlogo big" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><h3>Thank you</h3><p>Your order number is <b></b>.</p><p></p><p><a href="account.html">Track your order in your account</a></p><button class="buy" type="button" id="co-ok">Done</button>';
+  d.querySelector("b").textContent=cur.code;
+  d.querySelectorAll("p")[1].textContent=msg;
+  $("co-ok").onclick=function(){CO.close()};
+}
+function showCrypto(){
+  show("co-crypto");
+  $("cr-sum").textContent="Order "+cur.code+". Send the US dollar value of $"+cur.total+" in the coin you choose, to the matching address below. Send only on the network shown.";
+  var w=$("cr-wallets");w.innerHTML="";window.FG.walletBox(w);
+  var s=$("cr-coin");s.innerHTML="";
+  (window.WALLETS||[]).forEach(function(k){var o=document.createElement("option");o.textContent=k.coin;s.appendChild(o)});
+  $("cr-ref").value="";$("cr-err").hidden=true;
+}
+$("coform").onsubmit=function(e){
+  e.preventDefault();
+  var f=e.target,btn=$("co-go"),err=$("co-err"),x=f.elements;
+  var dg=x.phone.value.replace(/\D/g,"").replace(/^0+/,"");
+  if(dg.length<6||dg.length>14){err.textContent="Enter a valid phone number.";err.hidden=false;return}
+  var m=x.method.value,code="FG-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  var order={code:code,customer:{name:x.name.value.trim(),phone:fullPhone(x),email:x.email.value.trim(),address:x.address.value.trim()},items:cart.map(function(c){return{n:c.n,p:c.p}}),total:cartTotal(),method:m};
+  btn.disabled=true;btn.textContent="Placing order...";err.hidden=true;
+  window.FG.placeOrder(order).then(function(ref){
+    cur={id:ref.id,code:code,total:order.total};
+    window.FG.saveProfile({name:order.customer.name,phone:order.customer.phone,address:order.customer.address}).catch(function(){});
+    cart=[];drawCart();f.reset();
+    if(m==="crypto")showCrypto();
+    else done(m==="bank"?"Our bank account details will appear in your dashboard shortly. Open My Dashboard, go to Payments, and press I have made the payment after you pay.":"Your card payment details will appear in your dashboard shortly. Open My Dashboard, go to Payments, and press I have made the payment after you pay.");
+  }).catch(function(){err.textContent="We could not place your order. Please check your connection and try again.";err.hidden=false}).then(function(){btn.disabled=false;btn.textContent="Place order"});
+};
+$("cr-go").onclick=function(){
+  var r=$("cr-ref").value.trim(),er=$("cr-err");
+  if(r.length<6){er.textContent="Enter your transaction ID or reference after you pay.";er.hidden=false;return}
+  er.hidden=true;$("cr-go").disabled=true;
+  window.FG.submitPayment(cur.id,r,$("cr-coin").value).then(function(){done("Payment submitted. We will verify it and confirm your order. You can follow the status in your account.")}).catch(function(){er.textContent="Could not send. Please try again.";er.hidden=false}).then(function(){$("cr-go").disabled=false});
+};
+var COUNTRIES="US|United States|1;CA|Canada|1;AF|Afghanistan|93;AL|Albania|355;DZ|Algeria|213;AD|Andorra|376;AO|Angola|244;AG|Antigua and Barbuda|1268;AR|Argentina|54;AM|Armenia|374;AU|Australia|61;AT|Austria|43;AZ|Azerbaijan|994;BS|Bahamas|1242;BH|Bahrain|973;BD|Bangladesh|880;BB|Barbados|1246;BY|Belarus|375;BE|Belgium|32;BZ|Belize|501;BJ|Benin|229;BT|Bhutan|975;BO|Bolivia|591;BA|Bosnia and Herzegovina|387;BW|Botswana|267;BR|Brazil|55;BN|Brunei|673;BG|Bulgaria|359;BF|Burkina Faso|226;BI|Burundi|257;KH|Cambodia|855;CM|Cameroon|237;CV|Cape Verde|238;CF|Central African Republic|236;TD|Chad|235;CL|Chile|56;CN|China|86;CO|Colombia|57;KM|Comoros|269;CG|Congo|242;CD|DR Congo|243;CR|Costa Rica|506;CI|Cote d'Ivoire|225;HR|Croatia|385;CU|Cuba|53;CY|Cyprus|357;CZ|Czechia|420;DK|Denmark|45;DJ|Djibouti|253;DO|Dominican Republic|1809;EC|Ecuador|593;EG|Egypt|20;SV|El Salvador|503;GQ|Equatorial Guinea|240;ER|Eritrea|291;EE|Estonia|372;SZ|Eswatini|268;ET|Ethiopia|251;FJ|Fiji|679;FI|Finland|358;FR|France|33;GA|Gabon|241;GM|Gambia|220;GE|Georgia|995;DE|Germany|49;GH|Ghana|233;GR|Greece|30;GT|Guatemala|502;GN|Guinea|224;GW|Guinea-Bissau|245;GY|Guyana|592;HT|Haiti|509;HN|Honduras|504;HK|Hong Kong|852;HU|Hungary|36;IS|Iceland|354;IN|India|91;ID|Indonesia|62;IR|Iran|98;IQ|Iraq|964;IE|Ireland|353;IL|Israel|972;IT|Italy|39;JM|Jamaica|1876;JP|Japan|81;JO|Jordan|962;KZ|Kazakhstan|7;KE|Kenya|254;KW|Kuwait|965;KG|Kyrgyzstan|996;LA|Laos|856;LV|Latvia|371;LB|Lebanon|961;LS|Lesotho|266;LR|Liberia|231;LY|Libya|218;LI|Liechtenstein|423;LT|Lithuania|370;LU|Luxembourg|352;MO|Macao|853;MG|Madagascar|261;MW|Malawi|265;MY|Malaysia|60;MV|Maldives|960;ML|Mali|223;MT|Malta|356;MR|Mauritania|222;MU|Mauritius|230;MX|Mexico|52;MD|Moldova|373;MC|Monaco|377;MN|Mongolia|976;ME|Montenegro|382;MA|Morocco|212;MZ|Mozambique|258;MM|Myanmar|95;NA|Namibia|264;NP|Nepal|977;NL|Netherlands|31;NZ|New Zealand|64;NI|Nicaragua|505;NE|Niger|227;NG|Nigeria|234;KP|North Korea|850;MK|North Macedonia|389;NO|Norway|47;OM|Oman|968;PK|Pakistan|92;PS|Palestine|970;PA|Panama|507;PG|Papua New Guinea|675;PY|Paraguay|595;PE|Peru|51;PH|Philippines|63;PL|Poland|48;PT|Portugal|351;PR|Puerto Rico|1787;QA|Qatar|974;RO|Romania|40;RU|Russia|7;RW|Rwanda|250;SA|Saudi Arabia|966;SN|Senegal|221;RS|Serbia|381;SC|Seychelles|248;SL|Sierra Leone|232;SG|Singapore|65;SK|Slovakia|421;SI|Slovenia|386;SB|Solomon Islands|677;SO|Somalia|252;ZA|South Africa|27;KR|South Korea|82;SS|South Sudan|211;ES|Spain|34;LK|Sri Lanka|94;SD|Sudan|249;SR|Suriname|597;SE|Sweden|46;CH|Switzerland|41;SY|Syria|963;TW|Taiwan|886;TJ|Tajikistan|992;TZ|Tanzania|255;TH|Thailand|66;TL|Timor-Leste|670;TG|Togo|228;TO|Tonga|676;TT|Trinidad and Tobago|1868;TN|Tunisia|216;TR|Turkey|90;TM|Turkmenistan|993;UG|Uganda|256;UA|Ukraine|380;AE|United Arab Emirates|971;GB|United Kingdom|44;UY|Uruguay|598;UZ|Uzbekistan|998;VU|Vanuatu|678;VA|Vatican City|379;VE|Venezuela|58;VN|Vietnam|84;YE|Yemen|967;ZM|Zambia|260;ZW|Zimbabwe|263",DIAL={};
+(function(){
+  var list=COUNTRIES.split(";").map(function(r){var p=r.split("|");return{i:p[0],n:p[1],d:p[2]}});
+  var head=list.slice(0,2),rest=list.slice(2).sort(function(a,b){return a.n<b.n?-1:1});
+  head.concat(rest).forEach(function(c){
+    DIAL[c.i]=c.d;
+    var o=document.createElement("option");
+    o.value=c.i;
+    o.textContent=c.i.replace(/./g,function(ch){return String.fromCodePoint(127397+ch.charCodeAt(0))})+" "+c.n+" (+"+c.d+")";
+    $("cc").appendChild(o);
+  });
+  $("cc").value="US";
+})();
+function fullPhone(x){
+  var d=x.phone.value.replace(/\D/g,"").replace(/^0+/,"");
+  return d?"+"+DIAL[$("cc").value]+" "+d:"";
+}
+function setPhone(full){
+  var m=/^\+(\d+)\s+(.+)$/.exec(String(full)),x=$("coform").elements;
+  if(m){for(var k in DIAL){if(DIAL[k]===m[1]){$("cc").value=k;break}}x.phone.value=m[2]}
+  else x.phone.value=full;
+}
+var SPECS=window.PRODUCTS.map(function(p){return[p.chip,p.screen,p.cam,p.port].join("|")});
+(function(){
+  var tb=document.querySelector("#cmp tbody");
+  MODELS.forEach(function(m,i){
+    var sp=SPECS[i].split("|"),tr=document.createElement("tr");
+    [m.n,"$"+m.b].concat(sp).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});
+    var td=document.createElement("td"),b=document.createElement("a");b.href="product.html?slug="+m.slug;b.className="vb";b.textContent="View";b.setAttribute("aria-label","View "+m.n);td.appendChild(b);tr.appendChild(td);
+    tb.appendChild(tr);
+  });
+})();
+$("q").oninput=function(){Q=this.value.trim().toLowerCase();drawCat()};
+$("srch").onsubmit=function(e){e.preventDefault();$("models").scrollIntoView({behavior:"smooth"})};
+$("sort").onchange=function(){SORT=this.value;drawCat()};
+$("menubtn").onclick=function(){var o=$("nav").classList.toggle("open");this.setAttribute("aria-expanded",o)};
+document.querySelectorAll("#nav a").forEach(function(a){a.onclick=function(){$("nav").classList.remove("open");$("menubtn").setAttribute("aria-expanded","false")}});
+AMSG["auth/popup-closed-by-user"]="Google sign-in was cancelled.";
+AMSG["auth/cancelled-popup-request"]="Google sign-in was cancelled.";
+AMSG["auth/popup-blocked"]="Your browser blocked the Google window. Allow pop-ups and try again.";
+AMSG["auth/unauthorized-domain"]="This website is not approved for Google sign-in yet.";
+AMSG["auth/operation-not-allowed"]="Google sign-in is not switched on yet.";
+$("au-g").onclick=function(){
+  var er=$("au-err");er.hidden=true;
+  if(!FGok()){er.textContent="Accounts are not switched on yet. Please try again later.";er.hidden=false;return}
+  window.FG.googleSignIn().then(function(r){who(r.user.email);show("coform");prefill()}).catch(function(x){er.textContent=AMSG[x&&x.code]||"Could not sign in with Google.";er.hidden=false});
+};
+[["st1","iPhone 17 Pro"],["st2","iPhone 18 Pro Max"],["st3","iPhone 15 Pro"]].forEach(function(p){var e=$(p[0]);if(e&&IMG[p[1]]){e.src=IMG[p[1]];e.alt=p[1]}});
+var RM=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+$("n-models").dataset.n=MODELS.length;
+function countUp(e){
+  var n=+e.dataset.n,t0=null;
+  if(RM){e.textContent=n;return}
+  function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1200);e.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}
+  requestAnimationFrame(f);
+}
+var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var t=en.target;if(t.classList.contains("rv"))t.classList.add("in");if(t.dataset&&t.dataset.n)countUp(t);io.unobserve(t)}})},{threshold:.12}):null;
+function reveal(){
+  document.querySelectorAll(".sgrid b").forEach(function(e){if(!e.__o){e.__o=1;if(io)io.observe(e);else e.textContent=e.dataset.n}});
+  document.querySelectorAll("section h2,.sub,.mc,.pol>div,.steps li,.gc,.li,.g,details,.panel,.sgrid>div").forEach(function(e){if(!e.__o){e.__o=1;if(io){e.classList.add("rv");io.observe(e)}}});
+}
+window.reveal=reveal;
+(function(){
+  var L=[["Screen and touch","Scratch-resistant glass over a touch-sensitive layer.","#E2E8F0"],["Display","A sharp, bright screen for photos, video and games.","#8B5CF6"],["Cellular and Wi-Fi","Antennas and a modem for calls, mobile data and Wi-Fi.","#10B981"],["Battery","A rechargeable battery built for all-day use.","#34D399"],["Cameras and body","Rear and front cameras inside a strong frame.","#94A3B8"]];
+  var list=$("llist"),ly=document.querySelectorAll("#stack .ly");
+  function on(i){
+    [].forEach.call(ly,function(g){g.classList.toggle("on",+g.dataset.i===i)});
+    [].forEach.call(list.children,function(b,k){b.setAttribute("aria-pressed",k===i)});
+  }
+  L.forEach(function(x,i){
+    var b=document.createElement("button"),d=document.createElement("i"),w=document.createElement("span"),t=document.createElement("b"),e=document.createElement("em");
+    b.type="button";b.className="li";d.className="d";d.style.background=x[2];
+    t.textContent=x[0];e.textContent=x[1];w.appendChild(t);w.appendChild(e);b.appendChild(d);b.appendChild(w);
+    b.onclick=function(){on(i)};b.onmouseenter=function(){on(i)};
+    list.appendChild(b);
+  });
+  [].forEach.call(ly,function(g){g.addEventListener("mouseenter",function(){on(+g.dataset.i)});g.addEventListener("click",function(){on(+g.dataset.i)})});
+  on(0);
+})();
+window.addEventListener("scroll",function(){document.querySelector("header").classList.toggle("sc",window.scrollY>8);var h=document.documentElement;$("prog").style.width=(h.scrollTop/((h.scrollHeight-h.clientHeight)||1)*100)+"%"},{passive:true});
+(function(){var t=$("mqt");[0,1].forEach(function(){MODELS.forEach(function(m){var s=document.createElement("a");s.href="product.html?slug="+m.slug;s.tabIndex=-1;s.textContent=m.n;t.appendChild(s)})})})();
+function adOK(u){return /^(https?:\/\/|#|mailto:|product\.html\?)/i.test(u)}
+function buildAds(list){
+  if(!list.length)return;
+  var tr=$("adtrack"),dots=$("addots"),cur=0,timer;
+  tr.innerHTML="";dots.innerHTML="";
+  function show(i){cur=i;tr.style.transform="translateX(-"+(i*100)+"%)";[].forEach.call(dots.children,function(b,k){b.setAttribute("aria-current",k===i)})}
+  function auto(){clearInterval(timer);if(list.length>1&&!RM)timer=setInterval(function(){show((cur+1)%list.length)},6000)}
+  list.forEach(function(a,i){
+    var d=document.createElement("div"),t=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");
+    d.className="ad th-"+(/^(blue|green|purple|orange|dark)$/.test(a.theme)?a.theme:"blue");
+    h.textContent=a.title||"";t.appendChild(h);
+    if(a.text){p.textContent=a.text;t.appendChild(p)}
+    if(a.button&&adOK(a.link||"")){var l=document.createElement("a");l.href=a.link;l.textContent=a.button;if(/^https?:/i.test(a.link)){l.target="_blank";l.rel="noopener"}t.appendChild(l)}
+    d.appendChild(t);
+    if(a.model&&IMG[a.model]){var im=new Image();im.alt=a.model;im.src=IMG[a.model];d.appendChild(im)}
+    tr.appendChild(d);
+    var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Show promotion "+(i+1));b.onclick=function(){show(i);auto()};dots.appendChild(b);
+  });
+  $("adsw").hidden=false;
+  $("ads").onmouseenter=function(){clearInterval(timer)};$("ads").onmouseleave=auto;
+  var sx=0;
+  $("ads").addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+  $("ads").addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){show((cur+(dx<0?1:list.length-1))%list.length);auto()}},{passive:true});
+  show(0);auto();
+}
+function loadAds(){if(window.FG&&window.FG.ready&&window.FG.getAds)window.FG.getAds().then(buildAds).catch(function(){})}
+window.addEventListener("fg-ready",loadAds);
+loadAds();
+var qs=new URLSearchParams(location.search);
+if(qs.get("q")){$("q").value=qs.get("q");Q=qs.get("q").trim().toLowerCase()}
+if(qs.get("s")&&FILTERS.indexOf(qs.get("s"))>-1)S.f=qs.get("s");
+sync();drawCat();drawCart();reveal();
+if(location.hash==="#checkout"&&cart.length){$("checkout").click()}else if(location.hash==="#cart"){openCart()}
+})();
+</script>
+<script src="config.js"></script>
+<script type="module">
+try{window.FG=await import("./fg.js")}catch(e){}
+window.dispatchEvent(new Event("fg-ready"));
+</script>
+<script type="module" src="track.js"></script>
+</body>
+</html>
