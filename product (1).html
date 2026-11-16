@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fairgrade | iPhone</title>
+<meta name="description" content="Brand new iPhones with a 12-month warranty, free shipping and 30-day returns.">
+<meta name="fg-product" content="">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='fgH' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.16'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230B1B33'/%3E%3Crect width='64' height='64' rx='17' fill='url(%23fgH)'/%3E%3Crect x='24' y='29' width='17' height='7.6' rx='2.6' fill='%233DE0B8'/%3E%3Crect x='21' y='14' width='8' height='36' rx='2.6' fill='%23fff'/%3E%3Crect x='21' y='14' width='24' height='8' rx='2.6' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:#F3F6F7;--surface:#fff;--ink:#0F1C24;--muted:#56656F;--line:#DCE3E6;--accent:#0E7A66;--accent-ink:#fff}
+@media(prefers-color-scheme:dark){:root{--bg:#070D18;--surface:#0F1827;--ink:#E8EFF2;--muted:#98A7B0;--line:#1B2A41;--accent:#4FD1AE;--accent-ink:#06231C}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:70px}
+h1,h2,h3{font-family:"Schibsted Grotesk",system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.announce{background:var(--ink);color:var(--bg);text-align:center;font-size:13px;padding:7px 12px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .lm{width:34px;height:34px}.logo .wmk{width:104px;height:15px;color:var(--ink)}
+.hr{display:flex;align-items:center;gap:12px}
+.acct{font-weight:600;text-decoration:none}
+.cartbtn{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 10px 8px 16px;font-weight:600}
+.cartbtn b{background:var(--accent);color:var(--accent-ink);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:13px;padding:0 7px}
+#count.bump{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.4)}}
+.srch{position:relative;padding:12px 0 0}
+.srch svg{position:absolute;left:15px;top:25px;width:20px;height:20px;color:var(--muted);pointer-events:none}
+.srch input{width:100%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:11px 16px 11px 44px;font:inherit}
+.bc{margin:18px 0 0;font-size:14px;color:var(--muted)}
+.bc a{text-decoration:none}.bc a:hover{text-decoration:underline}
+.prod{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-top:16px;animation:fade .5s ease}
+.prod>*{min-width:0}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+.gm{display:block;width:100%;border:0;border-radius:26px;background:#fff;overflow:hidden;cursor:zoom-in;padding:0;aspect-ratio:1/1;position:relative;box-shadow:0 24px 50px -30px rgba(11,27,51,.5)}
+.gm img{width:100%;height:100%;object-fit:contain;transition:transform .4s ease;mix-blend-mode:multiply;display:block}
+.gm.zm{cursor:zoom-out}
+.gm .hint{position:absolute;right:12px;bottom:12px;background:rgba(11,27,51,.7);color:#fff;border-radius:99px;padding:4px 12px;font-size:12px;font-weight:700}
+.gts{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px}
+.gts button{flex:none;width:72px;height:72px;border-radius:14px;border:2px solid var(--line);background:#fff;overflow:hidden;padding:0}
+.gts button[aria-pressed="true"]{border-color:var(--accent)}
+.gts img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;display:block}
+.noimg{display:grid;place-items:center;height:100%;color:#64748B}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.badges span{border-radius:99px;padding:3px 12px;font-size:13px;font-weight:700}
+.b1{background:rgba(18,185,160,.16);color:var(--accent)}
+.b2{background:var(--surface);border:1px solid var(--line)}
+h1{font-size:clamp(30px,5.5vw,46px);margin-top:10px}
+.rate{margin:8px 0;color:var(--muted);font-size:15px}
+.rate a{color:var(--accent);font-weight:700;margin-left:8px}
+.tag{color:var(--muted);margin:6px 0 0;max-width:46ch}
+.price{display:flex;align-items:baseline;gap:10px;margin:18px 0 4px;flex-wrap:wrap}
+.price strong{font:800 clamp(36px,6vw,50px) "Schibsted Grotesk",sans-serif;letter-spacing:-.03em}
+.price .usd{color:var(--muted);font-weight:600}
+.price .was{color:var(--muted);text-decoration:line-through}
+.price .off{background:#EF4444;color:#fff;border-radius:8px;padding:2px 8px;font-size:13px;font-weight:800}
+.avail{display:flex;align-items:center;gap:8px;font-weight:600}
+.avail i{width:10px;height:10px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+.vr{margin-top:20px}
+.vl{font-weight:700;margin-bottom:8px}
+.vl small{color:var(--muted);font-weight:500;margin-left:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;font-weight:700;text-align:left}
+.chip small{display:block;color:var(--muted);font-weight:500;font-size:12px}
+.chip[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.sw{width:36px;height:36px;border-radius:50%;border:2px solid var(--line);padding:0}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--accent)}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.info div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.info span{display:block;color:var(--muted);font-size:13px}
+.buy{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.qty{display:inline-flex;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.qty button{width:42px;background:none;border:0;font-size:20px}
+.qty span{min-width:38px;text-align:center;line-height:46px;font-weight:700}
+.btn{border:0;border-radius:12px;padding:14px 22px;font-weight:800;font-size:16px;position:relative;overflow:hidden;text-decoration:none;text-align:center}
+.btn1{background:var(--accent);color:var(--accent-ink);flex:1;min-width:150px}
+.btn2{background:var(--ink);color:var(--bg);flex:1;min-width:120px}
+.btn1::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);animation:shine 5s ease-in-out infinite;pointer-events:none}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+.wish{width:50px;height:50px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);display:grid;place-items:center;padding:0}
+.wish svg{width:22px;height:22px}
+.wish[aria-pressed="true"] svg{fill:#EF4444;stroke:#EF4444}
+.tot{color:var(--muted);font-size:14px;margin-top:8px;min-height:22px}
+.dl{border:1px solid var(--line);border-radius:18px;padding:4px 16px;background:var(--surface);margin-top:22px}
+.dl>div{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
+.dl>div:first-child{border-top:0}
+.dl svg{width:24px;height:24px;flex:none;color:var(--accent);margin-top:2px}
+.dl b{display:block}.dl span{color:var(--muted);font-size:15px}
+.pay{display:flex;gap:6px;margin-top:6px;align-items:center}
+.pay svg{width:24px;height:24px;stroke:none}
+.offers{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.offers span{background:rgba(18,185,160,.12);color:var(--accent);border-radius:10px;padding:6px 12px;font-weight:700;font-size:14px}
+.tabs{position:sticky;top:64px;z-index:5;background:var(--bg);display:flex;gap:22px;border-bottom:1px solid var(--line);margin-top:40px;overflow-x:auto}
+.tabs a{padding:14px 2px;text-decoration:none;color:var(--muted);font-weight:700;white-space:nowrap}
+.tabs a:hover{color:var(--ink)}
+.sect{padding:34px 0 6px}
+.sect h2{font-size:clamp(24px,4vw,34px);margin-bottom:14px}
+.sect p{max-width:70ch;color:var(--muted)}
+.hl{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:18px}
+.hl div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-weight:600}
+.hl div::before{content:"";display:inline-block;width:6px;height:11px;border:solid var(--accent);border-width:0 2.5px 2.5px 0;transform:rotate(40deg);margin:0 12px 2px 4px}
+.box{margin:16px 0 0;padding-left:20px;color:var(--muted)}
+.spt{display:grid;gap:16px}
+.sg{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:6px 18px 8px}
+.sg h3{font-size:18px;padding:14px 0 6px}
+.sr{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.sr span{color:var(--muted)}
+.sr b{font-weight:600}
+.rev{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.rev b{font-size:20px}
+details{border-top:1px solid var(--line);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:700;cursor:pointer}
+details p{margin:10px 0 0}
+.pgrid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+.pc{display:flex;flex-direction:column;gap:3px;padding:12px;border-radius:20px;border:1px solid var(--line);background:var(--surface);text-decoration:none;transition:transform .25s ease,box-shadow .25s ease}
+.pc:hover{transform:translateY(-6px);box-shadow:0 18px 36px -18px rgba(11,27,51,.5)}
+.pci{background:#fff;border-radius:14px;height:150px;display:grid;place-items:center;margin-bottom:8px;overflow:hidden}
+.pci img{max-height:140px;max-width:100%;mix-blend-mode:multiply}
+.pcs{color:var(--muted);font-size:13px}
+.nf{text-align:center;padding:70px 0}
+.nf h1{font-size:72px}
+.nf .btn{display:inline-block;margin:6px;padding:12px 20px}
+.sbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:center;gap:12px;transform:translateY(110%);transition:transform .3s ease;z-index:30}
+.sbar.on{transform:none}
+.sbar b{display:block;font-size:20px;line-height:1.2}.sbar span{color:var(--muted);font-size:13px}
+.sbar .btn{flex:none;padding:12px 22px}
+#scrim{position:fixed;inset:0;background:rgba(5,12,16,.5);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--surface);border-left:1px solid var(--line);z-index:50;padding:20px;overflow:auto;display:flex;flex-direction:column}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dh button{background:none;border:0;text-decoration:underline;color:var(--muted)}
+#items{list-style:none;margin:0;padding:0}
+.ci{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.cth{width:64px;height:64px;border-radius:12px;background:#fff;flex:none;display:grid;place-items:center;overflow:hidden}
+.cth img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.cinfo{flex:1;min-width:0;display:flex;flex-direction:column}.cinfo span{color:var(--muted);font-size:14px}
+.cpr{display:flex;flex-direction:column;align-items:flex-end;font-weight:700;gap:2px}
+.rm{background:none;border:0;text-decoration:underline;color:var(--muted);padding:2px;font-weight:500}
+.csum{margin-top:auto;padding-top:16px}
+.kv{display:flex;justify-content:space-between;padding:6px 0}
+.empty{text-align:center;padding:48px 8px;color:var(--muted)}
+.csum .btn,.empty .btn{display:block;width:100%;margin-top:10px;padding:14px}
+footer{border-top:1px solid var(--line);margin-top:50px;padding:34px 0 20px;color:var(--muted);font-size:14px}
+.fc{display:grid;gap:22px;grid-template-columns:1fr 1fr}
+.fc>div:first-child{grid-column:1/-1}
+.fc h4{margin:0 0 8px;color:var(--ink);font-size:14px}
+.fc a{display:flex;align-items:center;gap:10px;padding:5px 0;color:var(--muted);text-decoration:none}
+.fc a:hover{color:var(--ink)}
+.fc svg{width:20px;height:20px;flex:none;stroke:none}
+.fc .lm{width:34px;height:34px}.fc .wmk{width:108px;height:15px;color:var(--ink)}
+.fine{margin:16px 0 0;font-size:13px}
+@media(min-width:760px){.fc{grid-template-columns:2fr 1fr 1fr 1fr}.fc>div:first-child{grid-column:auto}.hl{grid-template-columns:repeat(4,1fr)}.pgrid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.prod{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start;gap:44px}.gal{position:sticky;top:90px}.sbar{display:none}body{padding-bottom:0}}
+@media(max-width:519px){.logo .wmk{width:88px;height:13px}.acct{display:none}.sr{grid-template-columns:1fr;gap:2px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-logo" viewBox="0 0 64 64"><g stroke="none"><defs><linearGradient id="fgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="#0B1B33"/><rect width="64" height="64" rx="17" fill="url(#fgH)"/><rect x="24" y="29" width="17" height="7.6" rx="2.6" fill="#3DE0B8"/><rect x="21" y="14" width="8" height="36" rx="2.6" fill="#fff"/><rect x="21" y="14" width="24" height="8" rx="2.6" fill="#fff"/></g></symbol>
+<symbol id="i-wm" viewBox="0 0 141 20"><path transform="translate(0 15)" fill="currentColor" stroke="none" d="M9.7 -13.9V-12.0H3.8V-7.9H8.4V-6.1H3.8V0.0H1.5V-13.9Z M24.2 -2.8H18.4L17.4 0.0H15.0L20.0 -13.9H22.6L27.6 0.0H25.2ZM23.5 -4.7 21.3 -11.2 19.0 -4.7Z M36.0 -13.9V0.0H33.7V-13.9Z M50.2 0.0 47.0 -5.6H45.3V0.0H43.0V-13.9H47.8Q49.4 -13.9 50.5 -13.3Q51.6 -12.8 52.2 -11.8Q52.7 -10.9 52.7 -9.7Q52.7 -8.4 51.9 -7.3Q51.2 -6.2 49.5 -5.8L53.0 0.0ZM45.3 -7.4H47.8Q49.1 -7.4 49.8 -8.0Q50.4 -8.7 50.4 -9.7Q50.4 -10.8 49.8 -11.4Q49.1 -12.0 47.8 -12.0H45.3Z M69.7 -9.9Q69.2 -10.9 68.2 -11.5Q67.3 -12.0 66.0 -12.0Q64.6 -12.0 63.5 -11.4Q62.5 -10.8 61.8 -9.6Q61.2 -8.5 61.2 -7.0Q61.2 -5.5 61.8 -4.3Q62.5 -3.2 63.5 -2.6Q64.6 -1.9 66.0 -1.9Q67.9 -1.9 69.0 -3.0Q70.2 -4.0 70.4 -5.8H65.2V-7.6H72.9V-5.8Q72.7 -4.2 71.7 -2.9Q70.8 -1.5 69.3 -0.7Q67.8 0.1 66.0 0.1Q64.0 0.1 62.4 -0.8Q60.8 -1.7 59.8 -3.3Q58.9 -4.9 58.9 -7.0Q58.9 -9.0 59.8 -10.6Q60.8 -12.3 62.4 -13.2Q64.1 -14.1 66.0 -14.1Q68.2 -14.1 69.9 -13.0Q71.7 -11.9 72.5 -9.9Z M86.3 0.0 83.1 -5.6H81.4V0.0H79.1V-13.9H83.9Q85.5 -13.9 86.6 -13.3Q87.7 -12.8 88.3 -11.8Q88.8 -10.9 88.8 -9.7Q88.8 -8.4 88.1 -7.3Q87.3 -6.2 85.6 -5.8L89.1 0.0ZM81.4 -7.4H83.9Q85.2 -7.4 85.8 -8.0Q86.5 -8.7 86.5 -9.7Q86.5 -10.8 85.9 -11.4Q85.2 -12.0 83.9 -12.0H81.4Z M104.1 -2.8H98.3L97.3 0.0H94.9L99.9 -13.9H102.6L107.5 0.0H105.1ZM103.5 -4.7 101.2 -11.2 99.0 -4.7Z M125.6 -6.9Q125.6 -4.8 124.7 -3.2Q123.8 -1.7 122.1 -0.8Q120.5 0.0 118.2 0.0H113.7V-13.9H118.2Q120.5 -13.9 122.1 -13.1Q123.8 -12.2 124.7 -10.6Q125.6 -9.0 125.6 -6.9ZM123.3 -6.9Q123.3 -9.3 122.0 -10.7Q120.7 -12.0 118.2 -12.0H116.0V-1.9H118.2Q120.7 -1.9 122.0 -3.2Q123.3 -4.5 123.3 -6.9Z M134.2 -12.1V-8.0H139.0V-6.1H134.2V-1.9H139.6V0.0H131.9V-13.9H139.6V-12.1Z"/></symbol>
+<symbol id="p-card" viewBox="0 0 24 24"><g stroke="none"><rect x="1.5" y="4.5" width="21" height="15" rx="3.2" fill="#2F6BFF"/><rect x="1.5" y="8.2" width="21" height="3.4" fill="#0B1B33" opacity=".5"/><rect x="4.2" y="14" width="6.5" height="2.6" rx="1.3" fill="#fff"/><circle cx="18" cy="15.3" r="1.6" fill="#fff" opacity=".7"/></g></symbol>
+<symbol id="p-bank" viewBox="0 0 24 24"><g stroke="none" fill="#10B981"><path d="M12 2L2.3 7.4v2h19.4v-2z"/><rect x="4.4" y="11" width="2.8" height="7" rx=".9"/><rect x="10.6" y="11" width="2.8" height="7" rx=".9"/><rect x="16.8" y="11" width="2.8" height="7" rx=".9"/><rect x="2.3" y="19.4" width="19.4" height="2.4" rx="1.1"/></g></symbol>
+<symbol id="p-btc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#F7931A" stroke="none"/><path d="M9.2 7.2v9.6M9.2 7.2h3.6a2.5 2.5 0 0 1 0 5H9.2m0 0h4.1a2.6 2.6 0 0 1 0 5.2H9.2M11 5.6v1.6M13.6 5.6v1.6M11 16.8v1.6M13.6 16.8v1.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="p-eth" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#627EEA" stroke="none"/><g fill="#fff" stroke="none"><path d="M12 3.5L6.9 12.2 12 15z" opacity=".6"/><path d="M12 3.5l5.1 8.7L12 15z"/><path d="M6.9 13.4l5.1 2.9v4.2z" opacity=".6"/><path d="M17.1 13.4L12 16.3v4.2z"/></g></symbol>
+<symbol id="p-bnb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#F3BA2F" stroke="none"/><g fill="#0B1B33" stroke="none"><path d="M12 5.2l1.9 1.9-1.9 1.9-1.9-1.9z"/><path d="M7.1 10.1L9 12l-1.9 1.9L5.2 12z"/><path d="M16.9 10.1L18.8 12l-1.9 1.9L15 12z"/><path d="M12 15l1.9 1.9-1.9 1.9-1.9-1.9z"/><path d="M12 10.1l1.9 1.9-1.9 1.9-1.9-1.9z"/></g></symbol></svg>
+<div class="announce">Free shipping on every order. 12-month warranty. 30-day returns.</div>
+<header>
+<div class="wrap bar">
+<a class="logo" href="index.html" aria-label="Fairgrade home"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></a>
+<div class="hr"><a class="acct" href="account.html">Account</a><button class="cartbtn" id="cartbtn" type="button" aria-expanded="false" aria-controls="cart">Cart <b id="count">0</b></button></div>
+</div>
+</header>
+<div class="wrap"><form class="srch" id="srch" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Search phones, for example iPhone 15 Pro" aria-label="Search phones" autocomplete="off"></form></div>
+
+<main class="wrap" id="app"></main>
+<main class="wrap nf" id="nf" hidden>
+<h1>404</h1>
+<h2>We could not find that phone</h2>
+<p style="color:var(--muted)">The link may be old or mistyped. Pick one of our iPhones instead.</p>
+<a class="btn btn1" href="index.html#models">Browse all iPhones</a>
+<div class="pgrid" id="nfl" style="margin-top:26px;text-align:left"></div>
+</main>
+
+<div id="scrim" hidden></div>
+<aside class="drawer" id="cart" aria-label="Your cart" hidden>
+<div class="dh"><h3>Your cart <span style="color:var(--muted);font-size:15px" id="cart-n"></span></h3><button id="close" type="button">Close</button></div>
+<ul id="items"></ul>
+<div id="empty" class="empty"><p>Your cart is empty.</p><a class="btn btn1" href="index.html#models">Browse iPhones</a></div>
+<div class="csum" id="csum">
+<div class="kv"><span>Subtotal</span><b id="sub">$0</b></div>
+<div class="kv"><span>Shipping</span><b>Free</b></div>
+<div class="kv"><span>Total</span><b id="total" style="font-size:22px">$0</b></div>
+<a class="btn btn1" href="index.html#checkout">Checkout</a>
+<button class="btn btn2" id="keep" type="button">Continue shopping</button>
+</div>
+</aside>
+
+<div class="sbar" id="sbar"><div><b id="sp"></b><span id="sn"></span></div><button class="btn btn1" id="sadd" type="button">Add to cart</button></div>
+
+<footer><div class="wrap">
+<div class="fc">
+<div><svg class="lm" viewBox="0 0 64 64" aria-hidden="true" style="stroke:none"><use href="#i-logo"/></svg> <svg class="wmk" viewBox="0 0 141 20" aria-hidden="true" style="stroke:none"><use href="#i-wm"/></svg><p style="margin:10px 0 0">Brand new iPhones. Every phone comes with a 12-month warranty and 30-day returns.</p></div>
+<div><h4>Shop</h4><a href="index.html#models">All iPhones</a><a href="index.html#compare">Compare models</a><a href="index.html#grading">Why brand new</a></div>
+<div><h4>Support</h4><a href="account.html">My account</a><a href="account.html">Customer service</a><a href="https://t.me/fairgradestore" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" transform="translate(3.4 3.6) scale(.72)" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>Telegram: @fairgradestore</a><a href="mailto:fairgradestore@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="3" fill="#fff"/><rect x="1.5" y="7" width="3.6" height="12.5" rx="1.4" fill="#4285F4"/><rect x="18.9" y="7" width="3.6" height="12.5" rx="1.4" fill="#34A853"/><path d="M3.2 7.2l8.8 6.6 8.8-6.6" fill="none" stroke="#EA4335" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>fairgradestore@gmail.com</a><a href="index.html#find"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#EF4444" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.8" fill="#fff"/></svg>11 Wall Street, New York, NY 10005, USA</a></div>
+<div><h4>Legal</h4><a href="terms.html">Terms and conditions</a><a href="privacy.html">Privacy policy</a></div>
+</div>
+<p class="fine">Pictures show the model, not the exact phone. Prices are in US dollars and may change. 2026 Fairgrade. All rights reserved.</p>
+</div></footer>
+
+<script src="products.js"></script>
+<script src="phones.js"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+if(!window.PRODUCTS){var m=document.createElement("div");m.style.cssText="padding:28px 20px;font:16px/1.5 system-ui,sans-serif;text-align:center";m.textContent="The product list could not load. Please open the live website, and make sure products.js is uploaded next to this page.";document.body.insertBefore(m,document.body.firstChild);return}
+var P=window.PRODUCTS,IMG=window.PHONE_IMG||{};
+var $=function(i){return document.getElementById(i)};
+function h(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n}
+function ic(k,cls){return '<svg class="'+(cls||"")+'" viewBox="0 0 24 24" aria-hidden="true"><use href="#'+k+'"/></svg>'}
+function usd(n){return "$"+n.toLocaleString("en-US")}
+function gb(v){return v>=1024?(v/1024)+" TB":v+" GB"}
+function LS(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
+function SV(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function eta(){var d=new Date(),n=0;while(n<3){d.setDate(d.getDate()+1);var w=d.getDay();if(w>0&&w<6)n++}return d.toLocaleDateString("en-US",{weekday:"long",month:"short",day:"numeric"})}
+function img(name,alt){var i=new Image();i.src=IMG[name]||"";i.alt=alt||name;return i}
+
+/* ---------- cart (shared with the store through localStorage) ---------- */
+function loadCart(){var c=LS("fg_cart",[]);return Array.isArray(c)?c.filter(function(x){return x&&typeof x.n==="string"&&typeof x.p==="number"}).slice(0,20):[]}
+var cart=loadCart();
+function bump(){var c=$("count");c.classList.remove("bump");void c.offsetWidth;c.classList.add("bump")}
+function drawCart(){
+  var ul=$("items"),t=0;ul.innerHTML="";
+  cart.forEach(function(it,i){
+    t+=it.p;
+    var li=h("li","ci"),th=h("div","cth"),inf=h("div","cinfo"),pr=h("div","cpr"),b=h("button","rm","Remove"),parts=it.n.split(",");
+    if(IMG[parts[0]])th.appendChild(img(parts[0]));
+    inf.appendChild(h("b","",parts[0]));inf.appendChild(h("span","",parts.slice(1).join(",").trim()));
+    pr.appendChild(document.createTextNode(usd(it.p)));
+    b.type="button";b.setAttribute("aria-label","Remove "+it.n);b.onclick=function(){cart.splice(i,1);SV("fg_cart",cart);drawCart()};
+    pr.appendChild(b);li.appendChild(th);li.appendChild(inf);li.appendChild(pr);ul.appendChild(li);
+  });
+  $("count").textContent=cart.length;$("cart-n").textContent=cart.length?"("+cart.length+")":"";
+  $("sub").textContent=usd(t);$("total").textContent=usd(t);
+  $("empty").hidden=cart.length>0;$("csum").hidden=!cart.length;
+}
+function openCart(){$("cart").hidden=false;$("scrim").hidden=false;$("cartbtn").setAttribute("aria-expanded","true");$("close").focus()}
+function closeCart(){$("cart").hidden=true;$("scrim").hidden=true;$("cartbtn").setAttribute("aria-expanded","false")}
+function addToCart(name,price,qty){
+  if(cart.length+qty>20){alert("Your cart can hold up to 20 items.");return false}
+  for(var i=0;i<qty;i++)cart.push({n:name,p:price});
+  SV("fg_cart",cart);drawCart();bump();return true;
+}
+$("cartbtn").onclick=function(){$("cart").hidden?openCart():closeCart()};
+$("close").onclick=closeCart;$("scrim").onclick=closeCart;$("keep").onclick=closeCart;
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!$("cart").hidden)closeCart()});
+$("srch").onsubmit=function(e){e.preventDefault();var v=$("q").value.trim();location.href="index.html"+(v?"?q="+encodeURIComponent(v):"")+"#models"};
+drawCart();
+
+/* ---------- routing: the slug picks the product ---------- */
+var qs=new URLSearchParams(location.search),slug=(qs.get("slug")||"").toLowerCase();
+var pm=location.pathname.match(/\/products\/([^\/]+?)(?:\.html)?\/?$/);
+if(!slug&&pm)slug=decodeURIComponent(pm[1]).toLowerCase();
+var p=window.findProduct(slug);
+
+/* ---------- reusable product card ---------- */
+function pcard(x){
+  var a=h("a","pc");a.href="product.html?slug="+x.slug;
+  var im=h("div","pci");if(IMG[x.name])im.appendChild(img(x.name));a.appendChild(im);
+  a.appendChild(h("b","",x.name));
+  a.appendChild(h("span","pcs",x.chip+", "+x.screen.split(" ")[0]));
+  a.appendChild(h("strong","","From "+usd(x.price)));
+  return a;
+}
+function pgrid(list){var g=h("div","pgrid");list.forEach(function(x){g.appendChild(pcard(x))});return g}
+
+if(!p){
+  $("app").hidden=true;$("nf").hidden=false;document.title="Page not found | Fairgrade";
+  var nl=$("nfl");P.slice(-4).forEach(function(x){nl.appendChild(pcard(x))});
+  return;
+}
+
+/* ---------- page head ---------- */
+document.title=p.name+" | Fairgrade";
+document.querySelector('meta[name="description"]').content="Buy the brand new "+p.name+" from Fairgrade. "+p.tag+" 12-month warranty, free shipping and 30-day returns.";
+document.querySelector('meta[name="fg-product"]').content=p.name;
+
+var S=p.specs,st=0,co=0,qty=1,idx=P.indexOf(p);
+var unit=function(){return window.priceFor(p,st)};
+var VIEWS=[["Front and back","50% 50%",1],["Left side","22% 50%",1.9],["Right side","78% 50%",1.9],["Top left","18% 14%",2.8],["Top right","82% 14%",2.8]];
+var app=$("app");
+
+/* breadcrumb */
+var bc=h("nav","bc");bc.setAttribute("aria-label","Breadcrumb");
+bc.innerHTML='<a href="index.html">Home</a> / <a href="index.html#models">Apple</a> / ';
+bc.appendChild(h("span","",p.name));app.appendChild(bc);
+
+var prod=h("div","prod");app.appendChild(prod);
+
+/* ----- gallery ----- */
+var gal=h("div","gal");prod.appendChild(gal);
+var gm=h("button","gm");gm.type="button";gm.setAttribute("aria-label","Zoom the "+p.name+" picture");
+var gimg=img(p.name,p.name+" front and back view");
+if(IMG[p.name]){gm.appendChild(gimg);gm.appendChild(h("span","hint","Tap to zoom"))}else{gm.appendChild(h("div","noimg","No picture yet"))}
+gal.appendChild(gm);
+var gts=h("div","gts");gal.appendChild(gts);
+var vi=0,zm=false,tbs=[];
+function view(o,z){gimg.style.transformOrigin=o;gimg.style.transform="scale("+z+")"}
+function setView(i){vi=i;zm=false;gm.classList.remove("zm");view(VIEWS[i][1],VIEWS[i][2]);tbs.forEach(function(b,k){b.setAttribute("aria-pressed",k===i)})}
+function at(e){var r=gm.getBoundingClientRect(),pt=e.touches?e.touches[0]:e;return Math.max(0,Math.min(100,(pt.clientX-r.left)/r.width*100))+"% "+Math.max(0,Math.min(100,(pt.clientY-r.top)/r.height*100))+"%"}
+if(IMG[p.name]){
+  VIEWS.forEach(function(v,i){
+    var b=h("button");b.type="button";b.setAttribute("aria-label","Show view: "+v[0]);
+    var t=img(p.name,"");t.style.transformOrigin=v[1];t.style.transform="scale("+v[2]+")";b.appendChild(t);
+    b.onclick=function(){setView(i)};gts.appendChild(b);tbs.push(b);
+  });
+  gm.onclick=function(e){
+    zm=!zm;
+    if(zm){gm.classList.add("zm");view(at(e),Math.max(VIEWS[vi][2],2.4))}else{gm.classList.remove("zm");view(VIEWS[vi][1],VIEWS[vi][2])}
+  };
+  gm.onmousemove=function(e){if(zm)gimg.style.transformOrigin=at(e)};
+  gm.addEventListener("touchmove",function(e){if(zm){gimg.style.transformOrigin=at(e)}},{passive:true});
+  setView(0);
+}
+
+/* ----- info ----- */
+var info=h("div","info-col");prod.appendChild(info);
+var bd=h("div","badges");bd.appendChild(h("span","b1","Brand new"));bd.appendChild(h("span","b2",p.brand));info.appendChild(bd);
+info.appendChild(h("h1","",p.name));
+var rate=h("div","rate");rate.appendChild(document.createTextNode("No reviews yet"));var ra=h("a","","Be the first to review");ra.href="#reviews";rate.appendChild(ra);info.appendChild(rate);
+info.appendChild(h("p","tag",p.tag));
+var price=h("div","price"),pp=h("strong"),pw=h("span","was"),po=h("span","off");
+price.appendChild(pp);price.appendChild(h("span","usd","USD"));price.appendChild(pw);price.appendChild(po);info.appendChild(price);
+var av=h("div","avail");av.appendChild(h("i"));av.appendChild(h("span","","Available to order"));info.appendChild(av);
+
+/* variants */
+var vst=h("div","vr");vst.appendChild(h("div","vl","Storage"));var cs=h("div","chips");vst.appendChild(cs);info.appendChild(vst);
+var stb=[];
+p.storages.forEach(function(v,i){
+  var b=h("button","chip",gb(v));b.type="button";
+  if(i>0)b.appendChild(h("small","","+"+usd(window.priceFor(p,i)-p.price)));
+  b.onclick=function(){st=i;draw()};cs.appendChild(b);stb.push(b);
+});
+var cob=[],colLabel=null;
+if(p.colors.length){
+  var vc=h("div","vr"),cl=h("div","vl","Colour");colLabel=h("small");cl.appendChild(colLabel);vc.appendChild(cl);
+  var cw=h("div","chips");vc.appendChild(cw);info.appendChild(vc);
+  p.colors.forEach(function(c,i){var b=h("button","sw");b.type="button";b.style.background=c.hex;b.setAttribute("aria-label",c.n);b.title=c.n;b.onclick=function(){co=i;draw()};cw.appendChild(b);cob.push(b)});
+}
+var tiles=h("div","info");
+[["RAM",S.ram],["Network","Unlocked, "+S.net],["SIM",S.sim],["Chip",S.chip]].forEach(function(r){if(r[1]){var d=h("div");d.appendChild(h("span","",r[0]));d.appendChild(h("b","",r[1]));tiles.appendChild(d)}});
+info.appendChild(tiles);
+
+/* buy box */
+var buy=h("div","buy");
+var qd=h("div","qty"),qm=h("button","","-"),qv=h("span","","1"),qp=h("button","","+");
+qm.type=qp.type="button";qm.setAttribute("aria-label","Decrease quantity");qp.setAttribute("aria-label","Increase quantity");
+qm.onclick=function(){if(qty>1){qty--;draw()}};qp.onclick=function(){if(qty<5){qty++;draw()}};
+qd.appendChild(qm);qd.appendChild(qv);qd.appendChild(qp);buy.appendChild(qd);
+var add=h("button","btn btn1","Add to cart");add.id="add";add.type="button";buy.appendChild(add);
+var now=h("button","btn btn2","Buy now");now.type="button";buy.appendChild(now);
+var wish=h("button","wish");wish.type="button";wish.setAttribute("aria-label","Save "+p.name+" to your wishlist");
+wish.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 5 6 5c2 0 3.2 1 4 2.2C10.8 6 12 5 14 5c3.3 0 5.1 3.4 3.6 6.8C19.5 16.4 12 21 12 21z"/></svg>';
+buy.appendChild(wish);info.appendChild(buy);
+var tot=h("div","tot");info.appendChild(tot);
+function itemName(){return p.name+", "+gb(p.storages[st])+(p.colors.length?", "+p.colors[co].n:"")}
+function doAdd(){return addToCart(itemName(),unit(),qty)}
+add.onclick=function(){if(doAdd())openCart()};
+$("sadd").onclick=add.onclick;
+now.onclick=function(){if(doAdd())location.href="index.html#checkout"};
+function wl(){return LS("fg_wl",[])}
+function drawWish(){wish.setAttribute("aria-pressed",wl().indexOf(p.slug)>-1)}
+wish.onclick=function(){var l=wl(),i=l.indexOf(p.slug);if(i>-1)l.splice(i,1);else l.push(p.slug);SV("fg_wl",l);drawWish()};
+
+/* offers + delivery */
+var of=h("div","offers");["Free shipping on every order","12-month warranty included","Pay by ATM card, bank transfer or crypto"].forEach(function(t){of.appendChild(h("span","",t))});info.appendChild(of);
+var dl=h("div","dl");
+function row(icon,title,text){var d=h("div");d.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+icon+'</svg>';var w=h("div");w.appendChild(h("b","",title));w.appendChild(h("span","",text));d.appendChild(w);dl.appendChild(d);return w}
+row('<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/>',"Free delivery","Order today and it should arrive by "+eta()+".");
+row('<path d="M4 12a8 8 0 1 0 3-6.2M4 4v4h4"/>',"30-day returns","Change your mind within 30 days for a refund, with no restocking fee.");
+row('<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',"12-month warranty","Covered against hardware faults. We repair, replace or refund.");
+var sp=row('<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/>',"Secure payment","Choose ATM card, bank transfer or cryptocurrency at checkout.");
+var pay=h("div","pay");pay.innerHTML=ic("p-card")+ic("p-bank")+ic("p-btc")+ic("p-eth")+ic("p-bnb");sp.appendChild(pay);
+info.appendChild(dl);
+
+function draw(){
+  var u=unit();
+  pp.textContent=usd(u);
+  if(p.was&&p.was>u){pw.hidden=false;pw.textContent=usd(p.was);po.hidden=false;po.textContent="-"+Math.round((1-u/p.was)*100)+"%"}else{pw.hidden=true;po.hidden=true}
+  stb.forEach(function(b,i){b.setAttribute("aria-pressed",i===st)});
+  cob.forEach(function(b,i){b.setAttribute("aria-pressed",i===co)});
+  if(colLabel)colLabel.textContent=p.colors[co].n;
+  qv.textContent=qty;
+  tot.textContent=qty>1?"Total for "+qty+" phones: "+usd(u*qty):"";
+  $("sp").textContent=usd(u);$("sn").textContent=p.name+", "+gb(p.storages[st]);
+  drawWish();
+}
+draw();
+
+/* ----- tabs and sections ----- */
+var tabs=h("nav","tabs");tabs.setAttribute("aria-label","Product sections");
+[["Overview","#overview"],["Specifications","#specs"],["Reviews","#reviews"],["Questions","#faq"]].forEach(function(t){var a=h("a","",t[0]);a.href=t[1];tabs.appendChild(a)});
+app.appendChild(tabs);
+function sect(id,title){var s=h("section","sect");s.id=id;s.appendChild(h("h2","",title));app.appendChild(s);return s}
+
+var ov=sect("overview","Overview");
+var minS=p.storages[0],maxS=p.storages[p.storages.length-1];
+var para=[p.tag,"It runs on the "+S.chip+" chip and has a "+S.display+"."];
+if(S.cams)para.push("The camera system: "+S.cams+".");
+para.push("You can choose from "+p.storages.length+" storage sizes, from "+gb(minS)+" to "+gb(maxS)+".");
+para.push("Every iPhone from Fairgrade is brand new, unlocked and covered by a 12-month warranty.");
+ov.appendChild(h("p","",para.join(" ")));
+var hl=h("div","hl");
+[p.chip+" chip",p.screen+" display",p.cam+" camera","Charges over "+p.port].concat(p.extras.slice(0,4)).forEach(function(t){hl.appendChild(h("div","",t))});
+ov.appendChild(h("h3","","Key features")).style.cssText="font-size:20px;margin-top:22px";
+ov.appendChild(hl);
+ov.appendChild(h("h3","","What is in the box")).style.cssText="font-size:20px;margin-top:26px";
+var bx=h("ul","box");[p.name,"USB cable ("+p.port+" connector)","Printed documentation"].forEach(function(t){bx.appendChild(h("li","",t))});ov.appendChild(bx);
+ov.appendChild(h("p","","Box contents can vary by model.")).style.cssText="font-size:14px;margin-top:6px";
+
+var sc=sect("specs","Technical specifications");
+var spt=h("div","spt");sc.appendChild(spt);
+var groups=[
+ ["Display",[["Size and technology",S.display],["Resolution",S.res],["Refresh rate",S.hz]]],
+ ["Performance",[["Processor",S.chip],["RAM",S.ram],["Internal storage",p.storages.map(gb).join(", ")]]],
+ ["Camera",[["Rear cameras",S.cams],["Front camera",S.front]]],
+ ["Battery and charging",[["Battery capacity",S.battery],["Charging",S.charge]]],
+ ["Software",[["Operating system",S.os]]],
+ ["Connectivity",[["Network",S.net],["SIM",S.sim],["Port",p.port]]],
+ ["Design",[["Dimensions",S.dims],["Weight",S.weight],["Colours",p.colors.map(function(c){return c.n}).join(", ")],["Water resistance",S.ip?S.ip+" dust and water resistance":""]]],
+ ["Sensors and features",[["Sensors","Face ID, accelerometer, gyroscope, proximity, ambient light, barometer"],["Highlights",p.extras.join(", ")]]]
+];
+groups.forEach(function(g){
+  var rows=g[1].filter(function(r){return r[1]});if(!rows.length)return;
+  var d=h("div","sg");d.appendChild(h("h3","",g[0]));
+  rows.forEach(function(r){var x=h("div","sr");x.appendChild(h("span","",r[0]));x.appendChild(h("b","",r[1]));d.appendChild(x)});
+  spt.appendChild(d);
+});
+
+var rv=sect("reviews","Customer reviews");
+var rb=h("div","rev");rb.appendChild(h("b","","No reviews yet"));
+rb.appendChild(h("p","","Reviews from customers who have bought and received this phone will appear here. Have a question first? Message us on Telegram or from your dashboard."));
+rv.appendChild(rb);
+
+var fq=sect("faq","Frequently asked questions");
+var faqs=[
+ ["Is the "+p.name+" unlocked?","Yes. Every iPhone we sell is brand new and unlocked, so it works on any US carrier."],
+ ["Does the "+p.name+" support 5G?",/5G/.test(S.net)?"Yes. It supports "+S.net+".":"No. It supports "+S.net+" networks."],
+ ["Which charging port does it use?","It uses a "+p.port+" port."+(S.charge?" Charging: "+S.charge+".":"")],
+ ["Does it have a headphone jack?","No. iPhones do not have a headphone jack. Use wireless headphones or an adapter for the "+p.port+" port."]
+];
+if(S.ip)faqs.push(["Is it water resistant?","It has an "+S.ip+" rating for dust and water resistance. Water resistance is not permanent, so avoid exposing it to liquids on purpose."]);
+if(S.sim)faqs.push(["Which SIM does it use?",S.sim+"."]);
+faqs.push(["How much is delivery?","Delivery is free. Your estimated delivery date is shown on this page."],
+ ["How can I pay?","At checkout you choose ATM card, bank transfer or cryptocurrency. After you place your order, the payment details appear in your dashboard."],
+ ["What is your return policy?","You can return a phone within 30 days of delivery for a refund, with no restocking fee."],
+ ["What warranty does it have?","Every phone is covered against hardware faults for 12 months."]);
+faqs.forEach(function(f){var d=h("details"),s=h("summary","",f[0]);d.appendChild(s);d.appendChild(h("p","",f[1]));fq.appendChild(d)});
+
+/* related, similar, recently viewed */
+function near(list,n){return list.sort(function(a,b){return Math.abs(P.indexOf(a)-idx)-Math.abs(P.indexOf(b)-idx)}).slice(0,n)}
+var related=near(P.filter(function(x){return x!==p&&x.tier===p.tier}),4);
+if(related.length<4)related=related.concat(near(P.filter(function(x){return x!==p&&related.indexOf(x)<0}),4-related.length));
+var simil=P.filter(function(x){return x!==p&&related.indexOf(x)<0}).sort(function(a,b){return Math.abs(a.price-p.price)-Math.abs(b.price-p.price)}).slice(0,4);
+var seen=LS("fg_rv",[]).filter(function(s){return s!==p.slug}).map(window.findProduct).filter(Boolean).slice(0,4);
+var s1=sect("related","Related products");s1.appendChild(pgrid(related));
+var s2=sect("similar","Similar phones");s2.appendChild(pgrid(simil));
+if(seen.length){var s3=sect("recent","Recently viewed");s3.appendChild(pgrid(seen))}
+var rvl=LS("fg_rv",[]).filter(function(s){return s!==p.slug});rvl.unshift(p.slug);SV("fg_rv",rvl.slice(0,8));
+
+/* sticky buy bar on phones */
+if("IntersectionObserver" in window){
+  new IntersectionObserver(function(es){$("sbar").classList.toggle("on",!es[0].isIntersecting)},{threshold:0}).observe(add);
+}
+})();
+</script>
+<script type="module" src="track.js"></script>
+</body>
+</html>

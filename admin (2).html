@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='fgH' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.16'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='17' fill='%230B1B33'/%3E%3Crect width='64' height='64' rx='17' fill='url(%23fgH)'/%3E%3Crect x='24' y='29' width='17' height='7.6' rx='2.6' fill='%233DE0B8'/%3E%3Crect x='21' y='14' width='8' height='36' rx='2.6' fill='%23fff'/%3E%3Crect x='21' y='14' width='24' height='8' rx='2.6' fill='%23fff'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fairgrade admin</title>
+<style>
+:root{--bg:#F3F6FC;--surface:#fff;--ink:#0B1B33;--muted:#5B6B82;--line:#E1E8F3;--blue:#2563EB;--on:#fff;--bb:#E7F0FF;--bt:#1D4ED8;--gb:#E5F7EC;--gt:#15803D;--ob:#FFF0E0;--ot:#B4540A;--pb:#EFE9FF;--pt:#6D3FD1;--rb:#FDE8E8;--rt:#B42318}
+@media(prefers-color-scheme:dark){:root{--bg:#0A111D;--surface:#111B2C;--ink:#E8EEF8;--muted:#9AA9BF;--line:#22314A;--blue:#5B8CFF;--on:#06122B;--bb:#142544;--bt:#8DB2FF;--gb:#0F2B1E;--gt:#6EE7A0;--ob:#33200F;--ot:#FDBA74;--pb:#241A44;--pt:#C4B0FF;--rb:#3A1414;--rt:#FCA5A5}}
+*{box-sizing:border-box}
+:root{color-scheme:light dark}
+input:-webkit-autofill,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-text-fill-color:var(--ink);caret-color:var(--ink);-webkit-box-shadow:0 0 0 1000px var(--surface) inset;transition:background-color 9999s}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px 16px 100px}
+h1,h2,h3{margin:0;letter-spacing:-.01em}
+input,select,textarea,button{font:inherit;color:inherit}
+input,select,textarea{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 12px}
+button,.btn{cursor:pointer;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:9px 14px;font-weight:600;text-decoration:none;display:inline-block;text-align:center}
+a.btn{color:var(--ink)}
+.pri,a.btn.pri{background:var(--blue);border-color:var(--blue);color:var(--on)}
+.muted{color:var(--muted);font-size:14px}
+.err{color:var(--rt);margin-top:8px}
+label{display:block;font-weight:600;margin-top:12px}
+label input,label textarea{margin-top:6px;font-weight:400}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:12px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.row select{width:auto}
+.hero{background:linear-gradient(135deg,#0B2A6B,#2563EB);color:#fff;padding:16px 16px 26px;border-radius:0 0 24px 24px}
+.hero .in{max-width:720px;margin:0 auto}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .lm{width:32px;height:32px}
+.brand .wmk{width:104px;height:15px;color:#fff}
+.brand small{opacity:.8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.hero button{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;padding:7px 12px}
+.hero h1{font-size:28px}
+.hero p{margin:4px 0 0;opacity:.85}
+.sh{font-size:18px;margin:22px 0 0}
+svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.st{border:0;border-radius:16px;padding:14px;text-align:left}
+.st svg{width:24px;height:24px}
+.st b{display:block;font-size:28px;line-height:1.1;margin-top:10px}
+.st span{font-weight:600;font-size:14px}
+.c-b{background:var(--bb);color:var(--bt)}
+.c-g{background:var(--gb);color:var(--gt)}
+.c-o{background:var(--ob);color:var(--ot)}
+.c-p{background:var(--pb);color:var(--pt)}
+.chip{display:inline-block;border-radius:99px;padding:2px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.s-pending,.s-details_sent{background:var(--ob);color:var(--ot)}
+.s-payment_submitted,.s-confirmed,.s-processing{background:var(--bb);color:var(--bt)}
+.s-shipped,.s-out_for_delivery,.s-delivered{background:var(--gb);color:var(--gt)}
+.s-cancelled{background:var(--rb);color:var(--rt)}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:12px 0 4px;padding-bottom:4px}
+.chips button{white-space:nowrap;padding:7px 12px}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.alert{background:var(--blue);color:var(--on);border-radius:12px;padding:12px 14px;margin-top:12px;font-weight:600;cursor:pointer}
+ul{margin:8px 0 0;padding-left:18px}
+.tabbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:6px 2px calc(6px + env(safe-area-inset-bottom,0px))}
+.tabbar button{border:0;background:none;padding:6px 4px;font-size:11px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:2px;position:relative;flex:1}
+.tabbar button[aria-current="true"]{color:var(--blue)}
+.tabbar svg{width:22px;height:22px}
+.bd{position:absolute;top:0;right:calc(50% - 22px);background:#d33;color:#fff;border-radius:99px;font-size:10px;font-style:normal;padding:0 5px;min-width:16px;line-height:16px}
+.pulse{display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;margin-right:8px;animation:pl 1.6s infinite}
+.lk{display:flex;align-items:center;gap:10px;margin-top:6px}
+.lk .lm{width:40px;height:40px}
+.lk .wmk{width:120px;height:17px;color:var(--ink)}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}}
+.bars{display:flex;gap:8px;align-items:flex-end;height:130px}
+.bars div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;height:100%}
+.bars i{display:block;width:100%;background:var(--blue);border-radius:6px 6px 0 0;min-height:2px}
+.bars span{font-size:11px;color:var(--muted)}
+.bars b{font-size:12px}
+.kv{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border-bottom:0}
+.kv b{text-align:right}
+.wl code{display:block;word-break:break-all;font-size:13px;margin:4px 0 10px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-logo" viewBox="0 0 64 64"><g stroke="none"><defs><linearGradient id="fgH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><rect width="64" height="64" rx="17" fill="#0B1B33"/><rect width="64" height="64" rx="17" fill="url(#fgH)"/><rect x="24" y="29" width="17" height="7.6" rx="2.6" fill="#3DE0B8"/><rect x="21" y="14" width="8" height="36" rx="2.6" fill="#fff"/><rect x="21" y="14" width="24" height="8" rx="2.6" fill="#fff"/></g></symbol>
+<symbol id="i-wm" viewBox="0 0 141 20"><path transform="translate(0 15)" fill="currentColor" stroke="none" d="M9.7 -13.9V-12.0H3.8V-7.9H8.4V-6.1H3.8V0.0H1.5V-13.9Z M24.2 -2.8H18.4L17.4 0.0H15.0L20.0 -13.9H22.6L27.6 0.0H25.2ZM23.5 -4.7 21.3 -11.2 19.0 -4.7Z M36.0 -13.9V0.0H33.7V-13.9Z M50.2 0.0 47.0 -5.6H45.3V0.0H43.0V-13.9H47.8Q49.4 -13.9 50.5 -13.3Q51.6 -12.8 52.2 -11.8Q52.7 -10.9 52.7 -9.7Q52.7 -8.4 51.9 -7.3Q51.2 -6.2 49.5 -5.8L53.0 0.0ZM45.3 -7.4H47.8Q49.1 -7.4 49.8 -8.0Q50.4 -8.7 50.4 -9.7Q50.4 -10.8 49.8 -11.4Q49.1 -12.0 47.8 -12.0H45.3Z M69.7 -9.9Q69.2 -10.9 68.2 -11.5Q67.3 -12.0 66.0 -12.0Q64.6 -12.0 63.5 -11.4Q62.5 -10.8 61.8 -9.6Q61.2 -8.5 61.2 -7.0Q61.2 -5.5 61.8 -4.3Q62.5 -3.2 63.5 -2.6Q64.6 -1.9 66.0 -1.9Q67.9 -1.9 69.0 -3.0Q70.2 -4.0 70.4 -5.8H65.2V-7.6H72.9V-5.8Q72.7 -4.2 71.7 -2.9Q70.8 -1.5 69.3 -0.7Q67.8 0.1 66.0 0.1Q64.0 0.1 62.4 -0.8Q60.8 -1.7 59.8 -3.3Q58.9 -4.9 58.9 -7.0Q58.9 -9.0 59.8 -10.6Q60.8 -12.3 62.4 -13.2Q64.1 -14.1 66.0 -14.1Q68.2 -14.1 69.9 -13.0Q71.7 -11.9 72.5 -9.9Z M86.3 0.0 83.1 -5.6H81.4V0.0H79.1V-13.9H83.9Q85.5 -13.9 86.6 -13.3Q87.7 -12.8 88.3 -11.8Q88.8 -10.9 88.8 -9.7Q88.8 -8.4 88.1 -7.3Q87.3 -6.2 85.6 -5.8L89.1 0.0ZM81.4 -7.4H83.9Q85.2 -7.4 85.8 -8.0Q86.5 -8.7 86.5 -9.7Q86.5 -10.8 85.9 -11.4Q85.2 -12.0 83.9 -12.0H81.4Z M104.1 -2.8H98.3L97.3 0.0H94.9L99.9 -13.9H102.6L107.5 0.0H105.1ZM103.5 -4.7 101.2 -11.2 99.0 -4.7Z M125.6 -6.9Q125.6 -4.8 124.7 -3.2Q123.8 -1.7 122.1 -0.8Q120.5 0.0 118.2 0.0H113.7V-13.9H118.2Q120.5 -13.9 122.1 -13.1Q123.8 -12.2 124.7 -10.6Q125.6 -9.0 125.6 -6.9ZM123.3 -6.9Q123.3 -9.3 122.0 -10.7Q120.7 -12.0 118.2 -12.0H116.0V-1.9H118.2Q120.7 -1.9 122.0 -3.2Q123.3 -4.5 123.3 -6.9Z M134.2 -12.1V-8.0H139.0V-6.1H134.2V-1.9H139.6V0.0H131.9V-13.9H139.6V-12.1Z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-orders" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></symbol>
+<symbol id="i-pay" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c.8-3.5 3.5-5 7-5s6.2 1.5 7 5M16 5a3.5 3.5 0 0 1 0 6.5M18 15c2.5.5 4 2 4 5"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+</svg>
+
+<div class="wrap" id="login">
+  <div class="lk"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg></div>
+  <h1 style="margin-top:12px">Admin sign in</h1>
+  <p class="muted">Sign in to manage your store.</p>
+  <form id="lf" class="card">
+    <label>Email<input id="em" type="email" required autocomplete="username"></label>
+    <label>Password<input id="pw" type="password" required autocomplete="current-password"></label>
+    <p class="err" id="le" role="alert" hidden></p>
+    <div class="row"><button class="pri" type="submit">Sign in</button></div>
+  </form>
+</div>
+
+<div id="app" hidden>
+  <header class="hero"><div class="in">
+    <div class="bar"><span class="brand"><svg class="lm" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-logo"/></svg><svg class="wmk" viewBox="0 0 141 20" aria-hidden="true"><use href="#i-wm"/></svg><small>admin</small></span><button id="out" type="button">Sign out</button></div>
+    <h1>Admin Dashboard</h1>
+    <p>Manage orders, payments, customers and support.</p>
+  </div></header>
+  <main class="wrap">
+    <div class="alert" id="alert" hidden></div>
+    <section id="v-home">
+      <h2 class="sh" style="margin-top:4px">Live</h2>
+      <div class="card"><div><span class="pulse"></span><b id="onl" style="font-size:28px">0</b> <span>people on the site right now</span></div><div class="muted" id="onl-list" style="margin-top:6px"></div></div>
+      <h2 class="sh">Overview</h2>
+      <div class="stats" id="stats" style="margin-top:12px"></div>
+      <h2 class="sh">Visitors, last 7 days</h2>
+      <div class="card"><div class="bars" id="bars"></div><p class="muted" id="tsum" style="margin:10px 0 0"></p></div>
+      <h2 class="sh">Insights</h2>
+      <div class="card" id="ins"></div>
+      <h2 class="sh">Needs your attention</h2>
+      <div id="attn"></div>
+      <h2 class="sh">Recent orders</h2>
+      <div id="recent"></div>
+    </section>
+    <section id="v-orders" hidden>
+      <h2 class="sh" style="margin-top:4px">Orders</h2>
+      <input id="q" placeholder="Search by order number, name, phone or email" style="margin-top:12px">
+      <div class="chips" id="ofil"></div>
+      <div id="olist"></div>
+    </section>
+    <section id="v-pay" hidden>
+      <h2 class="sh" style="margin-top:4px">Payments</h2>
+      <div class="chips" id="pfil"></div>
+      <div id="plist"></div>
+    </section>
+    <section id="v-help" hidden>
+      <h2 class="sh" style="margin-top:4px">Customer support</h2>
+      <div id="tlist"></div>
+    </section>
+    <section id="v-cust" hidden>
+      <h2 class="sh" style="margin-top:4px">Customers</h2>
+      <div id="clist"></div>
+    </section>
+    <section id="v-set" hidden>
+      <h2 class="sh" style="margin-top:4px">Settings</h2>
+      <div class="card">
+        <label>My bank account details<textarea id="bank" rows="4" placeholder="Bank name, account name, account number"></textarea></label>
+        <p class="muted">Saved on this phone only. It fills in automatically when you send payment details to a customer's dashboard.</p>
+      </div>
+      <div class="card wl"><h3>Crypto wallets shown to customers</h3><div id="wl" style="margin-top:8px"></div><p class="muted">To change a wallet, edit config.js on GitHub.</p></div>
+      <div class="card"><h3>Promotions and ads</h3><p class="muted">These appear in a banner at the top of your store.</p>
+        <label>Title<input id="ad-t" maxlength="60" placeholder="Weekend deal on iPhone 15"></label>
+        <label>Text (optional)<input id="ad-x" maxlength="120"></label>
+        <label>Button text (optional)<input id="ad-b" maxlength="24" placeholder="Shop now"></label>
+        <label>Button link (optional)<input id="ad-l" placeholder="#models or https://..."></label>
+        <label>Show a phone picture<select id="ad-m"></select></label>
+        <label>Color<select id="ad-c"><option value="blue">Blue</option><option value="green">Green</option><option value="purple">Purple</option><option value="orange">Orange</option><option value="dark">Dark</option></select></label>
+        <div class="row"><button class="pri" id="ad-add" type="button">Add promotion</button></div>
+        <div id="ad-list"></div>
+      </div>
+      <div class="card">
+        <div class="row" style="margin-top:0"><button id="notif" type="button">Turn on alerts</button><button id="exp" type="button">Download orders (CSV)</button></div>
+        <p class="muted">Alerts work while this page is open.</p>
+      </div>
+    </section>
+  </main>
+  <nav class="tabbar" aria-label="Admin">
+    <button type="button" data-v="home" aria-current="true"><svg><use href="#i-home"/></svg>Home</button>
+    <button type="button" data-v="orders"><svg><use href="#i-orders"/></svg>Orders<i class="bd" id="bd-orders" hidden></i></button>
+    <button type="button" data-v="pay"><svg><use href="#i-pay"/></svg>Payments<i class="bd" id="bd-pay" hidden></i></button>
+    <button type="button" data-v="help"><svg><use href="#i-chat"/></svg>Support<i class="bd" id="bd-help" hidden></i></button>
+    <button type="button" data-v="cust"><svg><use href="#i-users"/></svg>Customers</button>
+    <button type="button" data-v="set"><svg><use href="#i-gear"/></svg>Settings</button>
+  </nav>
+</div>
+
+<script src="config.js"></script>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,query,orderBy,where,limit,onSnapshot,doc,updateDoc,deleteDoc,serverTimestamp,addDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const $=id=>document.getElementById(id);
+const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n};
+const ic=k=>'<svg><use href="#i-'+k+'"/></svg>';
+const C=window.FIREBASE_CONFIG;
+const STATUS={pending:"Pending",details_sent:"Details sent",payment_submitted:"Payment submitted",confirmed:"Payment confirmed",processing:"Processing",shipped:"Shipped",out_for_delivery:"Out for delivery",delivered:"Delivered",cancelled:"Cancelled"};
+const DONE=["confirmed","processing","shipped","out_for_delivery","delivered"];
+const SMSG={confirmed:"your payment is confirmed and your order has been processed.",processing:"your order is being prepared.",shipped:"it has been shipped.",out_for_delivery:"it is out for delivery.",delivered:"it has been delivered."};
+const METHOD={card:"ATM card",bank:"Bank transfer",crypto:"Cryptocurrency"};
+const EXPLORER={Ethereum:"https://etherscan.io/tx/",Bitcoin:"https://mempool.space/tx/",BNB:"https://bscscan.com/tx/"};
+const OF=[["all","All"],["todo","To do"],["wait","Waiting"],["active","Paid and active"],["delivered","Delivered"],["cancelled","Cancelled"]];
+const PF=[["verify","To verify"],["wait","Awaiting"],["paid","Paid"],["all","All"]];
+let orders=[],tickets=[],visits=[],users=[],first=true,firstT=true,unsub=null,unsub2=null,unsub3=null,unsub4=null,unsub5=null,ads=[],ofil="all",pfil="verify";
+
+const todo=o=>o.status==="payment_submitted"||(o.status==="pending"&&o.method!=="crypto");
+const unpaid=o=>o.status==="pending"||o.status==="details_sent";
+const active=o=>["confirmed","processing","shipped","out_for_delivery"].includes(o.status);
+const inO=(o,k)=>k==="all"||(k==="todo"&&todo(o))||(k==="wait"&&unpaid(o)&&!todo(o))||(k==="active"&&active(o))||(k==="delivered"&&o.status==="delivered")||(k==="cancelled"&&o.status==="cancelled");
+const inP=(o,k)=>o.status!=="cancelled"&&(k==="all"||(k==="verify"&&o.status==="payment_submitted")||(k==="wait"&&unpaid(o))||(k==="paid"&&DONE.includes(o.status)));
+const when=o=>o.createdAt&&o.createdAt.toDate?o.createdAt.toDate().toLocaleString():"just now";
+const byNew=l=>l.sort((a,b)=>(b.createdAt?b.createdAt.seconds:1e12)-(a.createdAt?a.createdAt.seconds:1e12));
+const store=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k)||"";localStorage.setItem(k,v)}catch(e){return ""}};
+
+if(!C||!C.apiKey||C.apiKey.indexOf("PASTE")>=0){
+  $("le").textContent="Firebase is not set up yet. Fill in config.js first.";$("le").hidden=false;
+}else{
+  const app=initializeApp(C),auth=getAuth(app),db=getFirestore(app);
+  const setStatus=(o,s)=>updateDoc(doc(db,"orders",o.id),{status:s});
+
+  $("bank").value=store("fg_bank");
+  $("bank").oninput=()=>store("fg_bank",$("bank").value);
+  (window.WALLETS||[]).forEach(w=>{const b=el("b","",w.coin+" ("+w.net+")");const c=el("code","",w.addr);$("wl").appendChild(b);$("wl").appendChild(c)});
+
+  $("lf").onsubmit=async e=>{
+    e.preventDefault();$("le").hidden=true;
+    try{await signInWithEmailAndPassword(auth,$("em").value,$("pw").value)}
+    catch(x){$("le").textContent="Could not sign in. Check your email and password.";$("le").hidden=false}
+  };
+  $("out").onclick=()=>signOut(auth);
+  $("notif").onclick=()=>{if("Notification" in window)Notification.requestPermission()};
+  $("alert").onclick=()=>{$("alert").hidden=true};
+  $("q").oninput=()=>draw();
+
+  function go(v){
+    ["home","orders","pay","help","cust","set"].forEach(k=>{$("v-"+k).hidden=k!==v});
+    document.querySelectorAll(".tabbar button").forEach(b=>b.setAttribute("aria-current",b.dataset.v===v));
+    scrollTo(0,0);
+  }
+  document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>go(b.dataset.v));
+
+  onAuthStateChanged(auth,user=>{
+    $("login").hidden=!!user;$("app").hidden=!user;
+    if(unsub){unsub();unsub=null}
+    if(unsub2){unsub2();unsub2=null}
+    if(unsub3){unsub3();unsub3=null}
+    if(unsub4){unsub4();unsub4=null}
+    if(unsub5){unsub5();unsub5=null}
+    if(!user)return;
+    first=true;firstT=true;go("home");
+    unsub=onSnapshot(query(collection(db,"orders"),orderBy("createdAt","desc")),snap=>{
+      orders=snap.docs.map(d=>({id:d.id,...d.data()}));
+      if(!first)snap.docChanges().forEach(c=>{const d=c.doc.data();
+        if(c.type==="added"&&d.status==="pending"&&d.method!=="crypto")ping("New order, send payment details:",d.code,d.customer.name);
+        else if(d.status==="payment_submitted"&&(c.type==="added"||c.type==="modified"))ping("Payment submitted:",d.code,d.customer.name)});
+      first=false;draw();
+    },err=>{$("recent").textContent="Cannot load orders: "+err.code});
+    unsub3=onSnapshot(query(collection(db,"visits"),where("lastSeen",">=",new Date(Date.now()-7*864e5)),limit(1500)),snap=>{visits=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
+    unsub5=onSnapshot(collection(db,"ads"),snap=>{ads=snap.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.order||0)-(a.order||0));drawAds()},()=>{});
+    unsub4=onSnapshot(collection(db,"users"),snap=>{users=snap.docs.map(d=>({id:d.id,...d.data()}));drawStats()},()=>{});
+    unsub2=onSnapshot(collection(db,"tickets"),snap=>{
+      tickets=byNew(snap.docs.map(d=>({id:d.id,...d.data()})));
+      if(!firstT)snap.docChanges().forEach(c=>{if(c.type==="added")ping("New support message from",c.doc.data().email,"")});
+      firstT=false;draw();
+    },()=>{});
+  });
+
+  const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.25)}catch(e){}};
+  function ping(t,code,name){
+    $("alert").textContent=t+" "+code+(name?" from "+name:"");$("alert").hidden=false;
+    beep();
+    try{if("Notification" in window&&Notification.permission==="granted")new Notification("Fairgrade",{body:t+" "+code})}catch(e){}
+  }
+  function wa(o,kind){
+    const bank=store("fg_bank"),n=o.customer.name,c=o.code;
+    let m;
+    if(kind==="status")m="Hello "+n+", update on your Fairgrade order "+c+": "+(SMSG[o.status]||"it has been updated.")+" Thank you for shopping with us.";
+    else{
+      m="Hello "+n+", thank you for your Fairgrade order "+c+" (total $"+o.total+"). ";
+      m+="Your payment details are ready in your Fairgrade dashboard (Payments). Please sign in to see them.";
+    }
+    return "https://wa.me/"+String(o.customer.phone).replace(/\D/g,"")+"?text="+encodeURIComponent(m);
+  }
+  const chip=o=>el("span","chip s-"+o.status,(METHOD[o.method]||o.method)+", "+(STATUS[o.status]||o.status));
+  function proof(o,c){
+    if(!o.payRef)return;
+    const p=el("p","","Payment reference: "+o.payRef+(o.payCoin?"  ("+o.payCoin+")":""));p.style.wordBreak="break-all";c.appendChild(p);
+    const ex=EXPLORER[o.payCoin];
+    if(ex){const x=el("a","btn","Check on blockchain explorer");x.href=ex+encodeURIComponent(o.payRef);x.target="_blank";x.rel="noopener";c.appendChild(x)}
+  }
+  function waBtn(o){
+    const d=DONE.includes(o.status);
+    const w=el("a","btn"+(d?" pri":""),"Notify on WhatsApp");
+    w.href=wa(o,d?"status":"pay");w.target="_blank";w.rel="noopener";return w;
+  }
+  function trackBox(o){
+    const d=el("div","row");
+    const s=el("select");["USPS","UPS","FedEx","DHL","Other"].forEach(k=>{const op=el("option","",k);op.value=k;if(k===o.carrier)op.selected=true;s.appendChild(op)});
+    const i=el("input");i.placeholder="Tracking number";i.value=o.trackNo||"";i.style.width="auto";i.style.flex="1";i.style.minWidth="140px";
+    const b=el("button","","Save tracking");b.type="button";
+    b.onclick=()=>{b.disabled=true;updateDoc(doc(db,"orders",o.id),{carrier:s.value,trackNo:i.value.trim()}).then(()=>{b.textContent="Saved";b.disabled=false}).catch(()=>{b.disabled=false;alert("Could not save. Please try again.")})};
+    d.appendChild(s);d.appendChild(i);d.appendChild(b);return d;
+  }
+  const MODELN="iPhone X,iPhone XR,iPhone XS,iPhone XS Max,iPhone 11,iPhone 11 Pro,iPhone 11 Pro Max,iPhone 12 mini,iPhone 12,iPhone 12 Pro,iPhone 12 Pro Max,iPhone 13 mini,iPhone 13,iPhone 13 Pro,iPhone 13 Pro Max,iPhone 14,iPhone 14 Plus,iPhone 14 Pro,iPhone 14 Pro Max,iPhone 15,iPhone 15 Plus,iPhone 15 Pro,iPhone 15 Pro Max,iPhone 16,iPhone 16 Plus,iPhone 16 Pro,iPhone 16 Pro Max,iPhone 17,iPhone Air,iPhone 17 Pro,iPhone 17 Pro Max,iPhone 18 Pro,iPhone 18 Pro Max".split(",");
+  (function(){const m=$("ad-m");const o=el("option","","No picture");o.value="";m.appendChild(o);MODELN.forEach(n=>{const p=el("option","",n);p.value=n;m.appendChild(p)})})();
+  $("ad-add").onclick=()=>{
+    const t=$("ad-t").value.trim(),l=$("ad-l").value.trim();
+    if(!t){alert("Write a title first.");return}
+    if(l&&!/^(https?:\/\/|#|mailto:|product\.html\?)/i.test(l)){alert("The link must start with https://, # or mailto:");return}
+    $("ad-add").disabled=true;
+    addDoc(collection(db,"ads"),{title:t,text:$("ad-x").value.trim(),button:$("ad-b").value.trim(),link:l,model:$("ad-m").value,theme:$("ad-c").value,active:true,order:Date.now(),createdAt:serverTimestamp()}).then(()=>{["ad-t","ad-x","ad-b","ad-l"].forEach(k=>{$(k).value=""});$("ad-add").disabled=false}).catch(()=>{$("ad-add").disabled=false;alert("Could not save. Check that the Firebase rules were updated.")});
+  };
+  function drawAds(){
+    const l=$("ad-list");l.innerHTML="";
+    ads.forEach(a=>{
+      const c=el("div","card"),h=el("div","top"),t=el("div");
+      t.appendChild(el("h3","",a.title));if(a.text)t.appendChild(el("div","muted",a.text));
+      h.appendChild(t);h.appendChild(el("span","chip s-"+(a.active?"delivered":"cancelled"),a.active?"Showing":"Hidden"));c.appendChild(h);
+      const r=el("div","row");
+      const b1=el("button","",a.active?"Hide":"Show");b1.type="button";b1.onclick=()=>updateDoc(doc(db,"ads",a.id),{active:!a.active});r.appendChild(b1);
+      const b2=el("button","","Delete");b2.type="button";b2.onclick=()=>{if(confirm("Delete this promotion?"))deleteDoc(doc(db,"ads",a.id))};r.appendChild(b2);
+      c.appendChild(r);l.appendChild(c);
+    });
+  }
+  function sendBox(o){
+    const d=el("div");d.style.marginTop="12px";
+    d.appendChild(el("div","muted",o.status==="details_sent"?"Sent to the customer's dashboard. You can edit and send again.":"Payment details for the customer's dashboard"));
+    const ta=el("textarea");ta.rows=4;ta.style.marginTop="6px";
+    ta.placeholder=o.method==="bank"?"Bank name, account name, account number":"Paste the card payment link or instructions";
+    ta.value=o.payInfo||(o.method==="bank"?store("fg_bank"):"");
+    const b=el("button","pri","Send to customer dashboard");b.type="button";b.style.marginTop="8px";
+    b.onclick=()=>{
+      const v=ta.value.trim();
+      if(!v){alert(o.method==="bank"?"Add your bank details first, here or in Settings.":"Write or paste the payment details first.");return}
+      b.disabled=true;
+      updateDoc(doc(db,"orders",o.id),{payInfo:v,status:"details_sent",infoAt:serverTimestamp()}).then(()=>{b.textContent="Sent"}).catch(()=>{b.disabled=false;alert("Could not send. Please try again.")});
+    };
+    d.appendChild(ta);d.appendChild(b);return d;
+  }
+  function head(o){
+    const h=el("div","top"),l=el("div");
+    l.appendChild(el("h3","",o.code+"  $"+o.total));l.appendChild(el("div","muted",when(o)));
+    h.appendChild(l);h.appendChild(chip(o));return h;
+  }
+  function orderCard(o){
+    const c=el("div","card");
+    c.appendChild(head(o));
+    c.appendChild(el("p","",o.customer.name+"  "+o.customer.phone));
+    c.appendChild(el("div","muted",o.customer.email));
+    c.appendChild(el("div","muted",o.customer.address));
+    const ul=el("ul");(o.items||[]).forEach(i=>ul.appendChild(el("li","",i.n+"  $"+i.p)));c.appendChild(ul);
+    proof(o,c);
+    if(unpaid(o)&&o.method!=="crypto")c.appendChild(sendBox(o));
+    if(DONE.includes(o.status))c.appendChild(trackBox(o));
+    const r=el("div","row");
+    if(o.status==="payment_submitted"){const b=el("button","pri","Confirm payment");b.type="button";b.onclick=()=>setStatus(o,"confirmed");r.appendChild(b)}
+    r.appendChild(waBtn(o));
+    const s=el("select");Object.keys(STATUS).forEach(k=>{const op=el("option","",STATUS[k]);op.value=k;if(k===o.status)op.selected=true;s.appendChild(op)});
+    s.onchange=()=>setStatus(o,s.value);r.appendChild(s);
+    const t=el("a","btn","Call");t.href="tel:"+o.customer.phone;r.appendChild(t);
+    const d=el("button","","Delete");d.type="button";d.onclick=()=>{if(confirm("Delete order "+o.code+"?"))deleteDoc(doc(db,"orders",o.id))};r.appendChild(d);
+    c.appendChild(r);return c;
+  }
+  function payCard(o){
+    const c=el("div","card");
+    c.appendChild(head(o));
+    c.appendChild(el("p","",o.customer.name+"  "+o.customer.phone));
+    proof(o,c);
+    if(unpaid(o)&&o.method!=="crypto")c.appendChild(sendBox(o));
+    const r=el("div","row");
+    if(o.status==="payment_submitted"||unpaid(o)){const b=el("button","pri","Confirm payment");b.type="button";b.onclick=()=>{if(unpaid(o)&&!confirm("No payment proof yet. Mark as paid anyway?"))return;setStatus(o,"confirmed")};r.appendChild(b)}
+    if(unpaid(o)){
+      r.appendChild(waBtn(o));
+      if(o.status==="pending"){const b=el("button","","Mark details sent");b.type="button";b.onclick=()=>setStatus(o,"details_sent");r.appendChild(b)}
+    }
+    c.appendChild(r);return c;
+  }
+  const tm=(x,now)=>x&&x.toMillis?x.toMillis():now;
+  function tally(arr){const m={};arr.forEach(x=>{if(x)m[x]=(m[x]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])}
+  function drawStats(){
+    const now=Date.now(),d0=new Date();d0.setHours(0,0,0,0);const t0=d0.getTime();
+    const online=visits.filter(v=>now-tm(v.lastSeen,now)<150000);
+    $("onl").textContent=online.length;
+    $("onl-list").textContent=online.slice(0,5).map(v=>(v.page||"page")+" on "+(v.device||"?")+(v.ref&&v.ref!=="direct"?" from "+v.ref:"")).join("  |  ");
+    const today=visits.filter(v=>tm(v.first,now)>=t0);
+    const views=today.reduce((a,v)=>a+(v.views||1),0);
+    const oToday=orders.filter(o=>tm(o.createdAt,now)>=t0);
+    const revToday=oToday.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
+    const rev=orders.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
+    const newU=users.filter(u=>u.createdAt&&tm(u.createdAt,now)>=t0).length;
+    const nTodo=orders.filter(todo).length,nVer=orders.filter(o=>o.status==="payment_submitted").length,nOpen=tickets.filter(t=>t.status==="open").length;
+    const st=$("stats");st.innerHTML="";
+    [["Visitors today",today.length,"b","users",()=>go("home")],["Page views today",views,"b","home",()=>go("home")],["Registered customers",users.length,"p","users",()=>go("cust")],["New customers today",newU,"p","users",()=>go("cust")],["Orders today",oToday.length,"o","orders",()=>{ofil="all";go("orders");draw()}],["Revenue today","$"+revToday,"g","pay",()=>{pfil="paid";go("pay");draw()}],["Orders to do",nTodo,"o","clock",()=>{ofil="todo";go("orders");draw()}],["Payments to verify",nVer,"b","pay",()=>{pfil="verify";go("pay");draw()}],["Open support",nOpen,"p","chat",()=>go("help")],["Total revenue","$"+rev,"g","orders",()=>{ofil="active";go("orders");draw()}]].forEach(x=>{
+      const b=el("button","st c-"+x[2]);b.type="button";
+      b.innerHTML=ic(x[3])+"<b></b><span></span>";
+      b.querySelector("b").textContent=x[1];b.querySelector("span").textContent=x[0];
+      b.onclick=x[4];st.appendChild(b);
+    });
+    const bars=$("bars");bars.innerHTML="";
+    const days=[];for(let k=6;k>=0;k--){const d=new Date(t0-k*864e5);days.push({t:d.getTime(),l:d.toLocaleDateString(undefined,{weekday:"short"}),n:0})}
+    visits.forEach(v=>{const t=tm(v.first,now);for(let k=days.length-1;k>=0;k--){if(t>=days[k].t){days[k].n++;break}}});
+    const mx=Math.max(1,...days.map(d=>d.n));
+    days.forEach(d=>{const c=el("div");c.appendChild(el("b","",d.n));const i=el("i");i.style.height=Math.round(d.n/mx*80)+"%";c.appendChild(i);c.appendChild(el("span","",d.l));bars.appendChild(c)});
+    $("tsum").textContent=visits.length+" visitors and "+visits.reduce((a,v)=>a+(v.views||1),0)+" page views in the last 7 days.";
+    const sids=new Set(orders.map(o=>o.sid).filter(Boolean));
+    const o7=orders.filter(o=>now-tm(o.createdAt,now)<7*864e5).length;
+    const mob=visits.filter(v=>v.device==="mobile").length;
+    const aband=visits.filter(v=>v.cart&&!sids.has(v.id)).length;
+    const topM=tally(visits.map(v=>v.model)).slice(0,5).map(x=>x[0]+" ("+x[1]+")").join(", ")||"No data yet";
+    const topR=tally(visits.map(v=>v.ref)).slice(0,3).map(x=>x[0]+" ("+x[1]+")").join(", ")||"No data yet";
+    const ins=$("ins");ins.innerHTML="";
+    [["Conversion (orders per visitor)",visits.length?Math.min(100,Math.round(o7*100/visits.length))+"%":"No data yet"],["Phones people look at",visits.length?Math.round(mob*100/visits.length)+"% mobile, "+(100-Math.round(mob*100/visits.length))+"% desktop":"No data yet"],["Added to cart but did not order",aband],["Most wanted phones",topM],["Where visitors come from",topR]].forEach(r=>{const k=el("div","kv");k.appendChild(el("span","",r[0]));k.appendChild(el("b","",String(r[1])));ins.appendChild(k)});
+  }
+  setInterval(()=>drawStats(),20000);
+  function chips(id,list,cur,fn){
+    const w=$(id);w.innerHTML="";
+    list.forEach(([k,l])=>{const b=el("button","",l);b.type="button";b.setAttribute("aria-pressed",cur===k);b.onclick=()=>fn(k);w.appendChild(b)});
+  }
+  function badge(id,n){const b=$(id);b.textContent=n;b.hidden=!n}
+  function draw(){
+    const nTodo=orders.filter(todo).length,nVer=orders.filter(o=>o.status==="payment_submitted").length,nOpen=tickets.filter(t=>t.status==="open").length;
+    const rev=orders.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
+    badge("bd-orders",nTodo);badge("bd-pay",nVer);badge("bd-help",nOpen);
+    document.title=(nTodo+nOpen?"("+(nTodo+nOpen)+") ":"")+"Fairgrade admin";
+    drawStats();
+    const at=$("attn");at.innerHTML="";
+    const need=orders.filter(todo);
+    if(!need.length&&!nOpen)at.appendChild(el("p","muted","Nothing needs your attention right now."));
+    need.slice(0,5).forEach(o=>at.appendChild(orderCard(o)));
+    if(nOpen){const b=el("button","pri","Reply to "+nOpen+" support message"+(nOpen>1?"s":""));b.type="button";b.style.marginTop="12px";b.onclick=()=>go("help");at.appendChild(b)}
+    const rc=$("recent");rc.innerHTML="";
+    if(!orders.length)rc.appendChild(el("p","muted","No orders yet."));
+    orders.slice(0,3).forEach(o=>rc.appendChild(orderCard(o)));
+
+    chips("ofil",OF,ofil,k=>{ofil=k;draw()});
+    const q=$("q").value.trim().toLowerCase();
+    const ol=$("olist");ol.innerHTML="";
+    const list=orders.filter(o=>inO(o,ofil)&&(!q||[o.code,o.customer.name,o.customer.phone,o.customer.email].join(" ").toLowerCase().includes(q)));
+    if(!list.length)ol.appendChild(el("p","muted","No orders here."));
+    list.forEach(o=>ol.appendChild(orderCard(o)));
+
+    chips("pfil",PF,pfil,k=>{pfil=k;draw()});
+    const pl=$("plist");pl.innerHTML="";
+    const pays=orders.filter(o=>inP(o,pfil));
+    if(!pays.length)pl.appendChild(el("p","muted","No payments here."));
+    pays.forEach(o=>pl.appendChild(payCard(o)));
+
+    const tl=$("tlist");tl.innerHTML="";
+    if(!tickets.length)tl.appendChild(el("p","muted","No support messages yet."));
+    tickets.forEach(k=>{
+      const c=el("div","card"),h=el("div","top"),l=el("div");
+      l.appendChild(el("h3","",k.email));
+      l.appendChild(el("div","muted",(k.orderCode?"Order "+k.orderCode+"  ":"")+(k.createdAt&&k.createdAt.toDate?k.createdAt.toDate().toLocaleString():"just now")));
+      h.appendChild(l);h.appendChild(el("span","chip s-"+(k.status==="open"?"pending":"delivered"),k.status==="open"?"Open":"Answered"));
+      c.appendChild(h);
+      c.appendChild(el("p","",k.message));
+      if(k.reply)c.appendChild(el("p","muted","Your reply: "+k.reply));
+      const ta=el("textarea");ta.rows=3;ta.placeholder="Write your reply";
+      const r=el("div","row"),b=el("button","pri","Send reply");b.type="button";
+      b.onclick=()=>{const v=ta.value.trim();if(!v)return;b.disabled=true;updateDoc(doc(db,"tickets",k.id),{reply:v,status:"answered",repliedAt:serverTimestamp()}).catch(()=>{b.disabled=false})};
+      r.appendChild(b);c.appendChild(ta);c.appendChild(r);tl.appendChild(c);
+    });
+
+    const cl=$("clist");cl.innerHTML="";
+    const m={};
+    orders.forEach(o=>{const k=o.uid||o.customer.email;(m[k]=m[k]||{u:o.uid,n:o.customer.name,e:o.customer.email,p:o.customer.phone,l:[]}).l.push(o)});
+    const cs=Object.values(m);
+    if(!cs.length)cl.appendChild(el("p","muted","No customers yet."));
+    cs.forEach(x=>{
+      const c=el("div","card"),spent=x.l.filter(o=>DONE.includes(o.status)).reduce((a,o)=>a+o.total,0);
+      const pr=users.find(u=>u.id===x.u)||{},hd=el("div");
+      hd.style.cssText="display:flex;gap:12px;align-items:center";
+      if(pr.photo){const im=new Image();im.src=pr.photo;im.alt="";im.style.cssText="width:48px;height:48px;border-radius:50%;object-fit:cover";hd.appendChild(im)}
+      hd.appendChild(el("h3","",pr.name||x.n));c.appendChild(hd);
+      c.appendChild(el("div","muted",x.e+"  "+x.p));
+      c.appendChild(el("p","",x.l.length+" order"+(x.l.length>1?"s":"")+"  $"+spent+" paid  Last order "+when(x.l[0])));
+      const r=el("div","row");
+      const w=el("a","btn pri","WhatsApp");w.href="https://wa.me/"+String(x.p).replace(/\D/g,"");w.target="_blank";w.rel="noopener";r.appendChild(w);
+      const t=el("a","btn","Call");t.href="tel:"+x.p;r.appendChild(t);
+      c.appendChild(r);cl.appendChild(c);
+    });
+  }
+  $("exp").onclick=()=>{
+    const rows=[["Code","Date","Name","Phone","Email","Address","Items","Total","Method","Status","Reference","Coin"]];
+    orders.forEach(o=>rows.push([o.code,when(o),o.customer.name,o.customer.phone,o.customer.email,o.customer.address,(o.items||[]).map(i=>i.n).join(" | "),o.total,METHOD[o.method],STATUS[o.status],o.payRef||"",o.payCoin||""]));
+    const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\n");
+    const a=el("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="fairgrade-orders.csv";a.click();
+  };
+}
+</script>
+</body>
+</html>
