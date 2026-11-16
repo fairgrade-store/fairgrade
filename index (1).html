@@ -632,6 +632,7 @@ a.pickbtn{display:block;text-align:center;text-decoration:none;color:var(--ink)}
 <script src="products.js"></script>
 <script>
 (function(){
+if(!window.PRODUCTS){var m=document.createElement("div");m.style.cssText="padding:28px 20px;font:16px/1.5 system-ui,sans-serif;text-align:center";m.textContent="The product list could not load. Please open the live website, and make sure products.js is uploaded next to this page.";document.body.insertBefore(m,document.body.firstChild);return}
 var MODELS=window.PRODUCTS.map(function(p){return{n:p.name,b:p.price,s:p.storages,slug:p.slug}});
 var GRADES=[["Brand new",1,100,"Sealed in the box, never used."]];
 var FILTERS=["All","Saved","X","11","12","13","14","15","16","17","18"];

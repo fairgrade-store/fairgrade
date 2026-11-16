@@ -222,6 +222,7 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:34px 0 20px;colo
 <script src="config.js"></script>
 <script>
 (function(){
+if(!window.PRODUCTS){var m=document.createElement("div");m.style.cssText="padding:28px 20px;font:16px/1.5 system-ui,sans-serif;text-align:center";m.textContent="The product list could not load. Please open the live website, and make sure products.js is uploaded next to this page.";document.body.insertBefore(m,document.body.firstChild);return}
 var P=window.PRODUCTS,IMG=window.PHONE_IMG||{};
 var $=function(i){return document.getElementById(i)};
 function h(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!==undefined)n.textContent=x;return n}
